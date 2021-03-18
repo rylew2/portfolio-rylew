@@ -1,11 +1,10 @@
-import React from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
-
-import { Layout, Container } from "../../components";
-import { getAllContentIds, getContentData } from "../../lib/content";
-import { StyledContent } from "../../components/styles/content.styles";
+import { useRouter } from "next/router";
+import React from "react";
+import { Container, Layout } from "../../components";
 import { Chips } from "../../components/chips/chips";
+import { StyledContent } from "../../components/styles/content.styles";
+import { getAllContentIds, getContentData } from "../../lib/content";
 
 /**
  *  Renders articles markdown posts
@@ -42,8 +41,8 @@ export const getStaticPaths = async () => {
 export interface IContentData {
   id: string;
   contentHtml: string;
-  date: Date;
   title: string;
+  date: Date;
   previewImage?: string;
   description?: string;
   tags?: string[];

@@ -1,12 +1,16 @@
-import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { GitHub, Codepen, Twitter } from "react-feather";
+import styled from "@emotion/styled";
+import { Codepen, GitHub, Twitter } from "react-feather";
 
 export const StyledFooterSection = styled.footer`
+  background: url("cork-wallet.png");
+
   .footer-container {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 20px 0px;
   }
 
   .footerSocialLinks {

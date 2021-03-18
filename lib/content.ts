@@ -1,11 +1,11 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { v4 as uuid } from "uuid";
 import { exception } from "console";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
 import remark from "remark";
 import html from "remark-html";
 import remarkPrism from "remark-prism";
+import { v4 as uuid } from "uuid";
 import { IContentData } from "../pages/articles/[id]";
 
 const workDirectory = path.join(process.cwd(), "content", "work");
@@ -17,8 +17,8 @@ type IContentType = "articles" | "notes" | "work";
 /**
  * Get IDs of all markdown post
  * @param {string} contentType Type of content to get ids
+ * Called from getStaticPaths of the [id].tsx page
  */
-
 export const getAllContentIds = (contentType: IContentType) => {
   let filenames;
   let baseDir;
@@ -49,6 +49,8 @@ export const getAllContentIds = (contentType: IContentType) => {
     const filePath = path.join(baseDir, filename);
     const fileContent = fs.readFileSync(filePath, "utf-8");
 
+    //convert string at the start of each .md into
+    //an object {content: .., data: title:..., slug: ..}
     const matterResult = matter(fileContent);
 
     return {
@@ -65,8 +67,8 @@ export const getAllContentIds = (contentType: IContentType) => {
  * Get data for a given post id
  * @param {string} id ID of the post being passed
  * @param {string} contentType Type of content
+ * Called from getStaticProps of the [id].tsx
  */
-
 export const getContentData = async (id: string, contentType: IContentType) => {
   let contentTypeDirectory;
   let filenames;
@@ -129,6 +131,7 @@ export const getContentData = async (id: string, contentType: IContentType) => {
 /**
  * Get content list for a particular content type
  * @param {string} contentType Type of content
+ * For the landing page of each subpage - called from articles/notes/work.tsx getStaticProps
  */
 export const getContentList = (contentType: IContentType) => {
   let contentFiles;
@@ -159,7 +162,6 @@ export const getContentList = (contentType: IContentType) => {
       const rawContent = fs.readFileSync(path, {
         encoding: "utf-8",
       });
-
       const { data } = matter(rawContent);
 
       return {
@@ -175,6 +177,7 @@ export const getContentList = (contentType: IContentType) => {
 /**
  * Get content type with particular tag
  * @param {string} tag - tag to filter by
+ * called from [id].tsx getStaticPaths
  */
 export const getContentWithTag = (tag: string, contentType: IContentType) => {
   let contentDir;
@@ -254,7 +257,7 @@ export const getContentInCategory = (
       const rawContent = fs.readFileSync(path, {
         encoding: "utf-8",
       });
-
+     
       const { data } = matter(rawContent);
 
       return {

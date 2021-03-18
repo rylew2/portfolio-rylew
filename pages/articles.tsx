@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Container, Cards } from "../components";
+import { Cards, Container, Layout } from "../components";
 import { getContentList } from "../lib/content";
 
 /**
@@ -29,6 +29,8 @@ const Articles = ({ articles }) => {
   );
 };
 
+//getStaticProps run only at build time
+// in dev, run on every request
 export const getStaticProps = async () => {
   const articles = getContentList("articles");
   return {

@@ -1,11 +1,10 @@
-import React from "react";
 import { useRouter } from "next/router";
+import React from "react";
+import { Cards, Container, Layout } from "../../../components";
+import tagsJSON from "../../../config/tags.json";
 import { getContentWithTag } from "../../../lib/content";
 
-import tagsJSON from "../../../config/tags.json";
-import { Cards, Container, Layout } from "../../../components";
-
-const category = ({ content, title, description }) => {
+const tag = ({ content, title, description }) => {
   const { pathname } = useRouter();
   return (
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
@@ -51,4 +50,4 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export default category;
+export default tag;

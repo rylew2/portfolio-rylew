@@ -1,10 +1,7 @@
 import React, { FC } from "react";
-
-import { Layout, Container, Cards } from "../components";
+import { Cards, Container, Layout } from "../components";
 import { StyledIndexPage } from "../components/styles/home.styles";
 import { getContentList } from "../lib/content";
-import DesignCode from "../components/design-code";
-import ExperimentsSection from "../components/experiments";
 
 /**
  * Index page `/index`
@@ -13,13 +10,13 @@ import ExperimentsSection from "../components/experiments";
 //@ts-ignore
 const Index: FC = ({ selectedWorks }) => {
   return (
-    <Layout pathname={"/"} pageTitle="Nextjs Starter Peacock">
+    <Layout pathname={"/"} pageTitle="Ryan Lewis Portfolio">
       <StyledIndexPage>
         <Container>
           <Cards data={selectedWorks} basePath="works" />
         </Container>
-        <DesignCode />
-        <ExperimentsSection />
+        {/* <DesignCode /> */}
+        {/* <ExperimentsSection /> */}
       </StyledIndexPage>
     </Layout>
   );

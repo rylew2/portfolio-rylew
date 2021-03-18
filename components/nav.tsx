@@ -1,16 +1,26 @@
-import React, { useContext } from "react";
 import Link from "next/link";
-
-import { NavSection, StyledHamburger } from "./styles/nav.styles";
-import Logo from "./logo";
-import { Container } from "./container";
-import SiteConfig from "../config/index.json";
+import React, { useContext } from "react";
 import { MenuContext } from ".";
+import SiteConfig from "../config/index.json";
+import { Container } from "./container";
+import Logo from "./logo";
+import { NavSection, StyledHamburger } from "./styles/nav.styles";
 
 const Nav = () => {
   const menuContext = useContext(MenuContext);
 
   const { toggleMenuOpen, menuOpen } = menuContext;
+
+  const navLinks = [
+    { title: "Work", link: "/works" },
+    { title: "Articles", link: "/articles" },
+    { title: "Notes", link: "/notes" },
+    { title: "About", link: "/about" },
+    {
+      title: "Source",
+      href: "https://github.com/rylew2/portfolio-rylew",
+    },
+  ];
 
   return (
     <NavSection>
@@ -20,7 +30,7 @@ const Nav = () => {
             <Link href="/">
               <a className="no-underline">
                 <Logo />
-                <span>{SiteConfig.author.name}</span>
+                <span className="navLeft-title">{SiteConfig.author.name}</span>
               </a>
             </Link>
           </div>
@@ -32,36 +42,25 @@ const Nav = () => {
             ></StyledHamburger>
 
             <ul className="navLinkList">
-              <li className="navLinkItem">
-                <Link href="/works">
-                  <a>Work</a>
-                </Link>
-              </li>
-              <li className="navLinkItem">
-                <Link href="/articles">
-                  <a>Articles</a>
-                </Link>
-              </li>
-              <li className="navLinkItem">
-                <Link href="/notes">
-                  <a>Notes</a>
-                </Link>
-              </li>
-              <li className="navLinkItem">
-                <Link href="/about">
-                  <a>About</a>
-                </Link>
-              </li>
-
-              <li className="navLinkItem">
-                <a
-                  href="https://github.com/vickOnRails/next-starter-peacock"
-                  target="_blank"
-                  rel="noopener norefferer"
-                >
-                  Source
-                </a>
-              </li>
+              {navLinks.map((item, idx) => {
+                return (
+                  <li key={idx} className="navLinkItem">
+                    {item.link ? (
+                      <Link href={item.link}>
+                        <a>{item.title}</a>
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener norefferer"
+                      >
+                        {item.title}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </nav>

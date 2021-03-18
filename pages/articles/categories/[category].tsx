@@ -1,10 +1,9 @@
-import React from "react";
 import { useRouter } from "next/router";
-import { getContentInCategory } from "../../../lib/content";
-
-import categoryJSON from "../../../config/categories.json";
+import React from "react";
 import { Container, Layout } from "../../../components";
 import NotesComponent from "../../../components/notes/notes";
+import categoryJSON from "../../../config/categories.json";
+import { getContentInCategory } from "../../../lib/content";
 
 const category = ({ content, title, description }) => {
   const { pathname } = useRouter();

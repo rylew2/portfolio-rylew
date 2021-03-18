@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+
 export const StyledIndexPage = styled.section`
   h1 {
     word-spacing: -10px;

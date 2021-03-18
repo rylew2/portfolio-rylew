@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import { keyframes } from "@emotion/core";
+import styled from "@emotion/styled";
 import { HTMLAttributes } from "react";
 
 interface IStyledHamburger extends HTMLAttributes<HTMLButtonElement> {
@@ -18,17 +18,23 @@ const fadeDown = keyframes`
 `;
 
 export const NavSection = styled.header`
+  background: url("cork-wallet.png");
   padding-top: 1em;
   padding-bottom: 1em;
   margin-bottom: 5em;
   position: relative;
   z-index: 10;
 
+  .navLeft-title {
+    color: black;
+  }
+
   .no-underline {
     color: var(--text-color-dark);
 
     &:hover {
-      color: #fff;
+      /* color: #fff; */
+      color: black;
     }
   }
 

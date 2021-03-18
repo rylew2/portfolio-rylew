@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
 export const StyledHomeHeading = styled.div`
+  h1 {
+    color: black;
+  }
   @media (min-width: 1024px) {
     .header-container {
       max-width: 70%;
@@ -19,6 +22,9 @@ export const StyledHomeHeading = styled.div`
 
 export const StyledPageHeading = styled.div`
   text-align: center;
+  h1 {
+    color: black;
+  }
 
   &.page h1 {
     max-width: 80%;
