@@ -1,11 +1,11 @@
 import React from "react";
+import { Container } from "./container";
 import {
-  StyledFooterSection,
-  GitHubIcon,
   CodepenIcon,
+  GitHubIcon,
+  StyledFooterSection,
   TwitterIcon,
 } from "./styles/footer.styles";
-import { Container } from "./container";
 
 const Footer = () => (
   <StyledFooterSection>
@@ -48,7 +48,7 @@ const Footer = () => (
         </li>
       </ul>
     </Container>
-
+    {/* 
     <Container>
       <p className="about-site">
         Built by{" "}
@@ -61,7 +61,7 @@ const Footer = () => (
         </a>
         . With NextJS, TypeScript Emotion and Vercel.
       </p>
-    </Container>
+    </Container> */}
   </StyledFooterSection>
 );
 

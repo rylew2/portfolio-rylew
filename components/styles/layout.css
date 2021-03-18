@@ -16,7 +16,8 @@
   --text-color-bright: #999;
   --text-color-white: #fff;
   --text-color-black: #000;
-  --prim-color: #b94c50;
+  /* --prim-color: #b94c50; */
+  --prim-color: #305475;
 
   --transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   --animation-duration: 0.25s;
@@ -66,7 +67,7 @@ ol {
 }
 body {
   /* background: #121212; */
-  background: #fcfcfc;
+  background: #fdfdfd;
   color: #999;
   transition: all var(--transition-duration) var(--transition-timing-function);
 }
@@ -120,7 +121,8 @@ table {
 
 blockquote {
   font-style: italic;
-  background: #202020;
+  /* background: #202020; */
+  background: url("../../public/snow.png");
   position: relative;
   padding: 1em 1em;
   margin-bottom: 1.5em;

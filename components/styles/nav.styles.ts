@@ -15,6 +15,7 @@ const fadeDown = keyframes`
         transform: translateY(0px);
         opacity: 1;
     }
+    
 `;
 
 export const NavSection = styled.header`
@@ -63,6 +64,7 @@ export const NavSection = styled.header`
 
   .navLinkItem {
     margin-right: 0.5em;
+    font-weight: bold;
 
     &:last-child {
       margin-right: 0;
