@@ -33,7 +33,6 @@ export const NavSection = styled.header`
     color: var(--text-color-dark);
 
     &:hover {
-      /* color: #fff; */
       color: black;
     }
   }

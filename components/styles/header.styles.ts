@@ -26,6 +26,10 @@ export const StyledPageHeading = styled.div`
     color: black;
   }
 
+  h2:hover {
+    color: black;
+  }
+
   &.page h1 {
     max-width: 80%;
     text-align: center;

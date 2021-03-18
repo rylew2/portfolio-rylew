@@ -31,11 +31,11 @@
 
 a {
   color: var(--prim-color);
-  text-decoration: underline var(--prim-color);
+  text-decoration: none var(--prim-color);
 }
 a:hover,
 a:visited:hover {
-  text-decoration: underline var(--prim-color);
+  text-decoration: none var(--prim-color);
   /* color: #fff; */
   color: #1a272c;
 }
@@ -66,7 +66,7 @@ ol {
 }
 body {
   /* background: #121212; */
-  background: #fff;
+  background: #fcfcfc;
   color: #999;
   transition: all var(--transition-duration) var(--transition-timing-function);
 }

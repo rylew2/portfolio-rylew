@@ -17,7 +17,8 @@ export const StyledCards = styled.section`
     overflow: hidden;
 
     &:hover h2 {
-      color: #fff;
+      /* color: #fff; */
+      color: #000;
     }
     &:hover p {
       color: var(--text-color-bright);
