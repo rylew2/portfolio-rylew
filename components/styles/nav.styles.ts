@@ -27,7 +27,7 @@ export const NavSection = styled.header`
   z-index: 10;
 
   .navLeft-title {
-    color: black;
+    color: #154475;
   }
 
   .no-underline {
