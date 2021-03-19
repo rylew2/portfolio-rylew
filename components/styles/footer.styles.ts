@@ -13,6 +13,105 @@ export const StyledFooterSection = styled.footer`
     padding: 20px 0px;
   }
 
+  /* .footerIcon {
+    box-shadow: 1px 1px 3px hsl(0deg 0% 0% / 40%);
+    color: hsl(0, 0%, 100%);
+    &.linkedin {
+      color: #154475;
+      &.hover {
+        color: black;
+      }
+    }
+  } */
+
+  .linkedin:hover,
+  .github:hover,
+  .envelope:hover {
+    color: hsl(0, 0%, 100%);
+  }
+
+  /* Facebook*/
+  .facebook {
+    color: hsl(221, 44%, 41%);
+    border-color: hsl(221, 44%, 41%);
+    background: #f8f8fb;
+  }
+
+  .facebook:hover {
+    background-color: hsl(221, 44%, 41%);
+  }
+
+  /*End Facebook*/
+
+  /* LinkedIn*/
+  .linkedin {
+    /* color: #0e78aa; */
+    color: #154475;
+    border-color: hsl(199, 85%, 36%);
+    /* background: white; */
+  }
+
+  .linkedin:hover {
+    background-color: hsl(199, 85%, 36%);
+  }
+  /* End LinkedIn*/
+
+  /* Github */
+  .github {
+    color: #000000;
+    border-color: hsl(221, 44%, 41%);
+    /* background: white; */
+  }
+
+  .github:hover {
+    background-color: #4078c0;
+  }
+  /* Github */
+
+  /* Mail */
+  .envelope {
+    color: #9e9e9e;
+    /* background: white; */
+    border-color: hsl(221, 44%, 41%);
+  }
+
+  .envelope:hover {
+    background-color: hsla(231, 8%, 50%, 1);
+  }
+  /* Mail */
+
+  .screen-reader {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+  }
+
+  .shadow .tab {
+    background: none;
+  }
+
+  .shadow .circle {
+    box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.4);
+  }
+
+  .shadow .facebook,
+  .shadow .twitter,
+  .shadow .google-plus,
+  .shadow .linkedin,
+  .shadow .vimeo,
+  .shadow .github,
+  .shadow .envelope {
+    border-color: hsl(0, 0%, 100%) !important;
+    border: none;
+    padding: 0px;
+    height: 21px;
+    width: 23px;
+  }
+
+  /* .footerIcon:hover {
+    color: #0866c2;
+  } */
+
   .footerSocialLinks {
     display: flex;
     margin: auto;

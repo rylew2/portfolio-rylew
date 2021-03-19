@@ -1,68 +1,63 @@
+// import { facebook } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Container } from "./container";
-import {
-  CodepenIcon,
-  GitHubIcon,
-  StyledFooterSection,
-  TwitterIcon,
-} from "./styles/footer.styles";
+import { StyledFooterSection } from "./styles/footer.styles";
 
 const Footer = () => (
-  <StyledFooterSection>
-    <Container className="footer-container">
-      <ul className="footerSocialLinks">
-        <li className="footerSocialLink">
-          <a
-            className="footerLink"
-            href="https://github.com/vickOnRails"
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="github"
-          >
-            <GitHubIcon />
-          </a>
-        </li>
+  <>
+    <StyledFooterSection>
+      <Container className="footer-container">
+        {/* <FontAwesomeIcon icon={facebook} /> */}
+        <div className="footer-copyright">©{new Date().getFullYear()}</div>
 
-        <li className="footerSocialLink">
-          <a
-            className="footerLink"
-            href="https://codepen.io/Vick_onrails"
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="codepen"
-          >
-            <CodepenIcon />
-          </a>
-        </li>
+        <ul className="footerSocialLinks">
+          <li className="footerSocialLink">
+            <a
+              className="footerLink"
+              href="https://www.linkedin.com/in/ryan-lewis-378657a/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="linkedin"
+            >
+              <div className="footerIcon linkedin">
+                <FontAwesomeIcon icon={faLinkedin} size="lg" />
+              </div>
+            </a>
+          </li>
+          <li className="footerSocialLink">
+            <a
+              className="footerLink"
+              href="https://www.linkedin.com/in/ryan-lewis-378657a/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="github"
+            >
+              <div className="footerIcon github">
+                <FontAwesomeIcon icon={faGithub} size="lg" />
+              </div>
+            </a>
+          </li>
 
-        <li className="footerSocialLink">
-          <a
-            className="footerLink"
-            href="https://twitter.com/vick_onrails"
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="twitter"
-          >
-            <TwitterIcon />
-          </a>
-        </li>
-      </ul>
-    </Container>
-    {/* 
-    <Container>
-      <p className="about-site">
-        Built by{" "}
-        <a
-          href="https://twitter.com/vick_OnRails"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          @vick_onrails
-        </a>
-        . With NextJS, TypeScript Emotion and Vercel.
-      </p>
-    </Container> */}
-  </StyledFooterSection>
+          <li className="footerSocialLink envelope">
+            <a
+              className="footerLink"
+              href="mailto:ryanlewis312@gmail.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="email"
+            >
+              <div className="footerIcon email envelope">
+                <FontAwesomeIcon icon={faEnvelope} size="lg" />
+              </div>
+            </a>
+          </li>
+        </ul>
+      </Container>
+    </StyledFooterSection>
+  </>
 );
 
 export default Footer;
