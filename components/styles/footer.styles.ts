@@ -13,17 +13,6 @@ export const StyledFooterSection = styled.footer`
     padding: 20px 0px;
   }
 
-  /* .footerIcon {
-    box-shadow: 1px 1px 3px hsl(0deg 0% 0% / 40%);
-    color: hsl(0, 0%, 100%);
-    &.linkedin {
-      color: #154475;
-      &.hover {
-        color: black;
-      }
-    }
-  } */
-
   .linkedin:hover,
   .github:hover,
   .envelope:hover {
@@ -116,6 +105,7 @@ export const StyledFooterSection = styled.footer`
     display: flex;
     margin: auto;
     margin-bottom: 1em;
+    top: 50%;
   }
 
   .footerSocialLink {

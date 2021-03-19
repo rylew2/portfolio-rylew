@@ -21,36 +21,13 @@ const About = () => {
               <Image src="/images/avatar.jpg" width={200} height={200} alt="Victor Ofoegbu" />
             </div>
             <p>
-              I'm{" "}
-              <a
-                href="https://twitter.com/vick_OnRails"
-                target="_blank"
-                rel="noopenner noreferrer"
-              >
-                @Victor
-              </a>
-              , a Designer and Frontend Engineer learning to build fast and
-              delightful experiences on the web. I'm also passionate about Web
-              Standards, Design Systems and Learning in Public.
+            I am a full stack engineer with a passion for continuous learning, a collaborative approach, and using technology to solve real-world problems. At the moment, I build React solutions backed using SharePoint as a persistent store.
             </p>
             <p>
-              Aside from my day job, I work on a few side projects to help
-              designers and engineers build with speed
+              Outside of work I enjoy the vast array of food choices here in the Bay Area, running around various trails, and getting up to ski as much as I can in the winter. 
             </p>
 
-            <p>
-              I work heavily with ReactJs, Redux, Styled Components, Figma,
-              Storybook & recently picked up C#/Dotnet Core for backend APIs. If
-              you're excited about any of the following, please shoot at me on{" "}
-              <a
-                href="https://twitter.com/vick_OnRails"
-                target="_blank"
-                rel="noopenner noreferrer"
-              >
-                Twitter
-              </a>{" "}
-              and let's be friends 😊.
-            </p>
+
           </div>
         </Container>
       </StyledAbout>
