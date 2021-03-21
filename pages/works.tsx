@@ -1,15 +1,15 @@
 import React from "react";
-import { Layout, Container, Cards } from "../components";
+import { Cards, Container, Layout } from "../components";
 import { getContentList } from "../lib/content";
 
 /**
  * Work page `/work`
  */
-const Work = ({ works }) => {
+const Work = ({ projects }) => {
   return (
     <Layout
       pathname={"/works"}
-      pageTitle="Works &amp; Projects"
+      pageTitle="Projects"
       pageDescription="Works and projects spanning Product design, Research, frontend and software engineering with ReactJS, React Native and NodeJs"
     >
       <Container>
@@ -17,16 +17,16 @@ const Work = ({ works }) => {
           Selected works I'm proud of. Ranging from Software Engineering and
           Product Design.
         </p>
-        <Cards data={works} basePath="works" />
+        <Cards data={projects} basePath="works" />
       </Container>
     </Layout>
   );
 };
 
 export const getStaticProps = async () => {
-  const works = getContentList("work");
+  const projects = getContentList("work");
   return {
-    props: { works },
+    props: { projects },
   };
 };
 

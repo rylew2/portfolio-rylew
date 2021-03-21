@@ -1,52 +1,32 @@
-import React from "react";
 import Link from "next/link";
-
+import React from "react";
 import { StyledMobileNav } from "../styles/nav.styles";
-
+import { navLinks as mobileNavLinks } from "./nav";
 const MobileNav = () => {
   return (
     <StyledMobileNav>
       <div className="mobile-nav-container">
         <ul className="linkList">
-          <li className="listItem">
-            <Link href="/">
-              <a className="link">Home</a>
-            </Link>
-          </li>
-
-          <li className="listItem">
-            <Link href="/works">
-              <a className="link">Works</a>
-            </Link>
-          </li>
-
-          <li className="listItem">
-            <Link href="/articles">
-              <a className="link">Articles</a>
-            </Link>
-          </li>
-
-          <li className="listItem">
-            <Link href="/notes">
-              <a className="link">Notes</a>
-            </Link>
-          </li>
-
-          <li className="listItem">
-            <Link href="/about">
-              <a className="link">About</a>
-            </Link>
-          </li>
-
-          <li className="listItem">
-            <a
-              href="https://github.com/vickOnRails/next-starter-peacock"
-              target="_blank"
-              rel="noopener norefferer"
-            >
-              Source
-            </a>
-          </li>
+          {mobileNavLinks.map((item, idx) => {
+            return (
+              <li key={idx} className="listItem">
+                {item.link ? (
+                  <Link href={item.link}>
+                    <a className="link">{item.title}</a>
+                  </Link>
+                ) : (
+                  <a
+                    className="link"
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener norefferer"
+                  >
+                    {item.title}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </StyledMobileNav>

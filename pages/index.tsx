@@ -8,12 +8,12 @@ import { getContentList } from "../lib/content";
  */
 
 //@ts-ignore
-const Index: FC = ({ selectedWorks }) => {
+const Index: FC = ({ selectedProjects }) => {
   return (
     <Layout pathname={"/"} pageTitle="Ryan Lewis Portfolio">
       <StyledIndexPage>
         <Container>
-          <Cards data={selectedWorks} basePath="works" />
+          <Cards data={selectedProjects} basePath="works" />
         </Container>
         {/* <DesignCode /> */}
         {/* <ExperimentsSection /> */}
@@ -23,12 +23,12 @@ const Index: FC = ({ selectedWorks }) => {
 };
 
 export const getStaticProps = async () => {
-  const works = await getContentList("work");
-  const selectedWorks = works.filter((work) => work.selectedWork);
+  const projects = await getContentList("work");
+  const selectedProjects = projects.filter((work) => work.selectedWork);
 
   return {
     props: {
-      selectedWorks,
+      selectedProjects,
     },
   };
 };

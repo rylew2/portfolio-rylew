@@ -5,7 +5,7 @@ import SiteConfig from "../config/index.json";
 import { StyledMain } from "./styles/layout.styles";
 import Header from "./header/header";
 import Footer from "./footer/footer";
-import Nav from "./nav";
+import Nav from "./nav/nav";
 import MobileNav from "./nav/mobile-nav";
 
 interface ILayout {

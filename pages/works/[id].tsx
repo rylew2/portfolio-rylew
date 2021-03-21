@@ -1,26 +1,27 @@
-import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import Image from 'next/image'
-
-import { Layout, Container } from "../../components";
+import React from "react";
+import { Container, Layout } from "../../components";
+import { StyledContent } from "../../components/styles/content.styles";
 import { getAllContentIds, getContentData } from "../../lib/content";
 import { IContentData } from "../articles/[id]";
-import { StyledContent } from "../../components/styles/content.styles";
 
 /**
  *  Renders work markdown posts
  */
 
-const Article = ({ worksData }) => {
+const Article = ({ projectData }) => {
   const { pathname } = useRouter();
-  const { title, contentHtml, description } = worksData;
+  const { title, contentHtml, description } = projectData;
 
   return (
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>{worksData.date}</time>
-          {worksData.previewImage && <Image src={worksData.previewImage} height={550} width={1200} />}
+          <time>{projectData.date}</time>
+          {projectData.previewImage && (
+            <Image src={projectData.previewImage} height={550} width={1200} />
+          )}
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </StyledContent>
       </Container>
@@ -37,10 +38,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const worksData: IContentData = await getContentData(params.id, "work");
+  const projectData: IContentData = await getContentData(params.id, "work");
   return {
     props: {
-      worksData,
+      projectData,
     },
   };
 };
