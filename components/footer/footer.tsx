@@ -10,7 +10,6 @@ const Footer = () => (
   <>
     <StyledFooterSection>
       <Container className="footer-container">
-        {/* <FontAwesomeIcon icon={facebook} /> */}
         <div className="footer-copyright">©{new Date().getFullYear()}</div>
 
         <ul className="footerSocialLinks">
