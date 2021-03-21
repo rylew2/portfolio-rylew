@@ -11,7 +11,7 @@ const About = () => {
     <Layout
       pathname={"/about"}
       pageTitle="About"
-      pageDescription="About page of Peacock starter by Victor Ofoegbu, Product Designer and Frontend Software Engineer in Nigeria"
+      pageDescription="About page of Ryan Lewis, Bay Area Developer"
     >
       <StyledAbout>
         <Container width="narrow">
@@ -21,7 +21,7 @@ const About = () => {
                 src="/images/avatar.jpg"
                 width={200}
                 height={200}
-                alt="Victor Ofoegbu"
+                alt="Ryan Lewis"
               />
             </div>
             <p>
@@ -32,8 +32,8 @@ const About = () => {
             </p>
             <p>
               Outside of work I enjoy the vast array of food choices here in the
-              Bay Area, running scenic trails, and getting up to ski as much as
-              I can in the winter.
+              Bay Area, running scenic trails, travelling, and getting up to ski
+              as much as I can in the winter.
             </p>
           </div>
         </Container>

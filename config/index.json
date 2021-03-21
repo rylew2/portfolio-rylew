@@ -6,10 +6,10 @@
     "description": "Hi! My name is Ryan, I love to design and build modern experiences on the web. I also love learning in public and working on little side projects that help others build things faster."
   },
   "site": {
-    "siteUrl": "https://victorofoegbu.com",
+    "siteUrl": "https://rylew.co",
     "siteName": "Ryan Lewis Portfolio",
     "siteTitle": "Ryan Lewis Portfolio",
-    "siteDescription": "Peacock is a Nextjs starter for Personal Sites/Portfolios made by @vick_onrails",
+    "siteDescription": "Ryan Lewis Portfolio",
     "keywords": "JavaScript, NextJS, Software Engineer, Software Engineer, ReactJS Engineer San Francisco, Ryan Lewis",
     "siteImage": "../public/Logo.png"
   }
