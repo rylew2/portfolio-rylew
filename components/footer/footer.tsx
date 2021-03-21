@@ -3,8 +3,9 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Container } from "./container";
-import { StyledFooterSection } from "./styles/footer.styles";
+import { Container } from "../container";
+import { StyledFooterSection } from "../styles/footer.styles";
+import { FooterIcon } from "./footerIcon";
 
 const Footer = () => (
   <>
@@ -15,6 +16,7 @@ const Footer = () => (
 
         <ul className="footerSocialLinks">
           <li className="footerSocialLink">
+
             <a
               className="footerLink"
               href="https://www.linkedin.com/in/ryan-lewis-378657a/"

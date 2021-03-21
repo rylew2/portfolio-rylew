@@ -4,7 +4,7 @@ import SiteConfig from "../config/index.json";
 
 import { StyledMain } from "./styles/layout.styles";
 import Header from "./header/header";
-import Footer from "./footer";
+import Footer from "./footer/footer";
 import Nav from "./nav";
 import MobileNav from "./nav/mobile-nav";
 

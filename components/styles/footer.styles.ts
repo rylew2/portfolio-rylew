@@ -83,11 +83,7 @@ export const StyledFooterSection = styled.footer`
     box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.4);
   }
 
-  .shadow .facebook,
-  .shadow .twitter,
-  .shadow .google-plus,
   .shadow .linkedin,
-  .shadow .vimeo,
   .shadow .github,
   .shadow .envelope {
     border-color: hsl(0, 0%, 100%) !important;
@@ -97,9 +93,6 @@ export const StyledFooterSection = styled.footer`
     width: 23px;
   }
 
-  /* .footerIcon:hover {
-    color: #0866c2;
-  } */
 
   .footerSocialLinks {
     display: flex;
