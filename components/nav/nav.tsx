@@ -7,7 +7,7 @@ import Logo from "../logo";
 import { NavSection, StyledHamburger } from "../styles/nav.styles";
 
 export const navLinks = [
-  { title: "Projects", link: "/works" },
+  { title: "Projects", link: "/projects" },
   { title: "Articles", link: "/articles" },
   // { title: "Notes", link: "/notes" },
   { title: "About", link: "/about" },
@@ -21,17 +21,6 @@ const Nav = () => {
   const menuContext = useContext(MenuContext);
 
   const { toggleMenuOpen, menuOpen } = menuContext;
-
-  // const navLinks = [
-  //   { title: "Projects", link: "/works" },
-  //   { title: "Articles", link: "/articles" },
-  //   // { title: "Notes", link: "/notes" },
-  //   { title: "About", link: "/about" },
-  //   {
-  //     title: "Source",
-  //     href: "https://github.com/rylew2/portfolio-rylew",
-  //   },
-  // ];
 
   return (
     <NavSection>

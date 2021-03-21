@@ -8,7 +8,7 @@ import { getContentList } from "../lib/content";
 const Work = ({ projects }) => {
   return (
     <Layout
-      pathname={"/works"}
+      pathname={"/projects"}
       pageTitle="Projects"
       pageDescription="Works and projects spanning Product design, Research, frontend and software engineering with ReactJS, React Native and NodeJs"
     >
@@ -17,7 +17,7 @@ const Work = ({ projects }) => {
           Selected works I'm proud of. Ranging from Software Engineering and
           Product Design.
         </p>
-        <Cards data={projects} basePath="works" />
+        <Cards data={projects} basePath="projects" />
       </Container>
     </Layout>
   );

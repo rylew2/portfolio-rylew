@@ -13,7 +13,7 @@ const Index: FC = ({ selectedProjects }) => {
     <Layout pathname={"/"} pageTitle="Ryan Lewis Portfolio">
       <StyledIndexPage>
         <Container>
-          <Cards data={selectedProjects} basePath="works" />
+          <Cards data={selectedProjects} basePath="projects" />
         </Container>
         {/* <DesignCode /> */}
         {/* <ExperimentsSection /> */}
