@@ -30,7 +30,7 @@ const Article = ({ projectData }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = getAllContentIds("work");
+  const paths = getAllContentIds("project");
   return {
     paths,
     fallback: false,
@@ -38,7 +38,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const projectData: IContentData = await getContentData(params.id, "work");
+  const projectData: IContentData = await getContentData(params.id, "project");
   return {
     props: {
       projectData,

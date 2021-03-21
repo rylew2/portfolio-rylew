@@ -4,7 +4,7 @@ date: "2020-04"
 slug: "prudent"
 selectedWork: true
 description: "Designing and building a website to connect quality photographers in Lagos, Nigeria"
-previewImage: "/images/work/prudent/prudent.png"
+previewImage: "/images/project/prudent/prudent.png"
 ---
 
 > **Role**: UX Strategy, User Research, Interaction design, Engineering.

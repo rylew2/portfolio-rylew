@@ -4,7 +4,7 @@ date: "2019-01"
 slug: "redesigning-smile"
 selectedWork: true
 description: "Designing and building a website to connect quality photographers in Lagos, Nigeria"
-previewImage: "/images/work/smile/smile_desktop.png"
+previewImage: "/images/project/smile/smile_desktop.png"
 ---
 
 [Smile Communications](https://smile.com.ng/) is one of Africa’s largest 4G LTE provider. Launched in 2007, Smile currently provides fast and reliable Internet and Voice Services for 4 countries in Africa; Tanzania, Nigeria, The Republic of Congo and Uganda.

@@ -8,11 +8,11 @@ import remarkPrism from "remark-prism";
 import { v4 as uuid } from "uuid";
 import { IContentData } from "../pages/articles/[id]";
 
-const workDirectory = path.join(process.cwd(), "content", "work");
+const projectDirectory = path.join(process.cwd(), "content", "project");
 const notesDirectory = path.join(process.cwd(), "content", "notes");
 const articlesDirectory = path.join(process.cwd(), "content", "articles");
 
-type IContentType = "articles" | "notes" | "work";
+type IContentType = "articles" | "notes" | "project";
 
 /**
  * Get IDs of all markdown post
@@ -35,9 +35,9 @@ export const getAllContentIds = (contentType: IContentType) => {
       filenames = fs.readdirSync(notesDirectory);
       break;
 
-    case "work":
-      baseDir = workDirectory;
-      filenames = fs.readdirSync(workDirectory);
+    case "project":
+      baseDir = projectDirectory;
+      filenames = fs.readdirSync(projectDirectory);
       break;
 
     default:
@@ -83,9 +83,9 @@ export const getContentData = async (id: string, contentType: IContentType) => {
       contentTypeDirectory = notesDirectory;
       break;
 
-    case "work":
-      filenames = fs.readdirSync(workDirectory);
-      contentTypeDirectory = workDirectory;
+    case "project":
+      filenames = fs.readdirSync(projectDirectory);
+      contentTypeDirectory = projectDirectory;
       break;
 
     default:
@@ -131,11 +131,13 @@ export const getContentData = async (id: string, contentType: IContentType) => {
 /**
  * Get content list for a particular content type
  * @param {string} contentType Type of content
- * For the landing page of each subpage - called from articles/notes/work.tsx getStaticProps
+ * For the landing page of each subpage - called from articles/notes/project.tsx getStaticProps
  */
 export const getContentList = (contentType: IContentType) => {
   let contentFiles;
   let contentDir;
+
+  console.log("content type: ", contentType);
 
   switch (contentType) {
     case "articles":
@@ -149,9 +151,10 @@ export const getContentList = (contentType: IContentType) => {
       contentDir = notesDirectory;
       break;
 
-    case "work":
-      contentFiles = fs.readdirSync(workDirectory);
-      contentDir = workDirectory;
+    case "project":
+      console.log("project directory", projectDirectory);
+      contentFiles = fs.readdirSync(projectDirectory);
+      contentDir = projectDirectory;
       break;
   }
 
@@ -192,8 +195,8 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
       contentDir = notesDirectory;
       break;
 
-    case "work":
-      contentDir = workDirectory;
+    case "project":
+      contentDir = projectDirectory;
       break;
   }
 
@@ -243,8 +246,8 @@ export const getContentInCategory = (
       contentDir = notesDirectory;
       break;
 
-    case "work":
-      contentDir = workDirectory;
+    case "project":
+      contentDir = projectDirectory;
       break;
   }
 
@@ -257,7 +260,7 @@ export const getContentInCategory = (
       const rawContent = fs.readFileSync(path, {
         encoding: "utf-8",
       });
-     
+
       const { data } = matter(rawContent);
 
       return {

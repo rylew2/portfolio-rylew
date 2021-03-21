@@ -23,7 +23,6 @@ interface ICard {
  */
 
 const Cards = ({ data, basePath }: ICard) => {
-  console.log(data);
 
   return (
     <StyledCards>

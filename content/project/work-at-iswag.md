@@ -4,7 +4,7 @@ date: "2019-12"
 slug: "work-at-iswag"
 selectedWork: false
 description: "Designing and building a website to connect quality photographers in Lagos, Nigeria"
-previewImage: "/images/work/iswag/iswag_desktop.png"
+previewImage: "/images/project/iswag/iswag_desktop.png"
 ---
 
 **ISWAG’s** goal was to connect local communities and smaller businesses together. This post documents my learnings as an intern and early employee at the startup

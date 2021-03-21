@@ -5,12 +5,12 @@ import { getContentList } from "../lib/content";
 /**
  * Work page `/work`
  */
-const Work = ({ projects }) => {
+const Project = ({ projects }) => {
   return (
     <Layout
       pathname={"/projects"}
       pageTitle="Projects"
-      pageDescription="Works and projects spanning Product design, Research, frontend and software engineering with ReactJS, React Native and NodeJs"
+      pageDescription="Projects covering front end, machine learning, school associated courses, and research topics"
     >
       <Container>
         <p className="page-intro">
@@ -24,10 +24,10 @@ const Work = ({ projects }) => {
 };
 
 export const getStaticProps = async () => {
-  const projects = getContentList("work");
+  const projects = getContentList("project");
   return {
     props: { projects },
   };
 };
 
-export default Work;
+export default Project;

@@ -8,7 +8,7 @@ import { NavSection, StyledHamburger } from "../styles/nav.styles";
 
 export const navLinks = [
   { title: "Projects", link: "/projects" },
-  { title: "Articles", link: "/articles" },
+  { title: "Blog", link: "/articles" },
   // { title: "Notes", link: "/notes" },
   { title: "About", link: "/about" },
   {

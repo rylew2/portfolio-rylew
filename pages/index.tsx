@@ -23,7 +23,7 @@ const Index: FC = ({ selectedProjects }) => {
 };
 
 export const getStaticProps = async () => {
-  const projects = await getContentList("work");
+  const projects = await getContentList("project");
   const selectedProjects = projects.filter((work) => work.selectedWork);
 
   return {
