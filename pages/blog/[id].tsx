@@ -7,23 +7,23 @@ import { StyledContent } from "../../components/styles/content.styles";
 import { getAllContentIds, getContentData } from "../../lib/content";
 
 /**
- *  Renders articles markdown posts
+ *  Renders blog markdown posts
  */
 
-const Article = ({ articlesData }: { articlesData: IContentData }) => {
+const Blog = ({ blogData }: { blogData: IContentData }) => {
   const { pathname } = useRouter();
-  const { title, contentHtml, description } = articlesData;
+  const { title, contentHtml, description } = blogData;
 
   return (
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>{articlesData.date}</time>
-          {articlesData.previewImage && (
-            <Image src={articlesData.previewImage} height={550} width={1200} />
+          <time>{blogData.date}</time>
+          {blogData.previewImage && (
+            <Image src={blogData.previewImage} height={550} width={1200} />
           )}
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          {articlesData.tags && <Chips items={articlesData.tags} />}
+          {blogData.tags && <Chips items={blogData.tags} />}
         </StyledContent>
       </Container>
     </Layout>
@@ -31,7 +31,7 @@ const Article = ({ articlesData }: { articlesData: IContentData }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = getAllContentIds("articles");
+  const paths = getAllContentIds("blog");
   return {
     paths,
     fallback: false,
@@ -50,15 +50,12 @@ export interface IContentData {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const articlesData: IContentData = await getContentData(
-    params.id,
-    "articles"
-  );
+  const blogData: IContentData = await getContentData(params.id, "blog");
   return {
     props: {
-      articlesData,
+      blogData,
     },
   };
 };
 
-export default Article;
+export default Blog;

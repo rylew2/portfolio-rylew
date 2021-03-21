@@ -4,13 +4,13 @@ import React from "react";
 import { Container, Layout } from "../../components";
 import { StyledContent } from "../../components/styles/content.styles";
 import { getAllContentIds, getContentData } from "../../lib/content";
-import { IContentData } from "../articles/[id]";
+import { IContentData } from "../blog/[id]";
 
 /**
  *  Renders work markdown posts
  */
 
-const Article = ({ projectData }) => {
+const Project = ({ projectData }) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
 
@@ -46,4 +46,4 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export default Article;
+export default Project;

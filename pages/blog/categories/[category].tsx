@@ -11,7 +11,7 @@ const category = ({ content, title, description }) => {
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
         <p className="page-intro">{description}</p>
-        <NotesComponent notes={content} basePath="articles" />
+        <NotesComponent notes={content} basePath="blog" />
       </Container>
     </Layout>
   );
@@ -34,7 +34,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  let content = getContentInCategory(params.category, "articles");
+  let content = getContentInCategory(params.category, "blog");
   const categoryObject = categoryJSON.filter(
     (category) => category.category === params.category
   )[0];

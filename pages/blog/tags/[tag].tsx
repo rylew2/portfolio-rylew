@@ -12,10 +12,10 @@ const tag = ({ content, title, description }) => {
         <p className="page-intro">{description}</p>
 
         <blockquote>
-          All articles here are for demo purposes. But hey, the sky is the limit
+          All blog here are for demo purposes. But hey, the sky is the limit
           🚀
         </blockquote>
-        <Cards data={content} basePath="articles" />
+        <Cards data={content} basePath="blog" />
       </Container>
     </Layout>
   );
@@ -38,7 +38,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  let content = getContentWithTag(params.tag, "articles");
+  let content = getContentWithTag(params.tag, "blog");
   const tagObject = tagsJSON.filter((json) => json.tag === params.tag)[0];
 
   return {

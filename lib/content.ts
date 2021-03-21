@@ -6,13 +6,13 @@ import remark from "remark";
 import html from "remark-html";
 import remarkPrism from "remark-prism";
 import { v4 as uuid } from "uuid";
-import { IContentData } from "../pages/articles/[id]";
+import { IContentData } from "../pages/blog/[id]";
 
 const projectDirectory = path.join(process.cwd(), "content", "project");
 const notesDirectory = path.join(process.cwd(), "content", "notes");
-const articlesDirectory = path.join(process.cwd(), "content", "articles");
+const blogDirectory = path.join(process.cwd(), "content", "blog");
 
-type IContentType = "articles" | "notes" | "project";
+type IContentType = "blog" | "notes" | "project";
 
 /**
  * Get IDs of all markdown post
@@ -25,9 +25,9 @@ export const getAllContentIds = (contentType: IContentType) => {
 
   // determine where to look for content types
   switch (contentType) {
-    case "articles":
-      baseDir = articlesDirectory;
-      filenames = fs.readdirSync(articlesDirectory);
+    case "blog":
+      baseDir = blogDirectory;
+      filenames = fs.readdirSync(blogDirectory);
       break;
 
     case "notes":
@@ -73,9 +73,9 @@ export const getContentData = async (id: string, contentType: IContentType) => {
   let contentTypeDirectory;
   let filenames;
   switch (contentType) {
-    case "articles":
-      filenames = fs.readdirSync(articlesDirectory);
-      contentTypeDirectory = articlesDirectory;
+    case "blog":
+      filenames = fs.readdirSync(blogDirectory);
+      contentTypeDirectory = blogDirectory;
       break;
 
     case "notes":
@@ -131,18 +131,16 @@ export const getContentData = async (id: string, contentType: IContentType) => {
 /**
  * Get content list for a particular content type
  * @param {string} contentType Type of content
- * For the landing page of each subpage - called from articles/notes/project.tsx getStaticProps
+ * For the landing page of each subpage - called from blog/notes/project.tsx getStaticProps
  */
 export const getContentList = (contentType: IContentType) => {
   let contentFiles;
   let contentDir;
 
-  console.log("content type: ", contentType);
-
   switch (contentType) {
-    case "articles":
-      contentFiles = fs.readdirSync(articlesDirectory);
-      contentDir = articlesDirectory;
+    case "blog":
+      contentFiles = fs.readdirSync(blogDirectory);
+      contentDir = blogDirectory;
 
       break;
 
@@ -152,7 +150,6 @@ export const getContentList = (contentType: IContentType) => {
       break;
 
     case "project":
-      console.log("project directory", projectDirectory);
       contentFiles = fs.readdirSync(projectDirectory);
       contentDir = projectDirectory;
       break;
@@ -187,8 +184,8 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
   let contentFiles;
 
   switch (contentType) {
-    case "articles":
-      contentDir = articlesDirectory;
+    case "blog":
+      contentDir = blogDirectory;
       break;
 
     case "notes":
@@ -238,8 +235,8 @@ export const getContentInCategory = (
   let contentFiles;
 
   switch (contentType) {
-    case "articles":
-      contentDir = articlesDirectory;
+    case "blog":
+      contentDir = blogDirectory;
       break;
 
     case "notes":
