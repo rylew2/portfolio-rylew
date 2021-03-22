@@ -16,20 +16,23 @@ export const StyledCards = styled.section`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    li {
-      padding: 0px 30px;
-      list-style-type: none;
-      time {
+    margin: 10px 10px;
+    a {
+      margin-left: auto;
+      margin-right: 0px;
+      &.a-source {
+        margin-left: 0px;
       }
-      button {
-        border-radius: 6px;
-        padding: 4px 10px;
-        font-weight: bold;
-        &:hover {
-          background: #c2dff9;
-          cursor: pointer;
-        }
+    }
+    button {
+      background: url("cork-wallet.png");
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-weight: bold;
+      &:hover {
+        background: #0e78aa;
+        cursor: pointer;
+        color: white;
       }
     }
   }

@@ -31,7 +31,7 @@ const About = () => {
               SharePoint as a persistent store.
             </p>
             <p>
-              Outside of work I enjoy the vast array of food choices here in the
+              Outside of work, I enjoy the vast array of food choices here in the
               Bay Area, running scenic trails, travelling, and getting up to ski
               as much as I can in the winter.
             </p>
