@@ -26,12 +26,20 @@ const Project = ({ projectData }) => {
             {projectData.liveSite && (
               <>
                 <div>
-                  <a href={projectData.liveSite}>
+                  <a
+                    href={projectData.liveSite}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     <b>Demo:</b> {projectData.liveSite}
                   </a>
                 </div>
                 <div>
-                  <a href={projectData.sourceCode}>
+                  <a
+                    href={projectData.sourceCode}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     <b>Source Code:</b> {projectData.sourceCode}
                   </a>
                 </div>
@@ -39,7 +47,11 @@ const Project = ({ projectData }) => {
             )}
             {projectData.presentation && (
               <div>
-                <a href={projectData.presentation}>
+                <a
+                  href={projectData.presentation}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <b>Presentation:</b> {projectData.presentation}
                 </a>
               </div>
@@ -62,7 +74,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const projectData: IContentData = await getContentData(params.id, "project");
-  console.log(projectData);
+  // console.log(projectData);
   return {
     props: {
       projectData,

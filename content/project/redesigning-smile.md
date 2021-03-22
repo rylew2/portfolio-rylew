@@ -15,9 +15,9 @@ Smile’s [objective](https://smilecoms.com/about-us/) is to become the broadban
 
 The Smile brand consists of offline and online touchpoints; A few offline shops scattered across the continent and an online dashboard that lets users manage their accounts.
 
-![Smile Desktop](/images/work/smile/old_smile_desktop.png)
+![Smile Desktop](/images/project/smile/old_smile_desktop.png)
 
-![Smile Desktop](/images/work/smile/user_dashboard1.png)
+![Smile Desktop](/images/project/smile/user_dashboard1.png)
 
 > My focus was to evaluate and improve the online account management experience.
 

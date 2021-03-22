@@ -11,7 +11,8 @@
 }
 
 :root {
-  --text-color: #bbb;
+  /* --text-color: #bbb; */
+  --text-color: #161b2f;
   --text-color-dark: #777;
   --text-color-bright: #999;
   --text-color-white: #fff;

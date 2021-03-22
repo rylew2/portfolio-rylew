@@ -115,7 +115,7 @@ export const getContentData = async (id: string, contentType: IContentType) => {
     .process(matterResult.content);
 
   const contentHtml = processedContent.toString();
-  console.log(matterResult);
+  // console.log(matterResult);
   return {
     id,
     contentHtml,
