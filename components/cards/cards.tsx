@@ -23,7 +23,6 @@ interface ICard {
  */
 
 const Cards = ({ data, basePath }: ICard) => {
-
   return (
     <StyledCards>
       {data.map((singleCard) => (
@@ -41,9 +40,42 @@ const Cards = ({ data, basePath }: ICard) => {
                 height={220}
                 sizes="(min-width: 640px) 700px, 400px"
               />
-              <time>{singleCard.date}</time>
+              {singleCard.liveSite || singleCard.sourceCode ? (
+                <ul className="card-demo-link">
+                  <li>
+                    <time>{singleCard.date}</time>
+                  </li>
+                  {singleCard.liveSite && (
+                    <li>
+                      <button className="demo">
+                        <a
+                          href={singleCard.liveSite}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={singleCard.title}
+                        >
+                          Demo
+                        </a>
+                      </button>
+                    </li>
+                  )}
+                  {singleCard.sourceCode && (
+                    <li>
+                      <button className="">
+                        <a
+                          href={singleCard.sourceCode}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={singleCard.title}
+                        >
+                          Source
+                        </a>
+                      </button>
+                    </li>
+                  )}
+                </ul>
+              ) : null}
               <h2>{singleCard.title}</h2>
-
               {singleCard.description && <p>{singleCard.description}</p>}
             </a>
           </Link>

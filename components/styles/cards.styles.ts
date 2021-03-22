@@ -12,6 +12,28 @@ export const StyledCards = styled.section`
     color: var(--text-color-dark);
   }
 
+  .card-demo-link {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+      padding: 0px 30px;
+      list-style-type: none;
+      time {
+      }
+      button {
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-weight: bold;
+        &:hover {
+          background: #c2dff9;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   article.article {
     margin: 0 0 2%;
     overflow: hidden;
