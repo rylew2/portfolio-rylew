@@ -1,3 +1,6 @@
+import { faChrome, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
@@ -31,6 +34,11 @@ const Project = ({ projectData }) => {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
+                    <FontAwesomeIcon
+                      color={"#5a73bb"}
+                      icon={faChrome}
+                      size="lg"
+                    />{" "}
                     <b>Demo:</b> {projectData.liveSite}
                   </a>
                 </div>
@@ -40,6 +48,11 @@ const Project = ({ projectData }) => {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
+                    <FontAwesomeIcon
+                      color={"#768c76"}
+                      icon={faCode}
+                      size="lg"
+                    />{" "}
                     <b>Source Code:</b> {projectData.sourceCode}
                   </a>
                 </div>
@@ -52,6 +65,11 @@ const Project = ({ projectData }) => {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
+                  <FontAwesomeIcon
+                    color={"Tomato"}
+                    icon={faYoutube}
+                    size="lg"
+                  />{" "}
                   <b>Presentation:</b> {projectData.presentation}
                 </a>
               </div>

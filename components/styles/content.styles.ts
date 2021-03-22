@@ -16,6 +16,7 @@ export const StyledContent = styled.section`
     margin-bottom: 8px;
   }
 
+
   img {
     margin-bottom: 1em;
     display: block;
