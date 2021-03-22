@@ -13,7 +13,7 @@ import { IContentData } from "../blog/[id]";
 const Project = ({ projectData }) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
-  // console.log(projectData);
+
   return (
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
@@ -22,6 +22,29 @@ const Project = ({ projectData }) => {
           {projectData.previewImage && (
             <Image src={projectData.previewImage} height={550} width={1200} />
           )}
+          <blockquote>
+            {projectData.liveSite && (
+              <>
+                <div>
+                  <a href={projectData.liveSite}>
+                    <b>Demo:</b> {projectData.liveSite}
+                  </a>
+                </div>
+                <div>
+                  <a href={projectData.sourceCode}>
+                    <b>Source Code:</b> {projectData.sourceCode}
+                  </a>
+                </div>
+              </>
+            )}
+            {projectData.presentation && (
+              <div>
+                <a href={projectData.presentation}>
+                  <b>Presentation:</b> {projectData.presentation}
+                </a>
+              </div>
+            )}
+          </blockquote>
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </StyledContent>
       </Container>

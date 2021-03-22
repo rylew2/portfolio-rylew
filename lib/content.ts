@@ -115,7 +115,7 @@ export const getContentData = async (id: string, contentType: IContentType) => {
     .process(matterResult.content);
 
   const contentHtml = processedContent.toString();
-
+  console.log(matterResult);
   return {
     id,
     contentHtml,
@@ -125,6 +125,9 @@ export const getContentData = async (id: string, contentType: IContentType) => {
     description: matterResult.data.description || "",
     tags: matterResult.data.tags || [],
     category: matterResult.data.category || "",
+    liveSite: matterResult.data.liveSite || "",
+    sourceCode: matterResult.data.sourceCode || "",
+    presentation: matterResult.data.presentation || "",
   };
 };
 

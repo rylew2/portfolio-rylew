@@ -47,6 +47,9 @@ export interface IContentData {
   description?: string;
   tags?: string[];
   category?: string;
+  liveSite?: string;
+  sourceCode?: string;
+  presentation?: string;
 }
 
 export const getStaticProps = async ({ params }) => {
