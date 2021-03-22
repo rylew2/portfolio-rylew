@@ -13,13 +13,14 @@ export const StyledContent = styled.section`
   time {
     text-align: center;
     display: block;
-    margin-bottom: 2em;
+    margin-bottom: 8px;
   }
 
   img {
     margin-bottom: 1em;
     display: block;
-    object-fit: cover;
+    /* object-fit: cover; */
+    object-fit: contain;
   }
   ul ul,
   ol ol {

@@ -26,6 +26,7 @@ export const StyledDesignPlus = styled.section`
 
   img {
     object-fit: cover;
+    object-fit: contain;
   }
 
   h2 {
