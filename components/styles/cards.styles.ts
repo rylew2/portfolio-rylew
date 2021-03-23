@@ -21,7 +21,7 @@ export const StyledCards = styled.section`
       margin-left: auto;
       margin-right: 0px;
       &.a-source {
-        margin-left: 0px;
+        margin-left: 1px;
       }
     }
     button {

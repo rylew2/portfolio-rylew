@@ -22,7 +22,8 @@ export const NavSection = styled.header`
   background: url("cork-wallet.png");
   padding-top: 1em;
   padding-bottom: 1em;
-  margin-bottom: 5em;
+  margin-bottom: 3em;
+
   position: relative;
   z-index: 10;
 
@@ -84,7 +85,7 @@ export const NavSection = styled.header`
   }
 
   @media (min-width: 759px) {
-    margin-bottom: 5em;
+    margin-bottom: 3em;
 
     .navLinkList {
       display: flex;

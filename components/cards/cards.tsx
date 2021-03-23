@@ -14,6 +14,7 @@ interface ICard {
     description: string;
     liveSite?: string;
     sourceCode?: string;
+    presentation?: string;
   }[];
 }
 
@@ -74,6 +75,17 @@ const Cards = ({ data, basePath }: ICard) => {
                   <button className="source">Source </button>
                 </a>
               )}
+              {singleCard.presentation && (
+                <a
+                  href={singleCard.presentation}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={singleCard.title}
+                  className="a-source"
+                >
+                  <button className="source">Presentation </button>
+                </a>
+              )}
             </div>
           ) : (
             <time>{singleCard.date}</time>
@@ -97,4 +109,3 @@ const Cards = ({ data, basePath }: ICard) => {
 };
 
 export { Cards };
-

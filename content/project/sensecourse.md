@@ -34,10 +34,12 @@ tags:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IBM Watson is a natural language processing service for text analytics. A subset of the service includes Personality Insights, including what they now call Entity Emotion Scores. While the API has changed since we developed our app, key classification scores are still output today for emotions like joy, anger, fear, and sadness. You can view a short demo of the <ins>[text analysis tool here](https://www.ibm.com/demos/live/natural-language-understanding/self-service/home)</ins>. In the SenseCourse live demo, the application is not hooked up to the now modified API, but it does have a demo of what the output result looked like when it was developed.
 
-## Conclusion
+## Future Research
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To understand the full potential of the idea behind SenseCourse, we would have needed to run a controlled study. This study might have had one group of students who took the courses recommended by SenseCourse, and another who chose classes on their own. By comparing these two control groups and how successful the students were in each class, we might understand how effective the sentiment analysis and course matching schemes were.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another possible avenue of research in this area would be to see what kind of feedback we could provide to professors from the course reviews. Given the sheer volume of reviews available, perhaps there was some hidden meaning and feedback available in all the reviews for a particular course. If any of that feedback could allow a professor to modify their teaching style I believe that would be an interesting experiment. Given that this project was only meant to be completed in about a month and we both had to move on to other classes, a full controled study was beyond the scope of this EdTech course.
+
+## Conclusion
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This was ultimately an interesting project that I could see being further refined at a larger EdTech company with big data resources like Coursera, Udemy, or Udacity. As mentioned there are also several possible research studies that could be realized. For us it was an interesting foray into the world of text and sentiment analysis, and ultimately helped me choose my final two courses.
