@@ -2,16 +2,21 @@
   {
     "tag": "javascript",
     "title": "JavaScript",
-    "description": "Notes filed under Javascript. I really don't care if you call it JavaScript, javascript or javaScript, but never do Java Script"
+    "description": "All things javascript"
   },
   {
-    "tag": "html",
-    "title": "HTML",
-    "description": "I seriously think HTML is not a programming language. Dont @ me!"
+    "tag": "flask",
+    "title": "Flask",
+    "description": "All things Python Flask related"
   },
   {
-    "tag": "css",
-    "title": "CSS",
-    "description": "Random CSS things I don't want to forget. Let's be honest, CSS really mean excess of C"
+    "tag": "omscs",
+    "title": "OMSCS",
+    "description": "All things related to my OMSCS masters program"
+  },
+  {
+    "tag": "edtech",
+    "title": "EdTech",
+    "description": "Everything education technology related"
   }
 ]

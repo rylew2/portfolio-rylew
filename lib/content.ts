@@ -70,6 +70,7 @@ export const getAllContentIds = (contentType: IContentType) => {
  * Called from getStaticProps of the [id].tsx
  */
 export const getContentData = async (id: string, contentType: IContentType) => {
+  console.log("yea im in here");
   let contentTypeDirectory;
   let filenames;
   switch (contentType) {

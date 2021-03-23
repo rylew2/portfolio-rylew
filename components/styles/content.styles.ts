@@ -14,8 +14,9 @@ export const StyledContent = styled.section`
     text-align: center;
     display: block;
     margin-bottom: 8px;
+    float: left;
+    margin-left: 58px;
   }
-
 
   img {
     margin-bottom: 1em;

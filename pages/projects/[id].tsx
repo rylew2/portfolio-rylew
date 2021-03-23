@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { Container, Layout } from "../../components";
+import { Chips } from "../../components/chips/chips";
 import { StyledContent } from "../../components/styles/content.styles";
 import { getAllContentIds, getContentData } from "../../lib/content";
 import { IContentData } from "../blog/[id]";
-
 /**
  *  Renders work markdown posts
  */
@@ -22,6 +22,7 @@ const Project = ({ projectData }) => {
       <Container width="narrow">
         <StyledContent>
           <time>{projectData.date}</time>
+          {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
             <Image src={projectData.previewImage} height={550} width={1200} />
           )}

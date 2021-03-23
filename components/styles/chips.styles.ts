@@ -2,7 +2,10 @@ import styled from "@emotion/styled";
 import { IContainer } from "../container";
 
 export const StyledChip = styled.div<IContainer>`
-  //   display: flex;
+  /* display: flex; */
+  float: right;
+  margin-right: 54px;
+  height: 40px;
 
   ul {
     list-style-type: none;
