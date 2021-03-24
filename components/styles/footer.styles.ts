@@ -5,6 +5,14 @@ import { Codepen, GitHub, Twitter } from "react-feather";
 export const StyledFooterSection = styled.footer`
   background: url("cork-wallet.png");
 
+  .snowFooter {
+    background: #f8f8f8;
+    padding-bottom: 15px;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #dddddd;
+  }
   .footer-container {
     display: flex;
     justify-content: center;
@@ -92,7 +100,6 @@ export const StyledFooterSection = styled.footer`
     height: 21px;
     width: 23px;
   }
-
 
   .footerSocialLinks {
     display: flex;

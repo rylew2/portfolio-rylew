@@ -8,7 +8,11 @@ import { StyledFooterSection } from "../styles/footer.styles";
 
 const Footer = () => (
   <>
+  
     <StyledFooterSection>
+    <div className="snowFooter">
+      
+      </div>
       <Container className="footer-container">
         <div className="footer-copyright">©{new Date().getFullYear()}</div>
 
