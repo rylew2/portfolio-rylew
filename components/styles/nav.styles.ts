@@ -29,6 +29,9 @@ export const NavSection = styled.header`
 
   .navLeft-title {
     color: #154475;
+    &:hover {
+      color: #a1aebb;
+    }
   }
 
   .no-underline {

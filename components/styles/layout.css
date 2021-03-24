@@ -38,8 +38,8 @@ a {
 a:hover,
 a:visited:hover {
   text-decoration: none var(--prim-color);
-  /* color: #fff; */
-  color: #1a272c;
+  color: rgb(250, 247, 233);
+  /* color: #1a272c; */
 }
 a:focus {
   outline-color: var(--prim-color);
