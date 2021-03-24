@@ -73,6 +73,9 @@ export const NavSection = styled.header`
     &:last-child {
       margin-right: 0;
     }
+    .navLinkAnchor:hover {
+      color: #faf7e9;
+    }
   }
 
   .navLink {

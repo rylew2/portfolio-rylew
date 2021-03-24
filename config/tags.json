@@ -5,6 +5,16 @@
     "description": "All things javascript"
   },
   {
+    "tag": "angular",
+    "title": "Angular",
+    "description": "All things angular"
+  },
+  {
+    "tag": "react",
+    "title": "React",
+    "description": "All things React"
+  },
+  {
     "tag": "flask",
     "title": "Flask",
     "description": "All things Python Flask related"

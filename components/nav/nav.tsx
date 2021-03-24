@@ -47,13 +47,14 @@ const Nav = () => {
                   <li key={idx} className="navLinkItem">
                     {item.link ? (
                       <Link href={item.link}>
-                        <a>{item.title}</a>
+                        <a className="navLinkAnchor">{item.title}</a>
                       </Link>
                     ) : (
                       <a
                         href={item.href}
                         target="_blank"
                         rel="noopener norefferer"
+                        className="navLinkAnchor"
                       >
                         {item.title}
                       </a>
