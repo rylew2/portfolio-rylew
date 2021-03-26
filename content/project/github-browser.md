@@ -20,8 +20,8 @@ The GitHub browser is a simple single page app built in Angular that lets users 
   <figcaption>High level view of GitHub Browser</figcaption>
 </figure>
 
-- draw diagram of github api browser
 
-- ## Cross origina resource sharing
+
+- ## Cross origin resource sharing
 
 More coming soon... (March 2021)
