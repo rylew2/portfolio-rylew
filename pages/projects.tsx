@@ -14,8 +14,8 @@ const Project = ({ projects }) => {
     >
       <Container>
         <p className="page-intro">
-          Selected works I'm proud of. Ranging from Software Engineering and
-          Product Design.
+          Selected works I'm proud of. Ranging from front end development to
+          machine learning.
         </p>
         <Cards data={projects} basePath="projects" />
       </Container>

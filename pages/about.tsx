@@ -25,7 +25,7 @@ const About = () => {
               />
             </div>
             <p>
-              I am a full stack engineer with a passion for continuous learning,
+              I am a developer with a passion for continuous learning,
               a collaborative approach, and using technology to solve real-world
               problems. At the moment, I build React solutions backed by
               SharePoint as a persistent store.

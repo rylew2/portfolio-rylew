@@ -32,7 +32,12 @@ tags:
 
 ## IBM Watson
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IBM Watson is a natural language processing service for text analytics. A subset of the service includes Personality Insights, including what they now call Entity Emotion Scores. While the API has changed since we developed our app, key classification scores are still output today for emotions like joy, anger, fear, and sadness. You can view a short demo of the <ins>[text analysis tool here](https://www.ibm.com/demos/live/natural-language-understanding/self-service/home)</ins>. In the SenseCourse live demo, the application is not hooked up to the now modified API, but it does have a demo of what the output result looked like when it was developed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IBM Watson is a natural language processing service for text analytics. A subset of the service includes Personality Insights, including what they now call Entity Emotion Scores. While the API has changed since we developed our app, key classification scores are still output today for emotions like joy, anger, fear, and sadness. You can view a short demo of the <ins>[text analysis tool here](https://www.ibm.com/demos/live/natural-language-understanding/self-service/home)</ins>. In the SenseCourse live demo, the application is not hooked up to the now modified API, but it does have a demo of what the output result looked like when it was working and turned in for the end of the course.
+
+<figure class="image">
+  <img src="/images/project/sensecourse/personality-insights.jpg" alt="personality insights">
+  <figcaption>Personality Insight results from the Watson API</figcaption>
+</figure>
 
 ## Future Research
 
