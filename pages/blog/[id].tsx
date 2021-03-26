@@ -19,11 +19,11 @@ const Blog = ({ blogData }: { blogData: IContentData }) => {
       <Container width="narrow">
         <StyledContent>
           <time>{blogData.date}</time>
+          {blogData.tags && <Chips items={blogData.tags} />}
           {blogData.previewImage && (
             <Image src={blogData.previewImage} height={550} width={1200} />
           )}
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          {blogData.tags && <Chips items={blogData.tags} />}
         </StyledContent>
       </Container>
     </Layout>
