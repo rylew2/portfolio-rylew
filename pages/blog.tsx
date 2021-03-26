@@ -19,9 +19,7 @@ const Blog = ({ blog }) => {
           learning about...
         </p>
 
-        <blockquote>
-          All blog here are for demo purposes. But hey, the sky is the limit 🚀
-        </blockquote>
+        <blockquote>More blogs coming soon April 2021 🚀</blockquote>
         <Cards data={blog} basePath="blog" />
       </Container>
     </Layout>
