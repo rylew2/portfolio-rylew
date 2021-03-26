@@ -6,4 +6,4 @@ description: "React solution built on top of SharePoint."
 previewImage: "/images/project/sensecourse/demo.jpg"
 ---
 
-fdsfsd
+Coming soon... (March 2021)

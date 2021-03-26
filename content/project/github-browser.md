@@ -23,3 +23,5 @@ The GitHub browser is a simple single page app built in Angular that lets users 
 - draw diagram of github api browser
 
 - ## Cross origina resource sharing
+
+More coming soon... (March 2021)
