@@ -15,8 +15,7 @@ const Blog = ({ blog }) => {
     >
       <Container>
         <p className="page-intro">
-          More long form blog and essays about new things I'm exploring and
-          learning about...
+          Long form blog about new things I'm learning about
         </p>
 
         <blockquote>More blogs coming soon April 2021 🚀</blockquote>

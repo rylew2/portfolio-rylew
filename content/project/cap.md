@@ -3,8 +3,8 @@ title: React SharePoint SPA
 date: "2020-06"
 slug: "cap"
 selectedWork: true
-description: "React solution built on top of SharePoint."
-previewImage: "/images/project/sensecourse/demo.jpg"
+description: "Building a template to deploy React solutions built on top of SharePoint."
+previewImage: "/images/project/cap/react.png"
 ---
 
 Coming soon... (March 2021)
