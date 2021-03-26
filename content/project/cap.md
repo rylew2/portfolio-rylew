@@ -7,4 +7,4 @@ description: "Building a template to deploy React solutions built on top of Shar
 previewImage: "/images/project/cap/react.png"
 ---
 
-Coming soon... (March 2021)
+<blockquote>Coming soon... (March 2021)</blockquote>

@@ -6,4 +6,4 @@ description: "A survey of machine learning topics including supervised, unsuperv
 previewImage: "/images/project/machineLearning/brain.png"
 ---
 
-Coming soon... (March 2021)
+<blockquote>Coming soon... (April 2021)</blockquote>

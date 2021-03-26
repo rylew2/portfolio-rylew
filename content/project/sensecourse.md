@@ -17,7 +17,7 @@ tags:
 
 ## Intro
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_SenseCourse_ is an application that a student teammate and I built for the <ins>[Education Technology](https://omscs.gatech.edu/cs-6460-educational-technology)</ins> class in OMSCS. The Education Technology course was a broad look into the intersection of education and technology including: pedagogical models, current technology issues, and understanding the field through various EdTech research papers and past final projects. The application was built using Flask and jQuery, and hosted on Heroku.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_SenseCourse_ is an application that a student teammate and I built for the <ins>[Education Technology](https://omscs.gatech.edu/cs-6460-educational-technology)</ins> class in my masters program (OMSCS). The Education Technology course was a broad look into the intersection of education and technology including: pedagogical models, current technology issues, and understanding the field through various EdTech research papers and past final projects. The application was built using Flask and jQuery, and hosted on Heroku.
 
 #### Choosing SenseCourse
 
