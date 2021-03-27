@@ -27,7 +27,7 @@ In order to make requests from localhost to SharePoint (via the SharePoint API) 
 
 The configuration here was largely based on the great work by [@koltyakov](https://github.com/koltyakov) setting up a [CRA proxy using his sp-rest-proxy package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/) to allow for concurrent servers to run locally. Completing the guide would yield the following file:
 
-<blockquote> [./proxyserver/api-server.js](https://github.com/rylew2/sharepoint-cra-starter)</blockquote>
+<blockquote> <a href="[google.com](https://github.com/rylew2/sharepoint-cra-starter)">./proxyserver/api-server.js</a> </blockquote>
 ```js
 const RestProxy = require('sp-rest-proxy');
 
