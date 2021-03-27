@@ -1,15 +1,16 @@
 ---
-title: Building a starter kit template for iterating on a SharePoint Create-React-App solution
+title: Building a React SharePoint starter kit
 date: "2020-06"
 slug: "sharepoint-react"
 selectedWork: true
 description: "Building a template to deploy React solutions built on top of SharePoint."
 previewImage: "/images/project/cap/react.png"
+tags:
+  - react
+  - javascript
 ---
 
 <blockquote>Coming soon... (March 2021)</blockquote>
-# Welcome to StackEdit!
-# Welcome to StackEdit!
 
 Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general information sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React [SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview) Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
