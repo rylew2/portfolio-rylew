@@ -25,7 +25,8 @@ export const StyledCards = styled.section`
       }
     }
     button {
-      background: url("cork-wallet.png");
+      background: url("cork-wallet.png") !important;
+      background-image: url("cork-wallet.png") !important;
       border-radius: 5px;
       padding: 4px 10px;
       font-weight: bold;

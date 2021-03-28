@@ -24,17 +24,12 @@ interface ICard {
  */
 
 const Cards = ({ data, basePath }: ICard) => {
-  // console.log(data);
+  console.log(data);
+  console.log(basePath);
   return (
     <StyledCards>
       {data.map((singleCard) => (
         <article className="article" key={singleCard.id}>
-          {/* <Link
-            href={`/${basePath}/[id]`}
-            as={`/${basePath}/${singleCard.slug}`}
-          >
-            <a> */}
-          {/* @ts-ignore */}
           <Link
             href={`/${basePath}/[id]`}
             as={`/${basePath}/${singleCard.slug}`}

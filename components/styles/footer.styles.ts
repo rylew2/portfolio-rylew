@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 import { Codepen, GitHub, Twitter } from "react-feather";
 
 export const StyledFooterSection = styled.footer`
-  background: url("cork-wallet.png");
+  background: url("cork-wallet.png") !important;
+  background-image: url("cork-wallet.png") !important;
 
   .snowFooter {
     background: #f8f8f8;

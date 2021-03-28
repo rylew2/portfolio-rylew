@@ -11,7 +11,7 @@ const tag = ({ content, title, description }) => {
       <Container>
         <p className="page-intro">{description}</p>
 
-        <Cards data={content} basePath="project" />
+        <Cards data={content} basePath="projects" />
       </Container>
     </Layout>
   );

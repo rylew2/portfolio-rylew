@@ -19,7 +19,8 @@ const fadeDown = keyframes`
 `;
 
 export const NavSection = styled.header`
-  background: url("cork-wallet.png");
+  background: url("cork-wallet.png") !important;
+  background-image: url("cork-wallet.png") !important;
   padding-top: 1em;
   padding-bottom: 1em;
   margin-bottom: 3em;
