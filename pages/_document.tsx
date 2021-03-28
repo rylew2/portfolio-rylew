@@ -1,5 +1,4 @@
-import Document, { Head, Main, NextScript, Html } from "next/document";
-
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import ANALYTICS_ID from "../lib/gtag";
 
 export default class MyDocument extends Document {
@@ -11,6 +10,7 @@ export default class MyDocument extends Document {
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`}
+            crossOrigin="anonymous"
           />
           <link
             href={`https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css`}
