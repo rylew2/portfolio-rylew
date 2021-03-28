@@ -11,7 +11,7 @@ tags:
   - javascript
 ---
 
-Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins>[SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)</ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
+Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins><a target="_blank" href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SPFx development model</a></ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
 1. We wanted to define the look and feel without having to adjust the Master Page / Page Layout
 
@@ -25,9 +25,9 @@ This led to the development of a starter kit based on Create React App (CRA) tha
 
 In order to make requests from localhost to SharePoint Lists (via the SharePoint API) and avoid cross-origin-resource-sharing issues (CORS is usually disabled on IIS Web Front End Servers) - we need to proxy API requests.
 
-The configuration here was largely based on the great work by <ins>[@koltyakov](https://github.com/koltyakov)</ins> setting up a <ins>[SharePoint API proxy server using his sp-rest-proxy package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/)</ins>. This allows a webpack dev server and a Proxy API Server to run concurrently. Completing that guide would yield the following file:
+The configuration here was largely based on the great work by <ins><a target="_blank" href="https://github.com/koltyakov">@koltyakov</a></ins> setting up a <ins><a target="_blank" href="https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/">SharePoint API proxy server using his sp-rest-proxy package</a></ins>. This allows a webpack dev server and a Proxy API Server to run concurrently. Completing that guide would yield the following file:
 
-<blockquote>  <ins><a  href="[https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json](https://github.com/rylew2/sharepoint-cra-starter)">./proxyserver/api-server.js</a></ins>  </blockquote>
+<blockquote>  <ins><a target="_blank" href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json">./proxyserver/api-server.js</a></ins>  </blockquote>
 
 ```js
 const RestProxy = require("sp-rest-proxy");
@@ -95,6 +95,7 @@ REACT_APP_RELATIVE_URL = /sites/mysite
 After the `sp.setup` call - we should be able to make List API calls anywhere in our app:
 
 ```js
+// App.js
 let spList = "MyTestList"; //rename to your own list
 let items = await sp.web.lists
   .getByTitle(spList)
@@ -140,6 +141,7 @@ You therefore need to add the rescripts package to `devDependencies` and create 
 ```
 
 ```js
+// ./rescriptsrs.json
 module.exports = (config) => {
   config.optimization.splitChunks.automaticNameDelimiter = "_";
   if (config.optimization.runtimeChunk) {
