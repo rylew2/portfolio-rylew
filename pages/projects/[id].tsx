@@ -16,7 +16,6 @@ import { IContentData } from "../blog/[id]";
 const Project = ({ projectData }) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
-  console.log(projectData.sourceCode);
   return (
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
@@ -90,7 +89,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const projectData: IContentData = await getContentData(params.id, "project");
-  // console.log(projectData);
+
   return {
     props: {
       projectData,

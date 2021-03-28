@@ -109,9 +109,9 @@ console.log(items ? items : "none");
 
 ## Finalizing Configuration for Deployment
 
-One of the pain points with deploying a single page app like this that exists, outside of the SharePoint app model, is that you normally would need to `npm run build` the CRA project, then _manually_ upload the build folder to <**YourProjectFolder**> on the SharePoint site . This was a bit frustrating so I looked at writing a script to upload the build folder for us.
+One of the pain points with deploying a single page app like this that exists outside of the SharePoint app model, is that you normally would need to `npm run build` the CRA project, then _manually_ upload the build folder to <**YourProjectFolder**> on the SharePoint site . This was a bit of a nuisance, so I looked at writing a script to upload the build folder for us.
 
-You can see that `upload.js` <ins><a target="_blank" href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/deploytools/upload.js">full script in my repo here</a></ins> . The code there performs the following two steps:
+You can see the result `upload.js` <ins><a target="_blank" href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/deploytools/upload.js">as a full script in my repo here</a></ins> . The upload code performs the following two steps:
 
 1.  Delete all files in the `/static/js` of the build folder on SharePoint (if it was previously uploaded). (using the `sppurge` package)
 2.  Upload and overwrite the entire build folder on SharePoint (using the `spsave` package)

@@ -7,7 +7,9 @@ export const StyledContent = styled.section`
     margin-bottom: 1em;
   }
 
-  p code {
+  // backtick tagged code in project / blog posts
+  p code,
+  li code {
     background: #dedede;
     font-weight: 600;
   }

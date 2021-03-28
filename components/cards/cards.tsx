@@ -24,8 +24,6 @@ interface ICard {
  */
 
 const Cards = ({ data, basePath }: ICard) => {
-  console.log(data);
-  console.log(basePath);
   return (
     <StyledCards>
       {data.map((singleCard) => (
