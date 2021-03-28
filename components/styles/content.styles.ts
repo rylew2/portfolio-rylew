@@ -7,8 +7,9 @@ export const StyledContent = styled.section`
     margin-bottom: 1em;
   }
 
-  code {
+  p code {
     background: #dedede;
+    font-weight: 600;
   }
 
   time {

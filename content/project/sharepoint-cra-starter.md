@@ -11,9 +11,6 @@ tags:
   - javascript
 ---
 
-
-  
-
 Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins>[SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)</ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
   
@@ -144,7 +141,7 @@ module.exports = (config) => {
    return  config;
 };
 ```
-At this point, when we run `npm run upload` we should be able to successfully save/upload all files to our SharePoint specified folder
+At this point, when we run `npm run upload` we should be able to successfully save/upload all files to our SharePoint specified folder. You won't be able to view this uploaded folder through the traditional site contents - you'll need to view it using Sharepoint Designer - it should be sitting as a folder at the root of the site.
 
 ## Routing with the HashRouter
 When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server.  Routing simply does not work like this out of the box. Therefore , we need to use <ins><a href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a></ins>  . This will add a `#` character to all of our routes. 
