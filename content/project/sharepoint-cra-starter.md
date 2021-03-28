@@ -44,7 +44,7 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 	"proxy": "node ./proxyserver/api-server.js",
 ```
 
-<blockquote>Be sure to include `./config/private.json`in your .gitignore!</blockquote>
+<blockquote>Be sure to include ./config/private.json in your .gitignore!</blockquote>
 
 Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously. Our end goal will be to look like this.
 
