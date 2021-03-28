@@ -8,6 +8,7 @@ export const StyledContent = styled.section`
   }
 
   code {
+    background: #dedede;
   }
 
   time {
@@ -34,5 +35,6 @@ export const StyledContent = styled.section`
 
   pre code {
     overflow: hidden;
+    background: none;
   }
 `;

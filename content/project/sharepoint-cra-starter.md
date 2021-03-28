@@ -11,6 +11,9 @@ tags:
   - javascript
 ---
 
+
+  
+
 Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins>[SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)</ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
   
@@ -51,15 +54,14 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 ```
 <blockquote>Be sure to include `./config/private.json`in your .gitignore!</blockquote>
 
- Now with the API Proxy server setup, the `concurrently`  package installed,  and the `startServers` command in the pacakge.json scripts section - we can run two servers simultaneously. The end result will look like this.
-
+ Now with the API Proxy server setup, the `concurrently`  package installed,  and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously. Our end goal will be to look like this.
  
 [insert  diagram image here]
 
 With the proxy server setup - you can actually visit `localhost:8081` and type in URL relative API endpoints to verify its working.
 
 ## Making an API Call
-To make an API call, we're simply using the `@pnp/sp` package  ( the documentation for <ins><a href="https://pnp.github.io/pnpjs/sp/lists/">PnPJS accessing lists is pretty good.)<a/></ins> 
+To make an API call, we're simply using the `@pnp/sp` package  ( the documentation for <ins><a href="https://pnp.github.io/pnpjs/sp/lists/">PnPJS accessing lists is pretty good.)</a></ins> 
 
 There are a couple ways to approach the initial setup of the PnPJS package - but here I'm using the `sp.setup()` one-time call in my App component's `componentDidMount`- it could similarly be done in a Nav type component. 
 
@@ -109,7 +111,7 @@ console.log(items ? items : "none");
 ## Finalizing Configuration for Deployment
 One of the pain points with deploying a single page app like this that exists, outside of the SharePoint app model, is that you normally would need to `npm run build` the CRA project, then *manually* upload the build folder to <**YourProjectFolder**> on the SharePoint site . This was a bit frustrating so I looked at writing a script to upload the build folder for us.
 
-You can see that `upload.js` <a href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/deploytools/upload.js">full script in my repo here</a> .  The code there performs the following two steps:
+You can see that `upload.js` <ins><a href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/deploytools/upload.js">full script in my repo here</a></ins> .  The code there performs the following two steps:
 
  1. Delete all files in the `/static/js` of the build folder on SharePoint (if it was previously uploaded). (using the `sppurge` package)
  2. Upload and overwrite the entire build folder on SharePoint (using the `spsave` package)
@@ -120,7 +122,7 @@ To run this upload script, we would need to add `gulp`, `spsave`, and `sppurge` 
 ```
 
 ## Fixing Tilde in Files the Build Folder for SP2013
-One of the catches here when working specifically with SP 2013 is that it does not allow filenames with tilde `~` characters to be uploaded to the site. To fix this we could eject CRA and try to configure ourselves - however I found it much easier to use a package to reconfigure. The more popular <a href="https://github.com/timarney/react-app-rewired#readme">`react-app-rewired`</a> or <a href="https://github.com/gsoft-inc/craco">`craco`</a> packages might have done the job here, however I ended up using <a href="https://github.com/harrysolovay/rescripts">`rescripts`</a>. 
+One of the catches here when working specifically with SP 2013 is that it does not allow filenames with tilde `~` characters to be uploaded to the site. To fix this we could eject CRA and try to configure ourselves - however I found it much easier to use a package to reconfigure. The more popular <ins><a href="https://github.com/timarney/react-app-rewired#readme">`react-app-rewired`</a></ins> or <ins><a href="https://github.com/gsoft-inc/craco">`craco`</a></ins> packages might have done the job here, however I ended up using <ins><a href="https://github.com/harrysolovay/rescripts">`rescripts`</a></ins>. 
 
 When trying to upload the project, you might run into an issue like this:
 <blockquote>
@@ -184,7 +186,7 @@ import  "react-app-polyfill/stable";
 ```
 
 ## Summary
-You can view the full list of packages in my <a href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json">package.json</a> . If everything is configured properly - you should have a Create React App application that can:
+You can view the full list of packages in my <ins><a href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json">package.json</a></ins> . If everything is configured properly - you should have a Create React App application that can:
 
  1. Build and save/upload a React application to SharePoint
  2. Make API calls from both localhost, and the SharePoint deployed folder
