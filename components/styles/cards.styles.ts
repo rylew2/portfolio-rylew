@@ -13,17 +13,13 @@ export const StyledCards = styled.section`
   }
 
   .card-demo-link {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     margin: 10px 10px;
+
     a {
-      margin-left: auto;
-      margin-right: 0px;
-      &.a-source {
-        margin-left: 1px;
-      }
+      float: right;
+      margin-left: 1px;
     }
+
     button {
       background: url("/cork-wallet.png") !important;
       background-image: url("/cork-wallet.png") !important;

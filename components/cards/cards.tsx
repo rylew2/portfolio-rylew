@@ -74,7 +74,7 @@ const Cards = ({ data, basePath }: ICard) => {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={singleCard.title}
-                  className="a-source"
+                  className="a-presentation"
                 >
                   <button className="source">Presentation </button>
                 </a>
