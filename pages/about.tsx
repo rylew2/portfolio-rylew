@@ -25,15 +25,15 @@ const About = () => {
               />
             </div>
             <p>
-              I am a developer with a passion for continuous learning,
-              a collaborative approach, and using technology to solve real-world
+              I am a developer with a passion for continuous learning, a
+              collaborative approach, and using technology to solve real-world
               problems. At the moment, I build React solutions backed by
               SharePoint as a persistent store.
             </p>
             <p>
-              Outside of work, I enjoy the vast array of food choices here in the
-              Bay Area, running scenic trails, travelling, and getting up to ski
-              as much as I can in the winter.
+              Outside of work, I enjoy the vast array of food choices here in
+              the Bay Area, cooking, running scenic trails, travelling, and
+              getting up to skiing in the winter.
             </p>
           </div>
         </Container>

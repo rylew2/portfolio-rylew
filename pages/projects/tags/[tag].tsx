@@ -11,10 +11,6 @@ const tag = ({ content, title, description }) => {
       <Container>
         <p className="page-intro">{description}</p>
 
-        <blockquote>
-          All blog here are for demo purposes. But hey, the sky is the limit
-          🚀
-        </blockquote>
         <Cards data={content} basePath="project" />
       </Container>
     </Layout>
