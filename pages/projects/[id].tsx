@@ -16,7 +16,7 @@ import { IContentData } from "../blog/[id]";
 const Project = ({ projectData }) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
-
+  console.log(projectData.sourceCode);
   return (
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
@@ -28,36 +28,33 @@ const Project = ({ projectData }) => {
           )}
           <blockquote>
             {projectData.liveSite && (
-              <>
-                <div>
-                  <a
-                    href={projectData.liveSite}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <FontAwesomeIcon
-                      color={"#5a73bb"}
-                      icon={faChrome}
-                      size="lg"
-                    />{" "}
-                    <b>Demo:</b> {projectData.liveSite}
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href={projectData.sourceCode}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <FontAwesomeIcon
-                      color={"#768c76"}
-                      icon={faCode}
-                      size="lg"
-                    />{" "}
-                    <b>Source Code:</b> {projectData.sourceCode}
-                  </a>
-                </div>
-              </>
+              <div>
+                <a
+                  href={projectData.liveSite}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <FontAwesomeIcon
+                    color={"#5a73bb"}
+                    icon={faChrome}
+                    size="lg"
+                  />{" "}
+                  <b>Demo:</b> {projectData.liveSite}
+                </a>
+              </div>
+            )}
+
+            {projectData.sourceCode && (
+              <div>
+                <a
+                  href={projectData.sourceCode}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <FontAwesomeIcon color={"#768c76"} icon={faCode} size="lg" />{" "}
+                  <b>Source Code:</b> {projectData.sourceCode}
+                </a>
+              </div>
             )}
             {projectData.presentation && (
               <div>
