@@ -11,10 +11,7 @@ tags:
   - javascript
 ---
 
-<blockquote>Coming soon... (March 2021)</blockquote>
-
-  
-Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React [SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview) Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
+Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins>[SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)</ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
   
 1. We wanted to define the look and feel without having to adjust the Master Page / Page Layout
@@ -23,7 +20,7 @@ Microsoft's enterprise content management platform `SharePoint` gives teams a sp
 
 3. We wanted to be able to deploy a Create React App build folder automatically to SharePoint from the command line
 
-This led to the development of a starter kit based on Create React App (CRA) that we could quickly iterate on and deploy to SharePoint. Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
+This led to the development of a starter kit based on Create React App (CRA) that we used to quickly iterate on and deploy to SharePoint. Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
 
   
 
@@ -33,11 +30,11 @@ This led to the development of a starter kit based on Create React App (CRA) tha
 In order to make requests from localhost to SharePoint Lists (via the SharePoint API) and avoid cross-origin-resource-sharing issues (CORS is usually disabled on IIS Web Front End Servers) - we need to proxy API requests. 
 
 
-The configuration here was largely based on the great work by [@koltyakov](https://github.com/koltyakov) setting up a [SharePoint API proxy server using his sp-rest-proxy package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/). This allows a webpack dev server and a Proxy API Server to run concurrently. Completing that guide would yield the following file:
+The configuration here was largely based on the great work by <ins>[@koltyakov](https://github.com/koltyakov)</ins> setting up a <ins>[SharePoint API proxy server using his sp-rest-proxy package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/)</ins>. This allows a webpack dev server and a Proxy API Server to run concurrently. Completing that guide would yield the following file:
 
   
 
-<blockquote>  <a  href="[https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json](https://github.com/rylew2/sharepoint-cra-starter)">./proxyserver/api-server.js</a>  </blockquote>
+<blockquote>  <ins><a  href="[https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json](https://github.com/rylew2/sharepoint-cra-starter)">./proxyserver/api-server.js</a></ins>  </blockquote>
 
 ```js
 const RestProxy = require('sp-rest-proxy');
@@ -62,7 +59,7 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 With the proxy server setup - you can actually visit `localhost:8081` and type in URL relative API endpoints to verify its working.
 
 ## Making an API Call
-To make an API call, we're simply using the `@pnp/sp` package  ( the documentation for <a href="https://pnp.github.io/pnpjs/sp/lists/">PnPJS accessing lists is pretty good.)<a/> 
+To make an API call, we're simply using the `@pnp/sp` package  ( the documentation for <ins><a href="https://pnp.github.io/pnpjs/sp/lists/">PnPJS accessing lists is pretty good.)<a/></ins> 
 
 There are a couple ways to approach the initial setup of the PnPJS package - but here I'm using the `sp.setup()` one-time call in my App component's `componentDidMount`- it could similarly be done in a Nav type component. 
 
@@ -126,10 +123,9 @@ To run this upload script, we would need to add `gulp`, `spsave`, and `sppurge` 
 One of the catches here when working specifically with SP 2013 is that it does not allow filenames with tilde `~` characters to be uploaded to the site. To fix this we could eject CRA and try to configure ourselves - however I found it much easier to use a package to reconfigure. The more popular <a href="https://github.com/timarney/react-app-rewired#readme">`react-app-rewired`</a> or <a href="https://github.com/gsoft-inc/craco">`craco`</a> packages might have done the job here, however I ended up using <a href="https://github.com/harrysolovay/rescripts">`rescripts`</a>. 
 
 When trying to upload the project, you might run into an issue like this:
-<blockquote>```
+<blockquote>
 The file or folder name \\\"MyProject/static/js/runtime~main.d653cc00.js\\\" contains invalid characters. Please use a different name. Common invalid characters include the following # % & * : < > ? / { | }
-```</blockquote>
-
+</blockquote>
 
 You therefore need to add the rescripts package to `devDependencies` and create a `./rescriptsrc.json` file:
 ```js 
@@ -149,7 +145,7 @@ module.exports = (config) => {
 At this point, when we run `npm run upload` we should be able to successfully save/upload all files to our SharePoint specified folder
 
 ## Routing with the HashRouter
-When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server.  Routing simply does not work like this out of the box. Therefore , we need to use <a href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a>   . This will add a `#` character to all of our routes. 
+When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server.  Routing simply does not work like this out of the box. Therefore , we need to use <ins><a href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a></ins>  . This will add a `#` character to all of our routes. 
 
 Assuming you have `react-router-dom` installed, the simple routing setup (which I've included in my repo) looks like the following:
 ```js
@@ -179,7 +175,7 @@ The one final configuration HashRouter needs is to have the homepage specified i
 
 
 ## IE11 Legacy Support
-If you'd like to support the older IE11 browser, one simple update would be to install the `react-app-polyfill` and include in `index.js` :
+If you'd like to support the older IE11 browser, one simple update would be to install the `react-app-polyfill` package and include it in `index.js` :
 
 ```js
 //index.js
@@ -193,6 +189,10 @@ You can view the full list of packages in my <a href="https://github.com/rylew2/
  1. Build and save/upload a React application to SharePoint
  2. Make API calls from both localhost, and the SharePoint deployed folder
  3.  Have Routing working in your build folder without the need for a http server
+
+Users can them simply be given the URL to the index.html file, ie:
+<blockquote>http://my-sharepoint-prod.com/sites/mysite</blockquote>
+Their permissions to the site will simply be set at the site level.
 
 The end goal of this project was simply to be able to focus on building the React app that could leverage SharePoint List data - without having to deal with some of the out of the box traditional SharePoint development features that can be a bit of a hinderance. The end result for our team was being able to more rapidly iterate and deploy solutions - and ultimately being able to focus more on our clients needs.
 
