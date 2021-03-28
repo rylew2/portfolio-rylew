@@ -4,7 +4,7 @@ date: "2020-06"
 slug: "sharepoint-react"
 selectedWork: true
 description: "Building a template to deploy React solutions built on top of SharePoint."
-previewImage: "/images/project/cap/react.png"
+previewImage: "/images/project/sharepoint-cra-starter/react.png"
 tags:
   - react
   - javascript
@@ -15,17 +15,16 @@ tags:
 Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general information sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React [SPFx development model.](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview) Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
 1.  We wanted to define the look and feel without having to adjust the Master Page / Page Layout
-2.  We wanted to rapidly iterate on a single page app with React if SPFx development wasn't available
-    2a) We wanted to circumvent deploying through the "app model" entirely
-3.  We wanted to be able to deploy a Create React App build folder automatically to SharePoint
+2.  We wanted to rapidly iterate on a single page app with React if SPFx development wasn't available. Or circumvent deploying through the app model entirely.
+3.  We wanted to be able to deploy a Create React App build folder automatically to SharePoint from the command line
 
 This led to the development of a starter kit based on Create React App (CRA) that we could quickly iterate on and deploy to SharePoint. Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
 
 # Setting up the Proxy Server
 
-In order to make requests from localhost to SharePoint (via the SharePoint API) and avoid CORS requests (usually disabled on the IIS Web Front End Servers) - we need to a way to configure
+In order to make requests from localhost to SharePoint (via the SharePoint API) and avoid CORS requests (usually disabled on IIS Web Front End Servers) - we need to a way to configure
 
-The configuration here was largely based on the great work by [@koltyakov](https://github.com/koltyakov) setting up a [CRA proxy using his sp-rest-proxy package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/) to allow for concurrent servers to run locally. Completing the guide would yield the following file:
+This configuration here was largely based on the great work by [@koltyakov](https://github.com/koltyakov) setting up a [SharePoint API proxy server using his sp-rest-proxy package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/) to allow for concurrent servers to run locally. Completing that guide would yield the following file:
 
 <blockquote> <a href="[google.com](https://github.com/rylew2/sharepoint-cra-starter)">./proxyserver/api-server.js</a> </blockquote>
 ```js
@@ -40,6 +39,8 @@ restProxy.serve();
 
 ````
 
+
+To
 
 [insert image here]
 
