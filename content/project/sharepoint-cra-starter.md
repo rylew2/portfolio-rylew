@@ -11,7 +11,7 @@ tags:
   - javascript
 ---
 
-Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. Anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins><a target="_blank" href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SPFx development model</a></ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
+Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. That includes anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins><a target="_blank" href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SPFx development model.</a></ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
 1. We wanted to define the look and feel without having to adjust the Master Page / Page Layout
 
@@ -46,9 +46,12 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 
 <blockquote>Be sure to include ./config/private.json in your .gitignore!</blockquote>
 
-Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously. Our end goal will be to look like this.
+Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously.
 
-[insert diagram image here]
+<figure class="image">
+  <img src="/images/project/sharepoint-cra-starter/sharepoint-cra-starter.jepg" alt="deployment model">
+  <figcaption>Target state development and deployment model</figcaption>
+</figure>
 
 With the proxy server setup - you can actually visit `localhost:8081` and type in URL relative API endpoints to verify its working.
 
