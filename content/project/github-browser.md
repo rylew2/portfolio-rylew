@@ -28,7 +28,7 @@ API Requests can be made from the browser without any CORS issues (the GitHub AP
 
 
 
-## GitHub API Request Limit
+## The Browser
 
 <figure class="image">
   <img src="/images/project/githubBrowser/microsoft.png" alt="high level view of GitHub browser">
