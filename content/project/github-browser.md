@@ -30,7 +30,23 @@ API Requests can be made from the browser without any CORS issues (the GitHub AP
 
 ## The Browser
 
+The browser simply lets you:
+  1. Search for a user's repo
+  2. View the code language breakdown for a given user's repo
+  3. View individual repo contributors and identify who the top contributors by file additions and deletions are
+
 <figure class="image">
   <img src="/images/project/githubBrowser/microsoft.png" alt="high level view of GitHub browser">
   <figcaption>Microsoft's repos and their language breakdowns</figcaption>
+</figure>
+
+
+As more time allows I'd like to fix some of the styling - possibly upgrade to Emotion or Styled Components. I'd also liked to implement a proper client OAuth login and access token flow - possibly in another post. 
+
+In addition there's plenty more GitHub API data - as can be seen from the hypermedia HATEOAS resource links that we get with high level API requests to users and repos for example.
+
+
+<figure class="image">
+  <img src="/images/project/githubBrowser/postmanExample.png" alt="high level view of GitHub browser">
+  <figcaption>An example HATEOAS hyperlinks to all the addition resources</figcaption>
 </figure>
