@@ -38,7 +38,7 @@ const restProxy = new RestProxy(settings);
 restProxy.serve();
 ```
 
-Once this is up - you can add the proxy line to your `devDependencies` and run `npm run proxy` to configure your credentials in `private.json`:
+Once this is up - you can add the proxy line to your `devDependencies` and run `npm run proxy` to configure your credentials (as described in the linked guide above) in `private.json`:
 
 ```js
 	"proxy": "node ./proxyserver/api-server.js",
@@ -46,7 +46,7 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 
 <blockquote>Be sure to include ./config/private.json in your .gitignore!</blockquote>
 
-Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously.
+Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously with `npm run startServers`.
 
 <figure class="image">
   <img src="/images/project/sharepoint-cra-starter/sharepoint-cra-starter.jpeg" alt="deployment model">
@@ -60,7 +60,7 @@ With the proxy server setup - you can actually visit `localhost:8081` and type i
 
 To make an API call, we're simply using the `@pnp/sp` package ( the documentation for <ins><a target="_blank" href="https://pnp.github.io/pnpjs/sp/lists/">PnPJS accessing lists is pretty good.)</a></ins>
 
-There are a couple ways to approach the initial setup of the PnPJS package - but here I'm using the `sp.setup()` one-time call in my App component's `componentDidMount`- it could similarly be done in a Nav type component.
+There are a couple ways to approach the initial setup of the PnPJS package - but here I'm using the `sp.setup()` one-time call in my App `componentDidMount`- it could similarly be done in a Nav component.
 
 ```js
 let hostStr = "";
