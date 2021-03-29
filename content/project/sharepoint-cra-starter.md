@@ -23,9 +23,9 @@ This led to the development of a starter kit based on Create React App (CRA) tha
 
 ## Setting up the Proxy Server
 
-In order to make requests from localhost to SharePoint Lists (via the SharePoint API) and avoid cross-origin-resource-sharing issues (CORS is usually disabled on IIS Web Front End Servers) - we need to proxy API requests.
+In order to make requests from localhost to SharePoint Lists (via the SharePoint API) and avoid cross-originr resource sharing issues (CORS is usually disabled on IIS Web Front End Servers) - we need to proxy API requests.
 
-The configuration here was largely based on the great work by <ins><a target="_blank" href="https://github.com/koltyakov">@koltyakov</a></ins> setting up a <ins><a target="_blank" href="https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/">SharePoint API proxy server using his sp-rest-proxy package</a></ins>. This allows a webpack dev server and a Proxy API Server to run concurrently. Completing that guide would yield the following file:
+The configuration here was largely based on the great work by <ins><a target="_blank" href="https://github.com/koltyakov">@koltyakov</a></ins> setting up a <ins><a target="_blank" href="https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/">SharePoint API proxy server using his sp-rest-proxy package</a></ins>. This allows a webpack dev server and a Proxy API Server to run concurrently. I recommend completing that simple walkthrough first - once you have that setup you should have the following file:
 
 <blockquote>  <ins><a target="_blank" href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/package.json">./proxyserver/api-server.js</a></ins>  </blockquote>
 
@@ -49,9 +49,10 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously.
 
 <figure class="image">
-  <img src="/images/project/sharepoint-cra-starter/sharepoint-cra-starter.jepg" alt="deployment model">
+  <img src="/images/project/sharepoint-cra-starter/sharepoint-cra-starter.jpeg" alt="deployment model">
   <figcaption>Target state development and deployment model</figcaption>
 </figure>
+<br />
 
 With the proxy server setup - you can actually visit `localhost:8081` and type in URL relative API endpoints to verify its working.
 
@@ -160,7 +161,7 @@ At this point, when we run `npm run upload` , we should be able to successfully 
 
 ## Routing with the HashRouter
 
-When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server. Routing simply does not work like this out of the box. Therefore , we need to use <ins><a target="_blank" href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a></ins> . This will add a `#` character to all of our routes.
+When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server. Routing simply does not work like this from the build folder out of the box. Therefore , we need to use <ins><a target="_blank" href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a></ins> . This will add a `#` character to all of our routes. The more traditional `BrowserRouter` uses the HTML5 History API and is the preferred route when using a server or server-side rendering. `HashRouter` is more fleible in the sense
 
 Assuming you have `react-router-dom` installed, the simple routing setup (which I've included in my repo) looks like the following:
 
