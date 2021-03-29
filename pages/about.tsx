@@ -7,10 +7,6 @@ import { StyledAbout } from "../components/styles/about.styles";
  * About page `/about`
  */
 const About = () => {
-  fetch("https://api.github.com/users/rylew2")
-    .then((d) => console.log(d))
-    .catch((e) => console.log(e));
-
   return (
     <Layout
       pathname={"/about"}
