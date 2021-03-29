@@ -13,15 +13,24 @@ tags:
   - d3
 ---
 
-The GitHub browser is a simple single page app built in Angular that lets users search and visualize a breakdown of repositories for a given user. The idea was to explore developing single page apps in combination with a data-rich API like GitHub. What makes the idea of creating a browser useful is the fact that repos usually have more than one contributor - so browsing to different user's repos was a breeze to setup.
+The GitHub browser is a simple single page app built in Angular that lets users search and visualize a breakdown of repositories for a given user. The idea was to explore developing single page apps in combination with a data-rich API like GitHub. What makes the idea of creating a browser useful is the fact that repos usually have more than one contributor - so browsing to different user's repos was a breeze to setup. This project used only a portion of the Github API data, and it still had a fair amount of data visualize.
 
 <figure class="image">
   <img src="/images/project/githubBrowser/githubBrowser-diagram.jpg" alt="high level view of GitHub browser">
-  <figcaption>High level view of GitHub Browser</figcaption>
+  <figcaption>High level view of GitHub Browser flow </figcaption>
+</figure>
+
+As shown here, the actual API call is done on a lightweight Express server deployed to Heroku that proxies our requests from the client to the GitHub API. This intermediate server also allows us to safely store and use the OAuth App client ID and secret credentials. 
+
+
+# GitHub API Request Limit
+
+API Requests can be made from the browser without any CORS issues (the GitHub API returns `access-control-allow-origin: *`). The problem is that we can't store the credentials on the client, therefore calls from the client would have to be unauthenticated. The <a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#:~:text=For%20unauthenticated%20requests%2C%20the%20rate,has%20custom%20rate%20limit%20rules.&text=The%20maximum%20number%20of%20requests,permitted%20to%20make%20per%20hour." target="_blank">unauthenticated limit is 60 calls per hour</a> - which will show in a returned HTTP header `X-RateLimit-Limit` and `X-RateLimit-Remaining`. Meanwhile the authenticated limit is 5,000 - plenty sufficient for a small project like this. 
+
+
+<figure class="image">
+  <img src="/images/project/githubBrowser/CORS-flow.png" alt="high level view of GitHub browser">
+  <figcaption>Preflight and actualy request</figcaption>
 </figure>
 
 
-
-- ## Cross origin resource sharing
-
-More coming soon... (March 2021)
