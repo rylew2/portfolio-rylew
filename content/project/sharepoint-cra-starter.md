@@ -161,7 +161,7 @@ At this point, when we run `npm run upload` , we should be able to successfully 
 
 ## Routing with the HashRouter
 
-When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server. Routing simply does not work like this from the build folder out of the box. Therefore , we need to use <ins><a target="_blank" href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a></ins> . This will add a `#` character to all of our routes that prevents it from needing a server - all content in the url after the hash is not sent to the server. The more traditional `BrowserRouter` uses the HTML5 History API and is the preferred route when using a server or server-side rendering.
+When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server. Routing simply does not work like this from the build folder out of the box. Therefore , we need to use <ins><a target="_blank" href="https://reactrouter.com/web/api/HashRouter">`HashRouter`</a></ins> . This will add a `#` character to all of our routes. The more traditional `BrowserRouter` uses the HTML5 History API and is the preferred route when using a server or server-side rendering.
 
 Assuming you have `react-router-dom` installed, the simple routing setup (which I've included in my repo) looks like the following:
 
