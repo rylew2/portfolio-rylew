@@ -124,8 +124,9 @@ To run this upload script, we would need to add `gulp`, `spsave`, and `sppurge` 
 
 ```js
 	"upload": "node ./deploytools/upload.js",
+	"uploadUAT": "node ./deploytools/uploadUAT.js",
 ```
-
+You can optionally define a second upload script to point to your UAT site.
 <br>
 
 ## Fixing Tilde in Build Folder Files for SP2013
@@ -193,7 +194,6 @@ The one final configuration HashRouter needs is to have the homepage specified i
 "homepage": "./",
 ```
 
-<br>
 
 ## IE11 Legacy Support
 
@@ -205,7 +205,21 @@ import "react-app-polyfill/ie9";
 import "react-app-polyfill/stable";
 ```
 
-<br>
+
+## Deploying
+
+With the all the primary configuration done, we can define our deploy scripts (UAT again is optional) in `package.json`:
+```js
+ "deploy": "npm run build-re && node ./deploytools/upload.js",
+ "deployUAT": "npm run build-re && node ./deploytools/uploadUAT.js",
+```
+Then with a run a of `npm run deploy`  - it will regenerate our `./build` folder, delete the old build folder on the SharePoint folder, and upload the new build folder files.
+
+Users can them simply be given the URL to the index.html file, ie:
+
+<blockquote>http://my-sharepoint-prod.com/sites/mysite/MyProjectFolder/index.html</blockquote>
+
+Their permissions to the site will simply be set at the site level.
 
 ## Summary
 
@@ -215,11 +229,6 @@ You can view the full list of packages in my <ins><a target="_blank" href="https
 2.  Make API calls from both localhost, and the SharePoint deployed folder
 3.  Have Routing working in your build folder without the need for a http server
 
-Users can them simply be given the URL to the index.html file, ie:
-
-<blockquote>http://my-sharepoint-prod.com/sites/mysite/MyProjectFolder/index.html</blockquote>
-
-Their permissions to the site will simply be set at the site level.
 
 The end goal of this project was simply to be able to focus on building the React app that could leverage SharePoint List data - without having to deal with some of the out of the box traditional SharePoint development features that can be a bit of a hinderance. The end result for our team was being able to more rapidly iterate and deploy solutions - and ultimately being able to focus more on our clients needs.
 
