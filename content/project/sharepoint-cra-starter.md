@@ -60,7 +60,7 @@ Now with the API Proxy server setup, the `concurrently` package installed, and t
 </figure>
 <br />
 
-With the proxy server setup - you can actually visit `localhost:8081` and type in URL relative API endpoints to verify its working.
+With the proxy server setup - you can actually run `npm run proxy` and visit `localhost:8081` and type in URL relative SharePoint API endpoints to verify its working.
 
 ## Making an API Call
 
