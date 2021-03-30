@@ -21,6 +21,12 @@ Microsoft's enterprise content management platform `SharePoint` gives teams a sp
 
 This led to the development of a starter kit based on Create React App (CRA) that we used to quickly iterate on and deploy to SharePoint. Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
 
+<figure class="image">
+  <img src="/images/project/sharepoint-cra-starter/deploy.jpeg" alt="Deployment model">
+  <figcaption>High level view of what we will be setting up</figcaption>
+</figure>
+<br>
+
 ## Setting up the Proxy Server
 
 In order to make requests from localhost to SharePoint Lists (via the SharePoint API) and avoid cross-originr resource sharing issues (CORS is usually disabled on IIS Web Front End Servers) - we need to proxy API requests.
@@ -126,6 +132,7 @@ To run this upload script, we would need to add `gulp`, `spsave`, and `sppurge` 
 	"upload": "node ./deploytools/upload.js",
 	"uploadUAT": "node ./deploytools/uploadUAT.js",
 ```
+
 You can optionally define a second upload script to point to your UAT site.
 <br>
 
@@ -194,7 +201,6 @@ The one final configuration HashRouter needs is to have the homepage specified i
 "homepage": "./",
 ```
 
-
 ## IE11 Legacy Support
 
 If you'd like to support the older IE11 browser, one simple update would be to install the `react-app-polyfill` package and include it in `index.js` :
@@ -205,15 +211,16 @@ import "react-app-polyfill/ie9";
 import "react-app-polyfill/stable";
 ```
 
-
 ## Deploying
 
 With the all the primary configuration done, we can define our deploy scripts (UAT again is optional) in `package.json`:
+
 ```js
  "deploy": "npm run build-re && node ./deploytools/upload.js",
  "deployUAT": "npm run build-re && node ./deploytools/uploadUAT.js",
 ```
-Then with a run a of `npm run deploy`  - it will regenerate our `./build` folder, delete the old build folder on the SharePoint folder, and upload the new build folder files.
+
+Then with a run a of `npm run deploy` - it will regenerate our `./build` folder, delete the old build folder on the SharePoint folder, and upload the new build folder files.
 
 Users can them simply be given the URL to the index.html file, ie:
 
@@ -227,8 +234,7 @@ You can view the full list of packages in my <ins><a target="_blank" href="https
 
 1.  Build and save/upload a React application to a SharePoint site
 2.  Make API calls from both localhost, and the SharePoint deployed folder
-3.  Have Routing working in your build folder without the need for a http server
-
+3.  Have Routing working in your build folder without the need for an http server
 
 The end goal of this project was simply to be able to focus on building the React app that could leverage SharePoint List data - without having to deal with some of the out of the box traditional SharePoint development features that can be a bit of a hinderance. The end result for our team was being able to more rapidly iterate and deploy solutions - and ultimately being able to focus more on our clients needs.
 
