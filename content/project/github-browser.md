@@ -24,9 +24,9 @@ As shown here, the actual API call is done on a lightweight Express server deplo
 
 ## GitHub API Request Limit
 
-API Requests can be made from the browser to GitHub without any CORS issues (the GitHub API returns `access-control-allow-origin: *`). The problem is both that there is an API call limit and that we can't store the OAuth credentials on the client - the only safe calls from the client would have to be unauthenticated - which would only let us view a couple of users or repos before hitting the limit (each route has multiple API calls). The <a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#:~:text=For%20unauthenticated%20requests%2C%20the%20rate,has%20custom%20rate%20limit%20rules.&text=The%20maximum%20number%20of%20requests,permitted%20to%20make%20per%20hour." target="_blank">unauthenticated limit is 60 calls per hour</a>. We can actually see that limit shown in a returned HTTP header `X-RateLimit-Limit` and `X-RateLimit-Remaining`. Meanwhile the authenticated limit is 5,000 - plenty sufficient for a small project like this. 
+API Requests can be made from the browser to GitHub without any CORS issues (the GitHub API returns `access-control-allow-origin: *`). The problem is both that there is an API call limit and that we can't store the OAuth credentials on the client - the only safe calls from the client would have to be unauthenticated - which would only let us view a couple of users or repos before hitting the limit (each route has multiple API calls). The <a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#:~:text=For%20unauthenticated%20requests%2C%20the%20rate,has%20custom%20rate%20limit%20rules.&text=The%20maximum%20number%20of%20requests,permitted%20to%20make%20per%20hour." target="_blank">unauthenticated limit is 60 calls per hour</a>. We can actually see that limit shown in a returned HTTP header `X-RateLimit-Limit` and `X-RateLimit-Remaining`. Meanwhile the authenticated limit is 5,000 - plenty sufficient for a small project like this.
 
-Passing just the clientID and clientSecret from the lightweight Express server to the GitHub API doesn't technically "authenticate" the calls - it simply identifies what OAuth application is being represented - which in turn increase are API rate limit. However, the docs indicate this is ok in server to server scenarios like this. 
+Passing just the clientID and clientSecret from the lightweight Express server to the GitHub API doesn't technically "authenticate" the calls - it simply identifies what OAuth application is being represented - which in turn increase our API rate limit. However, the docs indicate this is ok in server to server scenarios like this.
 
 ## The Browser
 
@@ -41,7 +41,7 @@ The browser simply lets you:
   <figcaption>Microsoft's repos and their language breakdowns</figcaption>
 </figure>
 
-As more time allows I'd like to fix some of the styling - possibly upgrade to Emotion or Styled Components. I'd also liked to implement a proper client OAuth login authorization and access token flow - possibly in another post. Using this we might be able to have another route viewing data about the user's own repos, including private ones. 
+As more time allows I'd like to fix some of the styling - possibly upgrade to Emotion or Styled Components. I'd also liked to implement a proper client OAuth login authorization and access token flow - possibly in another post. Using this we might be able to have another route viewing data about the user's own repos, including private ones.
 
 In addition there's plenty more GitHub API data - as can be seen from the hypermedia HATEOAS resource links that we get with high level API requests to users and repos for example.
 
