@@ -16,7 +16,7 @@ tags:
 The GitHub browser is a simple single page app built in Angular that lets users search and visualize a breakdown of repositories for a given user. The idea was to explore developing single page apps in combination with a data-rich API like GitHub. What makes the idea of creating a browser useful is the fact that repos usually have more than one contributor - so browsing to different user's repos was a breeze to setup. This project used only a portion of the Github API data, and it still had a fair amount of data visualize.
 
 <figure class="image">
-  <img src="/images/project/githubBrowser/githubBrowser-diagram.jpg" alt="high level view of GitHub browser">
+  <Image src="/images/project/githubBrowser/githubBrowser-diagram.jpg" alt="high level view of GitHub browser">
   <figcaption>High level view of GitHub Browser flow </figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ The browser simply lets you:
 3. View individual repo contributors and identify who the top contributors by file additions and deletions are
 
 <figure class="image">
-  <img src="/images/project/githubBrowser/microsoft.png" alt="high level view of GitHub browser">
+  <Image src="/images/project/githubBrowser/microsoft.png" alt="high level view of GitHub browser">
   <figcaption>Microsoft's repos and their language breakdowns</figcaption>
 </figure>
 
@@ -46,6 +46,6 @@ As more time allows I'd like to fix some of the styling - possibly upgrade to Em
 In addition there's plenty more GitHub API data - as can be seen from the hypermedia HATEOAS resource links that we get with high level API requests to users and repos for example.
 
 <figure class="image">
-  <img src="/images/project/githubBrowser/postmanExample.png" alt="high level view of GitHub browser">
+  <Image src="/images/project/githubBrowser/postmanExample.png" alt="high level view of GitHub browser">
   <figcaption>An example HATEOAS hyperlinks to all the API endpoints</figcaption>
 </figure>

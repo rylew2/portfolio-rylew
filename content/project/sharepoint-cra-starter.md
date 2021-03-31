@@ -22,7 +22,7 @@ Microsoft's enterprise content management platform `SharePoint` gives teams a sp
 This led to the development of a starter kit based on Create React App (CRA) that we used to quickly iterate on and deploy to SharePoint. Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
 
 <figure class="image">
-  <img src="/images/project/sharepoint-cra-starter/deploy.jpeg" alt="Deployment model">
+  <Image src="/images/project/sharepoint-cra-starter/deploy.jpeg" alt="Deployment model">
   <figcaption>High level view of what we will be setting up</figcaption>
 </figure>
 <br>
@@ -55,7 +55,7 @@ Once this is up - you can add the proxy line to your `devDependencies` and run `
 Now with the API Proxy server setup, the `concurrently` package installed, and the `startServers` command in the `package.json` scripts section - we can run two servers simultaneously with `npm run startServers`.
 
 <figure class="image">
-  <img src="/images/project/sharepoint-cra-starter/sharepoint-cra-starter.jpeg" alt="deployment model">
+  <Image src="/images/project/sharepoint-cra-starter/sharepoint-cra-starter.jpeg" alt="deployment model">
   <figcaption>Target state development and deployment model</figcaption>
 </figure>
 <br />
