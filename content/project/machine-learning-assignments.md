@@ -89,7 +89,6 @@ Boosting is an `ensemble` method of learning - the idea being combining many sim
 
 The experiments run on Adaboost included varying number of estimators, varying learning rate, and comparing learning rate vs the number of estimators in 3d contour plots. Adaboost has default learning rate of 1 - however this will slow down the adaptation of the model to training data. A max Abalone score around 30 estimators and a learning rate of 0.04 indicates that estimators have an equal voting power.
 
-
 <figure class="image">
   <Image src="/images/project/machineLearning/boostingLearningRate.jpg" alt="boostingLearningRate">
   <figcaption>A clear max score around 35 estimators and a learning rate of 0.04</figcaption>
@@ -97,7 +96,8 @@ The experiments run on Adaboost included varying number of estimators, varying l
 <br />
 
 ### Support Vector Machines (SVM)
-Support vector machines attempts to draw an optimal boundary that maximizes the margin width between different classes. Gutter lines define the max margin and go through points closest to the boundary. While ANN tries to reduce the error cost function, an SVM tries to maximize the margin while still classifying properly. 
+
+Support vector machines attempts to draw an optimal boundary that maximizes the margin width between different classes. Gutter lines define the max margin and go through points closest to the boundary. While ANN tries to reduce the error cost function, an SVM tries to maximize the margin while still classifying properly.
 
 <figure class="image">
   <Image src="/images/project/machineLearning/svm.jpg" alt="support vector machine">
@@ -107,7 +107,7 @@ Support vector machines attempts to draw an optimal boundary that maximizes the 
 
 Using `sklearn`'s support vector classifier, I plotted various hyperparameters including `gamma` (complexity of decision boundary), `C` (another parameter for decision boundary complexity), and several `kernel functions` (linear, rbf, poly).
 
-One of hte plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating am ore complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit. 
+One of hte plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating am ore complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit.
 
 <figure class="image">
   <Image src="/images/project/machineLearning/gamma-c-scores-svm.jpg" alt="support vector machine">
@@ -115,11 +115,9 @@ One of hte plots including comparing `gamma` vs c on a contour plot with scores.
 </figure>
 <br />
 
-
-
 ### Comparison and Conclusion of Supervised Algorithms
 
-No final comparison is complete without consideration of both test performance and runtimes. Boosting was the clear winner and outperforms all other algorithms for both datasets. 
+No final comparison is complete without consideration of both test performance and runtimes. Boosting was the clear winner and outperforms all other algorithms for both datasets. The only issue is if you look at time, AdaBoost performs the worst. KNN and Decision Trees run the fastest.
 
 <figure class="image">
   <Image src="/images/project/machineLearning/supervised-test-perf.jpg" alt="support vector machine">
@@ -127,9 +125,66 @@ No final comparison is complete without consideration of both test performance a
 </figure>
 <br />
 
+One of the key takeaways in all this is the `no free lunch theorem` where an algorithm that works well for one problem may not work well for other problems. Each algorithm includes its own inductive biases and complexities. The only way to find the right tool for the job is to find the optimal hyperparameters and plot the performance - in addition to consider running time performance.
 
-
-
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
+.tg td{background-color:#fdf6e3;border-color:#93a1a1;border-style:solid;border-width:1px;color:#002b36;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#657b83;border-color:#93a1a1;border-style:solid;border-width:1px;color:#fdf6e3;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-wmk8{background-color:#ffffff;border-color:inherit;color:#329a9d;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-8nwd{background-color:#eee8d5;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-wmk8">   <br>    </th>
+    <th class="tg-wmk8">   <br>Inductive Bias   </th>
+    <th class="tg-wmk8">   <br>Pros   </th>
+    <th class="tg-wmk8">   <br>Cons   </th>
+    <th class="tg-wmk8">   <br>Good at   </th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-8nwd">   <br>KNN   </td>
+    <td class="tg-8nwd">   <br>-Classes are similar to nearest   points   </td>
+    <td class="tg-8nwd">   <br>-Intuitive<br>   <br>-Fast runtime<br>   <br>-Less prone to overfitting<br>   <br>-Limited parameter tuning   </td>
+    <td class="tg-8nwd">   <br>-Difficulty to model complex<br>   <br>-Lazy learner is slow to predict   new instances<br>   <br>-Poor on high dimensional   datasets   </td>
+    <td class="tg-8nwd">   <br>-Low-dimensional datasets   </td>
+  </tr>
+  <tr>
+    <td class="tg-fymr">   <br>Decision Trees   </td>
+    <td class="tg-fymr">   <br>-Shorter trees preferred over longer trees<br>   <br>-High information gain splits at the top   </td>
+    <td class="tg-fymr">   <br>-Fast runtime<br>   <br>-Robust to noise or missing values<br>   <br>-Visually intuitive<br>   <br>-Fast training and prediction   </td>
+    <td class="tg-fymr">   <br>-Possible duplication within tree<br>   <br>-Complex trees difficult to interpret and easy to start   overfitting   </td>
+    <td class="tg-fymr">   <br>-Medical diagnosis<br>   <br>-Credit risk analysis<br>   <br>    </td>
+  </tr>
+  <tr>
+    <td class="tg-8nwd">   <br>Artificial Neural Networks   </td>
+    <td class="tg-8nwd">   <br>-Smooth interpolation between   data points<br>   <br>-Bias towards minima via gradient   descent   </td>
+    <td class="tg-8nwd">   <br>-Can model complex relationships<br>   <br>-Can separate signal from noise   </td>
+    <td class="tg-8nwd">   <br>-Can overfit<br>   <br>-Potential for long training   times<br>   <br>-Black box<br>   <br>-Many parameters to tune   </td>
+    <td class="tg-8nwd">   <br>-High dimensional datasets like   images<br>   <br>    </td>
+  </tr>
+  <tr>
+    <td class="tg-fymr">   <br>Boosting (AdaBoost)   </td>
+    <td class="tg-fymr">   <br>-Ensembles reduce the bias of individual learners   </td>
+    <td class="tg-fymr">   <br>-Flexibility to choose any type of weak learner<br>   <br>-Provable effectively given it picks a weak learner<br>   <br>-Increases margin which improves margin with additional learners<br>   <br>-Reduces overfitting<br>   <br>    </td>
+    <td class="tg-fymr">   <br>-Weak classifiers that are too complex lead to overfitting<br>   <br>-Vulnerable to noise<br>   <br>-Training is slow   </td>
+    <td class="tg-fymr">   <br>-Problems with lack of performance due to individual model   instability   </td>
+  </tr>
+  <tr>
+    <td class="tg-8nwd">   <br>Support Vector Machines   </td>
+    <td class="tg-8nwd">   <br>-Classes separated by wide margins   </td>
+    <td class="tg-8nwd">   <br>-Can model complex relationships<br>   <br>-Maximizing margins makes it   robust to noise   </td>
+    <td class="tg-8nwd">   <br>-Parameters non-intuitive<br>   <br>-Long runtime<br>   <br>-Does not perform well for large   or imbalanced class datasets   </td>
+    <td class="tg-8nwd">   <br>-Work well in complicated domains   with clear margin or separation.<br>   <br>    </td>
+  </tr>
+</tbody>
+</table>
 
 <blockquote> Future ML algorithm discussion coming... </blockquote>
 
