@@ -29,7 +29,7 @@ The actual age of the animal is determined by counting the numbers of rings - ho
 <figure class="image">
   <Image src="/images/project/machineLearning/wine-label-distribution.jpg" alt="high level view of GitHub browser">
   <figcaption>The distribution of wine quality scores and my specific binary classification (0 to 5 is 'bad', 6 to 9 is 'good')</figcaption>
-</figure>
+</figure><br />
 
 ## Algorithm Analysis
 
@@ -48,7 +48,7 @@ KNN is a simple instance-based algorithm that simply looks at the `k` nearest po
 <figure class="image">
   <Image src="/images/project/machineLearning/knn.png" alt="high level view of GitHub browser">
   <figcaption>Simple view of KNN classification</figcaption>
-</figure>
+</figure><br />
 
 As seen in one of the convergence curves where the train and test were plotted against our value of `k` - we can see the `**bias variance tradeoff**` at work. For low `k` values, we have a `high variance` situation with a highly complex model that only really works for training data - the model is not "general" enough. An intuitive way to think about this is if we have an outlier "good" wine classification in a normally "bad" wine region of space, if we have k=1, points around that outlier may be labelled incorrectly.
 
@@ -56,8 +56,9 @@ As seen in one of the convergence curves where the train and test were plotted a
   <Image src="/images/project/machineLearning/wine-knn.png" alt="optimal k values for knn">
   <figcaption>Train and Test scores vs K - with an optimal k at about 25</figcaption>
 </figure>
+<br />
 
-As we increase the value of `k` - it can be though of as smoothing out the decision surface - which will decrease variance and bias. Increasing `k` too far leads to the opposite scenario - a `high bias` situation. It's all about finding the right balance point.
+As we increase the value of `k` - it can be though of as smoothing out the decision surface - which will decrease variance and increase bias. Increasing `k` too far leads to the opposite scenario - a `high bias` situation. It's all about finding the right balance point.
 
 ### Decision Trees
 
@@ -69,6 +70,7 @@ In some of the max depth experiments run, increasing the max depth leads to over
   <Image src="/images/project/machineLearning/dt-pruning.jpg" alt="Decision tree pruning">
   <figcaption>Pruning can reduce overfitting</figcaption>
 </figure>
+<br />
 
 ### Artificial Neural Networks (ANN)
 
@@ -77,7 +79,7 @@ Artificial Neural Networks are learning algorithms modeled after brain neurons. 
 <figure class="image">
   <Image src="/images/project/machineLearning/ann.png" alt="Decision tree pruning">
   <figcaption>An Ann typically consists of an input layer, any number of hidden layers, and an output layer</figcaption>
-</figure>
+</figure><br />
 
 In my experiments I used `sklearn`'s `MLPClassifier` which uses stochastic gradient descent - this looks at each training example individually to update weights, offering slightly better runtime than the alternative batch gardient descent.
 
@@ -86,7 +88,7 @@ Some of the experiments here including comparing some of the activation function
 <figure class="image">
   <Image src="/images/project/machineLearning/ann-learning-curve.jpg" alt="ann learning curve">
   <figcaption>Wine converging at about 340 trainig examples, while abalone taks about 1000</figcaption>
-</figure>
+</figure><br />
 
 ### Boosting
 
@@ -118,7 +120,7 @@ Support vector machines attempts to draw an optimal boundary that maximizes the 
 
 Using `sklearn`'s support vector classifier, I plotted various hyperparameters including `gamma` (complexity of decision boundary), `C` (another parameter for decision boundary complexity), and several `kernel functions` (linear, rbf, poly).
 
-One of hte plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating am ore complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit.
+One of the plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating am ore complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit.
 
 <figure class="image">
   <Image src="/images/project/machineLearning/gamma-c-scores-svm.jpg" alt="support vector machine">
