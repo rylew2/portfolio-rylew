@@ -50,7 +50,7 @@ As we increase the value of `k` - it can be though of as smoothing out the decis
 
 ### Decision Trees
 
-In contract to KNN, a decision tree is an eager learner as it builds the model on the training data first. Decision trees ask yes or no questions on features to determine which direction to branch. The final leaf node contains the prediction class. Decision trees work well with good splits of the data. In order to measure the quality of splits, I ran Entropy and Gini Index in the hyperparameter grid search. Some decision tree algorithms only look one move ahead to determine the current root of the tree - this is generally ok but usually not the most optimal. You usually want good splits at the top which leads to shorter trees.
+In contrast to KNN, a decision tree is an eager learner as it builds the model on the training data first. Decision trees ask yes or no questions on features to determine which direction to branch. The final leaf node contains the prediction class. Decision trees work well with good splits of the data. In order to measure the quality of splits, I ran Entropy and Gini Index in the hyperparameter grid search. Some decision tree algorithms only look one move ahead to determine the current root of the tree - this is generally ok but usually not the most optimal. You usually want good splits at the top which leads to shorter trees.
 
 In some of the max depth experiments run, increasing the max depth leads to overfitting. If the tree is allowed too many nodes it starts to exactly fit the training data - therefore it generalizes poorly for test data. Pruning or trimming nodes can help alleviate some of these overfitting issues. Error reduction pruning will attempt remove the subtree at nodes, make them leaf and re-assigning a class. If the resulting tree performs at least as good that prune is kept. In both datasets pruning boosted scores from about 75 to 80%.
 
@@ -77,12 +77,13 @@ Some of the experiments here including comparing some of the activation function
   <figcaption>Wine converging at about 340 trainig examples, while abalone taks about 1000</figcaption>
 </figure>
 
-
 ### Boosting
 
+Boosting is an `ensemble` method of learning - the idea being combining many simple learners leads to a complex system that improves performance. In a common boosting algorithm like `Adaboost` each individual learner gets a weighted (depending on its error rate) vote towards the final hypothesis. In addition, each training example is given a variable weight. If the example is modeled poorly in previous learners, its weight increases, if its modeled correctly it decreases. Therefore, even with weak learners, we are always gaining information with learners.
 
 ### Support Vector Machines
 
+<blockquote> Future ML algorithms coming... </blockquote>
 ## Unsupervised - Randomized Optimization
 
 ## Unsupervised - Dimensionality reduction Algorithms
