@@ -73,17 +73,66 @@ In my experiments I used `sklearn`'s `MLPClassifier` which uses stochastic gradi
 Some of the experiments here including comparing some of the activation functions (logistic, relu, tanh, identity), comparing varying network dimensions (5, 10, 20 in the first layer versus 5, 10 or 20 in the second layer). Overall ANN needs the fewest number of tarining examples of all the supervised algorithms to converge.
 
 <figure class="image">
-  <Image src="/images/project/machineLearning/ann-learning-curve.jpg" alt="Decision tree pruning">
+  <Image src="/images/project/machineLearning/ann-learning-curve.jpg" alt="ann learning curve">
   <figcaption>Wine converging at about 340 trainig examples, while abalone taks about 1000</figcaption>
 </figure>
 
 ### Boosting
 
-Boosting is an `ensemble` method of learning - the idea being combining many simple learners leads to a complex system that improves performance. In a common boosting algorithm like `Adaboost` each individual learner gets a weighted (depending on its error rate) vote towards the final hypothesis. In addition, each training example is given a variable weight. If the example is modeled poorly in previous learners, its weight increases, if its modeled correctly it decreases. Therefore, even with weak learners, we are always gaining information with learners.
+Boosting is an `ensemble` method of learning - the idea being combining many simple learners leads to a complex system that improves performance. In a common boosting algorithm like `Adaboost` each individual learner gets a weighted (depending on its error rate) vote towards the final hypothesis. In addition, each training example is given a variable weight. If the example is modeled poorly in previous learners, its weight increases, if its modeled correctly it decreases. Therefore, even with weak learners, we are always gaining information with learners. In general boosting will reduce the bias (model complexity) in a model that's too general, whereas a related but different method `bagging` will reduce reduce variance of a model that is too complex. Boosting can occasionally cause overfitting in a rare case where the first learner perfectly fits the training data causing weights to never be updated.
 
-### Support Vector Machines
+<figure class="image">
+  <Image src="/images/project/machineLearning/boostingbagging.jpg" alt="boosting-vs-bagging">
+  <figcaption>A parallel vs sequential method of ensemble learning</figcaption>
+</figure>
+<br />
 
-<blockquote> Future ML algorithms coming... </blockquote>
+The experiments run on Adaboost included varying number of estimators, varying learning rate, and comparing learning rate vs the number of estimators in 3d contour plots. Adaboost has default learning rate of 1 - however this will slow down the adaptation of the model to training data. A max Abalone score around 30 estimators and a learning rate of 0.04 indicates that estimators have an equal voting power.
+
+
+<figure class="image">
+  <Image src="/images/project/machineLearning/boostingLearningRate.jpg" alt="boostingLearningRate">
+  <figcaption>A clear max score around 35 estimators and a learning rate of 0.04</figcaption>
+</figure>
+<br />
+
+### Support Vector Machines (SVM)
+Support vector machines attempts to draw an optimal boundary that maximizes the margin width between different classes. Gutter lines define the max margin and go through points closest to the boundary. While ANN tries to reduce the error cost function, an SVM tries to maximize the margin while still classifying properly. 
+
+<figure class="image">
+  <Image src="/images/project/machineLearning/svm.jpg" alt="support vector machine">
+  <figcaption>Suppor</figcaption>
+</figure>
+<br />
+
+Using `sklearn`'s support vector classifier, I plotted various hyperparameters including `gamma` (complexity of decision boundary), `C` (another parameter for decision boundary complexity), and several `kernel functions` (linear, rbf, poly).
+
+One of hte plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating am ore complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit. 
+
+<figure class="image">
+  <Image src="/images/project/machineLearning/gamma-c-scores-svm.jpg" alt="support vector machine">
+  <figcaption>Another example of bias-variance tradeoff - max scores around a `gamma` of 3 and a `C` of 10</figcaption>
+</figure>
+<br />
+
+
+
+### Comparison and Conclusion of Supervised Algorithms
+
+No final comparison is complete without consideration of both test performance and runtimes. Boosting was the clear winner and outperforms all other algorithms for both datasets. 
+
+<figure class="image">
+  <Image src="/images/project/machineLearning/supervised-test-perf.jpg" alt="support vector machine">
+  <figcaption>Boosting takes the cake!</figcaption>
+</figure>
+<br />
+
+
+
+
+
+<blockquote> Future ML algorithm discussion coming... </blockquote>
+
 ## Unsupervised - Randomized Optimization
 
 ## Unsupervised - Dimensionality reduction Algorithms
