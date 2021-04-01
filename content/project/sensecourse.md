@@ -10,6 +10,7 @@ sourceCode: "https://github.com/rylew2/SenseCourse"
 presentation: "https://www.youtube.com/watch?v=LqpXGfcWBt0"
 tags:
   - flask
+  - python
   - javascript
   - omscs
   - edtech

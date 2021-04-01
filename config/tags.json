@@ -5,6 +5,21 @@
     "description": "All things javascript"
   },
   {
+    "tag": "sklearn",
+    "title": "sklearn",
+    "description": ""
+  },
+  {
+    "tag": "python",
+    "title": "Python",
+    "description": "One of the greatest language ever!"
+  },
+  {
+    "tag": "machine learning",
+    "title": "Machine Learning",
+    "description": "Machine Learning and Data Science topics"
+  },
+  {
     "tag": "angular",
     "title": "Angular",
     "description": "All things angular"

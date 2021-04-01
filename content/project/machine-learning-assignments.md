@@ -5,15 +5,26 @@ slug: "machine-learning-assignments"
 description: "A survey of machine learning topics including supervised, unsupervised, clustering and dimensionality reduction, and reinforcement learning"
 previewImage: "/images/project/machineLearning/brain.png"
 sourceCode: "https://github.com/rylew2/Machine-Learning-Assignments"
+tags:
+  - python
+  - sklearn
+  - machine learning
+  - omscs
 ---
 
-In the Machine Learning courses we explored various algorithms via experimental analysis on two datasets - I ended up choosing `white wine` and `abalone`. The following is a discussion of just the primary components about these machine learning algorithms.
+In the primary Machine Learning course we explored various algorithms via experimental analysis on two datasets - `white wine` and `abalone`. The following is a high level discussion of some of the analysis I performed on supervised learning algorithms.
 
 ## Choosing Datasets
 
-The popular <ins><a href="https://archive.ics.uci.edu/ml/datasets/wine">wine quality score dataset</a></ins> I chose is based on a chemical analysis of wines grown in Italy - and the resulting user "quality" scores - scored from 0 to 10. Some of the wine dataset attributes include the amounts of: alcohol, malic acid, magnesium, phenols, and flavonoids. The idea of choosing a dataset like this is that it's a simple classification problem that's well suited for determining if chemical constituents of wine can predict quality scores.. The wine industry is worth billions in California alone, and if wine producers can find out what chemical constituents produce higher quality wines (at least in the mind of customers), then they likely will.
+The popular <ins><a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/wine">wine quality score dataset</a></ins> I chose is based on a chemical analysis of wines grown in Italy - and the resulting user "quality" scores - scored from 0 to 10. Some of the wine dataset attributes include the amounts of: <blockquote>alcohol, malic acid, magnesium, phenols, and flavonoids</blockquote>
 
-The other dataset I used was a modified version of the <ins><a href="https://archive.ics.uci.edu/ml/datasets/abalone">ablone age</a></ins> dataset - the idea being to predict the age of an abalone based on physical measurements such as: length, diameter, shucked weight, gender. The actual age of the animal is determined by counting the numbers of rings - however this is a time consuming process that requires a microscope. Therefore the goal of this dataset is to see if there's a better proxy attribute to use to count rings.
+The idea of choosing a dataset like this is that it's a simple classification problem that's well suited for determining if chemical constituents of wine can predict quality scores.. The wine industry is worth billions in California alone, and if wine producers can find out what chemical constituents produce higher quality wines (at least in the mind of customers), then they likely will.
+
+The other dataset I used was a modified version of the <ins><a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/abalone">ablone age</a></ins> dataset - the idea being to predict the age of an abalone based on physical measurements such as:
+
+<blockquote>length, diameter, shucked weight, and gender </blockquote>
+
+The actual age of the animal is determined by counting the numbers of rings - however this is a time consuming process that requires a microscope. Therefore the goal of this dataset is to see if there's a better proxy attribute to use to count rings.
 
 <figure class="image">
   <Image src="/images/project/machineLearning/wine-label-distribution.jpg" alt="high level view of GitHub browser">
