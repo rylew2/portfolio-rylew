@@ -114,7 +114,7 @@ Support vector machines attempts to draw an optimal boundary that maximizes the 
 
 <figure class="image">
   <Image src="/images/project/machineLearning/svm.jpg" alt="support vector machine">
-  <figcaption>Suppor</figcaption>
+  <figcaption>Support vectors and the maximum margin</figcaption>
 </figure>
 <br />
 
