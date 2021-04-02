@@ -120,7 +120,7 @@ Support vector machines attempts to draw an optimal boundary that maximizes the 
 
 Using `sklearn`'s support vector classifier, I plotted various hyperparameters including `gamma` (complexity of decision boundary), `C` (another parameter for decision boundary complexity), and several `kernel functions` (linear, rbf, poly).
 
-One of the plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating am ore complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit.
+One of the plots including comparing `gamma` vs c on a contour plot with scores. Generally a high gamma (like a low `k` in KNN) gives closer points more influence and creating a more complicated decision boundary. `C` acts similarly - a large value of `C` indicates a more complicated decision boundary. Often times the contour plots perfectly met intuition or expectations, but when I started plotting contour plots it's sometimes tricky for them to exactly match expectations. That's true for the contour plot below - in general the high value of these hyperparameters represents overfit areas - while the opposite corner represents underfit.
 
 <figure class="image">
   <Image src="/images/project/machineLearning/gamma-c-scores-svm.jpg" alt="support vector machine">
