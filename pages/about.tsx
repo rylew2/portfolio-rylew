@@ -27,8 +27,8 @@ const About = () => {
             <p>
               I am a developer with a passion for continuous learning, a
               collaborative approach, and using technology to solve real-world
-              problems. At the moment, I build React solutions backed by
-              SharePoint as a persistent store.
+              problems. At the moment, I build React solutions on top of content
+              management platforms.
             </p>
             <p>
               Outside of work, I enjoy the vast array of food choices here in
