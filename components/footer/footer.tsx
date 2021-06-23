@@ -8,11 +8,8 @@ import { StyledFooterSection } from "../styles/footer.styles";
 
 const Footer = () => (
   <>
-  
     <StyledFooterSection>
-    <div className="snowFooter">
-      
-      </div>
+      <div className="snowFooter"></div>
       <Container className="footer-container">
         <div className="footer-copyright">©{new Date().getFullYear()}</div>
 
@@ -33,7 +30,7 @@ const Footer = () => (
           <li className="footerSocialLink">
             <a
               className="footerLink"
-              href="https://www.linkedin.com/in/ryan-lewis-378657a/"
+              href="https://github.com/rylew2"
               target="_blank"
               rel="noreferrer noopener"
               aria-label="github"
