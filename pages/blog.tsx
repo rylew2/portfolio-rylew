@@ -18,7 +18,7 @@ const Blog = ({ blog }) => {
           Long form blog about new things I'm learning about
         </p>
 
-        <blockquote>More blogs coming soon April 2021 🚀</blockquote>
+        <blockquote>More blogs coming soon... 🚀</blockquote>
         <Cards data={blog} basePath="blog" />
       </Container>
     </Layout>
