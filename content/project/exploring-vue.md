@@ -12,7 +12,7 @@ tags:
   - javascript
 ---
 
-I wanted to explore VueJS as it has been slowly growing in popularity and following a similar path as React - using superhero frameworks like <a href="https://nuxtjs.org/">Nuxt.js</a> and state management <a href="https://vuex.vuejs.org/">Vuex</a>.
+I wanted to explore VueJS as it has been slowly growing in popularity and following a similar path as React - for example, providing options to scale using superhero frameworks like <a href="https://nuxtjs.org/">Nuxt.js</a> and state management <a href="https://vuex.vuejs.org/">Vuex</a>.
 
 <figure class="image">
   <Image src="/images/project/exploringVue/comparison.png" alt="high level view of GitHub browser">
@@ -20,13 +20,13 @@ I wanted to explore VueJS as it has been slowly growing in popularity and follow
 </figure>
 <br />
 
-While the 2020 front end framework survey indicates React is still ahead - if you look at Github stars, the Vue repo actually has more love. React was likely able to make a big impact earlier due to Facebook's support - but given that Vue is not backed by a tech giant, it's done pretty well for itself.
+While the 2020 front end framework survey indicates React is still in the lead - if you look at Github stars, the Vue repo actually has the most love. React was likely able to make a big impact earlier due to Facebook's support - but given that Vue is not backed by a tech giant, it's done pretty well for itself.
 
 ## Building a simple NASA API Vue App
 
 For this project I wanted to quickly build out a Vue app that would make a simple API call and display data in an easy to understand way. I ended up choosing the Near Earth Object Web Service from <a href="https://api.nasa.gov/">NASA's Open API</a>. This web service lets you search for asteroids based on their closest approach date to Earth - along with a bevy of metadata such as the size of the asteroid and whether or not its deemed hazardous. When first seeing the results from the API - it was amazing to see just how many near earth asteroids are out there - it really is a cosmic shooting gallery out in space.
 
-The way I set up this project was first to chose the Vue version - with the newer Vue 3 supporting a new `Composition API`. While Vue 2 uses the `Options API` which utilizes `data`, `methods`, and `mounted` function for example - <a href="https://markus.oberlehner.net/blog/vue-3-composition-api-vs-options-api/">Vue 3</a> utilizes a single `setup` hook that makes it <a href="https://markus.oberlehner.net/blog/vue-3-composition-api-vs-options-api/">easier to share code amongs components</a>.
+The way I set up this project was first to chose the Vue version - with the newer Vue 3 supporting a new `Composition API`. While Vue 2 uses the `Options API` which utilizes the `data`, `methods`, and `mounted` function for example. <a href="https://markus.oberlehner.net/blog/vue-3-composition-api-vs-options-api/">Vue 3</a> utilizes a single `setup` hook that makes it <a href="https://markus.oberlehner.net/blog/vue-3-composition-api-vs-options-api/">easier to share code amongs components</a>.
 
 Because this was a quick and dirty app and I wanted to focus on the Vue basics - I opted to go for Vue 2. Since I've used Bootstrap quite a bit before - I decided to opt for Vuetify - the Material Framework for Vue.
 
@@ -101,13 +101,13 @@ I only scratched the surface of framework specific Vue features - such as the `w
 
 I ended up using the `$event` emitter to pass events from child back up to parent components. Typically in React you might do this by passing a prop down as a function. And if this project was larger, you might consider using something like Vuex
 
-Another feature I wish I had tried was `v-model` - which is quite similar to somethign in Angular. Vue's two way binding system is different than React's one-way binding - for example, in React you usually have to call an event handler for an input update to affect state - wheras with Vue, the framework's watchers take care of this behind the scenes.
+Another feature I wish I had tried was `v-model` - which is quite similar to an Angular `ng-model`. Vue's (and Angular's) two way binding system is different than React's one-way binding - for example, in React you usually have to call an event handler for an input update to affect state - whereas with Vue, the framework's watchers take care of this behind the scenes.
 
 ### React vs Vue
 
 There are a lot of similarities between the two here - such as the core libraries being complemented by separate companion libraries that handle routing and global state management. They both utilize a virtual DOM. They both promote modular reusable and composable components.
 
-Some of the differences include:
+There are some nuanced differences though - they include:
 
 - <u>Optimizing re-renders</u> <br /><br />
   React uses `PureComponent` or `shouldComponentUpdate` to prevent unneccessary re-renders - the downside being all child components are dependent on a parent with one of these optimizations. All Vue components have a `shouldComponentUpdate` equivalent - simplifying the nested component caveats. Vue says this removes the need for performance optimization concerns for Vue apps - allowing developers to focus on building the app itself.
