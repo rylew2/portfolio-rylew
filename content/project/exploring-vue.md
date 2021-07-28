@@ -128,7 +128,7 @@ There are some nuanced differences though - they include:
 - <u>Vue native rendered support is still in its infacy</u><br /><br />
   While React Native still likely takes the cake here for its native rendering using the same React component model - Vue's <a href="https://github.com/alibaba/weex">`Weex`</a> cross-platform UI framework has been gaining momentum.
 
-### Sprinkle in some testing
+### Some testing sprinkled in
 
 I did try out `vue-test-utils` - but I'd like to come back and revisit this after I take the Testing JavaScript course by Kent Dodds. Since `vue-test-utils` comes with both unit and e2e test folder structures out of the box I decided to write a few basic test cases.
 
