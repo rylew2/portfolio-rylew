@@ -119,16 +119,14 @@ There are some nuanced differences though - they include:
   Vue favors the default method using a simple `<style scoped>` tag in single-file components
 
 - <u>The `Vue CLI` offers additional features over `create-react-app`</u><br /><br />
-
-`create-react-app` does not allow configuration during project setup while the Vue CLI does and it can be extended via plugins. Furthermore, the Vue CLI has the added feature of allowing a project to be defined from presets - a JSON object that has pre-defined options/plugins for a new project.
+  `create-react-app` does not allow configuration during project setup while the Vue CLI does and it can be extended via plugins. Furthermore, the Vue CLI has the added feature of allowing a project to be defined from presets - a JSON object that has pre-defined options/plugins for a new project.
 
 - <u>Vue doesn't favor/require ES6, JSX, or build-systems</u><br /><br />
-  Vue can simply be run by including a script tag (`<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>`) and writing Vue code without the need for performance concerns. We also don't need to worry about
+  Vue can simply be run by including a script tag (`<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>`) and writing Vue code without the need for performance concerns. 
+  Therefore - the docs suggest that Vue can scale both up and down - (React is more difficult for minimal deployments)
 
-  Vue can scale VUE both up and down - React cannot scale down as easy as Vue. As an example of scaling down Vue - you can simply add a script tag
-
-- <u>Vue developing support for native rendered apps</u><br /><br />
-  While React Native still likely takes the cake here for its native rendering of the same React component model - Vue's `Weex` cross-platform UI framework has been gaining momentum.
+- <u>Vue native rendered support is still in its infacy</u><br /><br />
+  While React Native still likely takes the cake here for its native rendering using the same React component model - Vue's <a href="https://github.com/alibaba/weex">`Weex`</a> cross-platform UI framework has been gaining momentum.
 
 ### Sprinkle in some testing
 
