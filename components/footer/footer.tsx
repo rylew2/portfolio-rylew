@@ -37,7 +37,7 @@ const Footer = () => (
               aria-label="github"
             >
               <div className="footerIcon github">
-                <FontAwesomeIcon icon={faGithub} size="lg" />
+                <FontAwesomeIcon icon={faGithub as IconProp} size="lg" />
               </div>
             </a>
           </li>
@@ -51,7 +51,7 @@ const Footer = () => (
               aria-label="email"
             >
               <div className="footerIcon email envelope">
-                <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                <FontAwesomeIcon icon={faEnvelope as IconProp} size="lg" />
               </div>
             </a>
           </li>

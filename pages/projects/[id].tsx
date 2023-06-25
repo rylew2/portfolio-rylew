@@ -9,6 +9,7 @@ import { Chips } from "../../components/chips/chips";
 import { StyledContent } from "../../components/styles/content.styles";
 import { getAllContentIds, getContentData } from "../../lib/content";
 import { IContentData } from "../blog/[id]";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 /**
  *  Renders work markdown posts
  */
@@ -35,7 +36,7 @@ const Project = ({ projectData }) => {
                 >
                   <FontAwesomeIcon
                     color={"#5a73bb"}
-                    icon={faChrome}
+                    icon={faChrome as IconProp}
                     size="lg"
                   />{" "}
                   <b>Demo:</b> {projectData.liveSite}
@@ -50,7 +51,7 @@ const Project = ({ projectData }) => {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  <FontAwesomeIcon color={"#768c76"} icon={faCode} size="lg" />{" "}
+                  <FontAwesomeIcon color={"#768c76"} icon={faCode as IconProp} size="lg" />{" "}
                   <b>Source Code:</b> {projectData.sourceCode}
                 </a>
               </div>
@@ -64,7 +65,7 @@ const Project = ({ projectData }) => {
                 >
                   <FontAwesomeIcon
                     color={"Tomato"}
-                    icon={faYoutube}
+                    icon={faYoutube as IconProp}
                     size="lg"
                   />{" "}
                   <b>Presentation:</b> {projectData.presentation}
