@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Container } from "../container";
 import { StyledFooterSection } from "../styles/footer.styles";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Footer = () => (
   <>
@@ -23,7 +24,7 @@ const Footer = () => (
               aria-label="linkedin"
             >
               <div className="footerIcon linkedin">
-                <FontAwesomeIcon icon={faLinkedin} size="lg" />
+                <FontAwesomeIcon icon={faLinkedin as IconProp} size="lg" />
               </div>
             </a>
           </li>
