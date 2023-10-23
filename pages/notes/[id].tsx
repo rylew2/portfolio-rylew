@@ -20,9 +20,9 @@ const Note = ({ notesData }) => {
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>{notesData.date}</time>
+          {/* <time>{notesData.date.toLocaleDateString()}</time> */}
           {notesData.previewImage && (
-            <Image src={notesData.previewImage} height={550} width={1200} />
+            <Image alt="notesimage" src={notesData.previewImage} height={550} width={1200} />
           )}
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
           {notesData.tags && <Chips items={notesData.tags} />}

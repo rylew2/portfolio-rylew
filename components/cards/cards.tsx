@@ -45,7 +45,8 @@ const Cards = ({ data, basePath }: ICard) => {
 
           {singleCard.liveSite || singleCard.sourceCode ? (
             <div className="card-demo-link">
-              <time>{singleCard.date}</time>
+             {/* <time>{singleCard.date.toLocaleDateString()}</time> */}
+
               {singleCard.liveSite && (
                 <a
                   href={singleCard.liveSite}
@@ -81,7 +82,8 @@ const Cards = ({ data, basePath }: ICard) => {
               )}
             </div>
           ) : (
-            <time>{singleCard.date}</time>
+            <span></span>
+            // <time>{singleCard.date.toLocaleDateString()}</time>
           )}
           <Link
             href={`/${basePath}/[id]`}

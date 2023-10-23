@@ -18,10 +18,10 @@ const Blog = ({ blogData }: { blogData: IContentData }) => {
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>{blogData.date}</time>
+        {/* <time>{blogData.date instanceof Date ? blogData.date.toLocaleDateString() : blogData.date}</time> */}
           {blogData.tags && <Chips items={blogData.tags} />}
           {blogData.previewImage && (
-            <Image src={blogData.previewImage} height={550} width={1200} />
+            <Image alt="blogimage" src={blogData.previewImage} height={550} width={1200} />
           )}
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </StyledContent>
@@ -54,6 +54,7 @@ export interface IContentData {
 
 export const getStaticProps = async ({ params }) => {
   const blogData: IContentData = await getContentData(params.id, "blog");
+
   return {
     props: {
       blogData,

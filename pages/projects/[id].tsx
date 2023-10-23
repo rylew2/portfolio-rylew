@@ -21,10 +21,10 @@ const Project = ({ projectData }) => {
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>{projectData.date}</time>
+          {/* <time>{projectData.date.toLocaleDateString()}</time> */}
           {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
-            <Image src={projectData.previewImage} height={550} width={1200} />
+            <Image alt="projectimage" src={projectData.previewImage} height={550} width={1200} />
           )}
           <blockquote>
             {projectData.liveSite && (

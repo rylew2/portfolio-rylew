@@ -1,4 +1,3 @@
-import { exception } from "console";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -41,7 +40,7 @@ export const getAllContentIds = (contentType: IContentType) => {
       break;
 
     default:
-      throw new exception("You have to provide a content type");
+      throw new Error("You have to provide a content type");
   }
 
   // return the slug of all the content IDs
@@ -89,7 +88,7 @@ export const getContentData = async (id: string, contentType: IContentType) => {
       break;
 
     default:
-      throw new exception("You have to provide a content type");
+      throw new Error("You have to provide a content type");
   }
 
   // loop through all the content types and compare the slug to get the filename
@@ -279,8 +278,8 @@ export const getContentInCategory = (
 
 /**
  * Sorts content by their dates
- * @param a {Date} - Date of post 1
- * @param b {Date} - Date of post 2
+ * @param a {date.toLocaleDateString()} - Date of post 1
+ * @param b {date.toLocaleDateString()} - Date of post 2
  */
 const sortByDate = (a, b) => {
   if (a.date > b.date) {

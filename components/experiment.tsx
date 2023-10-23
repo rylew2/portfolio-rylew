@@ -31,7 +31,7 @@ const ExperimentItem = ({ experiment }) => {
         target="_blank"
       >
         <div className="experiment-meta">
-          <time className="experiment-date">{experiment.date}</time>
+          {/* <time className="experiment-date">{experiment.date instanceof Date? experiment.date.toLocaleDateString() : experiment.date}</time> */}
           <span>{icon}</span>
         </div>
         <h3 className="experiment-item-heading">{experiment.title}</h3>
