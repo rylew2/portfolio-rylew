@@ -27,11 +27,9 @@ const Nav = () => {
       <Container>
         <nav className="navWrapper">
           <div className="navLeft">
-            <Link href="/">
-              <a className="no-underline">
+            <Link href="/" className="no-underline">
                 <Logo />
                 <span className="navLeft-title">{SiteConfig.author.name}</span>
-              </a>
             </Link>
           </div>
 
@@ -46,8 +44,8 @@ const Nav = () => {
                 return (
                   <li key={idx} className="navLinkItem">
                     {item.link ? (
-                      <Link href={item.link}>
-                        <a className="navLinkAnchor">{item.title}</a>
+                      <Link href={item.link} className="navLinkAnchor">
+                            {item.title}
                       </Link>
                     ) : (
                       <a

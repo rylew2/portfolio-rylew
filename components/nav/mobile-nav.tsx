@@ -12,7 +12,9 @@ const MobileNav = () => {
               <li key={idx} className="listItem">
                 {item.link ? (
                   <Link href={item.link}>
-                    <a className="link">{item.title}</a>
+                    <a className="link">
+                        {item.title}
+                        </a>
                   </Link>
                 ) : (
                   <a

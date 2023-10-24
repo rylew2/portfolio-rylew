@@ -20,7 +20,7 @@ const Note = ({ date, title, slug, basePath }: INote) => {
             <span className="date-icon">
               <Calendar className="icon" />
             </span>
-            {/* <p className="date-written">{date.toLocaleDateString()}</p> */}
+            <p className="date-written">{date.toLocaleDateString()}</p>
           </time>
           <h2>{title}</h2>
         </StyledNote>
