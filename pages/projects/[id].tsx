@@ -35,11 +35,7 @@ const Project = ({ projectData }) => {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  {/* <FontAwesomeIcon
-                    color={"#5a73bb"}
-                    icon={faChrome as IconProp}
-                    size="lg"
-                  />{" "} */}
+ 
                   <b>Demo:</b> {projectData.liveSite}
                 </a>
               </div>
