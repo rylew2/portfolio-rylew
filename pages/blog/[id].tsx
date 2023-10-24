@@ -18,7 +18,7 @@ const Blog = ({ blogData }: { blogData: IContentData }) => {
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-        {/* <time>{blogData.date instanceof Date ? blogData.date.toLocaleDateString() : blogData.date}</time> */}
+        <time>{blogData.date instanceof Date ? blogData.date.toLocaleDateString() : blogData.date}</time>
           {blogData.tags && <Chips items={blogData.tags} />}
           {blogData.previewImage && (
             <Image alt="blogimage" src={blogData.previewImage} height={550} width={1200} />
