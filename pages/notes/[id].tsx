@@ -20,7 +20,7 @@ const Note = ({ notesData }) => {
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          {/* <time>{notesData.date.toLocaleDateString()}</time> */}
+           <time>{notesData.date instanceof Date? notesData.date.toLocaleDateString(): notesData.date}</time>
           {notesData.previewImage && (
             <Image alt="notesimage" src={notesData.previewImage} height={550} width={1200} />
           )}

@@ -21,7 +21,7 @@ const Project = ({ projectData }) => {
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          {/* <time>{projectData.date.toLocaleDateString()}</time> */}
+          <time>{projectData.date instanceof Date? projectData.date.toLocaleDateString(): projectData.date}</time>
           {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
             <Image alt="projectimage" src={projectData.previewImage} height={550} width={1200} />
