@@ -48,6 +48,7 @@ const Project = ({ projectData }) => {
                                     rel="noreferrer noopener"
                                 >
                                     <FontAwesomeIcon
+                                        color="blue"
                                         icon={faChrome as IconProp}
                                         style={{
                                             width: '25px',
@@ -68,7 +69,7 @@ const Project = ({ projectData }) => {
                                     style={{ display: 'inline-block' }}
                                 >
                                     <FontAwesomeIcon
-                                        color="#768c76"
+                                        color="green"
                                         icon={faCode}
                                         style={{
                                             width: '25px',
