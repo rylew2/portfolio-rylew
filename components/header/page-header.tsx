@@ -1,20 +1,20 @@
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from 'react'
 
-import { Container } from "../container";
-import { StyledPageHeading } from "../styles/header.styles";
+import { Container } from '../container'
+import { StyledPageHeading } from '../styles/header.styles'
 
 interface IPageHeader extends HTMLAttributes<HTMLHeadingElement> {
-  headingTitle: string;
+    headingTitle: string
 }
 
 const PageHeader = ({ headingTitle }: IPageHeader) => (
-  <StyledPageHeading className="page">
-    <Container>
-      <div className="header-container">
-        <h1>{headingTitle}</h1>
-      </div>
-    </Container>
-  </StyledPageHeading>
-);
+    <StyledPageHeading className="page">
+        <Container>
+            <div className="header-container">
+                <h1>{headingTitle}</h1>
+            </div>
+        </Container>
+    </StyledPageHeading>
+)
 
-export default PageHeader;
+export default PageHeader

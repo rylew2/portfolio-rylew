@@ -1,6 +1,6 @@
-import { AppProps } from "next/app";
+import { AppProps } from 'next/app'
 
-import "../components/styles/layout.css";
+import '../components/styles/layout.css'
 
 /**
  * Root level component for all pages
@@ -8,7 +8,7 @@ import "../components/styles/layout.css";
  * @param {object} pageProps All props for the page
  */
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+    return <Component {...pageProps} />
 }
 
-export default MyApp;
+export default MyApp
