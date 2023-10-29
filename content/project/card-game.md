@@ -53,29 +53,29 @@ The store itself was fairly straightforward with 2 actions (`deal` and `reset`),
 
 The store's `deal` reducer:
 
-```
-    deal: (state: GameState, action: PayloadAction<DealAction>) => {
-      const { hand, deck } = action.payload;
+```js
+deal: (state: GameState, action: PayloadAction<DealAction>) => {
+    const { hand, deck } = action.payload;
 
-      const acesInHand = getAcesInHand(hand); // call to utility function
-      const stateAcesLeftInDeck = state.acesLeft - acesInHand;
+    const acesInHand = getAcesInHand(hand); // call to utility function
+    const stateAcesLeftInDeck = state.acesLeft - acesInHand;
 
-      // directly update state variables in an immutable way using redux-toolkit/Immer
-      state.deck = deck;
-      state.hand = hand;
-      state.cardsLeft = deck.length;
-      state.acesLeft -= acesInHand;
+    // directly update state variables in an immutable way using redux-toolkit/Immer
+    state.deck = deck;
+    state.hand = hand;
+    state.cardsLeft = deck.length;
+    state.acesLeft -= acesInHand;
 
-      // check for game phase change if no aces left
-      if (stateAcesLeftInDeck <= 0) {
-        // if aces in hand on the last deal
-        if (acesInHand >= 1 && deck.length === 0) {
-          state.gamePhase = GamePhase.Won;
-        } else {
-          state.gamePhase = GamePhase.Lost;
-        }
-      }
-    },
+    // check for game phase change if no aces left
+    if (stateAcesLeftInDeck <= 0) {
+    // if aces in hand on the last deal
+    if (acesInHand >= 1 && deck.length === 0) {
+        state.gamePhase = GamePhase.Won;
+    } else {
+        state.gamePhase = GamePhase.Lost;
+    }
+    }
+},
 ```
 
 ### Testing
@@ -83,24 +83,24 @@ The store's `deal` reducer:
 Once the redux store `renderWitProviders` is setup, it becomes really easy to make assertions (using `React Testing Library`) for what's directly on the screen in a given state:
 
 ```js
-   test('overridden initial state', () => {
-        const preloadedState = {
-          game: {
-            deck: [],
-            hand: [],
-            cardsLeft: 30,
-            acesLeft: 1,
-            gamePhase: GamePhase.InProgress,
-          },
-        };
+test('overridden initial state', () => {
+    const preloadedState = {
+        game: {
+        deck: [],
+        hand: [],
+        cardsLeft: 30,
+        acesLeft: 1,
+        gamePhase: GamePhase.InProgress,
+        },
+    };
 
-        renderWithProviders(<App />, {
-          preloadedState,
-        });
+    renderWithProviders(<App />, {
+        preloadedState,
+    });
 
-        expect(screen.getByText('30')).toBeInTheDocument();
-        // additional assertions...
-      });
+    expect(screen.getByText('30')).toBeInTheDocument();
+    // additional assertions...
+});
 ```
 
 Or even a simple test that actually clicks things on the screen (I usually define button clicks and actions as their own functions to keep tests compact):
