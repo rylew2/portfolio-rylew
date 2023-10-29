@@ -45,7 +45,7 @@ Since the look and feel was not an area I wanted to perfect, I tried to speed th
 
 Simlarly with the animation and rotation - I quickly gave a bit of a curve to make the hand look like it was dealt, added some opacity animations as cards were "dealt" into place on the board, and added confettie animation (3rd party package) for the win state.
 
-#### React/state considerations
+### React/state considerations
 
 Typically `useState` suffices for a small app like this, but I wanted some experience with `redux-toolkit` - so I spent some time reading their [excellent docs](https://redux-toolkit.js.org/tutorials/typescript) to help bootstrap the setup of typescript friendly action creators and a test setup file that made it easy to mock the redux store so I could test any state.
 
@@ -78,11 +78,11 @@ The store's `deal` reducer:
     },
 ```
 
-#### Testing
+### Testing
 
 Once the redux store `renderWitProviders` is setup, it becomes really easy to make assertions (using `React Testing Library`) for what's directly on the screen in a given state:
 
-```
+```js
    test('overridden initial state', () => {
         const preloadedState = {
           game: {
@@ -105,7 +105,7 @@ Once the redux store `renderWitProviders` is setup, it becomes really easy to ma
 
 Or even a simple test that actually clicks things on the screen (I usually define button clicks and actions as their own functions to keep tests compact):
 
-```
+```js
   test('reset game', async () => {
       renderWithProviders(<App />);
 
@@ -117,7 +117,8 @@ Or even a simple test that actually clicks things on the screen (I usually defin
     });
 ```
 
-#### If more time allowed for the front end:
+
+### If more time allowed for the front end:
 
 While I wanted to touch all parts of the stack with this project and not spend a ton of time perfecting the frontend, there are a few areas I wish I had more time to explore:
 
@@ -131,5 +132,6 @@ While I wanted to touch all parts of the stack with this project and not spend a
     -   Creating a reusable `Button` component for example
     -   Combining the game state components into one shared component ( combining GameWon, GameInProgress, GameLost)
 -   Pull test helper functions out to separate file
+
 
 # Backend
