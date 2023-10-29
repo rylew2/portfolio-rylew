@@ -33,7 +33,7 @@ In this project, I was interested in working with a new stack, so I took on a pr
 -   The game can be replayed as many times as needed - there's always a Reset (or `Play Again`) button present
 -   The number of cards left and the number of aces left are displayed at the top
 
-# Frontend App
+## Frontend App
 
 I first built the frontend app (without any GraphQL) and a sort of mocked deck. The time consuming part here was setting up all the CSS - especially for intricate pieces like the card suit (club/ace/heart/diamond in different orientations), the card animation and rotation, and the overall layout.
 
@@ -116,7 +116,8 @@ Or even a simple test that actually clicks things on the screen (I usually defin
       });
     });
 ```
-
+<br />
+<br />
 
 ### If more time allowed for the front end:
 
@@ -134,4 +135,4 @@ While I wanted to touch all parts of the stack with this project and not spend a
 -   Pull test helper functions out to separate file
 
 
-# Backend
+## Backend
