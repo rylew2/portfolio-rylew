@@ -133,6 +133,86 @@ While I wanted to touch all parts of the stack with this project and not spend a
     -   Creating a reusable `Button` component for example
     -   Combining the game state components into one shared component ( combining GameWon, GameInProgress, GameLost)
 -   Pull test helper functions out to separate file
+-   Exposing `graphqlService` as a hook instead of a service
+-
 
 
 ## Backend
+
+The backend work including setting up a DB schema that has a `card` table that stores all 52 cards for a deck, with each card having a suit and rank, and a particular status (`Deck`, `Hand`, or `Discarded`). There's also a simple `game` table that simply stores the game phase (`In Progress`, `Won`, `Lost`, `Loading`) - this allows multiple games to be stored. Along with the standard Django tables, this was all that was needd to represent this game on the backend.
+
+To get to 3rd normal form, I believe we could introduce a lookup table for the card status - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
+
+Most of the functionality to update the database was contained in `GameQueryService` - which I just quickly turned into a collection of static methods utilizing Django ORM to pull or update data. A possible more ergonomic way of arranging this would be to have more of this logic in the model. I preferred the clean separation and ease of development a separate service provided.
+
+I did try to ensure that we weren't doing any database saves in loops, but rather running Django ORM's `bulk_update` after all data updates were made. Although we're dealing with a small amount of data in this app, it's nice to introduce simple improvements along the way that would scale well.
+
+### GraphQL
+
+Having the GraphiQL explorer to test queries makes setting up an API much easier. The mutation and resolver files were setup in the graphql/types folder, which are referenced by the `schema.py` file in order to create the fields used in mutation or queries. Testing graphql queries is also pretty straightofrward - we simply use a a `setUp` method from the built-in `unittest` framework that gets called before each individual test to setup a game. Then it's simply testing the query we want (as if coming from the end frontend) and make assertions on the returned data.
+
+```py
+class DealCardsTestCase(TestCase):
+    def setUp(self):
+        # Create a test game and some cards for testing
+        self.game = Game.objects.create(game_phase=GAME_PHASE.IN_PROGRESS.value)
+        for suit in SUIT:
+            for rank in RANK:
+                Card.objects.create(
+                    suit=suit.value,
+                    rank=rank.value,
+                    game=self.game,
+                    status=CARD_STATUS.DECK.value,
+                )
+
+    def test_deal_cards_mutation(self):
+        # GraphQL mutation query
+        mutation_query = """
+            mutation DealCardsMutation($count: Int!) {
+                dealCards(count: $count) {
+                    success
+                    message
+                    dealtCards {
+                        id
+                        suit
+                        status
+                        rank
+                    }
+                    cardsLeftInDeck
+                    acesLeftInDeck
+                }
+            }
+        """
+
+        # Set the count for dealing cards
+        count = 5
+
+        # Create a GraphQL client
+        client = Client()
+
+        # Execute the mutation with the specified count
+        response = client.post(
+            "/graphql/",
+            json.dumps(
+                {
+                    "query": mutation_query,
+                    "variables": {"count": count},
+                }
+            ),
+            content_type="application/json",
+        )
+
+        # Check if the response status code is 200
+        assert response.status_code == 200
+        self.assertEqual(len(data["data"]["dealCards"]["dealtCards"]), 5)
+        # among other assertions
+```
+
+
+#### If more time allowed for the back end:
+- Defining more GraphQL return types - this was something that looked like a common pattern just ran out of time here
+- Further normalize the DB - maybe a lookup table for `card` `status` column
+     - Possibly setup a db repository pattern
+- Consider adding a domain layer of pure/deterministic biz logic functions
+- Rate limit some of the API requests - IE.. I believe resetting the db too quickly can cause issues (if the user clicks reset one too many times)
+- install `ptw` to watch and rerun tests more easily
