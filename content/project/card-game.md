@@ -6,7 +6,7 @@ selectedWork: true
 description: 'Building with a fullstack django graphql project'
 previewImage: '/images/project/cardgame/cardgame.png'
 liveSite: 'https://card-game-frontend.vercel.app/'
-sourceCode: 'https://github.com/rylew2/cardgame' (full repo available by request)
+sourceCode: 'https://github.com/rylew2/cardgame'
 tags:
     - javascript
     - python
@@ -19,6 +19,8 @@ tags:
 ## Intro
 
 In this project, I was interested in working with a new stack, so I took on a project to build a card game with React, GraphQL, Django, and Postgres. It was an interesting exploration into first building the frontend portion, then setting up GraphQL model types, a Django application, and PostgresQL database - all wrapped up in Docker with a robust set of `Makefile`. The project was my first time using both Django, GraphQL, and `react-redux` .
+
+[Source coude here](https://github.com/rylew2/cardgame) - (with full repo available by request)
 
 ## Game Rules
 
@@ -133,5 +135,3 @@ While I wanted to touch all parts of the stack with this project and not spend a
 
 
 # Backend
-
-
