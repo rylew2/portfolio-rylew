@@ -18,7 +18,7 @@ tags:
 
 ## Intro
 
-In this project, I was interested in working with a new stack, so I took on a project to build a card game with React, GraphQL, Django, and Postgres. It was an interesting exploration into first building the frontend portion, then setting up GraphQL model types, a Django application, and PostgresQL database - all wrapped up in Docker with a robust set of `Makefile`. The project was my first time using both Django, GraphQL, and `react-redux` .
+In this project, I was interested in working with a new stack, so I took on a project to build a card game with React, GraphQL, Django, and Postgres. It was an interesting exploration into first building the frontend portion, then setting up GraphQL model types, a Django application, and PostgresQL database - all wrapped up in Docker with a robust set of make commands. The project was my first time using both Django, GraphQL, and `react-redux` .
 
 [Source coude here](https://github.com/rylew2/cardgame) - (with full repo available by request)
 
@@ -27,7 +27,7 @@ In this project, I was interested in working with a new stack, so I took on a pr
 -   Standard 52 card deck
 -   The goal is to end up with the last hand having at least one ace
 -   A dealt hand is 5 cards, and each hand is randomly dealt from the remaining cards in the deck each time the user clicks the `Deal` button.
-    -   If you successfully make it to the final dealt cards, there will be 2 cards in a hand
+    -   If you successfully make it to the final hand without losing, there will be 2 cards in the hand
 -   The game is "over" if all the aces in the deck have been dealt/exhausted before the last hand
 -   The game is considered a "win" if the the last hand contains at least 1 ace
 -   The game can be replayed as many times as needed - there's always a Reset (or `Play Again`) button present
@@ -35,21 +35,22 @@ In this project, I was interested in working with a new stack, so I took on a pr
 
 ## Frontend App
 
-I first built the frontend app (without any GraphQL) and a sort of mocked deck. The time consuming part here was setting up all the CSS - especially for intricate pieces like the card suit (club/ace/heart/diamond in different orientations), the card animation and rotation, and the overall layout.
+I first built the frontend app (without any GraphQL) with all the state (deck, hand, aces left) as in-memory data. The time consuming part here was setting up all the CSS - especially for intricate pieces like the card suit (club/ace/heart/diamond in different orientations), the card animation and rotation, and the overall layout.
 
+The standalone frontend app is here:
 https://card-game-frontend.vercel.app/
 
 #### CSS/Design
 
-Since the look and feel was not an area I wanted to perfect, I tried to speed things by using Tailwind utility classes (usually inline). I'm typically used to a more established design system setup with larger projects, but I found simplifying things in this area got me to more of the front end state management issues faster.
+Since the look and feel was not an area I wanted to perfect, I tried to speed things by using Tailwind utility classes (usually inline). I'm typically used to a more established design system setup with larger projects, but I found simplifying CSS in this area got me to more of the front end state management issues faster.
 
 Simlarly with the animation and rotation - I quickly gave a bit of a curve to make the hand look like it was dealt, added some opacity animations as cards were "dealt" into place on the board, and added confettie animation (3rd party package) for the win state.
 
 #### React/state considerations
 
-Typically `useState` suffices for a small app like this, but I wanted some experience with `redux-toolkit` - so I spent some time reading their [excellent docs](https://redux-toolkit.js.org/tutorials/typescript) to help bootstrap the setup of typescript friendly action creators and a test setup file that made it easy to mock the redux store so I could test any state.
+Typically `useState` suffices for a small app like this, but I wanted some experience with `redux-toolkit` - so I spent some time reading their [excellent docs](https://redux-toolkit.js.org/tutorials/typescript) to help bootstrap the setup of typescript friendly action creators and a test setup file that made it easy to mock the redux store so I could test any game state.
 
-The store itself was fairly straightforward with 2 actions (`deal` and `reset`), and 2 reducers with the same name. `Reset` simply returns the deck to 47 cards (with 5 having been randomly dealt to the user). `Deal` will try to deal a new hand and determine what state that new hand will indicate.
+The store itself was fairly straightforward with 2 actions (`deal` and `reset`), and 2 reducers with the same name. The `Reset` action simply returns the deck to 47 cards (with 5 having been randomly dealt to the user). `Deal` will try to deal a new hand and determine what state that new hand will confer.
 
 The store's `deal` reducer:
 
@@ -69,11 +70,11 @@ deal: (state: GameState, action: PayloadAction<DealAction>) => {
     // check for game phase change if no aces left
     if (stateAcesLeftInDeck <= 0) {
     // if aces in hand on the last deal
-    if (acesInHand >= 1 && deck.length === 0) {
-        state.gamePhase = GamePhase.Won;
-    } else {
-        state.gamePhase = GamePhase.Lost;
-    }
+        if (acesInHand >= 1 && deck.length === 0) {
+            state.gamePhase = GamePhase.Won;
+        } else {
+            state.gamePhase = GamePhase.Lost;
+        }
     }
 },
 ```
@@ -123,15 +124,15 @@ Or even a simple test that actually clicks things on the screen (I usually defin
 
 While I wanted to touch all parts of the stack with this project and not spend a ton of time perfecting the frontend, there are a few areas I wish I had more time to explore:
 
--   Move some of the Tailwind classes added to components into CSS files, maybe create app specific variables for colors and shared styles. As mentioned above, the utility classes were done hastily to reach frontend completion.
+-   Move some of the Tailwind inline classes into CSS files, maybe create app specific variables for colors and shared styles. As mentioned above, the utility classes were done hastily to reach frontend completion.
 -   Animation changes:
     -   Fix some of the animation jitter between each hand deal
-    -   There's also a known issue when going from a low width to a high width - it will trigger the animation again - this could likely be stopped with a handleResize type function that passes props to prevent repeat animations.
+    -   There's also a known issue when going from a low viewport width to a high width - it will trigger the animation again - this could likely be stopped with a handleResize type function preventing repeat animations.
 -   Didn't get into any react performance issues with the React Dev tools given this was a small app - but you could look at things like `React.memo` or preventing unnecessary re-renders
     -   added some simple `useCallback` on the click handler functions that get passed down into other components
 -   More robust component library
     -   Creating a reusable `Button` component for example
-    -   Combining the game state components into one shared component ( combining GameWon, GameInProgress, GameLost)
+    -   Combining the game state components into one shared component ( combining `GameWon`, `GameInProgress`, `GameLost`)
 -   Pull test helper functions out to separate file
 -   Exposing `graphqlService` as a hook instead of a service
 -
@@ -140,17 +141,18 @@ While I wanted to touch all parts of the stack with this project and not spend a
 ## Backend
 
 ### Backend overview
-- `card` table - store all 52 cards for a deck. Multiple games could be built with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game
+- `card` table - store all 52 cards for a deck.
+    - Multiple games could be played with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game id. (I chose the former but the latter is possible if you wanted to view prior game's state)
 - `game` table - simply stores the current status
-- Mutations => dealCards(count) , resetGame
-- Queries => returns cardsLeftInDeck, acesLeftInDeck, gameStatus
+- Mutations => `dealCards(count)` , `resetGame`
+- Queries => returns `cardsLeftInDeck`, `acesLeftInDeck`, `gameStatus`
 - The game likely could have been done all in memory - kind of how the standalone frontend works. Obviously this wouldn't be durable or support multiple game/streak feature additions
 
-The backend work including setting up a DB schema that has a `card` table that stores all 52 cards for a deck, with each card having a suit and rank, and a particular status (`Deck`, `Hand`, or `Discarded`). There's also a simple `game` table that simply stores the game phase (`In Progress`, `Won`, `Lost`, `Loading`) - this allows multiple games to be stored. Along with the standard Django tables, this was all that was needd to represent this game on the backend.
+The backend work included setting up a DB schema that has a `card` table that stores all 52 cards for a deck, with each card having a suit and rank, and a particular status (`Deck`, `Hand`, or `Discarded`). There's also a simple `game` table that simply stores the game phase (`In Progress`, `Won`, `Lost`, `Loading`) - this allows multiple games to be stored. Along with the standard Django tables, this was all that was needd to represent this game on the backend.
 
-To get to 3rd normal form, I believe we could introduce a lookup table for the card status - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
+To get to 3rd normal form, I believe I could have introduced a lookup table for the card status - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
 
-Most of the functionality to update the database was contained in `GameQueryService` - which I just quickly turned into a collection of static methods utilizing Django ORM to pull or update data. A possible more ergonomic way of arranging this would be to have more of this logic in the model. I preferred the clean separation and ease of development a separate service provided.
+Most of the functionality to update the database was contained in `GameQueryService` - which I just quickly turned into a collection of static methods utilizing the Django ORM to query or update data. A possible more ergonomic way of arranging this would be to have more of this logic in the model. I preferred the clean separation and ease of development a separate service provided.
 
 I did try to ensure that we weren't doing any database saves in loops, but rather running Django ORM's `bulk_update` after all data updates were made. Although we're dealing with a small amount of data in this app, it's nice to introduce simple improvements along the way that would scale well.
 
@@ -264,3 +266,4 @@ Overall it was interesting to work with languages I knew but some frameworks and
 - E2E tests - it would have been nice to add some cypress tests to get integration coverage
 - Data fetching - I didn't have time to get into it, but there is RTK Query and would be curious how that might overlap, enhance, or work in combination with GraphQL
 - It's a bit conflicting to have to sync the backend database "state" with the redux store, it felt a bit redundant to have both at times. Since I wanted to learn redux toolkit this was ok
+- Deploy the full stack app (it works fine locally for now)
