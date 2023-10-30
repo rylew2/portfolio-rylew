@@ -227,7 +227,7 @@ class DealCardsTestCase(TestCase):
 - Consider adding a domain layer of pure/deterministic biz logic functions
 - Rate limit some of the API requests - IE.. I believe resetting the db too quickly can cause issues (if the user clicks reset one too many times)
 - install `ptw` to watch and rerun tests more easily
-
+- I believe it's more GraphQL-like to have nested fields - it might be good to revisit the data hierarchy
 
 
 ## Putting it all together
