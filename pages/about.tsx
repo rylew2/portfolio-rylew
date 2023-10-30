@@ -18,9 +18,10 @@ const About = () => {
                     <div className="postContent">
                         <div className="avatarImage">
                             <Image
-                                src="/images/avatar.jpg"
+                                src="/images/avatar2.png"
                                 width={200}
                                 height={200}
+                                layout="fixed"
                                 alt="Ryan Lewis"
                             />
                         </div>
