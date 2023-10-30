@@ -3,7 +3,7 @@ title: Card Game
 date: '2023-10'
 slug: 'cardgame'
 selectedWork: true
-description: 'Building with a fullstack django graphql project'
+description: 'Building with a fullstack React/GraphQL/Django project'
 previewImage: '/images/project/cardgame/cardgame.png'
 liveSite: 'https://card-game-frontend.vercel.app/'
 sourceCode: 'https://github.com/rylew2/cardgame'
@@ -152,13 +152,15 @@ The backend work included setting up a DB schema that has a `card` table that st
 
 To get to 3rd normal form, I believe I could have introduced a lookup table for the card status - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
 
-Most of the functionality to update the database was contained in `GameQueryService` - which I just quickly turned into a collection of static methods utilizing the Django ORM to query or update data. A possible more ergonomic way of arranging this would be to have more of this logic in the model. I preferred the clean separation and ease of development a separate service provided.
+Most of the functionality to update the database was contained in `GameQueryService` - which I just quickly turned into a collection of static methods utilizing the Django ORM to query or update data. A possible more ergonomic way of arranging this would be to have more of this ORM logic in the model. I preferred the clean separation and ease of development a separate service provided.
 
 I did try to ensure that we weren't doing any database saves in loops, but rather running Django ORM's `bulk_update` after all data updates were made. Although we're dealing with a small amount of data in this app, it's nice to introduce simple improvements along the way that would scale well.
 
 ### GraphQL
 
-Having the GraphiQL explorer to test queries makes setting up an API much easier. The mutation and resolver files were setup in the graphql/types folder, which are referenced by the `schema.py` file in order to create the fields used in mutation or queries. Testing graphql queries is also pretty straightofrward - we simply use a a `setUp` method from the built-in `unittest` framework that gets called before each individual test to setup a game. Then it's simply testing the query we want (as if coming from the end frontend) and make assertions on the returned data.
+Having the GraphiQL explorer to test queries makes setting up a GraphQL API much easier. The mutation and resolver files were setup in the `/graphql/types` folder, which are referenced in the `schema.py` file - the schema file defines the fields used in mutation or queries.
+
+Writing tests for specific GraphQL queries is also pretty straightofrward - we simply use a a `setUp` method from the built-in `unittest` framework that gets called before each individual test to setup a game. Then it's simply testing the GraphQL query we want (as if coming from the end frontend) and making assertions on the returned data.
 
 ```py
 class DealCardsTestCase(TestCase):
@@ -219,7 +221,7 @@ class DealCardsTestCase(TestCase):
 
 
 #### If more time allowed for the back end:
-- Defining more GraphQL return types - this was something that looked like a common pattern just ran out of time here
+- Defining more GraphQL return types - this was something that looked like a common GrapQL pattern, just ran out of time here
 - Further normalize the DB - maybe a lookup table for `card` `status` column
      - Possibly setup a db repository pattern
 - Consider adding a domain layer of pure/deterministic biz logic functions
@@ -252,18 +254,18 @@ ReactDOM.render(
 reportWebVitals();
 ```
 
-- Remove the frontend in-memory storage and instead reference the graphql returned data
-- I setup a `codegen` file using the `@graphql-codegen/cli` that would take the graphql types defined on the backend and generate a set of Typescript types that I coudl use on the frontend. This required me to go back and update a lot of the frontend enums and utility functions
+- Removing the frontend in-memory storage and instead referencing the GraphQL returned data
+- I setup a `codegen` file using the `@graphql-codegen/cli` that would take the GraphQL types defined on the backend and generate a set of Typescript types that I could use on the frontend. This required me to go back and update a lot of the frontend enums and utility functions with those types
 
 
 
 ## Conclusion
 
-Overall it was interesting to work with languages I knew but some frameworks and libraries I hadn't worked with. There are a few final next steps I was considering:
+Overall it was interesting to work with languages I knew, but with frameworks and libraries I hadn't worked with. There are a few final next steps I was considering:
 
 #### Additional items if more time allowed for the project:
-- Set loading state prior to graphql calls (between deals/resets) - although it's pretty quick to make a mutation and get the result - it might make sense to have the loader show momentarily
-- E2E tests - it would have been nice to add some cypress tests to get integration coverage
-- Data fetching - I didn't have time to get into it, but there is RTK Query and would be curious how that might overlap, enhance, or work in combination with GraphQL
-- It's a bit conflicting to have to sync the backend database "state" with the redux store, it felt a bit redundant to have both at times. Since I wanted to learn redux toolkit this was ok
-- Deploy the full stack app (it works fine locally for now)
+- Set loading state prior to GraphQL calls (and between deals/resets) - although it's pretty quick to make a mutation and get the result - it might make sense to have the loader show momentarily
+- E2E tests - it would have been nice to add some Cypress tests to get integration coverage
+- Data fetching - I didn't have time to get into it, but there is `Redux Toolkit Query` and I would be curious how that might overlap, enhance, or work in combination with GraphQL and the Apollo client
+- It's a bit conflicting to have to sync the backend database "state" with the redux store, it felt a bit redundant to have both at times - could we just suffice with storing state on the backend/db? Since I wanted to learn redux toolkit this was ok
+- Deploy the full stack app to vercel (it works fine locally for now) - right now just the front end is deployed, though it functions exactly the same as the full stack app
