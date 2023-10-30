@@ -139,6 +139,13 @@ While I wanted to touch all parts of the stack with this project and not spend a
 
 ## Backend
 
+### Backend overview
+- uplifty_card table - store all 52 cards for a deck. Multiple games could be built with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game
+- uplifty_game table - simply stores the current status
+- Mutations => dealCards(count) , resetGame
+- Queries => returns cardsLeftInDeck, acesLeftInDeck, gameStatus
+- The game likely could have been done all in memory - kind of how the standalone frontend works. Obviously this wouldn't be durable or support multiple game/streak feature additions
+
 The backend work including setting up a DB schema that has a `card` table that stores all 52 cards for a deck, with each card having a suit and rank, and a particular status (`Deck`, `Hand`, or `Discarded`). There's also a simple `game` table that simply stores the game phase (`In Progress`, `Won`, `Lost`, `Loading`) - this allows multiple games to be stored. Along with the standard Django tables, this was all that was needd to represent this game on the backend.
 
 To get to 3rd normal form, I believe we could introduce a lookup table for the card status - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
@@ -216,3 +223,44 @@ class DealCardsTestCase(TestCase):
 - Consider adding a domain layer of pure/deterministic biz logic functions
 - Rate limit some of the API requests - IE.. I believe resetting the db too quickly can cause issues (if the user clicks reset one too many times)
 - install `ptw` to watch and rerun tests more easily
+
+
+
+## Putting it all together
+
+Once both the frontend and backend were working, and had proper test coverage, there were a couple steps to hook up the full stack application:
+- installing Apollo and pointing the client to the GraphQL address in `index.tsx`
+```js
+const client = new ApolloClient({
+  uri: 'http://localhost:8000/graphql/',
+  cache: new InMemoryCache(),
+});
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={setupStore()}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+reportWebVitals();
+```
+
+- Remove the frontend in-memory storage and instead reference the graphql returned data
+- I setup a `codegen` file using the `@graphql-codegen/cli` that would take the graphql types defined on the backend and generate a set of Typescript types that I coudl use on the frontend. This required me to go back and update a lot of the frontend enums and utility functions
+
+
+
+## Conclusion
+
+Overall it was interesting to work with languages I knew but some frameworks and libraries I hadn't worked with. There are a few final next steps I was considering:
+
+#### Additional items if more time allowed for the project:
+- Set loading state prior to graphql calls (between deals/resets) - although it's pretty quick to make a mutation and get the result - it might make sense to have the loader show momentarily
+- E2E tests - it would have been nice to add some cypress tests to get integration coverage
+- Data fetching - I didn't have time to get into it, but there is RTK Query and would be curious how that might overlap, enhance, or work in combination with GraphQL
+- It's a bit conflicting to have to sync the backend database "state" with the redux store, it felt a bit redundant to have both at times. Since I wanted to learn redux toolkit this was ok
