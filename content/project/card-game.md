@@ -25,7 +25,7 @@ In this project, I was interested in working with a new stack, so I took on a pr
 ## Game Rules
 
 -   Standard 52 card deck
--   The goal is to end up with the last hand having at least one ace:
+-   The goal is to end up with the last hand having at least one ace
 -   A dealt hand is 5 cards, and each hand is randomly dealt from the remaining cards in the deck each time the user clicks the `Deal` button.
     -   If you successfully make it to the final dealt cards, there will be 2 cards in a hand
 -   The game is "over" if all the aces in the deck have been dealt/exhausted before the last hand
@@ -140,8 +140,8 @@ While I wanted to touch all parts of the stack with this project and not spend a
 ## Backend
 
 ### Backend overview
-- uplifty_card table - store all 52 cards for a deck. Multiple games could be built with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game
-- uplifty_game table - simply stores the current status
+- `card` table - store all 52 cards for a deck. Multiple games could be built with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game
+- `game` table - simply stores the current status
 - Mutations => dealCards(count) , resetGame
 - Queries => returns cardsLeftInDeck, acesLeftInDeck, gameStatus
 - The game likely could have been done all in memory - kind of how the standalone frontend works. Obviously this wouldn't be durable or support multiple game/streak feature additions
