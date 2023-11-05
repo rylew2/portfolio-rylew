@@ -3,7 +3,7 @@ title: Card Game
 date: '2023-10'
 slug: 'cardgame'
 selectedWork: true
-description: 'Building a fullstack React/GraphQL/Django card game'
+gidescription: 'Building a fullstack React/GraphQL/Django card game'
 previewImage: '/images/project/cardgame/cardgame.png'
 liveSite: 'https://card-game-frontend.vercel.app/'
 sourceCode: 'https://github.com/rylew2/cardgame'
