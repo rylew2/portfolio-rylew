@@ -142,14 +142,30 @@ Sometimes teams continually miss deliverables, people are unhappy, product manag
 The engineering manager is usually accountable for the team's progress. There are a few tips outlined for how to drive decisions, since as a manager you may only have authority to guide decisions rather than dictate them, however you'll still be judged on the ultimate outcome.
 
 - **data-driven team culture** - create a habit of giving the product/business data about the team velocity, quality measures (outages, bugs found, etc...). Even the 4 DORA metrics could be useful here (deployment frequency, lead time to changes, mean time to recovery, change failure rate)
-- **flex your product muscles** - It's important to develop customer empathy to give your engineers context for your work
+- **Flex your product muscles** - It's important to develop customer empathy to give your engineers context for your work
 - **Thinking ahead** - Thinking about where the product roadmap is going can help you guide the technical roadmap. Ask the product team questions about the future, and spend some time keeping up with technology developments that might impact the way you think about software or how you're operating
 - **Review the outcome of decisions and projects** - review assumptions made after the project is done (done at the scrum team level with retros)
 - **Run retros for the processes and day to day** - discuss what happened during the sprint and pick a few events (good, bad, and neutral to discuss in detail)
 
+### Conflict Management
 
+Have a team that's constantly in disagreement can be painful and dysfunctional - however on the other end of the spectrum is artificial harmony where everyone just agrees for the sake of agreeing, even though they're unhappy with decisions being made. The key is to create a safe environment for disagreement to work itself out, which is far better than pretending that all disagreement does not exist.
 
+- **Don't rely on consensus voting** - well established teams can predict the direction fo a decision, so it's best not to set people up for a vote you know will go certain way. It's better to deliver bad news yourself
+- **Setup processes to depersonalize** - start with a shared understanding of goals, risks, and questions that go into making a decision.
+- **Don't turn a blind eye to simmering issues** - If you don't pay close enough attention, issues will go on for way too long to a point where they're difficult to address
+- **Don't take it out on other teams**
+- **Be kind** - You do'nt need to be overly "nice" ("please" and "thank you"). Being kind is telling someone who isn't ready for promotion that she isn't ready
+- **Don't be afraid of conflict** - It's natural to be worried about making people upset with a decision - this is OK. It's however a wise habit to be sensitive to the outcomes of a conflict
+- **Be curious about your own actions** - "Am I pushing decisions to the team because I don't want to deal with it as an engineering manager?" "Am I avoiding working through the issues with my peer because their difficult to work with?"
 
+### Engineering Manager Project Management
+
+As an engineering manager, you're responsible for the larger picture planning. While tech leads/devs are planning in terms of weeks, as manager, you should be planning higher level in terms of months. Some rough guidelines include:
+- Budgeting 20% of your time for sustaining engineer work (testing, debugging, tech debt, migrating versions etc...).
+- Budget roughly 10 productive engineering weeks per quarter (with PTO/holidays)
+- Understand your "must-haves" versus "nice-to-haves" and be willing to say no to things
+- Use the doubling rule for estimates - when asked for estimates, double what you would guess it would take
 
 
 
