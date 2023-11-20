@@ -190,9 +190,11 @@ You'll need to carefully consider how you manage your time at this level of mana
     </tr>
 </table>
 
-#### Delegation
+> As you navigate your new obligations, start to ask yourself: How important is the thing I’m doing? Does it seem to be important because it’s urgent?
 
-A related topic to time management is the process of delegation. The book uses the analogy of "plate-spinning" to management, where you have a bunch of plates on different poles, and you must attend to each spinning plate before it slows down and falls off. You have to know when certain plates stop spinning (teams get burnt out, or processes need improvement) and anticipate these problems. The only way to not feel overwhelmed by all the plate-spinning is to effectively delegate tasks:
+#### Delegation to reduce plate-spinning
+
+A related topic to time management is the process of delegation. The book uses "plate-spinning" as an analogy of management, where you have a bunch of plates on different poles, and you must attend to each spinning plate before it slows down and falls off. You have to develop good instinct to anticipate when certain plates stop spinning (teams get burnt out, or processes need improvement). The only way to not feel overwhelmed by all the plate-spinning is to effectively delegate tasks:
 
 <table class="managerspath">
     <tr>
@@ -212,20 +214,60 @@ A related topic to time management is the process of delegation. The book uses t
     </tr>
 </table>
 
+>Delegation is a process that starts slow but turns into an essential element for career growth. If your teams can’t operate well without you, you’ll find it hard to be promoted.
+
 #### Saying No
 
-Being able to say no is also a valuable strategy in finding the valuable work to do:
+Being able to say no is also a useful strategy with respect to time management and finding the most impactful work to do:
 
 -   **Yes we can do this project if we delay the start of the other**
 -   **Appeal to budget** - lay out current workload in plain terms, showing how little room there is to maneuver
 -   **Don't drag out a no answer** - Sometimes it's better to say no more quickly than to drag out such a response - if you're wrong you'll need to apologize for the mistake
 -   **Help me say yes** - If you dig into (and question) the parts of someone else's plan that seem questionable, you'll help the other person realize that their suggestion isn't a good idea or needs refinement
 
-Summary: Expands on the challenges of scaling management skills to oversee multiple teams, including cross-team communications and maintaining a cohesive culture.
+
+### Creating a durable shared team identity
+
+Creating a shared team identity is difficult and it is easy to focus too internally on the team, leading the team to feel superior to others in the organization. If the team goes too far in this direction it can become resistant to outside ideas, be a poor at adapting to organization changes, and be too focused on empire building. Whereas a team that is more committed to the company's mission fosters resilience that leads to an openness to innovation, prioritizing company-wide objectives over team goals, and adaptability.
+
+Creating durable teams requires aligning with the company's core values and mission. In less well defined environments like startups, these missions can be fuzzy and you'll need to think about setting up teams to work well within a larger picture and mission.
+
 
 ### Chapter 7: Managing Managers
 
-Summary: Covers the transition to managing managers, highlighting the shift from direct to indirect influence and how to empower leaders within your organization.
+While not too different from managing multiple teams, managing managers often has a lot of the same responsibilities of overseeing the health of your direct reports' teams. There is however an increased scope when you're managing managers - instead of managing a couple closely related teams, you're now managing possibly whole functions like engineering and operations (areas you may not be as familiar with) - and your'e responsible for the health of those teams. It becomes easy to miss details when you're no longer meeting with just ICs.
+
+Some tips to maintain healthy teams with this increased scope:
+
+- **Open door policy fallacy** - It's easy to think you can have an open door policy for ICs to escalate issues to you. However most engineers won't be brave enough to take the risk of talking about problems. Instead you'll need to evaluate the health of your direct reports' teams - ideally via 1on1s with your direct report managers (these will need to be real conversations that should identify any attrition, failure to ship or other issues that reflect back to you as the higher-level manager)
+- **Skip-level meetings** - help get perspective on the health and focus of your teams and develop personal relationships between you and everyone in the organization. Can be as frequent as once a quarter.
+    - Some prompts might include : What do you like best or worst about your project? Who has been doing well? Feedback about their manager? How do you see the whole organization doing? What's keeping you from doing your best work?
+
+#### Manager Accountability
+
+The primary role of a manger who oversees other managers is to ensure these direct reports are effectively leading their team and aligning within the organization's broader goals.
+
+It's common for manager's to be good at managing up and hide problems until they become unwieldy. While this may make your life as a manager's manager easier in the short term, it's better to hold them to account as soon as you get a hint of any issue. Part of this is having your manager's keep track of the health of their teams. Your role might also involve navigating complex situations where your direct reports are managing issues with tech leads or product managers - where the lines of responsibility are less clear.
+
+There are several possibly tricky issues that managers of teams should be held to account for:
+
+- **Unsable product roadmaps** - Managers of teams should address rapidly changing roadmap (which can lead to attrition)
+- **Errant tech leads** - Managers need to guide tech leads to ensure design processes are efficient/transparent - possibly involving other senior team members
+- **Constant firefighting** - Managers should develop plans to tackle underlying issues that cause frequent crises - and possibly consider requesting additional resources
+
+As a higher level manager you are responsible for supporting and developing these managers. You should provide support in cases where your direct report may not have as much influence, or in hiring decisions. You should also provide ample feedback that focuses on both strengths and weaknesses that you can identify. If you're able to improve the performance of your direct report managers, this can significantly impact the organization's success, and by extension your own reputation and effectiveness as the overseeing manager.
+
+
+#### People pleaser management flaws
+
+People pleaser managers can develop a deep aversion to making people they care about unhappy and will often say yes, possibly leading to their own burnout. The team may like this type of manager on a personal level, but be frustrated with them as a manager. This manager never pushes back on work, overpromises and underdelivers, and says yes to everyone which can send contradictory messages. The manager is more interested in a team that runs smoothly and avoids mistakes than a team that really becomes excellent. Worse yet, if the manager has fears of failure or rejection, it can make it harder for the team to fail in a healthy way. Promises can be made that are hard to keep and make the team bitter toward the manager or company. If you have a direct report manager displaying these characteristics, you'll want to highlight the downsides to exhibiting this behavior.
+
+Some tips to coach this type of manager include:
+- help them feel safe saying no
+- have them externalize decisions so more people take part in the decisioning process (if it fails it's a team failure)
+- provide the person strong partners who can take on the task of determining the work roadmap
+- focus on better processes - allowing the manager to point to these processes as something outside their control
+
 
 ### Chapter 8: The Big Leagues
 
