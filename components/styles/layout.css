@@ -129,6 +129,15 @@ table.managerspath {
     border: 1px solid;
 }
 
+table.managerspath th {
+    background-color: black;
+    color: white;
+}
+
+table.managerspath tr:nth-child(2) {
+    background-color: #f2f2f2;
+}
+
 blockquote {
     font-style: italic;
     /* background: #202020; */

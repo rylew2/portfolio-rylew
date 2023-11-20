@@ -173,12 +173,12 @@ If you continue on the management track, usually at director of engineer, you'll
 You'll need to carefully consider how you manage your time at this level of management. This often comes down to understanding the importance and urgency of the matter. Items that are important are urgent are tasks you'll definitely take on, but there may be several distractions each day that seem urgent, but are in fact not.
 
 <table class="managerspath">
-    <tr style="background-color :black; color: white;">
+    <tr>
         <th><strong></strong></th>
         <th><strong>Not Urgent</strong></th>
         <th><strong>Urgent</strong></th>
     </tr>
-    <tr style="background-color: #f2f2f2;">
+    <tr>
         <td><strong>Important</strong></td>
         <td>Strategic, make time</td>
         <td>Obvious Work</td>
@@ -190,7 +190,36 @@ You'll need to carefully consider how you manage your time at this level of mana
     </tr>
 </table>
 
-fdsafdassfds fds
+#### Delegation
+
+A related topic to time management is the process of delegation. The book uses the analogy of "plate-spinning" to management, where you have a bunch of plates on different poles, and you must attend to each spinning plate before it slows down and falls off. You have to know when certain plates stop spinning (teams get burnt out, or processes need improvement) and anticipate these problems. The only way to not feel overwhelmed by all the plate-spinning is to effectively delegate tasks:
+
+<table class="managerspath">
+    <tr>
+        <th><strong></strong></th>
+        <th><strong>Frequent </strong></th>
+        <th><strong>Infrequent</strong></th>
+    </tr>
+    <tr>
+        <td><strong>Simple</strong></td>
+        <td><strong>Delegate</strong> <br /> (running daily standups, writing a weekly summary of progress, conducting code reviews)</td>
+        <td><strong>Do it yourself</strong> <br />(booking occasional conference tickets, running the quarterly script)</td>
+    </tr>
+    <tr>
+        <td><strong>Complex</strong></td>
+        <td><strong>Delegate carefully</strong> <br /> (grow talent in areas like project planning, system design, or outage/incident management)</td>
+        <td><strong>Delegate for training purposes</strong> <br /> (have a tech lead sit with you to write performance reviews, project staffing planning)</td>
+    </tr>
+</table>
+
+#### Saying No
+
+Being able to say no is also a valuable strategy in finding the valuable work to do:
+
+-   **Yes we can do this project if we delay the start of the other**
+-   **Appeal to budget** - lay out current workload in plain terms, showing how little room there is to maneuver
+-   **Don't drag out a no answer** - Sometimes it's better to say no more quickly than to drag out such a response - if you're wrong you'll need to apologize for the mistake
+-   **Help me say yes** - If you dig into (and question) the parts of someone else's plan that seem questionable, you'll help the other person realize that their suggestion isn't a good idea or needs refinement
 
 Summary: Expands on the challenges of scaling management skills to oversee multiple teams, including cross-team communications and maintaining a cohesive culture.
 
