@@ -268,6 +268,35 @@ Some tips to coach this type of manager include:
 - provide the person strong partners who can take on the task of determining the work roadmap
 - focus on better processes - allowing the manager to point to these processes as something outside their control
 
+#### Managing New vs Experienced Managers
+
+First-time managers need a lot of coaching, but it's an up-front cost that pays long-term dividends. Some common coaching you might need to do is ensure this manager is effective at delegating work, ensure they're not taking the job for just the authority, make sure you're doing skip levels to understand the health of the team, and as mentioned earlier, holding the manager accountable so issues aren't spiraling out of control. You want to nominate the right person for the role of a manager - if it turns out a new manager doesn't belong in that role you generally don't want to keep them in that position.
+
+Bringing in experienced managers is slightly different - since management is such a culture-specific task in a company, you'll want to ensure they fit with the wider company culture. It's not just skills you're hiring for, you'll want to bring in a software engineering manager who has worked with teams, knows how to ship software frequently, is comfortable with modern dev practices, and can inspire creativity with engineers. The hiring process for these managers could include mock problem solving with actual employees who might be the new hire's direct reports. While there could be coding in interviews for managers, you're also looking for strong team debugging skills, and ensure they have had a successful management philosophy (staying in code, breaking problems date, observing with data). Reference checks could also be valuable in the hiring process, where you ask how this person has succeeded and failed working with the reference.
+
+
+#### Debugging Dysfunctional Teams
+
+The best engineering managers are great debuggers - relentless in the pursuit of why. The book describes managing teams as a series of complex black blockes interacting with other black boxes - when you encounter outputs that aren't as expected you'll need to figure out why by "opening up boxes" to see what's going on.
+
+Possible team debugging steps:
+
+- Have a hypothesis for how the system got into a failed state
+- **Observe the team** - sit in the team's meetings. Good meetings have a heavy discussion element where opinions are drawn out of the team. A boring meeting may be a sing of an issue
+- **Ask questions** - ask the team what their goals are to see if they have a clearly defined purpose
+- **Check team dynamics** - teams that run smoothly typically have a degree of personal connection between the members. If team members are working independently on different projects, they're not really working as a team
+- **Jump in to help** - its ok to jump in and help debug - particularly when the enw manager in question is struggling
+
+
+#### Staying Technically Relevant
+
+Without investment into technical skills, managers run the risk of becoming out of touch and obsolete. There are ways to stay relevant such as reading code (reviewing PRs), picking an unknown area and ask engineers to explain, attend postmortem/retros, keep up with industry trends, and maintaining a network of technical people. By staying relevant in technical areas you provide specific values to teams - you help the team stay accountable to where it places its energy, you're able to identify misguided efforts by asking informed questions, you're able to analyze the engineering and business tradeoffs, and you'll be able to make specific requests to teams without distracting
+
+> Managers who don’t stay technical enough sometimes find themselves in the
+bad habit of acting as a go-between for senior management and their teams.
+Instead of filtering requests, they relay them to the team and then relay the
+team’s response back up to management. This is not a value-add role
+
 
 ### Chapter 8: The Big Leagues
 
