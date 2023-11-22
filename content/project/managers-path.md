@@ -214,7 +214,7 @@ A related topic to time management is the process of delegation. The book uses "
     </tr>
 </table>
 
->Delegation is a process that starts slow but turns into an essential element for career growth. If your teams can’t operate well without you, you’ll find it hard to be promoted.
+> Delegation is a process that starts slow but turns into an essential element for career growth. If your teams can’t operate well without you, you’ll find it hard to be promoted.
 
 #### Saying No
 
@@ -225,13 +225,11 @@ Being able to say no is also a useful strategy with respect to time management a
 -   **Don't drag out a no answer** - Sometimes it's better to say no more quickly than to drag out such a response - if you're wrong you'll need to apologize for the mistake
 -   **Help me say yes** - If you dig into (and question) the parts of someone else's plan that seem questionable, you'll help the other person realize that their suggestion isn't a good idea or needs refinement
 
-
 ### Creating a durable shared team identity
 
 Creating a shared team identity is difficult and it is easy to focus too internally on the team, leading the team to feel superior to others in the organization. If the team goes too far in this direction it can become resistant to outside ideas, be a poor at adapting to organization changes, and be too focused on empire building. Whereas a team that is more committed to the company's mission fosters resilience that leads to an openness to innovation, prioritizing company-wide objectives over team goals, and adaptability.
 
 Creating durable teams requires aligning with the company's core values and mission. In less well defined environments like startups, these missions can be fuzzy and you'll need to think about setting up teams to work well within a larger picture and mission.
-
 
 ### Chapter 7: Managing Managers
 
@@ -239,9 +237,9 @@ While not too different from managing multiple teams, managing managers often ha
 
 Some tips to maintain healthy teams with this increased scope:
 
-- **Open door policy fallacy** - It's easy to think you can have an open door policy for ICs to escalate issues to you. However most engineers won't be brave enough to take the risk of talking about problems. Instead you'll need to evaluate the health of your direct reports' teams - ideally via 1on1s with your direct report managers (these will need to be real conversations that should identify any attrition, failure to ship or other issues that reflect back to you as the higher-level manager)
-- **Skip-level meetings** - help get perspective on the health and focus of your teams and develop personal relationships between you and everyone in the organization. Can be as frequent as once a quarter.
-    - Some prompts might include : What do you like best or worst about your project? Who has been doing well? Feedback about their manager? How do you see the whole organization doing? What's keeping you from doing your best work?
+-   **Open door policy fallacy** - It's easy to think you can have an open door policy for ICs to escalate issues to you. However most engineers won't be brave enough to take the risk of talking about problems. Instead you'll need to evaluate the health of your direct reports' teams - ideally via 1on1s with your direct report managers (these will need to be real conversations that should identify any attrition, failure to ship or other issues that reflect back to you as the higher-level manager)
+-   **Skip-level meetings** - help get perspective on the health and focus of your teams and develop personal relationships between you and everyone in the organization. Can be as frequent as once a quarter.
+    -   Some prompts might include : What do you like best or worst about your project? Who has been doing well? Feedback about their manager? How do you see the whole organization doing? What's keeping you from doing your best work?
 
 #### Manager Accountability
 
@@ -251,22 +249,22 @@ It's common for manager's to be good at managing up and hide problems until they
 
 There are several possibly tricky issues that managers of teams should be held to account for:
 
-- **Unsable product roadmaps** - Managers of teams should address rapidly changing roadmap (which can lead to attrition)
-- **Errant tech leads** - Managers need to guide tech leads to ensure design processes are efficient/transparent - possibly involving other senior team members
-- **Constant firefighting** - Managers should develop plans to tackle underlying issues that cause frequent crises - and possibly consider requesting additional resources
+-   **Unsable product roadmaps** - Managers of teams should address rapidly changing roadmap (which can lead to attrition)
+-   **Errant tech leads** - Managers need to guide tech leads to ensure design processes are efficient/transparent - possibly involving other senior team members
+-   **Constant firefighting** - Managers should develop plans to tackle underlying issues that cause frequent crises - and possibly consider requesting additional resources
 
 As a higher level manager you are responsible for supporting and developing these managers. You should provide support in cases where your direct report may not have as much influence, or in hiring decisions. You should also provide ample feedback that focuses on both strengths and weaknesses that you can identify. If you're able to improve the performance of your direct report managers, this can significantly impact the organization's success, and by extension your own reputation and effectiveness as the overseeing manager.
-
 
 #### People pleaser management flaws
 
 People pleaser managers can develop a deep aversion to making people they care about unhappy and will often say yes, possibly leading to their own burnout. The team may like this type of manager on a personal level, but be frustrated with them as a manager. This manager never pushes back on work, overpromises and underdelivers, and says yes to everyone which can send contradictory messages. The manager is more interested in a team that runs smoothly and avoids mistakes than a team that really becomes excellent. Worse yet, if the manager has fears of failure or rejection, it can make it harder for the team to fail in a healthy way. Promises can be made that are hard to keep and make the team bitter toward the manager or company. If you have a direct report manager displaying these characteristics, you'll want to highlight the downsides to exhibiting this behavior.
 
 Some tips to coach this type of manager include:
-- help them feel safe saying no
-- have them externalize decisions so more people take part in the decisioning process (if it fails it's a team failure)
-- provide the person strong partners who can take on the task of determining the work roadmap
-- focus on better processes - allowing the manager to point to these processes as something outside their control
+
+-   help them feel safe saying no
+-   have them externalize decisions so more people take part in the decisioning process (if it fails it's a team failure)
+-   provide the person strong partners who can take on the task of determining the work roadmap
+-   focus on better processes - allowing the manager to point to these processes as something outside their control
 
 #### Managing New vs Experienced Managers
 
@@ -274,35 +272,107 @@ First-time managers need a lot of coaching, but it's an up-front cost that pays 
 
 Bringing in experienced managers is slightly different - since management is such a culture-specific task in a company, you'll want to ensure they fit with the wider company culture. It's not just skills you're hiring for, you'll want to bring in a software engineering manager who has worked with teams, knows how to ship software frequently, is comfortable with modern dev practices, and can inspire creativity with engineers. The hiring process for these managers could include mock problem solving with actual employees who might be the new hire's direct reports. While there could be coding in interviews for managers, you're also looking for strong team debugging skills, and ensure they have had a successful management philosophy (staying in code, breaking problems date, observing with data). Reference checks could also be valuable in the hiring process, where you ask how this person has succeeded and failed working with the reference.
 
-
 #### Debugging Dysfunctional Teams
 
 The best engineering managers are great debuggers - relentless in the pursuit of why. The book describes managing teams as a series of complex black blockes interacting with other black boxes - when you encounter outputs that aren't as expected you'll need to figure out why by "opening up boxes" to see what's going on.
 
 Possible team debugging steps:
 
-- Have a hypothesis for how the system got into a failed state
-- **Observe the team** - sit in the team's meetings. Good meetings have a heavy discussion element where opinions are drawn out of the team. A boring meeting may be a sing of an issue
-- **Ask questions** - ask the team what their goals are to see if they have a clearly defined purpose
-- **Check team dynamics** - teams that run smoothly typically have a degree of personal connection between the members. If team members are working independently on different projects, they're not really working as a team
-- **Jump in to help** - its ok to jump in and help debug - particularly when the enw manager in question is struggling
-
+-   Have a hypothesis for how the system got into a failed state
+-   **Observe the team** - sit in the team's meetings. Good meetings have a heavy discussion element where opinions are drawn out of the team. A boring meeting may be a sing of an issue
+-   **Ask questions** - ask the team what their goals are to see if they have a clearly defined purpose
+-   **Check team dynamics** - teams that run smoothly typically have a degree of personal connection between the members. If team members are working independently on different projects, they're not really working as a team
+-   **Jump in to help** - its ok to jump in and help debug - particularly when the enw manager in question is struggling
 
 #### Staying Technically Relevant
 
 Without investment into technical skills, managers run the risk of becoming out of touch and obsolete. There are ways to stay relevant such as reading code (reviewing PRs), picking an unknown area and ask engineers to explain, attend postmortem/retros, keep up with industry trends, and maintaining a network of technical people. By staying relevant in technical areas you provide specific values to teams - you help the team stay accountable to where it places its energy, you're able to identify misguided efforts by asking informed questions, you're able to analyze the engineering and business tradeoffs, and you'll be able to make specific requests to teams without distracting
 
 > Managers who don’t stay technical enough sometimes find themselves in the
-bad habit of acting as a go-between for senior management and their teams.
-Instead of filtering requests, they relay them to the team and then relay the
-team’s response back up to management. This is not a value-add role
-
+> bad habit of acting as a go-between for senior management and their teams.
+> Instead of filtering requests, they relay them to the team and then relay the
+> team’s response back up to management. This is not a value-add role
 
 ### Chapter 8: The Big Leagues
 
-Summary: Offers insight into senior leadership roles, such as VP of Engineering and CTO, and the strategic thinking required to guide a company's technical vision.
+> As technical senior managers, we bring special skills to an organization. In particular, we bring a willingness to embrace and drive changes as needed. ... We understand that technology evolves quickly, and we want our organizations to evolve to keep up with these changes. ... It's not enough to be a change agent; we have to create an organization that can successfully follow through on the changes we want to push.
 
-### Chapter 8: Bootstrapping Culture
+Roles like CTO, VP, head of engineering are not just being a positive technical force, but also about being a leader, understanding the current landscape of your business and futures, making hard decisions without perfect information, understanding how to play politics in a productive way, and a willingness to still deliver on decisions you disagree with. There are a few categories of tasks that any general manager might take on (from the _High Output Management_ book):
+
+-   **Info Gathering/Sharing** - Sitting in meetings, reading/writing emails/slack messages, talking to people one on one, and gathering perspectives. The goal is to synthesize large quantities of info, teasing out critical pieces
+-   **Nudging** - Reminding people of their commitments by asking questions instead of giving orders. It's easier to nudge by asking questions that guide a team rather than more forceful suggestions
+-   **Decision making** - One of the difficult aspects of management - managers must take different perspectives and incomplete info, and make a decision where the impact affects you and the team
+-   **Role modeling** - Setting the best example for the team
+
+#### VP of Engineering vs CTO
+
+<table style="border-collapse: collapse; width: 100%;">
+    <tr>
+        <th style="border: 1px solid black; background-color: black; color: white; padding: 8px;">Aspect</th>
+        <th style="border: 1px solid black; background-color: black; color: white; padding: 8px;">VP of Engineering</th>
+        <th style="border: 1px solid black; background-color: black; color: white; padding: 8px;">CTO</th>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; padding: 8px;">Position in Management</td>
+        <td style="border: 1px solid black; padding: 8px;">Top of the management career for engineering</td>
+        <td style="border: 1px solid black; padding: 8px;">Executive first, technologist second</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; padding: 8px;">Focus</td>
+        <td style="border: 1px solid black; padding: 8px;">Detail-oriented and able to handle both high-level and low-level tasks</td>
+        <td style="border: 1px solid black; padding: 8px;">Larger, strategic overview of technology in the company</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; padding: 8px;">Responsibilities</td>
+        <td style="border: 1px solid black; padding: 8px;">Roadmap development, hiring planning, org strategy, people management, improving engineering process, and cross-functional partnering</td>
+        <td style="border: 1px solid black; padding: 8px;">Positioning technology in the company, strategic technical decisions, oversee architecture and process/guidelines for evolving it, go deep into understanding biz side, external events and speaking engagements</td>
+    </tr>
+</table>
+
+### Setting Strategy
+
+Setting strategy is likely an area that most newer big league managers might not be skilled at. The book offers a few tips here:
+
+- **Research** - understand the current and future scaling issues, current productivity bottlenecks, pain points of the current tech, where growth will come from
+- **Combine research with your ideas** - draw out systems at company and slice/dice across various common attributes. IE. looking at systems that are customer facing (customer service tools) vs systems that are internal operations-facing (warehouses)
+- **Draft a strategy** - actionable ideas to improve operational efficiency and expand features and grow the business
+- **Consider boards communication style** - Presentation style matters. Some boards read deck materials beforehand, in which case you should have a deck that includes valuable info
+
+> ...good technology here meant several things. It meant technology architectures, yes. It also meant team structure. It meant understanding the underpinnings of the business and the directions in which it was headed. ... for product-focus companies ... something that "enables the many potential futures of the business." It's not just a reactive document that tries to account for current problems, but it anticipates and enables future growth.
+
+### Tips for Dealing with Nontechnical Bosses
+
+When you work in engineering for a longer period of time with technical managers, suddenly having a nontechnical boss can be a bit jarring, but there are a few best practices to manage this specific relationship:
+
+- **Don't hide info behind jargon**
+- **Expect you will need to lead 1on1s** - come prepared with a list of topics
+- **Try to bring solutions, not problems**
+- **It's OK to ask for advice**
+- **Don't be afraid to repeat yourself in communication** - most people remember things after hearing it from others 3 times
+- **Be supportive** - ask if there's more you can do to help
+- **Seek out coaching and skill development elsewhere** - your boss likely won't be able to help you here, so you'll need to seek out other peers or even look outside the company for support
+
+
+### Detaching as a Senior Leader
+
+As a senior leader your days of socializing with your team outside working hours is a thing of the past. You must learn to detach, otherwise you risk being seen as playing favorites if you maintain strong social ties with team members.
+
+- **Be a good role model** - As a senior leader, you'll likely be watched more closely than you ever have before - a lot of employees with follow every little behavior or small thing you say. Your presence will change the tone and structure of meetings you attend.
+- **Making hard decisions** - There's times where you won't need to discuss hard decisions with other people. You'll also not want to rant to other teammates about the difficulty of decisions
+- **Care more about people as individuals** - At this level, it can be easy to treat them like cogs, so you'll want to take the time to get to know as many people as you can as humans. This kind of personalization will be noticed.
+
+
+### Correcting a Culture of Fear
+
+It's easy for fear to propagate amongst the team when managers are quick to criticism, visibly upset, or otherwise easily display negative emotions. This can lead to a loss of psychological safety and willingness to take risks amongst the team. Healthy teams should be independent, willing to take risks, and free to push themselves. There's also typically open debate to resolve conflict amongst engineers as peers, but when you as a senior manager are debating, others may be more fearful to speak up. There are a few tips in this case to correct a culture of fear:
+
+- **Practice relatedness** - A marker of fear might be the tendency to treat people impersonally. Be willing to engage in small talk and getting to know the team as people.
+- **Apologize when you screw up** - Model that it's ok to make mistakes, it doesn't make you weak
+- **Get curious** - It's much easier to approach a disagreement with curiosity, which can turn disagreement into honest questioning
+- **Hold people accountable without making them out as bad** - When you hold your team accountable for not meeting expectation, make sure you understand how your framing things - asking questions like "How do we measure success in this scenario?", or "Did I set the team up for success
+
+
+## Chapter 9: Bootstrapping Culture
 
 Summary: Examines the role of leadership in shaping and nurturing company culture, particularly in the early stages or during significant growth.
 
