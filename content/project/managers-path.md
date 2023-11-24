@@ -19,7 +19,7 @@ Software engineering management is a multifaceted role that involves both leadin
 
 > "Friends of mine talk about their best managers as managing them with "benign neglect".
 
-Everyone's first management experience is actually being managed. I think if someone is interested in becoming a manager, it's important to seek out good managers - if this is not possible, at least observe different styles of management.
+Everyone's first management experience is actually being managed. I think if someone is interested in becoming a manager, it's important to seek out a good manager to report to - if finding good managers is not possible, observing different management styles is a beneficial alternative.
 
 #### 1-on-1s
 
@@ -73,9 +73,9 @@ A few tips to be a good tech lead:
 
 > "It's hard to accept that "new manager" is an entry-level job with no seniority to any front, but that's the best mindset with which to start leading.
 
-When you're managing people, your team is only as healthy as the individuals. There are several important people management tasks like holding regular 1-on-1s, giving feedback on career growth and progression toward goals, and identifying areas for improvement. However there are specific actions that can make a management relationship start off:
+When you're managing people, your team is only as healthy as the individuals. There are several important people management tasks like holding regular 1-on-1s, giving feedback on career growth and progression toward goals, and identifying areas for improvement. However, there are specific actions that can effectively initiate a management relationship:
 
--   Leave room to get to know the person reporting to you as a human being
+-   Make time to understand the person reporting to you on a personal level
 -   Create a 30/60/90 day plan for development
 -   Try to encourage the report's participation in new hire documentation - a fresh set of eyes can see things from a different perspective than whoever created this type of team documentation
 -   Contracting (as described in 1on1s above) - set expectations and communication style
@@ -164,7 +164,7 @@ As an engineering manager, you're responsible for the larger picture planning. W
 
 ## Chapter 6: Managing Multiple Teams
 
-If you continue on the management track, usually at director of engineer, you'll reach a point where you'll be managing multiple teams - at this point you'll likely have multiple tech leads reporting to you.
+If you continue on the management track, usually at director of engineering, you'll reach a point where you'll be managing multiple teams - at this point you'll likely have multiple tech leads reporting to you.
 
 ### Proper time management
 
@@ -333,10 +333,10 @@ Roles like CTO, VP, head of engineering are not just being a positive technical 
 
 Setting strategy is likely an area that most newer big league managers might not be skilled at. The book offers a few tips here:
 
-- **Research** - understand the current and future scaling issues, current productivity bottlenecks, pain points of the current tech, where growth will come from
-- **Combine research with your ideas** - draw out systems at company and slice/dice across various common attributes. IE. looking at systems that are customer facing (customer service tools) vs systems that are internal operations-facing (warehouses)
-- **Draft a strategy** - actionable ideas to improve operational efficiency and expand features and grow the business
-- **Consider boards communication style** - Presentation style matters. Some boards read deck materials beforehand, in which case you should have a deck that includes valuable info
+-   **Research** - understand the current and future scaling issues, current productivity bottlenecks, pain points of the current tech, where growth will come from
+-   **Combine research with your ideas** - draw out systems at company and slice/dice across various common attributes. IE. looking at systems that are customer facing (customer service tools) vs systems that are internal operations-facing (warehouses)
+-   **Draft a strategy** - actionable ideas to improve operational efficiency and expand features and grow the business
+-   **Consider boards communication style** - Presentation style matters. Some boards read deck materials beforehand, in which case you should have a deck that includes valuable info
 
 > ...good technology here meant several things. It meant technology architectures, yes. It also meant team structure. It meant understanding the underpinnings of the business and the directions in which it was headed. ... for product-focus companies ... something that "enables the many potential futures of the business." It's not just a reactive document that tries to account for current problems, but it anticipates and enables future growth.
 
@@ -344,41 +344,105 @@ Setting strategy is likely an area that most newer big league managers might not
 
 When you work in engineering for a longer period of time with technical managers, suddenly having a nontechnical boss can be a bit jarring, but there are a few best practices to manage this specific relationship:
 
-- **Don't hide info behind jargon**
-- **Expect you will need to lead 1on1s** - come prepared with a list of topics
-- **Try to bring solutions, not problems**
-- **It's OK to ask for advice**
-- **Don't be afraid to repeat yourself in communication** - most people remember things after hearing it from others 3 times
-- **Be supportive** - ask if there's more you can do to help
-- **Seek out coaching and skill development elsewhere** - your boss likely won't be able to help you here, so you'll need to seek out other peers or even look outside the company for support
-
+-   **Don't hide info behind jargon**
+-   **Expect you will need to lead 1on1s** - come prepared with a list of topics
+-   **Try to bring solutions, not problems**
+-   **It's OK to ask for advice**
+-   **Don't be afraid to repeat yourself in communication** - most people remember things after hearing it from others 3 times
+-   **Be supportive** - ask if there's more you can do to help
+-   **Seek out coaching and skill development elsewhere** - your boss likely won't be able to help you here, so you'll need to seek out other peers or even look outside the company for support
 
 ### Detaching as a Senior Leader
 
 As a senior leader your days of socializing with your team outside working hours is a thing of the past. You must learn to detach, otherwise you risk being seen as playing favorites if you maintain strong social ties with team members.
 
-- **Be a good role model** - As a senior leader, you'll likely be watched more closely than you ever have before - a lot of employees with follow every little behavior or small thing you say. Your presence will change the tone and structure of meetings you attend.
-- **Making hard decisions** - There's times where you won't need to discuss hard decisions with other people. You'll also not want to rant to other teammates about the difficulty of decisions
-- **Care more about people as individuals** - At this level, it can be easy to treat them like cogs, so you'll want to take the time to get to know as many people as you can as humans. This kind of personalization will be noticed.
-
+-   **Be a good role model** - As a senior leader, you'll likely be watched more closely than you ever have before - a lot of employees with follow every little behavior or small thing you say. Your presence will change the tone and structure of meetings you attend.
+-   **Making hard decisions** - There's times where you won't need to discuss hard decisions with other people. You'll also not want to rant to other teammates about the difficulty of decisions
+-   **Care more about people as individuals** - At this level, it can be easy to treat them like cogs, so you'll want to take the time to get to know as many people as you can as humans. This kind of personalization will be noticed.
 
 ### Correcting a Culture of Fear
 
 It's easy for fear to propagate amongst the team when managers are quick to criticism, visibly upset, or otherwise easily display negative emotions. This can lead to a loss of psychological safety and willingness to take risks amongst the team. Healthy teams should be independent, willing to take risks, and free to push themselves. There's also typically open debate to resolve conflict amongst engineers as peers, but when you as a senior manager are debating, others may be more fearful to speak up. There are a few tips in this case to correct a culture of fear:
 
-- **Practice relatedness** - A marker of fear might be the tendency to treat people impersonally. Be willing to engage in small talk and getting to know the team as people.
-- **Apologize when you screw up** - Model that it's ok to make mistakes, it doesn't make you weak
-- **Get curious** - It's much easier to approach a disagreement with curiosity, which can turn disagreement into honest questioning
-- **Hold people accountable without making them out as bad** - When you hold your team accountable for not meeting expectation, make sure you understand how your framing things - asking questions like "How do we measure success in this scenario?", or "Did I set the team up for success
-
+-   **Practice relatedness** - A marker of fear might be the tendency to treat people impersonally. Be willing to engage in small talk and getting to know the team as people.
+-   **Apologize when you screw up** - Model that it's ok to make mistakes, it doesn't make you weak
+-   **Get curious** - It's much easier to approach a disagreement with curiosity, which can turn disagreement into honest questioning
+-   **Hold people accountable without making them out as bad** - When you hold your team accountable for not meeting expectation, make sure you understand how your framing things - asking questions like "How do we measure success in this scenario?", or "Did I set the team up for success
 
 ## Chapter 9: Bootstrapping Culture
 
-Summary: Examines the role of leadership in shaping and nurturing company culture, particularly in the early stages or during significant growth.
+> Where you are growing a new team or reforming an existing team, neglecting team culture is a sure-fire way to make your job harder. As the team grows and evolves, it's important to attend to your culture as you would attend to other importance pieces of infrastructure that you rely on.
+
+Strong leaders are capable of identifying and shaping underlying system structures, team structure/dynamics, and it's important that they take action in these areas in a way that support long-term goals. The book emphasizes the importance of choosing systems that not only guide us toward our next milestone but also facilitate learning from the successes and failures of these processes and structures, rather than thinking about 'structure and processes' as hindering the agile nature of a scrappy startup culture. It's better to choose an imperfect system early on and learn from it then be paralyzed by such a decision and have the company scale out without any systems or processes.
+
+### Assessing your role
+
+When setting up structure and processes, it's important to understand the size of the ship (your company) that you, as a leader, are steering. This can be determined through some of the following characteristics:
+
+-   **People** - leaders who want a high degree of control over their org tend to need more structure in place to ensure their wishes are enacted
+-   **Age** - the longer a company is around, the more habits become entrenched (and the more likely it is to continue to survive)
+-   **Size of existing infrasturcutre** - the less business rules, code, and infrastructure there is, the less the need for structure (and vice versa)
+-   **Risk tolerance** - Are you in a highly regulated industry? Do you have a lot to lose if certain mistakes are made? Structures and processes should reflect this
+
+### What is Culture
+
+> Culture is how things get down, without people having to think about it.
+
+Culture is the unspoken shared rules of a community. It doesn't mean every person needs to hold the exact same values, but it tends to guide a general overlap. In more complex environments where the needs of the group must override the needs of the individual, cultural values are the glue that enables us to work as a team.
+
+-   To reinforce culture, you can reward people for exhibiting its values in positive ways (IE.. in performance reviews). You can learn to spot people The stories that we tell as a community bond us together.
+-   Learn to spot people who have value conflicts with the company/team. Be willing to coach people in areas where they're misaligned
+-   You'll want to look for culture fit in interviews, but culture fit is not about hiring friends (this won't lead to the strongest teams)
+
+### Cultural Policy Documents
+
+Drafting cultural policy documents is likely not the more coveted role of managers, but fortunately there are fewer and fewer of these types of docs that need to be started from scratch - many are shared publicly online. You typically want to add structure, such as policy documents, when things are failing.
+
+#### Cultural Policy Document Example - Writing a career ladder
+
+If there's inconsistencies around what HR should pay new hires, or how long it
+Some tips for writing a career ladder include:
+
+-   **Look for examples from other companies**
+-   **Solicit support from your team** - senior managers and engineers can provide feedback and details
+-   **Provide more early opportunities for advancement** - You may want to promote early career employees every year for the first two to three years of their career.
+-   **Use narrow salary bands for early-career stages** that allow for quick promotion, use wider bands when you have fewer levels.
+    -   You want salary bands to overlap - IE. Jr SWE 50-100k, Sr Swe 80-150k. This allows you to retain talent who are performing well at their current level but not ready to take on the additional responsibility at the next level. This also lets you hire people who are on the fence into the lower level with the expectation of a quick promotion.
+-   **Consider breakpoint levels** - The "breakpoint level" is the lowest level at which people can sit forever (never getting promoted but also not underperforming). Expect your team to cluster around this level, with fewer people above or below it
+-   **Celebrate and share keystone promotions**
+-   **Split management and technical tracks**
+-   **Consider making people management skills a mid-career requirement** - similarly, a tech lead might be a requirement of a senior IC on the technical track
+-   **Years of experience** - Distinguish levels by an expectation of maturity increase, typically this corresponds with YOE
+-   **Don't be afraid to evolve over time** - a ladder should be a living document that evolves as the company grows
+
+### Cross Functional vs Engineering Focused Teams
+
+In a small company or startup, it's clear that the engineering team is working with pretty much everyone, be it product managers, designers, etc.... In a larger company, there's likely already a structure setup to facilitate roles and cross functional collaboration. The book suggests that engineers be directly on a "pod"/team with product managers and designers, as this often leads to effective product development and iteration. Typically in pods, engineers with the best product sense emerge as leaders. Engineering still needs to oversee critical core systems - these functions can be kept in a small infrastructure organization that does not need to be assigned to product development.
+
+It's important for engineering teams, even those assigned with product teams, to still devote 20% of their time for sustaining tasks (interviewing, tech-deb,t on-call).
+
+### Engineering Processes to add as a team grows
+
+There are 3 major processes you should consider formalizing as the team grows - each work best with behavioral expectations around them (in addition to technical details):
+
+-   **Code review** - largely a socialization exercise so multiple team members have seen and are aware of changed code. Typically bugs are caught via the test suite and less likely to be caught in peer code reviews
+    - use a linter to resolve style issues
+    - limit how many outstanding review requests a person can have assigned to them (Github round robin and load balancing)
+- **Outage postmortems**
+    - resist the urge to point fingers
+    - look at circumstances and understand context to help identify root cause
+    - determine which takeaways are important - there should be one or two truly high-risk glaring issues that could cause future problems
+- **Architecture review** - help socialize big changes to the appropriate group, and make the risk for those changes clear.
+    - Architecture questions - How many people on the team are comfortable using the new system? What's the process for rolling it out? Are there new operational considerations?
+    - be specific about the kinds of changes that need architecture review (new languages/frameworks, storage systems, new dev tooling)
+    - process of preparing for architecture review is important - forces people to carefully consider why they want to make these changes
+    - choose the review board wisely - should be those most closely impacted by decision
+
 
 ## Conclusion
 
-Reflecting on the breadth of knowledge within "The Manager's Path," it's clear that the journey from mentor to executive is both challenging and rewarding. This book serves as a comprehensive guide for any engineer looking to navigate the complexities of management in tech.
+Reflecting on the breadth of knowledge within "The Manager's Path," it's clear that the journey from mentor to executive is both challenging and rewarding. One of the takeaways of the book is the importance of being self-aware for effective leadership. As a manager, you'll need to understand your own reactions, inspirations, and frustrations in order to manage others well. You'll also need to cultivate curiosity (the author suggests daily free-writing here as a way to remind yourself to stay curious) - curiosity helps understand various perspectives, particularly in challenging interpersonal situations.
+
 
 ## Resources
 
