@@ -1,27 +1,27 @@
 import styled from '@emotion/styled'
-
 export const StyledAbout = styled.section`
     .avatarImage {
-        margin-right: 2em;
         float: left;
-        shape-outside: circle();
+        shape-outside: circle(50%);
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        margin-right: 1em;
+        margin-bottom: 1em; // Ensure there's space below the image when text wraps under it
 
         img {
-            border-radius: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
         }
     }
 
-    @media (min-width: 759px) {
+    @media (max-width: 759px) {
         .avatarImage {
-            margin-right: 4em;
+            width: 150px; // Smaller size for narrow screens
+            height: 150px;
+            margin-right: 1em;
         }
     }
-
-    @media (min-width: 1400px) {
-        .avatarImage {
-            img {
-                width: 210px;
-            }
-        }
-    }
-`
+`;
