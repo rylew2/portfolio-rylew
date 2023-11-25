@@ -66,11 +66,11 @@ export interface IContentData {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const blogData: IContentData = await getContentData(params.id, 'book')
+    const bookData: IContentData = await getContentData(params.id, 'book')
 
     return {
         props: {
-            blogData,
+            bookData,
         },
     }
 }

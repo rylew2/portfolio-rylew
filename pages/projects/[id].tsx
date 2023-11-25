@@ -8,7 +8,7 @@ import { Container, Layout } from '../../components'
 import { Chips } from '../../components/chips/chips'
 import { StyledContent } from '../../components/styles/content.styles'
 import { getAllContentIds, getContentData } from '../../lib/content'
-import { IContentData } from '../blog/[id]'
+import { IContentData } from '../books/[id]'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 /**
  *  Renders work markdown posts

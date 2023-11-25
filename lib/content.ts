@@ -5,7 +5,8 @@ import remark from 'remark'
 import html from 'remark-html'
 import remarkPrism from 'remark-prism'
 import { v4 as uuid } from 'uuid'
-import { IContentData } from '../pages/blog/[id]'
+import { IContentData } from '../pages/book/[id]'
+// import { IContentData } from '../pages/blog/[id]'
 
 const projectDirectory = path.join(process.cwd(), 'content', 'project')
 const bookDirectory = path.join(process.cwd(), 'content', 'book')
@@ -122,7 +123,7 @@ export const getContentData = async (id: string, contentType: IContentType) => {
 /**
  * Get content list for a particular content type
  * @param {string} contentType Type of content
- * For the landing page of each subpage - called from blog/notes/project.tsx getStaticProps
+ * For the landing page of each subpage - called from book/project.tsx getStaticProps
  */
 export const getContentList = (contentType: IContentType) => {
     let contentFiles
@@ -135,8 +136,8 @@ export const getContentList = (contentType: IContentType) => {
             break
 
         case 'book':
-            contentFiles = fs.readdirSync(projectDirectory)
-            contentDir = projectDirectory
+            contentFiles = fs.readdirSync(bookDirectory)
+            contentDir = bookDirectory
             break
     }
 

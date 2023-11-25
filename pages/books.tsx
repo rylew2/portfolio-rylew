@@ -25,6 +25,8 @@ const Book = ({ books }) => {
 export const getStaticProps = async () => {
     const books = getContentList('book')
 
+    console.log('books => ', books)
+
     return {
         props: { books },
     }

@@ -4,4 +4,4 @@
 
 - Styled with EmotionJS💅🏾
 - Written in TypeScript ⚛
-- Blog, Notes and Work content types 🖊
+- Project and Book content types 🖊
