@@ -5,7 +5,7 @@ import remark from 'remark'
 import html from 'remark-html'
 import remarkPrism from 'remark-prism'
 import { v4 as uuid } from 'uuid'
-import { IContentData } from '../pages/book/[id]'
+import { IContentData } from '../pages/books/[id]'
 // import { IContentData } from '../pages/blog/[id]'
 
 const projectDirectory = path.join(process.cwd(), 'content', 'project')

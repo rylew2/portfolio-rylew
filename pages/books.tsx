@@ -13,9 +13,7 @@ const Book = ({ books }) => {
             pageDescription="Books covering a variety of topics"
         >
             <Container>
-                <p className="page-intro">
-                    Books I've had the chance to read.
-                </p>
+                <p className="page-intro">Books I've had the chance to read.</p>
                 <Cards data={books} basePath="books" />
             </Container>
         </Layout>
@@ -24,8 +22,6 @@ const Book = ({ books }) => {
 
 export const getStaticProps = async () => {
     const books = getContentList('book')
-
-    console.log('books => ', books)
 
     return {
         props: { books },
