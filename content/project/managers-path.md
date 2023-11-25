@@ -11,11 +11,11 @@ tags:
 
 # Introduction
 
-Software engineering management is a multifaceted role that involves both leading a team while also steering technical decisions. "The Manager's Path" is the canonical book in this field, guiding readers from the basics of management to the intricacies of executive leadership roles such as VP or CTO.
+Software engineering management is a multifaceted role that involves both leading a team while also steering technical decisions. `The Manager's Path` is the canonical book in this field, guiding readers from the basics of management to the intricacies of executive leadership roles such as VP or CTO.
 
 > "What engineering managers do, though, is not pure people management. We are managing groups of technical people, and most of us come into the role from a position of hands-on expertise. I wouldn't recommend trying to do it any other way!"
 
-### Management 101
+# Chapter 1: Management 101
 
 > "Friends of mine talk about their best managers as managing them with "benign neglect".
 
@@ -36,7 +36,7 @@ One of the most important aspects of management is establishing a regular cadenc
 
 > "Regular 1-1s are like oil changes; if you skip them, plan to get stranded on the side of the highway at the worst possible time."
 
-### Mentoring
+# Chapter 2: Mentoring
 
 Mentoring is a great opportunity for anyone interested in management because it provides a safe way to get the feel for the job of management, and the feeling of being responsible for another person.
 
@@ -48,7 +48,7 @@ Several of the same principles as a manager/direct report relationship carry ove
 
 The result of a successful mentorship might include the mentor going to their network and telling folks how great the company they're working for is.
 
-## Chapter 2: Tech Lead
+# Chapter 3: Tech Lead
 
 > "A tech lead is not a point in the career ladder, but rather a set of responsibilities than an engineer may take once they reach the senior level. This role may or may not include people management, but if it does, the tech lead is expected to manage these team members to high management standards..."
 
@@ -69,9 +69,9 @@ A few tips to be a good tech lead:
 -   Lead technical decisions - have a good sense of decisions that you must make versus what you should delegate to others with more expertise
 -   Communicate - Instead of every team member sitting in technical meetings, you're representing them as tech lead - bring info from those meetings back to the team.
 
-## Chapter 3: Managing People
+# Chapter 4: Managing People
 
-> "It's hard to accept that "new manager" is an entry-level job with no seniority to any front, but that's the best mindset with which to start leading.
+> "It's hard to accept that a "new manager" is an entry-level job with no seniority to any front, but that's the best mindset with which to start leading.
 
 When you're managing people, your team is only as healthy as the individuals. There are several important people management tasks like holding regular 1-on-1s, giving feedback on career growth and progression toward goals, and identifying areas for improvement. However, there are specific actions that can effectively initiate a management relationship:
 
@@ -98,11 +98,11 @@ Continuous feedback is a commitment to regularly share both positive and correct
 
 While continuous feedback provides an opportunity for more frequent feedback, performance reviews are a more formal wholistic approach. Typically feedback comes from the manager, teammates, a self review, and anyone who reports to the individual. The manager of this person will then gather all these reviews to write the manager's review. Some tips for giving performance reviews:
 
--   Stay specific and use examples - this will help you write more unbiased reviews
+-   **Stay specific and use examples** - this will help you write more unbiased reviews
     -   Similarly, keep areas for improvement specific - share feedback you think is valuable and can be acted on. If there is little negative feedback, it could mean the person is ready for more challenging projects or possibly promotion
--   If regular feedback has been given, in alignment with the continuous feedback philosophy outlined above, there should be no big surprises in performance reviews
+-   If regular feedback has been given, in alignment with the continuous feedback philosophy outlined above, there should be** no big surprises in performance reviews**
 -   Give yourself enough time to write a thoughtful and considerate review. Also give yourself enough time to talk through the review with your report(s)
--   Try to avoid any recency biases by accounting for the whole year rather than just the past couple of months
+-   **Try to avoid any recency biases** by accounting for the whole year rather than just the past couple of months
 
 If a report is a candidate for improvement, as a manager you'll need to make the case for their improvement. You'll need to fully understand how the promotion process works at your company - and be able to be transparent with your team in explaining how this works. Part of the role of a manager is, before the promotion nominations are made, to identify promotion-worthy projects that high achieving team members can take on.
 
@@ -112,7 +112,7 @@ One of the basic rules of management is the rule of no surprises, particularly n
 
 Another difficult situation arises when you believe that your team is not the right place for your report to grow their career. In this instance, some managers will "coach their report out" or encourage them to grow their career in another part of the organization. You're not technically firing them, but you are giving them time and space to find something more suited for them.
 
-## Managing a Team
+# Chapter 5: Managing a Team
 
 The report manager relationship is largely similar when you're managing one or multiple people, however when you start managing a team there is a totally different set of requirements and challenges. The book gives a description of a team manager as an `engineering lead` - in this role there is less time spent writing code but team managers still engage in small technical deliverables (bug fixes, small features) without blocking/slowing the progress of their team. It's not just writing code anymore though, it's identifying bottlenecks and removing blockers for their teams success. A good team manager isn't about having technical knowledge, although that helps, the work of supporting people is far more important to management success.
 
@@ -162,7 +162,7 @@ As an engineering manager, you're responsible for the larger picture planning. W
 -   Understand your "must-haves" versus "nice-to-haves" and be willing to say no to things
 -   Use the doubling rule for estimates - when asked for estimates, double what you would guess it would take
 
-## Chapter 6: Managing Multiple Teams
+# Chapter 6: Managing Multiple Teams
 
 If you continue on the management track, usually at director of engineering, you'll reach a point where you'll be managing multiple teams - at this point you'll likely have multiple tech leads reporting to you.
 
@@ -231,7 +231,7 @@ Creating a shared team identity is difficult and it is easy to focus too interna
 
 Creating durable teams requires aligning with the company's core values and mission. In less well defined environments like startups, these missions can be fuzzy and you'll need to think about setting up teams to work well within a larger picture and mission.
 
-### Chapter 7: Managing Managers
+# Chapter 7: Managing Managers
 
 While not too different from managing multiple teams, managing managers often has a lot of the same responsibilities of overseeing the health of your direct reports' teams. There is however an increased scope when you're managing managers - instead of managing a couple closely related teams, you're now managing possibly whole functions like engineering and operations (areas you may not be as familiar with) - and your'e responsible for the health of those teams. It becomes easy to miss details when you're no longer meeting with just ICs.
 
@@ -293,7 +293,7 @@ Without investment into technical skills, managers run the risk of becoming out 
 > Instead of filtering requests, they relay them to the team and then relay the
 > team’s response back up to management. This is not a value-add role
 
-### Chapter 8: The Big Leagues
+# Chapter 8: The Big Leagues
 
 > As technical senior managers, we bring special skills to an organization. In particular, we bring a willingness to embrace and drive changes as needed. ... We understand that technology evolves quickly, and we want our organizations to evolve to keep up with these changes. ... It's not enough to be a change agent; we have to create an organization that can successfully follow through on the changes we want to push.
 
@@ -369,7 +369,7 @@ It's easy for fear to propagate amongst the team when managers are quick to crit
 -   **Get curious** - It's much easier to approach a disagreement with curiosity, which can turn disagreement into honest questioning
 -   **Hold people accountable without making them out as bad** - When you hold your team accountable for not meeting expectation, make sure you understand how your framing things - asking questions like "How do we measure success in this scenario?", or "Did I set the team up for success
 
-## Chapter 9: Bootstrapping Culture
+# Chapter 9: Bootstrapping Culture
 
 > Where you are growing a new team or reforming an existing team, neglecting team culture is a sure-fire way to make your job harder. As the team grows and evolves, it's important to attend to your culture as you would attend to other importance pieces of infrastructure that you rely on.
 
@@ -426,23 +426,21 @@ It's important for engineering teams, even those assigned with product teams, to
 There are 3 major processes you should consider formalizing as the team grows - each work best with behavioral expectations around them (in addition to technical details):
 
 -   **Code review** - largely a socialization exercise so multiple team members have seen and are aware of changed code. Typically bugs are caught via the test suite and less likely to be caught in peer code reviews
-    - use a linter to resolve style issues
-    - limit how many outstanding review requests a person can have assigned to them (Github round robin and load balancing)
-- **Outage postmortems**
-    - resist the urge to point fingers
-    - look at circumstances and understand context to help identify root cause
-    - determine which takeaways are important - there should be one or two truly high-risk glaring issues that could cause future problems
-- **Architecture review** - help socialize big changes to the appropriate group, and make the risk for those changes clear.
-    - Architecture questions - How many people on the team are comfortable using the new system? What's the process for rolling it out? Are there new operational considerations?
-    - be specific about the kinds of changes that need architecture review (new languages/frameworks, storage systems, new dev tooling)
-    - process of preparing for architecture review is important - forces people to carefully consider why they want to make these changes
-    - choose the review board wisely - should be those most closely impacted by decision
+    -   use a linter to resolve style issues
+    -   limit how many outstanding review requests a person can have assigned to them (Github round robin and load balancing)
+-   **Outage postmortems**
+    -   resist the urge to point fingers
+    -   look at circumstances and understand context to help identify root cause
+    -   determine which takeaways are important - there should be one or two truly high-risk glaring issues that could cause future problems
+-   **Architecture review** - help socialize big changes to the appropriate group, and make the risk for those changes clear.
+    -   Architecture questions - How many people on the team are comfortable using the new system? What's the process for rolling it out? Are there new operational considerations?
+    -   be specific about the kinds of changes that need architecture review (new languages/frameworks, storage systems, new dev tooling)
+    -   process of preparing for architecture review is important - forces people to carefully consider why they want to make these changes
+    -   choose the review board wisely - should be those most closely impacted by decision
 
-
-## Conclusion
+# Conclusion
 
 Reflecting on the breadth of knowledge within "The Manager's Path," it's clear that the journey from mentor to executive is both challenging and rewarding. One of the takeaways of the book is the importance of being self-aware for effective leadership. As a manager, you'll need to understand your own reactions, inspirations, and frustrations in order to manage others well. You'll also need to cultivate curiosity (the author suggests daily free-writing here as a way to remind yourself to stay curious) - curiosity helps understand various perspectives, particularly in challenging interpersonal situations.
-
 
 ## Resources
 

@@ -8,10 +8,9 @@ import { v4 as uuid } from 'uuid'
 import { IContentData } from '../pages/blog/[id]'
 
 const projectDirectory = path.join(process.cwd(), 'content', 'project')
-const notesDirectory = path.join(process.cwd(), 'content', 'notes')
-const blogDirectory = path.join(process.cwd(), 'content', 'blog')
+const bookDirectory = path.join(process.cwd(), 'content', 'book')
 
-type IContentType = 'blog' | 'notes' | 'project'
+type IContentType = 'book' | 'project'
 
 /**
  * Get IDs of all markdown post
@@ -24,14 +23,9 @@ export const getAllContentIds = (contentType: IContentType) => {
 
     // determine where to look for content types
     switch (contentType) {
-        case 'blog':
-            baseDir = blogDirectory
-            filenames = fs.readdirSync(blogDirectory)
-            break
-
-        case 'notes':
-            baseDir = notesDirectory
-            filenames = fs.readdirSync(notesDirectory)
+        case 'book':
+            baseDir = bookDirectory
+            filenames = fs.readdirSync(bookDirectory)
             break
 
         case 'project':
@@ -72,14 +66,9 @@ export const getContentData = async (id: string, contentType: IContentType) => {
     let contentTypeDirectory
     let filenames
     switch (contentType) {
-        case 'blog':
-            filenames = fs.readdirSync(blogDirectory)
-            contentTypeDirectory = blogDirectory
-            break
-
-        case 'notes':
-            filenames = fs.readdirSync(notesDirectory)
-            contentTypeDirectory = notesDirectory
+        case 'book':
+            filenames = fs.readdirSync(bookDirectory)
+            contentTypeDirectory = bookDirectory
             break
 
         case 'project':
@@ -140,18 +129,12 @@ export const getContentList = (contentType: IContentType) => {
     let contentDir
 
     switch (contentType) {
-        case 'blog':
-            contentFiles = fs.readdirSync(blogDirectory)
-            contentDir = blogDirectory
-
-            break
-
-        case 'notes':
-            contentFiles = fs.readdirSync(notesDirectory)
-            contentDir = notesDirectory
-            break
-
         case 'project':
+            contentFiles = fs.readdirSync(projectDirectory)
+            contentDir = projectDirectory
+            break
+
+        case 'book':
             contentFiles = fs.readdirSync(projectDirectory)
             contentDir = projectDirectory
             break
@@ -187,12 +170,8 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
     let contentFiles
 
     switch (contentType) {
-        case 'blog':
-            contentDir = blogDirectory
-            break
-
-        case 'notes':
-            contentDir = notesDirectory
+        case 'book':
+            contentDir = bookDirectory
             break
 
         case 'project':
@@ -239,12 +218,8 @@ export const getContentInCategory = (
     let contentFiles
 
     switch (contentType) {
-        case 'blog':
-            contentDir = blogDirectory
-            break
-
-        case 'notes':
-            contentDir = notesDirectory
+        case 'book':
+            contentDir = bookDirectory
             break
 
         case 'project':

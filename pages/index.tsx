@@ -15,8 +15,6 @@ const Index: FC = ({ selectedProjects }) => {
                 <Container>
                     <Cards data={selectedProjects} basePath="projects" />
                 </Container>
-                {/* <DesignCode /> */}
-                {/* <ExperimentsSection /> */}
             </StyledIndexPage>
         </Layout>
     )
@@ -24,11 +22,16 @@ const Index: FC = ({ selectedProjects }) => {
 
 export const getStaticProps = async () => {
     const projects = await getContentList('project')
+    const books = await getContentList('book')
     const selectedProjects = projects.filter((work) => work.selectedWork)
+    const selectedBooks = books.filter((book) => book.selectedWork);
+
+    const selectedWorks = [...selectedProjects, ...selectedBooks];
+
 
     return {
         props: {
-            selectedProjects,
+            selectedProjects:selectedWorks
         },
     }
 }
