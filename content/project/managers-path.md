@@ -9,7 +9,7 @@ tags:
     - management
 ---
 
-## Introduction
+# Introduction
 
 Software engineering management is a multifaceted role that involves both leading a team while also steering technical decisions. "The Manager's Path" is the canonical book in this field, guiding readers from the basics of management to the intricacies of executive leadership roles such as VP or CTO.
 

@@ -1,47 +1,52 @@
 [
-  {
-    "tag": "javascript",
-    "title": "JavaScript",
-    "description": "All things javascript"
-  },
-  {
-    "tag": "sklearn",
-    "title": "sklearn",
-    "description": "scikit-learn learnings"
-  },
-  {
-    "tag": "python",
-    "title": "Python",
-    "description": "One of the greatest language ever!"
-  },
-  {
-    "tag": "machine learning",
-    "title": "Machine Learning",
-    "description": "Machine Learning and Data Science topics"
-  },
-  {
-    "tag": "angular",
-    "title": "Angular",
-    "description": "All things angular"
-  },
-  {
-    "tag": "react",
-    "title": "React",
-    "description": "All things React"
-  },
-  {
-    "tag": "flask",
-    "title": "Flask",
-    "description": "All things Python Flask related"
-  },
-  {
-    "tag": "omscs",
-    "title": "OMSCS",
-    "description": "All things related to my OMSCS masters program"
-  },
-  {
-    "tag": "edtech",
-    "title": "EdTech",
-    "description": "Everything education technology related"
-  }
+    {
+        "tag": "javascript",
+        "title": "JavaScript",
+        "description": "All things javascript"
+    },
+    {
+        "tag": "sklearn",
+        "title": "sklearn",
+        "description": "scikit-learn learnings"
+    },
+    {
+        "tag": "python",
+        "title": "Python",
+        "description": "One of the greatest language ever!"
+    },
+    {
+        "tag": "machine learning",
+        "title": "Machine Learning",
+        "description": "Machine Learning and Data Science topics"
+    },
+    {
+        "tag": "angular",
+        "title": "Angular",
+        "description": "All things angular"
+    },
+    {
+        "tag": "react",
+        "title": "React",
+        "description": "All things React"
+    },
+    {
+        "tag": "flask",
+        "title": "Flask",
+        "description": "All things Python Flask related"
+    },
+    {
+        "tag": "omscs",
+        "title": "OMSCS",
+        "description": "All things related to my OMSCS masters program"
+    },
+    {
+        "tag": "edtech",
+        "title": "EdTech",
+        "description": "Everything education technology related"
+    },
+    {
+        "tag": "management",
+        "title": "Management",
+        "description": "Everything Management related"
+    }
 ]
