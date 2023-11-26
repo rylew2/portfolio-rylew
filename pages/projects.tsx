@@ -17,7 +17,7 @@ const Project = ({ projects }) => {
                     Selected works I'm proud of. Ranging from front end
                     development to machine learning.
                 </p>
-                <Cards data={projects} basePath="projects" />
+                <Cards data={projects} />
             </Container>
         </Layout>
     )

@@ -40,7 +40,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    let content = getContentWithTag(params.tag, 'project')
+    let content = getContentWithTag(params.tag, 'book')
     const tagObject = tagsJSON.filter((json) => json.tag === params.tag)[0]
 
     return {
