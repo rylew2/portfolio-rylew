@@ -11,7 +11,7 @@ tags:
   - javascript
 ---
 
-Microsoft's enterprise content management platform `SharePoint` gives teams a space to collaborate on files, workflows, and general resource sites. There are a multitude of different ways to extend the platform, depending on what version of SharePoint and type of site being used. That includes anything from a simple in-page Content Editor Web Part with HTML/CSS/JavaScript all the way up to the more modern React <ins><a target="_blank" href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SPFx development model.</a></ins> Often times we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
+`SharePoint`, Microsoft's enterprise content management platform, enables teams to collaborate on files, workflows, and resources. Its extensibility varies based on the SharePoint version and site type, ranging from simple in-page web parts to the React-based  <ins><a target="_blank" href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SPFx development model</a></ins>. Oftentimes we would allow users to manage their own data in one or more SharePoint Lists that would serve as the backend for a React UI front end. When deploying these types of apps I would often run into a couple situations where:
 
 1. We wanted to define the look and feel without having to adjust the Master Page / Page Layout
 
@@ -66,7 +66,7 @@ With the proxy server setup - you can actually run `npm run proxy` and visit `lo
 
 To make an API call, we're simply using the `@pnp/sp` package ( the documentation for <ins><a target="_blank" href="https://pnp.github.io/pnpjs/sp/lists/">PnPJS accessing lists is pretty good.)</a></ins>
 
-There are a couple ways to approach the initial setup of the PnPJS package - but here I'm using the `sp.setup()` one-time call in my App `componentDidMount`- it could similarly be done in a Nav component.
+There are a couple of ways to approach the initial setup of the PnPJS package - but here I'm using the `sp.setup()` one-time call in my App `componentDidMount`- it could similarly be done in a Nav component.
 
 ```js
 let hostStr = "";
@@ -119,7 +119,7 @@ console.log(items ? items : "none");
 
 ## Finalizing Configuration for Deployment
 
-One of the pain points with deploying a single page app like this that exists outside of the SharePoint app model, is that you normally would need to `npm run build` the CRA project, then _manually_ upload the build folder to <**YourProjectFolder**> on the SharePoint site . This was a bit of a nuisance, so I looked at writing a script to upload the build folder for us.
+A pain point in deploying a single-page app like this, that exists outside of the SharePoint app model, is that you normally would need to `npm run build` the CRA project, then _manually_ upload the build folder to <**YourProjectFolder**> on the SharePoint site . This was a bit of a nuisance, so I looked at writing a script to upload the build folder for us.
 
 You can see the result `upload.js` <ins><a target="_blank" href="https://github.com/rylew2/sharepoint-cra-starter/blob/master/deploytools/upload.js">as a full script in my repo here</a></ins> . The upload code performs the following two steps:
 
@@ -138,7 +138,7 @@ You can optionally define a second upload script to point to your UAT site.
 
 ## Fixing Tilde in Build Folder Files for SP2013
 
-One of the catches here when working specifically with SP 2013 is that it does not allow filenames with tilde `~` characters to be uploaded to the site. To fix this we could eject CRA and try to configure ourselves - however I found it much easier to use a package to reconfigure. The more popular <ins><a target="_blank" href="https://github.com/timarney/react-app-rewired#readme">`react-app-rewired`</a></ins> or <ins><a target="_blank" href="https://github.com/gsoft-inc/craco">`craco`</a></ins> packages might have done the job here, however I ended up using <ins><a target="_blank" href="https://github.com/harrysolovay/rescripts">`rescripts`</a></ins>.
+One of the catches here when working specifically with SP 2013 is that it does not allow filenames with tilde `~` characters to be uploaded to the site. To address this, we could eject CRA and configure it manually, but using the 'rescripts' package was a simpler alternative. The more popular <ins><a target="_blank" href="https://github.com/timarney/react-app-rewired#readme">`react-app-rewired`</a></ins> or <ins><a target="_blank" href="https://github.com/gsoft-inc/craco">`craco`</a></ins> packages might have done the job here, however I ended up using <ins><a target="_blank" href="https://github.com/harrysolovay/rescripts">`rescripts`</a></ins>.
 
 When trying to upload the project, you might run into an issue like this:
 
@@ -195,7 +195,7 @@ ReactDOM.render(
 </Switch>
 ```
 
-The one final configuration HashRouter needs is to have the homepage specified in `package.json`:
+The final configuration step for HashRouter is to specify the homepage in `package.json`:
 
 ```js
 "homepage": "./",
@@ -203,7 +203,7 @@ The one final configuration HashRouter needs is to have the homepage specified i
 
 ## IE11 Legacy Support
 
-If you'd like to support the older IE11 browser, one simple update would be to install the `react-app-polyfill` package and include it in `index.js` :
+To support the older IE11 browser, simply install the `react-app-polyfill` packagee and include it in `index.js` :
 
 ```js
 //index.js
@@ -220,7 +220,7 @@ With the all the primary configuration done, we can define our deploy scripts (U
  "deployUAT": "npm run build-re && node ./deploytools/uploadUAT.js",
 ```
 
-Then with a run a of `npm run deploy` - it will regenerate our `./build` folder, delete the old build folder on the SharePoint folder, and upload the new build folder files.
+Then running `npm run deploy` will regenerate our `./build` folder, delete the old build folder on the SharePoint folder, and upload the new build folder files.
 
 Users can them simply be given the URL to the index.html file, ie:
 
@@ -236,6 +236,6 @@ You can view the full list of packages in my <ins><a target="_blank" href="https
 2.  Make API calls from both localhost, and the SharePoint deployed folder
 3.  Have Routing working in your build folder without the need for an http server
 
-The end goal of this project was simply to be able to focus on building the React app that could leverage SharePoint List data - without having to deal with some of the out of the box traditional SharePoint development features that can be a bit of a hinderance. The end result for our team was being able to more rapidly iterate and deploy solutions - and ultimately being able to focus more on our clients needs.
+The project's aim was to focus on building a React app that leveraged SharePoint List data, avoiding traditional SharePoint development complexities. The end result for our team was being able to more rapidly iterate and deploy solutions - and ultimately being able to focus more on our clients needs.
 
 There is probably additional work or possible improvements that could be made - such as converting to TypeScript, Dockerizing, integrating with other automations on a CI/CD tool. You might even include a suite of domain specific tests against SharePoint List data. Feel free to make pull requests or raise issues on the repo. I hope this guide has helped - it turned out to be quite useful for some of my work projects.

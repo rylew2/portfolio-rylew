@@ -18,7 +18,7 @@ tags:
 
 ## Intro
 
-In this project, I was interested in working with a new stack, so I took on a project to build a card game with React, GraphQL, Django, and Postgres. It was an interesting exploration into first building the frontend portion, then setting up GraphQL model types, a Django application, and PostgresQL database - all wrapped up in Docker with a robust set of make commands. The project was my first time using both Django, GraphQL, and `react-redux` .
+In this project, I was interested in working with a new stack, so I took on a project to build a card game with React, GraphQL, Django, and Postgres. This project was a foray into developing the frontend, establishing GraphQL model types, configuring a Django application, and setting up a PostgreSQL database, all containerized with Docker and orchestrated by robust make commands. The project was my first time using both Django, GraphQL, and `react-redux` .
 
 [Source coude here](https://github.com/rylew2/cardgame) - (with full repo available by request)
 
@@ -42,13 +42,13 @@ https://card-game-frontend.vercel.app/
 
 #### CSS/Design
 
-Since the look and feel was not an area I wanted to perfect, I tried to speed things by using Tailwind utility classes (usually inline). I'm typically used to a more established design system setup with larger projects, but I found simplifying CSS in this area got me to more of the front end state management issues faster.
+To expedite development without perfecting the design, I utilized inline Tailwind utility classes. I'm typically used to a more established design system setup with larger projects, but I found simplifying CSS in this area got me to more of the front end state management issues faster.
 
-Simlarly with the animation and rotation - I quickly gave a bit of a curve to make the hand look like it was dealt, added some opacity animations as cards were "dealt" into place on the board, and added confettie animation (3rd party package) for the win state.
+Similarly with the animation and rotation - I quickly gave a bit of a curve to make the hand look like it was dealt, added some opacity animations as cards were "dealt" into place on the board, and added confettie animation (3rd party package) for the win state.
 
 #### React/state considerations
 
-Typically `useState` suffices for a small app like this, but I wanted some experience with `redux-toolkit` - so I spent some time reading their [excellent docs](https://redux-toolkit.js.org/tutorials/typescript) to help bootstrap the setup of typescript friendly action creators and a test setup file that made it easy to mock the redux store so I could test any game state.
+Although useState is often sufficient for small apps, I opted to gain experience with `redux-toolkit` - so I spent some time reading their [excellent docs](https://redux-toolkit.js.org/tutorials/typescript) to help bootstrap the setup of typescript friendly action creators and a test setup file that made it easy to mock the redux store so I could test any game state.
 
 The store itself was fairly straightforward with 2 actions (`deal` and `reset`), and 2 reducers with the same name. The `Reset` action simply returns the deck to 47 cards (with 5 having been randomly dealt to the user). `Deal` will try to deal a new hand and determine what state that new hand will confer.
 
@@ -150,7 +150,7 @@ While I wanted to touch all parts of the stack with this project and not spend a
 
 The backend work included setting up a DB schema that has a `card` table that stores all 52 cards for a deck, with each card having a suit and rank, and a particular status (`Deck`, `Hand`, or `Discarded`). There's also a simple `game` table that simply stores the game phase (`In Progress`, `Won`, `Lost`, `Loading`) - this allows multiple games to be stored. Along with the standard Django tables, this was all that was needd to represent this game on the backend.
 
-To get to 3rd normal form, I believe I could have introduced a lookup table for the card status - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
+For 3rd normal form, I considered introducing a lookup table for card statuses. - this would put the status in one place, so it would be easy to rename a status in the future - however, I skipped this normalization step.
 
 Most of the functionality to update the database was contained in `GameQueryService` - which I just quickly turned into a collection of static methods utilizing the Django ORM to query or update data. A possible more ergonomic way of arranging this would be to have more of this ORM logic in the model. I preferred the clean separation and ease of development a separate service provided.
 
@@ -158,7 +158,7 @@ I did try to ensure that we weren't doing any database saves in loops, but rathe
 
 ### GraphQL
 
-Having the GraphiQL explorer to test queries makes setting up a GraphQL API much easier. The mutation and resolver files were setup in the `/graphql/types` folder, which are referenced in the `schema.py` file - the schema file defines the fields used in mutation or queries.
+The GraphiQL explorer facilitated the setup of the GraphQL API by streamlining query testing. The mutation and resolver files were setup in the `/graphql/types` folder, which are referenced in the `schema.py` file - the schema file defines the fields used in mutation or queries.
 
 Writing tests for specific GraphQL queries is also pretty straightofrward - we simply use a a `setUp` method from the built-in `unittest` framework that gets called before each individual test to setup a game. Then it's simply testing the GraphQL query we want (as if coming from the end frontend) and making assertions on the returned data.
 
@@ -232,8 +232,10 @@ class DealCardsTestCase(TestCase):
 
 ## Putting it all together
 
-Once both the frontend and backend were working, and had proper test coverage, there were a couple steps to hook up the full stack application:
+After ensuring the frontend and backend worked and were fully tested, I followed a few steps to integrate the full-stack application:
+
 - installing Apollo and pointing the client to the GraphQL address in `index.tsx`
+
 ```js
 const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql/',
@@ -257,13 +259,12 @@ reportWebVitals();
 - Removing the frontend in-memory storage and instead referencing the GraphQL returned data
 - I setup a `codegen` file using the `@graphql-codegen/cli` that would take the GraphQL types defined on the backend and generate a set of Typescript types that I could use on the frontend. This required me to go back and update a lot of the frontend enums and utility functions with those types
 
-
-
 ## Conclusion
 
-Overall it was interesting to work with languages I knew, but with frameworks and libraries I hadn't worked with. There are a few final next steps I was considering:
+Working with familiar languages while learning new frameworks and libraries was an engaging experience. There are a few final next steps I was considering:
 
 #### Additional items if more time allowed for the project:
+
 - Set loading state prior to GraphQL calls (and between deals/resets) - although it's pretty quick to make a mutation and get the result - it might make sense to have the loader show momentarily
 - E2E tests - it would have been nice to add some Cypress tests to get integration coverage
 - Data fetching - I didn't have time to get into it, but there is `Redux Toolkit Query` and I would be curious how that might overlap, enhance, or work in combination with GraphQL and the Apollo client

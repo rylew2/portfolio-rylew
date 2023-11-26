@@ -12,7 +12,7 @@ tags:
   - javascript
 ---
 
-I wanted to explore VueJS as it has been slowly growing in popularity and following a similar path as React - for example, providing options to scale using superhero frameworks like <a href="https://nuxtjs.org/">Nuxt.js</a> and state management <a href="https://vuex.vuejs.org/">Vuex</a>.
+Exploring VueJS was intriguing, given its rising popularity and parallels with React's growth trajectory. Vue provides options to scale using superhero frameworks like <a href="https://nuxtjs.org/">Nuxt.js</a> and state management <a href="https://vuex.vuejs.org/">Vuex</a>.
 
 <figure class="image">
   <Image src="/images/project/exploringVue/comparison.png" alt="high level view of GitHub browser">
@@ -122,7 +122,7 @@ There are some nuanced differences though - they include:
   `create-react-app` does not allow configuration during project setup while the Vue CLI does and it can be extended via plugins. Furthermore, the Vue CLI has the added feature of allowing a project to be defined from presets - a JSON object that has pre-defined options/plugins for a new project.
 
 - <u>Vue doesn't favor/require ES6, JSX, or build-systems</u><br /><br />
-  Vue can simply be run by including a script tag (`<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>`) and writing Vue code without the need for performance concerns. 
+  Vue can simply be run by including a script tag (`<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>`) and writing Vue code without the need for performance concerns.
   Therefore - the docs suggest that Vue can scale both up and down - (React is more difficult for minimal deployments)
 
 - <u>Vue native rendered support is still in its infacy</u><br /><br />
@@ -130,7 +130,8 @@ There are some nuanced differences though - they include:
 
 ### Some testing sprinkled in
 
-I did try out `vue-test-utils` - but I'd like to come back and revisit this after I take the Testing JavaScript course by Kent Dodds. Since `vue-test-utils` comes with both unit and e2e test folder structures out of the box I decided to write a few basic test cases.
+I experimented with `vue-test-utils` and plan to revisit it after completing Kent Dodds' Testing JavaScript course.
+Since `vue-test-utils` comes with both unit and e2e test folder structures out of the box I decided to write a few basic test cases.
 
 This was the first time I had ever used Cypress and it's a pretty stellar tool. I like seeing visual representations of my work - therefore seeing the Cypress robot run is pretty satisfying and a good Selenium replacement. While Cypress only runs with JavaScript, has difficulty handling events like file uploads or hover, and doesn't support mobile testing - these disadvantages are outweighed by the good parts - snapshots, readable stack traces, ability to wait during test execution, and cross browser testing.
 

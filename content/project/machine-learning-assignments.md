@@ -12,11 +12,11 @@ tags:
   - omscs
 ---
 
-In the primary Machine Learning course we explored various algorithms via experimental analysis on two datasets - `white wine` and `abalone`. The following is a high level discussion of some of the analysis I performed on supervised learning algorithms.
+In the primary Machine Learning course we explored various algorithms via experimental analysis on two datasets - `white wine` and `abalone`. Below is an overview of my analysis on supervised learning algorithms.
 
 ## Choosing Datasets
 
-The popular <ins><a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/wine">wine quality score dataset</a></ins> I chose is based on a chemical analysis of wines grown in Italy - and the resulting user "quality" scores - scored from 0 to 10. Some of the wine dataset attributes include the amounts of: <blockquote>alcohol, malic acid, magnesium, phenols, and flavonoids</blockquote>
+The popular <ins><a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/wine">wine quality score dataset</a></ins> I chose is based on a chemical analysis of wines grown in Italy - and the resulting user "quality" scores - scored from 0 to 10. Key attributes of the wine dataset include the amounts of.: <blockquote>alcohol, malic acid, magnesium, phenols, and flavonoids</blockquote>
 
 The idea of choosing a dataset like this is that it's a simple classification problem that's well suited for determining if chemical constituents of wine can predict quality scores.. The wine industry is worth billions in California alone, and if wine producers can find out what chemical constituents produce higher quality wines (at least in the mind of customers), then they likely will.
 
@@ -28,12 +28,12 @@ The actual age of the animal is determined by counting the numbers of rings - ho
 
 <figure class="image">
   <Image src="/images/project/machineLearning/wine-label-distribution.jpg" alt="high level view of GitHub browser">
-  <figcaption>The distribution of wine quality scores and my specific binary classification (0 to 5 is 'bad', 6 to 9 is 'good')</figcaption>
+  <figcaption>Binary classification of wine quality scores, where 0 to 5 is 'bad' and 6 to 9 is 'good'.</figcaption>
 </figure><br />
 
 ## Algorithm Analysis
 
-The code itself is basically searching all possible `hyperparameters` of each algorithm to find optimal results. I used `sklearn`'s `GridSearchCV` function which search over a specified range of hyperparameters, finding the optimal hyperparameter combination. This code does a 70/30 train/test split of the data, normalizes the data to a standard scale, performs 5-fold cross validation on the 70% training data for each hyperparameter combination, and finally calculates the average cross validation score among the 5 folds. The best 5-fold cross validation score from our grid search lets us know what the optimal hyperparameters are.
+The code itself is basically searching all possible `hyperparameters` of each algorithm to find optimal results. I used `sklearn`'s `GridSearchCV` function which search over a specified range of hyperparameters, finding the optimal hyperparameter combination. The code splits the data into a 70/30 train/test split, normalizing it to a standard scale, performs 5-fold cross validation on the 70% training data for each hyperparameter combination, and finally calculates the average cross validation score among the 5 folds. The best 5-fold cross validation score from our grid search lets us know what the optimal hyperparameters are.
 
 With the optimal hyperparameters, I can use these settings on the 30% held out test set for each different supervised algorithm and determine which algorithm would perform the best for solving the central idea of each algorithm (predicting quality or predicting age).
 
@@ -87,7 +87,7 @@ Some of the experiments here including comparing some of the activation function
 
 <figure class="image">
   <Image src="/images/project/machineLearning/ann-learning-curve.jpg" alt="ann learning curve">
-  <figcaption>Wine converging at about 340 trainig examples, while abalone taks about 1000</figcaption>
+  <figcaption>Wine converging at about 340 training examples, while abalone taks about 1000</figcaption>
 </figure><br />
 
 ### Boosting
@@ -138,7 +138,7 @@ No final comparison is complete without consideration of both test performance a
 </figure>
 <br />
 
-One of the key takeaways in all this is the `no free lunch theorem` where an algorithm that works well for one problem may not work well for other problems. Each algorithm includes its own inductive biases and complexities. The only way to find the right tool for the job is to find the optimal hyperparameters and plot the performance - in addition to consider running time performance.
+A key takeaway is the `no free lunch theorem`, which states that an algorithm effective for one problem may not be suitable for others. Each algorithm includes its own inductive biases and complexities. The only way to find the right tool for the job is to find the optimal hyperparameters and plot the performance - in addition to consider running time performance.
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
