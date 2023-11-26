@@ -24,6 +24,7 @@ const tag = ({ content, title, description }) => {
 export const getStaticPaths = async () => {
     // Get all the tags from the already defined site tags
 
+    console.log('getStaticPaths in [tag] file ==============> ')
     const paths = tagsJSON.map((tag) => {
         return {
             params: {

@@ -4,7 +4,6 @@ import React from 'react'
 import { StyledCards } from '../styles/cards.styles'
 
 interface ICard {
-    basePath: string
     data: {
         title: string
         id: string
@@ -12,6 +11,7 @@ interface ICard {
         date: Date
         previewImage: string
         description: string
+        path: string
         liveSite?: string
         sourceCode?: string
         presentation?: string
@@ -23,14 +23,14 @@ interface ICard {
  * @param {Array} data Data to display in grid
  */
 
-const Cards = ({ data, basePath }: ICard) => {
+const Cards = ({ data }: ICard) => {
     return (
         <StyledCards>
             {data.map((singleCard) => (
                 <article className="article" key={singleCard.id}>
                     <Link
-                        href={`/${basePath}/[id]`}
-                        as={`/${basePath}/${singleCard.slug}`}
+                        href={`/${singleCard.path}/[id]`}
+                        as={`/${singleCard.path}/${singleCard.slug}`}
                     >
                         <Image
                             src={singleCard.previewImage}
@@ -93,8 +93,8 @@ const Cards = ({ data, basePath }: ICard) => {
                         </time>
                     )}
                     <Link
-                        href={`/${basePath}/[id]`}
-                        as={`/${basePath}/${singleCard.slug}`}
+                        href={`/${singleCard.path}/[id]`}
+                        as={`/${singleCard.path}/${singleCard.slug}`}
                     >
                         <h2>{singleCard.title}</h2>
                     </Link>

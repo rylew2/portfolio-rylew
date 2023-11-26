@@ -14,7 +14,7 @@ const Book = ({ books }) => {
         >
             <Container>
                 <p className="page-intro">Books I've had the chance to read.</p>
-                <Cards data={books} basePath="books" />
+                <Cards data={books} />
             </Container>
         </Layout>
     )

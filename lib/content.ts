@@ -155,6 +155,7 @@ export const getContentList = (contentType: IContentType) => {
                 previewImage:
                     data.previewImage || '/images/image-placeholder.png',
                 id: uuid(),
+                path: contentType + 's',
             }
         })
 
@@ -170,6 +171,7 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
     let contentDir
     let contentFiles
 
+    console.log('in here ...........................')
     switch (contentType) {
         case 'book':
             contentDir = bookDirectory
@@ -192,14 +194,17 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
 
             const { data } = matter(rawContent)
 
+            console.log('data => ', data)
             return {
                 ...data,
                 previewImage:
                     data.previewImage || '/images/image-placeholder.png',
                 id: uuid(),
+                path: contentType + 's',
             }
         })
 
+    debugger
     const filteredContent = contentData.filter((content: IContentData) => {
         return content.tags && content.tags.includes(tag)
     })
@@ -245,6 +250,7 @@ export const getContentInCategory = (
                 previewImage:
                     data.previewImage || '/images/image-placeholder.png',
                 id: uuid(),
+                path: contentType + 's',
             }
         })
 
