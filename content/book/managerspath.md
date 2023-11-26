@@ -4,7 +4,7 @@ date: '2023-06'
 slug: 'managerspath'
 selectedWork: true
 description: 'A review of the canonical engineering management book '
-previewImage: '/images/project/managersPath/managerspath.png'
+previewImage: '/images/book/managersPath/managerspath.png'
 tags:
     - management
 ---
