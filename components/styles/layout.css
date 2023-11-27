@@ -196,3 +196,47 @@ figcaption {
         font-size: 4.37em;
     }
 }
+
+/* Staff Engineer */
+table.staffengineer {
+    overflow-x: auto;
+    color: black;
+    display: inline-table;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table.staffengineer th {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+table.staffengineer th:not(:last-child) {
+    border-right: 1px solid white;
+}
+
+table.staffengineer tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table.staffengineer td,
+table.staffengineer th {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+table.staffengineer tr:first-child th {
+    border-color: black white black black;
+}
+
+table.staffengineer tr:first-child th:first-child {
+    border-left-color: white;
+}
+
+table.staffengineer tr:first-child th:last-child {
+    border-right-color: white;
+}
