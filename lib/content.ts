@@ -181,7 +181,6 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
             break
     }
 
-    console.log('contentDir => ', contentDir)
     contentFiles = fs.readdirSync(contentDir)
 
     let contentData = contentFiles
@@ -194,7 +193,6 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
 
             const { data } = matter(rawContent)
 
-            console.log('data => ', data)
             return {
                 ...data,
                 previewImage:
@@ -203,15 +201,11 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
                 path: contentType + 's',
             }
         })
-    console.log('=========================')
 
-    console.log('contentData => ', contentData)
     const filteredContent = contentData.filter((content: IContentData) => {
         return content.tags && content.tags.includes(tag)
     })
 
-    console.log('=========================')
-    console.log('filteredContent => ', filteredContent)
     return filteredContent.sort(sortByDate)
 }
 
