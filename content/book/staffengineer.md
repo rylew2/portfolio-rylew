@@ -163,21 +163,27 @@ Your company may call them RFCs or tech specs. A good design doc describes a spe
 Writing an effective engineering strategy involves creating mundane yet essential documents that guide decision-making and align teams. The process of developing a strategy is straightforward and more effective than many realize. The book offers a few recommendations:
 
 -   **Identify and Clarify the Problem** - Begin with a clear statement of the problem, as it sets the stage for finding effective solutions. If solutions aren't clear, spend more time refining your understanding of the problem. When stuck, consult with others for fresh perspectives.
-
 -   **Simplify the Design Document Template** - Utilize the existing design document template of your company as a foundation. Avoid making the template overly complex, as this can deter people from writing design documents. Aim for a minimal template that highlights the most crucial sections, particularly for projects with significant risks.
-
 -   **Collaborative Input, Individual Writing** - Acknowledge that having all the relevant information to write the best design document is unlikely. Seek input from various stakeholders early in the process, but be cautious about turning this collaboration into a group writing effort. While it's important to incorporate a wide range of views, the actual writing should be a solo endeavor to ensure clarity.
-
 -   **Aim for Quality, Not Perfection** - Focus on writing a good and substantial document rather than waiting to achieve perfection. When providing feedback on others' designs, avoid the expectation that their work should match your highest standards. Especially in senior roles, encourage the production of quality work, rather than insisting on perfection in every design.
 
 ### Synthesize the design docs into a strategy
 
 After gathering five design docs, look for controversial decisions that came up in multiple designs (particularly those that were hard to agree on). An example from the book is deciding whether Redis is just a cache or if it's appropriate to use as durable storage. The idea is to reflect on how these decisions were made and wrote them down as a strategy.
 
-Analyze and Synthesize Design Documents - Review the five design documents collectively. Identify and focus on controversial or difficult decisions that recur in multiple documents. Use these insights to form a cohesive strategy.
+-   **Analyze and Synthesize Design Documents** - Review the five design documents collectively. Identify and focus on controversial or difficult decisions that recur in multiple documents. Use these insights to form a cohesive strategy.
+-   **Guide Tradeoffs with Clear Rationale** - Effective strategies should guide decision-making tradeoffs and clearly explain the underlying rationale. Avoid strategies that state policies without context, as they quickly become irrelevant and difficult to adapt.
+-   **Be Specific and Opinionated** - Emphasize specifics in your strategy, avoiding generalizations. Strategies should be opinionated, providing clear guidance on decision-making, and must demonstrate the thought process behind these opinions.
+-   **Show Your Work** - Like solving a math problem, showing your work in strategy development is crucial. This approach not only builds confidence in the strategy but also allows others to understand and adapt it as contexts change.
 
-Guide Tradeoffs with Clear Rationale - Effective strategies should guide decision-making tradeoffs and clearly explain the underlying rationale. Avoid strategies that state policies without context, as they quickly become irrelevant and difficult to adapt.
+### Combining Strategies into a Vision
 
-Be Specific and Opinionated - Emphasize specifics in your strategy, avoiding generalizations. Strategies should be opinionated, providing clear guidance on decision-making, and must demonstrate the thought process behind these opinions.
+Creating a compelling engineering vision from multiple strategies involves weaving together different approaches into a cohesive plan for the next two to three years. The final version should give you what Tanya Reilly calls ["a robust belief in the future](https://leaddev.com/technical-direction-strategy/sending-gifts-future-you) - the result should be a common thread among existing strategies as well as making it easier to write additional strategies that stand the test of time. Here's a few tips for writing a vision:
 
-Show Your Work - Like solving a math problem, showing your work in strategy development is crucial. This approach not only builds confidence in the strategy but also allows others to understand and adapt it as contexts change.
+-   **Combine Strategies Thoughtfully** - Analyze and harmonize different strategies, even if they seem contradictory.
+-   **Focus on a 2-3 Year Horizon** - Develop a vision that is realistic for a rapidly changing technological and business landscape.
+-   **Align with Business and User Needs** - Ensure the vision serves users and aligns with leadership's core values. (Bad visions might focus on technical sophistication for the sake of being complex, which can become disconnected from benefiting customers and leadership values. IE.. a vision propsing latest AI technology because its innovative, withotu showing how it drives busienss growth)
+-   **Be Ambitious but Realistic** - Aim for the best possible outcomes within resource constraints. (You're not writing a vision with the assumption of infinite resources)
+-   **Detail Matters** - Provide concrete details and avoid vague statements to guide strategy effectively.
+-   **Keep It Concise** - Limit the vision to 1-2 pages and link to more in-depth documents for interested readers. (Most people won't read longer than a page)
+-   **Share and Refine** - Share across the organization and measure success by the improvement in strategies and design documents over time.
