@@ -158,7 +158,7 @@ There are also a few ways to get tripped up when looking to prioritize what to w
 
 > "I kind of think writing about engineering strategy is hard because good strategy is pretty boring, and it’s kind of boring to write about. Also I think when people hear “strategy” they think “innovation” " - Camille Fournier
 
-Your company may call them RFCs or tech specs. A good design doc describes a specific problem, surveys possible solutions, and explains the selected approach's details. Design docs should be grounded in specifics to prevent multiple different interpretations by engineers.
+Your company may call them RFCs or tech specs, but a good design doc describes a specific problem, surveys possible solutions, and explains the selected approach's details. Design docs should be grounded in specifics to prevent multiple different interpretations by engineers.
 
 Writing an effective engineering strategy involves creating mundane yet essential documents that guide decision-making and align teams. The process of developing a strategy is straightforward and more effective than many realize. The book offers a few recommendations:
 
@@ -187,3 +187,43 @@ Creating a compelling engineering vision from multiple strategies involves weavi
 -   **Detail Matters** - Provide concrete details and avoid vague statements to guide strategy effectively.
 -   **Keep It Concise** - Limit the vision to 1-2 pages and link to more in-depth documents for interested readers. (Most people won't read longer than a page)
 -   **Share and Refine** - Share across the organization and measure success by the improvement in strategies and design documents over time.
+
+## Managing Technical Quality
+
+One of the roles of engineering leadership is to maintain appropriate technical quality, while still devoting as much energy as possible to the core business. It's easy to point fingers when technical quality is low, but this scenario is not a crisis - it's expected. Some tips the books recommends:
+
+- **Start with the lightest weight solutions first** - only progress toward massive solutions as earlier efforts fail to scale. Quick fixes provide valuable learning experiences. Celebrate the removal of ineffective practices along the way.
+
+- **Adopt a performance engineer mindset to identify hotspots** - It's tempting when confronted with a quality problem to identify a process failure and subsequently suggest a process improvement (IE... we had a deployment cause an outage because a code author didn't correctly follow a code test process, so let's require tests with every commit). It's more important to identify the actual problem and hand than to implement fixes via process-driven accountability. Teams should adopt a `performance engineer's mindset` whereby they measure the system, identifying where the bulk of issues lie so you can focus on just that area. - Sometimes it's also better to just discard an issue rather than try to fix it
+
+- **Align technical decisions with shared visions** - ensure you avoid centralizing decisions with one architect, and instead, use tools, onboarding and organizationl design to foster alignment
+
+- **Gradual best practice implementation** - Successful adoption of best practices, like Scrum, requires a gradual approach, starting with small tests and evolving based on feedback. It's important to focus on one practice at a time, ensuring each is well-established before introducing new practices, and to base the adoption on solid research and readiness.
+
+- **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concenctration should be *interfaces* (mediators between different parts of software that hide complexity), *stateful systems* (an area that gets complex faster than any other area), and *data models* (at the intersection of stateful systems and interfaces, and should be designd to be rigid yet still flexible to changes over time)
+
+- **Aligning technical efforts with org vision** - all technical decisions should support a unified vision (like vectors pointing in the same direction). To prevent misalignment, the book recommends several strategies including direct feedback, training and feedback, leverage Conway's Law where orgs create systems that reflect their structure, and developing engineering strategy based on tech specs that also reflect the broader org strategy/vision.
+
+
+### Measuring and Enhancing Technical Quality
+
+Accurate measurement of technical quality in software engineering is key. It's crucial to have a good definition of quality - and then to have the instrumentation to create a quality score that you can track over time.
+
+Some technical quality definitions might include: What percentage of the code is statically types? What percentage of files use the preferred HTTP library? Do endpoints respond to requests within 500ms after a cold start? How many functions have dangerous read-after-write behavior?
+
+
+
+#### Technical Quality Team
+
+ Establishing a technical quality team (sometimes called *Developer Productivity, Developer Tools, or Product Infrastructure*) dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
+
+ Some tips for the success of quality teams:
+ - trust metrics over intuition
+ - adoption/usability of your tools are much more important than raw power - so do user research on your tools and listen to/learn from your users
+ - do fewer things, but do them better
+
+ This involves creating a detailed definition of quality, including aspects like code typing percentage, test coverage, and response times. Establishing a technical quality team dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
+
+
+
+Technical quality is a long-term game - you don't win, but instead learn and earn the chance to keep playing.
