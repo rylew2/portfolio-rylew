@@ -192,38 +192,56 @@ Creating a compelling engineering vision from multiple strategies involves weavi
 
 One of the roles of engineering leadership is to maintain appropriate technical quality, while still devoting as much energy as possible to the core business. It's easy to point fingers when technical quality is low, but this scenario is not a crisis - it's expected. Some tips the books recommends:
 
-- **Start with the lightest weight solutions first** - only progress toward massive solutions as earlier efforts fail to scale. Quick fixes provide valuable learning experiences. Celebrate the removal of ineffective practices along the way.
+-   **Start with the lightest weight solutions first** - only progress toward massive solutions as earlier efforts fail to scale. Quick fixes provide valuable learning experiences. Celebrate the removal of ineffective practices along the way.
 
-- **Adopt a performance engineer mindset to identify hotspots** - It's tempting when confronted with a quality problem to identify a process failure and subsequently suggest a process improvement (IE... we had a deployment cause an outage because a code author didn't correctly follow a code test process, so let's require tests with every commit). It's more important to identify the actual problem and hand than to implement fixes via process-driven accountability. Teams should adopt a `performance engineer's mindset` whereby they measure the system, identifying where the bulk of issues lie so you can focus on just that area. - Sometimes it's also better to just discard an issue rather than try to fix it
+-   **Adopt a performance engineer mindset to identify hotspots** - It's tempting when confronted with a quality problem to identify a process failure and subsequently suggest a process improvement (IE... we had a deployment cause an outage because a code author didn't correctly follow a code test process, so let's require tests with every commit). It's more important to identify the actual problem and hand than to implement fixes via process-driven accountability. Teams should adopt a `performance engineer's mindset` whereby they measure the system, identifying where the bulk of issues lie so you can focus on just that area. - Sometimes it's also better to just discard an issue rather than try to fix it
 
-- **Align technical decisions with shared visions** - ensure you avoid centralizing decisions with one architect, and instead, use tools, onboarding and organizationl design to foster alignment
+-   **Align technical decisions with shared visions** - ensure you avoid centralizing decisions with one architect, and instead, use tools, onboarding and organizationl design to foster alignment
 
-- **Gradual best practice implementation** - Successful adoption of best practices, like Scrum, requires a gradual approach, starting with small tests and evolving based on feedback. It's important to focus on one practice at a time, ensuring each is well-established before introducing new practices, and to base the adoption on solid research and readiness.
+-   **Gradual best practice implementation** - Successful adoption of best practices, like Scrum, requires a gradual approach, starting with small tests and evolving based on feedback. It's important to focus on one practice at a time, ensuring each is well-established before introducing new practices, and to base the adoption on solid research and readiness.
 
-- **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concenctration should be *interfaces* (mediators between different parts of software that hide complexity), *stateful systems* (an area that gets complex faster than any other area), and *data models* (at the intersection of stateful systems and interfaces, and should be designd to be rigid yet still flexible to changes over time)
+-   **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concenctration should be _interfaces_ (mediators between different parts of software that hide complexity), _stateful systems_ (an area that gets complex faster than any other area), and _data models_ (at the intersection of stateful systems and interfaces, and should be designd to be rigid yet still flexible to changes over time)
 
-- **Aligning technical efforts with org vision** - all technical decisions should support a unified vision (like vectors pointing in the same direction). To prevent misalignment, the book recommends several strategies including direct feedback, training and feedback, leverage Conway's Law where orgs create systems that reflect their structure, and developing engineering strategy based on tech specs that also reflect the broader org strategy/vision.
-
+-   **Aligning technical efforts with org vision** - all technical decisions should support a unified vision (like vectors pointing in the same direction). To prevent misalignment, the book recommends several strategies including direct feedback, training and feedback, leverage Conway's Law where orgs create systems that reflect their structure, and developing engineering strategy based on tech specs that also reflect the broader org strategy/vision.
 
 ### Measuring and Enhancing Technical Quality
 
 Accurate measurement of technical quality in software engineering is key. It's crucial to have a good definition of quality - and then to have the instrumentation to create a quality score that you can track over time.
 
-Some technical quality definitions might include: What percentage of the code is statically types? What percentage of files use the preferred HTTP library? Do endpoints respond to requests within 500ms after a cold start? How many functions have dangerous read-after-write behavior?
+Some technical quality definitions might include:
 
-
+-   `What percentage of the code is statically types?`
+-   `What percentage of files use the preferred HTTP library?`
+-   `Do endpoints respond to requests within 500ms after a cold start?`
+-   `How many functions have dangerous read-after-write behavior?`
 
 #### Technical Quality Team
 
- Establishing a technical quality team (sometimes called *Developer Productivity, Developer Tools, or Product Infrastructure*) dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
+Establishing a technical quality team (sometimes called _Developer Productivity, Developer Tools, or Product Infrastructure_) dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
 
- Some tips for the success of quality teams:
- - trust metrics over intuition
- - adoption/usability of your tools are much more important than raw power - so do user research on your tools and listen to/learn from your users
- - do fewer things, but do them better
+Some tips for the success of quality teams:
 
- This involves creating a detailed definition of quality, including aspects like code typing percentage, test coverage, and response times. Establishing a technical quality team dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
+-   trust metrics over intuition
+-   adoption/usability of your tools are much more important than raw power - so do user research on your tools and listen to/learn from your users
+-   do fewer things, but do them better
+-   avoid having the quality team impose a globally optimal or one-size-fits-all approach for all teams (IE.. some teams have atypical workloads - think developers using a Javascript backend, which doesn't mesh well with a Machine Learning team that wants everything to be in Python). Understand each team's unique requirements and find a healthy balance between standardization and accommodating diverse needs
+
+## Staying Aligned with Authority
+
+To be effective within a staff-plus role, you'll need to retain some level of organizational authority, which depends on remaining deeply aligned with a bestowing sponsor - generally your direct manager. Typically, the support system that got you to a staff role will fade away when you're there, so you must align the pieces around you for your own success.
+
+The book highlights several tips for strategic alignment:
+
+-   **Communication is key** - try to prevent both you surprising your manager and your manager/sponsor surprising you through frequent and open lines of communication.
+-   **Feedback and adaptation** - regular feedback and a willingness to adapt are important
+    -   **Proactive problem-solving by signaling manager** - To prevent your manager from getting surprised by the organizations, considering feeding them additional context of problems you're noticing
+
+- **Aligning vision with leadership to influence effectively** - You should develop your own perspective on how the world should work (this sharpens your judgement and proactive capabilities). However, make sure to align your vision with that of senior org leaders, while still maintaining some sense of your own ideas in a non-confrontational way - this will let you influence without friction.
 
 
+### Lead by following
 
-Technical quality is a long-term game - you don't win, but instead learn and earn the chance to keep playing.
+Management is a profession, but leadership is a trait one can demonstrate within any profession. The most effective leaders spend more time following than they do leading :
+- Give support quickly to others who are working to make improvements
+- Make feedback explicitly non-blocking if you disagree (share perspective rather than suggestion the person change their approach)
+- Incorporate your worldview into those of the people around you - which can accelerate the overall progress around you
