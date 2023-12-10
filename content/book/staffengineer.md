@@ -12,7 +12,7 @@ tags:
 
 ## Intro
 
-git Software engineers usually reach the Senior level within 5-8 years in the tech industry. At this stage, further promotions are not mandatory and are more of an exception than an expectation. At this point, engineers often have the option to transition into engineering management ([<u>see Manager's Path</u>](/books/managerspath)).
+Software engineers usually reach the Senior level within 5-8 years in the tech industry. At this stage, further promotions are not mandatory and are more of an exception than an expectation. At this point, engineers often have the option to transition into engineering management ([<u>see Manager's Path</u>](/books/managerspath)).
 
 However, for those who wish to advance their careers without shifting to engineering management, many companies offer a two-track career path. The first track is engineering management, while the second is technical leadership, with roles like Staff Engineer and Principal Engineer.
 
@@ -260,7 +260,7 @@ Management is a profession, but leadership is a trait one can demonstrate within
     -   Read the room to understand when to escalate discussions or break them down into smaller groups
 -   Avoid forcing consensus in meetings - identify ways to explore disagreements
 
-Often times engineers will be confident that their perspective is right, so there are ocassions where getting other folks in the room to agree is sometimes a zero sum game. Instead, think about applying some of the approaches listed above and think about entering a room with the goal of agreeing on a problem at hand.
+Often, engineers are confident their perspective is right, so there are ocassions where getting other folks in the room to agree is sometimes a zero sum game. Instead, think about applying some of the approaches listed above and think about entering a room with the goal of agreeing on a problem at hand.
 
 ### Difficult Colleagues
 
@@ -379,7 +379,7 @@ Gaining access to key decision-making spaces, often referred to as "the room," i
 
 Your goal is to be known for good things while minimizing org bandwidth you consume to do so. Staff-plus roles are leadership roles - and by giving you such a title, the company is bringing you into its leadership team. In order to bring you into leadership, existing leaders have to know and believe in you.
 
--   **Internal Visiblity** - work on things that matter to your leadership and org. A good reputation and visibility within the company are crucial to promotion to staff. Produce and share long lasting documents like architecture docs or tech specs. Lead or participate in company forums and events. Promote your team's work and achievements on Slack/email.
+-   **Internal Visibility** - work on things that matter to your leadership and org. A good reputation and visibility within the company are crucial to promotion to staff. Produce and share long lasting documents like architecture docs or tech specs. Lead or participate in company forums and events. Promote your team's work and achievements on Slack/email.
 
 -   **Executive Visibility** - It's particularly important to be known and trusted by the company's executives (as they have a say in promotions). Building a relationship with your skip level manager can be valuable here.
 
