@@ -241,7 +241,151 @@ The book highlights several tips for strategic alignment:
 
 ### Lead by following
 
-Management is a profession, but leadership is a trait one can demonstrate within any profession. The most effective leaders spend more time following than they do leading :
-- Give support quickly to others who are working to make improvements
-- Make feedback explicitly non-blocking if you disagree (share perspective rather than suggestion the person change their approach)
-- Incorporate your worldview into those of the people around you - which can accelerate the overall progress around you
+Management is a profession, but leadership is a trait one can demonstrate within any profession. The most effective leaders spend more time following than they do leading:
+- They give support quickly to others who are working to make improvements
+- They make feedback explicitly non-blocking if there will be disagreements (share perspective rather than suggesting people change their approach)
+- They incorporate their worldview into those people around them - accelerating overall progress
+- **They define the gap between how things are and how they ought to be, and identify proactive solutions to narrow the gap. They also care enough about the gap to attempt solutions.**
+
+
+### Agreeing on Decisions
+> I present what I think is the best case for us, and people can disagree with that. And, you know, they often do. I’m steering and influencing more than saying, “I’ve got the authority to just tell you what to do.” I’ve never seen that style work well. - Keavy McMinn
+
+- Effective meeting strategies -
+    - Approach meetings with the intent to understand and align with others, rather than just pushing your own perspective
+    - Listen through questions - this involves active listening and asking questions to understand other's viewpoints. **Ask 3 good questions before you share your perspective ** (you'll likely see the room shift)
+    - Defining a clear goal/purpose for meetings
+    - Read the room to understand when to escalate discussions or break them down into smaller groups
+- Avoid forcing consensus in meetings - identify ways to explore disagreements
+
+Often times engineers will be confident that their perspective is right, so there are ocassions where getting other folks in the room to agree is sometimes a zero sum game. Instead, think about applying some of the approaches listed above and think about entering a room with the goal of agreeing on a problem at hand.
+
+
+### Difficult Colleagues
+
+The above approaches work well for leaders looking to reach agreement with the majority of folks - but you won't agree with everyone. Difficult colleagues will often withold consent from the group or don't really listen. Some possible strategies to handle this include:
+- Including folks in a meeting that the difficult colleague can't be rude to (like a VP of Engineering)
+- Aligning with them before the meeting, so they feel heard and are less likely to derail the discussion
+
+### Creating space for others
+
+> At this point, I spend less time advocating for specific technologies or programs and more time empowering others to advocate for the technologies and programs that they think are important. I also try to be a source of knowledge and support that people can reach out to for feedback, especially on cross-cutting product decisions and on presentation of ideas to the rest of the organization. - Michelle Bu
+
+One indication of a successful staff-plus engineer is that your organization benefits from your contributions, but doesn't rely upon them. Many staff-plus reach the role by becoming the "go-to" person for their organization, so it can be difficult to transition from essential to adjacent.
+
+- Create more space for others in discussions:
+    - When you make a key contribution, reflect on what it would take for someone else to make that contribution next time
+    - Shift contribution toward asking questions
+    - Think about trying to involve folks who may not be participating
+        - Destigmatize low status activities like note-taking
+
+- Help others learn from decisions:
+    - Record decisions (write them down) so that others can learn
+    - Circulate decisions early (and before you've crystallized on a decision)
+    - Being able to listen to coworkers and being open enough to change your mind based on different discussions
+
+
+- Creating space via sponsorship
+    - When you get critical work, ask yourself who could grow the most by taking on this work - then have them lead that task/project
+    - As a sponsor, you can advise and provide context, but ultimately you should be able to let the person your sponsoring take an approach that you wouldn't
+
+The only way to remain a long-term leader of a successful company is to continually create space for others to take recognition and reward.
+
+
+### Building a Network of Peers
+
+Of the staff-plus engineers interviewed in the book, the most consistent recommendation was to develop a network of peers.
+
+- **Be visible** - Since there is a pent-up demand for community among staff-plus eng, the easiest way to build a network is to be visible (conferences, staff eng slack spaces)
+- **Internal networks** - This is easier at larger companies. When folks leave your org and spread across the industry, it will help bootstrap your broader network
+- **Quality over quantity** - Build your network with folks you trust, respect, and who inspire you. They'll help you solve the most difficult problems that come your way
+
+### Presenting to executives
+
+Your career is constrained by your ability to influence executives effectively. This is a skill on its own, since executives are usually unfamiliar with your domain and have limited time for the topic at hand. Presenting to executives can be disheartening if you're style of presenting doesn't match the style that executives are used to - particularly if the conversation gets derailed. For example, some executives might focus solely on data, discounting any points not directly tied to concrete evidence. Preparing in advance to align your presentation with styles can help prevent miscommunication and increase the likelihood your ideas will be received positively. When you meet with executives it's typically for planning, status reporting, or resolving misalignment. The key objective is to gain as much insight as possible from the executive, rather than trying to change their mind.
+-
+- Structured documents are a key tool to help clarify your thoughts. One such format is SQCA:
+    - Situation - define relevant context
+    - Complication - explain why current situation is problematic
+    - Question - state core questions to address
+    - Answer - state best answer to posed question
+
+- Mistakes to avoid:
+    - Never fight feedback - if you do, others will withhold comments and you'll get less out of it
+    - Don't evade responsibility/problems -  by putting issues on the table, you can move towards solving together rather than trying to hide things
+    - Don't present a question without an answer - doing so may make executives question judgement
+    - Don't fixate on a preferred outcome - there could be context you're missing
+
+
+
+### Promotion Packets
+
+Creating a promotion packet for a staff-plus role can be a strategic tool for career development. Instead of viewing it as just a requirement for promotion, it can serve as a roadmap for reaching your goals
+
+- Start early - begin working on your staff promotion packet well before you're up for promotion - using it as a guide rather than just a formality
+- Template for packet - include details of your staff projects, organizational improvements you've contributed to, the quantifiable impacts of your projects, mentorship roles, "glue work" for the organization, and areas for personal improvement
+- Iterative Process:
+    - Personal reflection - understand why you want a Staff level position and ensure it aligns with career aspirations
+    - Manage expectations - recognize that promotions at this level take time (promotions built over years)
+    - Engage your manager - discuss your promotion goals and the packet in your one-on-ones, seeking feedback and guidance
+        - Regularly discuss your progress towards meeting the promotion with your manager (addressing any gaps so as to strengthen your case)
+    - Write and Revise - initially draft your promotion packet, then review and edit it for clarity/content
+    - Get feedback from peers (especially those in staff-plus roles)
+
+- Find a sponsor - promotions are a team activity - don't play team games alone. This should be a person speaking up for your work in forums of influence. Sponsors usually ahve a lot of organizational capital but not a lot of time - so you must help align the pieces for them
+- Make sure your skip-level manager is familiar with your work's impact to remember it in a meeting
+
+This approach is not just about assembling a packet for promotion; it's about focusing your efforts and aligning with your manager to actively work towards your goal. When it's time to formalize your packet, it will be a refinement of your ongoing work rather than a last-minute compilation, making the promotion process smoother and more reflective of your continuous development.
+
+### Staff Projects
+
+> There isn’t an explicit expectation, nor is it listed anywhere as a formal requirement, but it is understood that you’ll complete a Staff Project to get promoted. I can’t think of any Staff promotion that didn’t include a really strong project, typically a multi-person project where the engineer was the Tech Lead. - Ritu Vincent
+
+Most folks who attain staff role do so by either accumulating a good track record over time, switching roles to attain the title, or completing a staff project. The staff project is usually complex and important enough that the person who copletes it has proven themselves a Staff engineer. Some of the characteristics of a staff project include:
+
+- **Complex/ambiguous** - In contrast to early career (well-defined) problems, the staff project is large, ambiguous, and poorly scoped. Part of the challenge is working through this ambiguity
+- **Numerous and divided stakeholders** - lack of org alignment around the problem and the solution
+- **Highly visible** - talked about at "All Hands" type meetings. As a result both failure or success will be visible.
+
+In order to obtain access to projects of this nature - the book offers a few additional tips that includes:
+- Stay highly aligned with leadership team
+- Be known to have technical aptitude for the problem at hand
+- It helps when your company has a pressing need to solve a staff-level problem
+
+Regardless of whether or not you want the staff title - you should still pursue self-growth opportunities that staff projects provide
+
+
+### Get in the decisioning room, and stay there
+
+Gaining access to key decision-making spaces, often referred to as "the room," is a common challenge and aspiration for engineers, especially at the Staff-plus level. Here's a succinct summary of the advice provided:
+
+- **Bring unique value** - have something useful to contribute that isn't already present
+- **Find a sponsor** - secure someone in the room who will advocate for your inclusion. Also make sure to communicate to sponsors that you do actually want tobe in the room
+- **Volunteer for tasks, even if they're low-status** - IE.. note-taking
+- **Understand the room's purpose** - align with the room's intent and operate within its norms
+- **Be low friction** - you're more likely to be involved if you're known as someone who can navigate difficult conversations effectively
+- **Be consistent** - regular attendance and reliability are crucial
+- **Speak clearly and concisely** - learn to use economy of speech. It's your responsibility to be understood
+-
+
+- Exiting the room:
+    - **Evaluate the room's value** - assess whether the room is a beneficial investment of your time
+    - **Leave Strategically** - If a room no longer serves your goals, consider exiting and potentially sponsor someone else to take your place
+
+
+### Being Visible
+
+Your goal is to be known for good things while minimizing org bandwidth you consume to do so. Staff-plus roles are leadership roles - and by giving you such a title, the company is bringing you into its leadership team. In order to bring you into leadership, existing leaders have to know and believe in you.
+
+- **Internal Visiblity** - work on things that matter to your leadership and org. A good reputation and visibility within the company are crucial to promotion to staff. Produce and share long lasting documents like architecture docs or tech specs. Lead or participate in company forums and events. Promote your team's work and achievements on Slack/email.
+
+- **Executive Visibility** - It's particularly important to be known and trusted by the company's executives (as they have a say in promotions). Building a relationship with your skip level manager can be valuable here.
+
+- **External Visibility** - This coul be a conference talk, or a highly publicized blog. While with internal efforts, your competing for attention with your peers, external efforts don't have this same competition.
+
+
+
+
+## Conclusion
+
+The "Staff Engineer" book is an insightful exploration into the role of Staff and Staff-plus engineers in the tech industry, offering practical advice on career progression, technical leadership, and effective communication within an organization. It delves into the importance of visibility, both internally and externally, and the significance of being in decision-making spaces, emphasizing the need for unique contributions, clear communication, and strategic relationships. The book also highlights the value of structured documentation and the importance of aligning with company goals and executive leadership. It explores the dual career tracks in engineering - management and technical leadership - and outlines the different archetypes of Staff Engineers, their roles, responsibilities, and the skills required for each. Additionally, it provides strategies for managing technical quality, staying aligned with authority, and the crucial role of mentorship and sponsorship. The book serves as a comprehensive guide for engineers aspiring to Staff-level roles, emphasizing the balance between technical expertise, strategic thinking, and interpersonal skills.
