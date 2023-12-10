@@ -12,7 +12,7 @@ tags:
 
 ## Intro
 
-Software engineers usually reach the Senior level within 5-8 years in the tech industry. At this stage, further promotions are not mandatory and are more of an exception than an expectation. At this point, engineers often have the option to transition into engineering management ([<u>see Manager's Path</u>](/books/managerspath)).
+git Software engineers usually reach the Senior level within 5-8 years in the tech industry. At this stage, further promotions are not mandatory and are more of an exception than an expectation. At this point, engineers often have the option to transition into engineering management ([<u>see Manager's Path</u>](/books/managerspath)).
 
 However, for those who wish to advance their careers without shifting to engineering management, many companies offer a two-track career path. The first track is engineering management, while the second is technical leadership, with roles like Staff Engineer and Principal Engineer.
 
