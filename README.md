@@ -1,4 +1,4 @@
-![Ryan Lewis Portfolio]
+## Ryan Lewis Portfolio
 
 ## Features
 
