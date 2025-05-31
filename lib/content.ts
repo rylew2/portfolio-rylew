@@ -1,9 +1,12 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import remark from 'remark'
-import html from 'remark-html'
+
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkHtml from 'remark-html'
 import remarkPrism from 'remark-prism'
+
 import { v4 as uuid } from 'uuid'
 import { IContentData } from '../pages/books/[id]'
 // import { IContentData } from '../pages/blog/[id]'
@@ -98,10 +101,12 @@ export const getContentData = async (id: string, contentType: IContentType) => {
     const fileContents = fs.readFileSync(fullPath, 'utf-8')
 
     const matterResult = matter(fileContents)
-    const processedContent = await remark()
-        .use(html)
+    const processedContent = await unified()
+        .use(remarkParse)
+        .use(remarkHtml)
         .use(remarkPrism)
         .process(matterResult.content)
+
 
     const contentHtml = processedContent.toString()
 
