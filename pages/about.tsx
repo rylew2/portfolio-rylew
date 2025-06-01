@@ -11,7 +11,7 @@ const About = () => {
         <Layout
             pathname={'/about'}
             pageTitle="About"
-            pageDescription="About page of Ryan Lewis, Bay Area Developer"
+            pageDescription="About page of Ryan Lewis, NYC Developer"
         >
             <StyledAbout>
                 <Container width="narrow">
@@ -34,9 +34,7 @@ const About = () => {
                         </p>
                         <p>
                             Outside of work, I enjoy the vast array of food
-                            choices here in the Bay Area, cooking, running
-                            scenic trails, travelling, and getting up skiing in
-                            the winter.
+                            choices here in the NYC, cooking, running, travelling, and getting up skiing in the winter.
                         </p>
                     </div>
                 </Container>
