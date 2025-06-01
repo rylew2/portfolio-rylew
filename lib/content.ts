@@ -4,8 +4,6 @@ import path from 'path'
 
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
-import remarkPrism from 'remark-prism'
 import remarkRehype from 'remark-rehype';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
