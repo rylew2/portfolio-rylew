@@ -34,7 +34,7 @@ const About = () => {
                         </p>
                         <p>
                             Outside of work, I enjoy the vast array of food
-                            choices here in the NYC, cooking, running, travelling, and getting up skiing in the winter.
+                            choices here in the NYC, cooking, running, travelling, and getting out skiing in the winter.
                         </p>
                     </div>
                 </Container>
