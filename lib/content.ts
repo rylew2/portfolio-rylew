@@ -6,6 +6,9 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
 import remarkPrism from 'remark-prism'
+import remarkRehype from 'remark-rehype';
+import rehypePrism from 'rehype-prism-plus';
+import rehypeStringify from 'rehype-stringify';
 
 import { v4 as uuid } from 'uuid'
 import { IContentData } from '../pages/books/[id]'
@@ -66,64 +69,67 @@ export const getAllContentIds = (contentType: IContentType) => {
  * @param {string} contentType Type of content
  * Called from getStaticProps of the [id].tsx
  */
-export const getContentData = async (id: string, contentType: IContentType) => {
-    let contentTypeDirectory
-    let filenames
-    switch (contentType) {
-        case 'book':
-            filenames = fs.readdirSync(bookDirectory)
-            contentTypeDirectory = bookDirectory
-            break
+export const getContentData = async (
+  id: string,
+  contentType: IContentType
+) => {
+  let contentTypeDirectory;
+  let filenames;
 
-        case 'project':
-            filenames = fs.readdirSync(projectDirectory)
-            contentTypeDirectory = projectDirectory
-            break
+  switch (contentType) {
+    case 'book':
+      filenames = fs.readdirSync(bookDirectory);
+      contentTypeDirectory = bookDirectory;
+      break;
 
-        default:
-            throw new Error('You have to provide a content type')
-    }
+    case 'project':
+      filenames = fs.readdirSync(projectDirectory);
+      contentTypeDirectory = projectDirectory;
+      break;
 
-    // loop through all the content types and compare the slug to get the filename
-    const match = filenames.filter((filename) => {
-        const filePath = path.join(contentTypeDirectory, filename)
+    default:
+      throw new Error('You have to provide a content type');
+  }
 
-        const fileContent = fs.readFileSync(filePath, 'utf-8')
-        const matterResult = matter(fileContent)
-        const { slug } = matterResult.data
+  // loop through all the content types and compare the slug to get the filename
+  const match = filenames.filter((filename) => {
+    const filePath = path.join(contentTypeDirectory, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const matterResult = matter(fileContent);
+    const { slug } = matterResult.data;
 
-        return slug === id
-    })
+    return slug === id;
+  });
 
-    // use the returned path to get the fullpath and read the file content
-    const fullPath = path.join(contentTypeDirectory, match[0])
-    // const fullPath = path.join(contentTypeDirectory, `${id}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf-8')
+  // use the returned path to get the fullpath and read the file content
+  const fullPath = path.join(contentTypeDirectory, match[0]);
+  const fileContents = fs.readFileSync(fullPath, 'utf-8');
 
-    const matterResult = matter(fileContents)
-    const processedContent = await unified()
-        .use(remarkParse)
-        .use(remarkHtml)
-        .use(remarkPrism)
-        .process(matterResult.content)
+  const matterResult = matter(fileContents);
 
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypePrism)
+    .use(rehypeStringify)
+    .process(matterResult.content);
 
-    const contentHtml = processedContent.toString()
+  const contentHtml = processedContent.toString();
 
-    return {
-        id,
-        contentHtml,
-        title: matterResult.data.title,
-        date: matterResult.data.date,
-        previewImage: matterResult.data.previewImage || '',
-        description: matterResult.data.description || '',
-        tags: matterResult.data.tags || [],
-        category: matterResult.data.category || '',
-        liveSite: matterResult.data.liveSite || '',
-        sourceCode: matterResult.data.sourceCode || '',
-        presentation: matterResult.data.presentation || '',
-    }
-}
+  return {
+    id,
+    contentHtml,
+    title: matterResult.data.title,
+    date: matterResult.data.date,
+    previewImage: matterResult.data.previewImage || '',
+    description: matterResult.data.description || '',
+    tags: matterResult.data.tags || [],
+    category: matterResult.data.category || '',
+    liveSite: matterResult.data.liveSite || '',
+    sourceCode: matterResult.data.sourceCode || '',
+    presentation: matterResult.data.presentation || '',
+  };
+};
 
 /**
  * Get content list for a particular content type

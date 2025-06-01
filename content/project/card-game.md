@@ -266,7 +266,7 @@ Working with familiar languages while learning new frameworks and libraries was 
 #### Additional items if more time allowed for the project:
 
 - Set loading state prior to GraphQL calls (and between deals/resets) - although it's pretty quick to make a mutation and get the result - it might make sense to have the loader show momentarily
-- E2E tests - it would have been nice to add some Cypress tests to get integration coverage
+- E2E tests - it would have been nice to add some Playwright tests to get additional behavioral coverage
 - Data fetching - I didn't have time to get into it, but there is `Redux Toolkit Query` and I would be curious how that might overlap, enhance, or work in combination with GraphQL and the Apollo client
 - It's a bit conflicting to have to sync the backend database "state" with the redux store, it felt a bit redundant to have both at times - could we just suffice with storing state on the backend/db? Since I wanted to learn redux toolkit this was ok
 - Deploy the full stack app to vercel (it works fine locally for now) - right now just the front end is deployed, though it functions exactly the same as the full stack app
