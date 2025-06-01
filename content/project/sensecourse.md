@@ -5,7 +5,7 @@ slug: "sensecourse"
 selectedWork: true
 description: "A look at using Watson AI to select courses based on your personality"
 previewImage: "/images/project/sensecourse/demo.jpg"
-liveSite: "https://lit-inlet-79917.herokuapp.com/"
+liveSite: "https://sensecourse.onrender.com/"
 sourceCode: "https://github.com/rylew2/SenseCourse"
 presentation: "https://www.youtube.com/watch?v=LqpXGfcWBt0"
 tags:
