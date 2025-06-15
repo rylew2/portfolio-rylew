@@ -27,7 +27,10 @@ export const getStaticProps = async () => {
 
     const selectedBooks = books.filter((book) => book.selectedWork)
 
-    const selectedWorks = [...selectedProjects, ...selectedBooks]
+    const selectedWorks = [...selectedProjects, ...selectedBooks].sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
 
     return {
         props: {
