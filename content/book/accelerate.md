@@ -4,7 +4,7 @@ date: '2025-06'
 slug: 'accelerate'
 selectedWork: true
 description: 'A practical, evidence-backed review of the definitive DevOps and software delivery performance book.'
-previewImage: '/images/book/accelerate/accelerate.png'
+previewImage: '/images/book/accelerate/accelerate.jpg'
 tags:
     - engineering
     - devops
