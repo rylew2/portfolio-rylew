@@ -25,48 +25,18 @@ However, for those who wish to advance their careers without shifting to enginee
 
 The book identifies four distinct staff-plus engineer archetypes across companies.=:
 
-<table class="staffengineer">
-    <tr>
-        <th><strong>Archetype</strong></th>
-        <th><strong>Description</strong></th>
-        <th><strong>Primary Responsibilities</strong></th>
-        <th><strong>Operating Environment</strong></th>
-        <th><strong>Common in Company Size/Type</strong></th>
-        <th><strong>Key Skills or Traits</strong></th>
-    </tr>
-    <tr>
-        <td><strong>Tech Lead</strong></td>
-        <td>Leads a team or cluster of teams in approach and execution.</td>
-        <td>Scoping tasks, team coordination, technical vision.</td>
-        <td>Agile, team-centric companies.</td>
-        <td>Varies, often in medium to large companies.</td>
-        <td>Project management, technical expertise.</td>
-    </tr>
-    <tr>
-        <td><strong>Architect</strong></td>
-        <td>Responsible for a specific technical domain.</td>
-        <td>System design, business and user need understanding.</td>
-        <td>Companies with complex or coupled codebases.</td>
-        <td>Large companies, those addressing technical debt.</td>
-        <td>In-depth technical knowledge, foresight.</td>
-    </tr>
-    <tr>
-        <td><strong>Solver</strong></td>
-        <td>Tackles complex, critical problems.</td>
-        <td>Problem-solving, working on organizational priorities.</td>
-        <td>Individual-centric planning companies.</td>
-        <td>Large, mature companies with technical debt.</td>
-        <td>Problem-solving, adaptability.</td>
-    </tr>
-    <tr>
-        <td><strong>Right Hand</strong></td>
-        <td>Operates akin to a senior leader without managerial duties.</td>
-        <td>Strategic problem resolution, delegation.</td>
-        <td>Senior leadership environments.</td>
-        <td>Very large organizations.</td>
-        <td>Strategic thinking, alignment with leadership.</td>
-    </tr>
-</table>
+<div class="table-container">
+
+| Archetype | Description | Primary Responsibilities | Operating Environment | Common in Company Size/Type | Key Skills or Traits |
+|-----------|--------------|--------------------------|-----------------------|-----------------------------|----------------------|
+| Tech Lead | Leads a team or cluster of teams in approach and execution. | Scoping tasks, team coordination, technical vision. | Agile, team-centric companies. | Varies, often in medium to large companies. | Project management, technical expertise. |
+| Architect | Responsible for a specific technical domain. | System design, business and user need understanding. | Companies with complex or coupled codebases. | Large companies, those addressing technical debt. | In-depth technical knowledge, foresight. |
+| Solver | Tackles complex, critical problems. | Problem-solving, working on organizational priorities. | Individual-centric planning companies. | Large, mature companies with technical debt. | Problem-solving, adaptability. |
+| Right Hand | Operates akin to a senior leader without managerial duties. | Strategic problem resolution, delegation. | Senior leadership environments. | Very large organizations. | Strategic thinking, alignment with leadership. |
+
+</div>
+
+
 
 In order to understand which role is right for you - you have to stay engaged and know what kind of work energizes you. A tech lead or architect might work with the same people or problems for years, developing a tight sense of team and shared purpose. A solver or right hand type might bounce from fire to fire, only having transactional interactions with folks they're working with each week.
 
@@ -132,28 +102,12 @@ As individuals progress in their careers, the challenge becomes navigating the i
 
 There are also a few ways to get tripped up when looking to prioritize what to work on:
 
-<table class="staffengineer">
-    <tr>
-        <th><strong>Archetype</strong></th>
-        <th><strong>Description</strong></th>
-        <th><strong>How to Avoid</strong></th>
-    </tr>
-    <tr>
-        <td><strong>Snacking</strong></td>
-        <td>Engaging in tasks that are easy and low-impact, offering a false sense of accomplishment.</td>
-        <td>Regularly evaluate the impact of your tasks and focus on those that align with organizational priorities.</td>
-    </tr>
-    <tr>
-        <td><strong>Preening</strong></td>
-        <td>Performing low-impact, high-visibility work, which can be misconstrued as impactful due to its visibility.</td>
-        <td>Seek out work that not only has visibility but also significantly contributes to the company's goals.</td>
-    </tr>
-    <tr>
-        <td><strong>Chasing Ghosts</strong></td>
-        <td>Pursuing high-effort, low-impact projects that may stem from a misunderstanding of company challenges.</td>
-        <td>Invest time in understanding the company's core challenges and resist the urge to initiate changes without thorough analysis.</td>
-    </tr>
-</table>
+| **Archetype**    | **Description**                                                                                  | **How to Avoid**                                                                                                       |
+|------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Snacking**     | Engaging in tasks that are easy and low-impact, offering a false sense of accomplishment.        | Regularly evaluate the impact of your tasks and focus on those that align with organizational priorities.               |
+| **Preening**     | Performing low-impact, high-visibility work, which can be misconstrued as impactful due to its visibility. | Seek out work that not only has visibility but also significantly contributes to the company's goals.                   |
+| **Chasing Ghosts** | Pursuing high-effort, low-impact projects that may stem from a misunderstanding of company challenges. | Invest time in understanding the company's core challenges and resist the urge to initiate changes without thorough analysis. |
+
 
 ## Writing Engineering Strategy
 
