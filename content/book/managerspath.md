@@ -172,23 +172,11 @@ Advancing in the management track, particularly to the role of a Director of Eng
 
 You'll need to carefully consider how you manage your time at this level of management. This often comes down to understanding the importance and urgency of the matter. Tasks that are both important and urgent are ones you'll definitely need to prioritize, but there may be several distractions each day that seem urgent, but are in fact not.
 
-<table class="managerspath">
-    <tr>
-        <th><strong></strong></th>
-        <th><strong>Not Urgent</strong></th>
-        <th><strong>Urgent</strong></th>
-    </tr>
-    <tr>
-        <td><strong>Important</strong></td>
-        <td>Strategic, make time</td>
-        <td>Obvious Work</td>
-    </tr>
-    <tr>
-        <td><strong>Unimportant</strong></td>
-        <td>Obvious avoid</td>
-        <td>Tempting distractions</td>
-    </tr>
-</table>
+|               | Not Urgent                | Urgent                 |
+|---------------|---------------------------|------------------------|
+| **Important**   | Strategic, make time      | Obvious Work           |
+| **Unimportant** | Obvious avoid             | Tempting distractions  |
+
 
 > As you navigate your new obligations, start to ask yourself: How important is the thing I’m doing? Does it seem to be important because it’s urgent?
 
@@ -196,23 +184,11 @@ You'll need to carefully consider how you manage your time at this level of mana
 
 A related topic to time management is the process of delegation. The book uses "plate-spinning" as an analogy of management, where you have a bunch of plates on different poles, and you must attend to each spinning plate before it slows down and falls off. You have to develop good instinct to anticipate when certain plates stop spinning (teams get burnt out, or processes need improvement). The only way to not feel overwhelmed by all the plate-spinning is to effectively delegate tasks:
 
-<table class="managerspath">
-    <tr>
-        <th><strong></strong></th>
-        <th><strong>Frequent </strong></th>
-        <th><strong>Infrequent</strong></th>
-    </tr>
-    <tr>
-        <td><strong>Simple</strong></td>
-        <td><strong>Delegate</strong> <br /> (running daily standups, writing a weekly summary of progress, conducting code reviews)</td>
-        <td><strong>Do it yourself</strong> <br />(booking occasional conference tickets, running the quarterly script)</td>
-    </tr>
-    <tr>
-        <td><strong>Complex</strong></td>
-        <td><strong>Delegate carefully</strong> <br /> (grow talent in areas like project planning, system design, or outage/incident management)</td>
-        <td><strong>Delegate for training purposes</strong> <br /> (have a tech lead sit with you to write performance reviews, project staffing planning)</td>
-    </tr>
-</table>
+|               | Frequent                                                                 | Infrequent                                                               |
+|---------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Simple**     | **Delegate**  (running daily standups, writing a weekly summary of progress, conducting code reviews) | **Do it yourself** (booking occasional conference tickets, running the quarterly script) |
+| **Complex**    | **Delegate carefully** (grow talent in areas like project planning, system design, or outage/incident management) | **Delegate for training purposes** (have a tech lead sit with you to write performance reviews, project staffing planning) |
+
 
 > Delegation is a process that starts slow but turns into an essential element for career growth. If your teams can’t operate well without you, you’ll find it hard to be promoted.
 
@@ -306,28 +282,12 @@ Roles such as CTO, VP, and Head of Engineering extend beyond being a positive te
 
 #### VP of Engineering vs CTO
 
-<table style="border-collapse: collapse; width: 100%;">
-    <tr>
-        <th style="border: 1px solid black; background-color: black; color: white; padding: 8px;">Aspect</th>
-        <th style="border: 1px solid black; background-color: black; color: white; padding: 8px;">VP of Engineering</th>
-        <th style="border: 1px solid black; background-color: black; color: white; padding: 8px;">CTO</th>
-    </tr>
-    <tr>
-        <td style="border: 1px solid black; padding: 8px;">Position in Management</td>
-        <td style="border: 1px solid black; padding: 8px;">Top of the management career for engineering</td>
-        <td style="border: 1px solid black; padding: 8px;">Executive first, technologist second</td>
-    </tr>
-    <tr>
-        <td style="border: 1px solid black; padding: 8px;">Focus</td>
-        <td style="border: 1px solid black; padding: 8px;">Detail-oriented and able to handle both high-level and low-level tasks</td>
-        <td style="border: 1px solid black; padding: 8px;">Larger, strategic overview of technology in the company</td>
-    </tr>
-    <tr>
-        <td style="border: 1px solid black; padding: 8px;">Responsibilities</td>
-        <td style="border: 1px solid black; padding: 8px;">Roadmap development, hiring planning, org strategy, people management, improving engineering process, and cross-functional partnering</td>
-        <td style="border: 1px solid black; padding: 8px;">Positioning technology in the company, strategic technical decisions, oversee architecture and process/guidelines for evolving it, go deep into understanding biz side, external events and speaking engagements</td>
-    </tr>
-</table>
+| Aspect                    | VP of Engineering                                                                                              | CTO                                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| **Position in Management** | Top of the management career for engineering                                                                  | Executive first, technologist second                                                                 |
+| **Focus**                 | Detail-oriented and able to handle both high-level and low-level tasks                                        | Larger, strategic overview of technology in the company                                              |
+| **Responsibilities**      | Roadmap development, hiring planning, org strategy, people management, improving engineering process, and cross-functional partnering | Positioning technology in the company, strategic technical decisions, oversee architecture and process/guidelines for evolving it, go deep into understanding biz side, external events and speaking engagements |
+
 
 ### Setting Strategy
 
