@@ -2,7 +2,7 @@
 title: Exploring VueJS
 date: "2021-07"
 slug: "exploring-vue"
-selectedWork: false
+selectedWork: true
 description: "Trying out VueJS with the NASA API"
 previewImage: "/images/project/exploringVue/vue.png"
 liveSite: "https://romantic-yonath-ba35e7.netlify.app/"
