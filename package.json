@@ -29,6 +29,7 @@
     "rehype-prism-plus": "^2.0.1",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
     "remark-rehype": "^11.1.2",
     "uuid": "^8.3.0"
   },

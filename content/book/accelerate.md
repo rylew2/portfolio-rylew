@@ -1,5 +1,5 @@
 ---
-title: Accelerate: The Science of Lean Software and DevOps Review
+title: "Accelerate: The Science of Lean Software and DevOps Review"
 date: '2025-06'
 slug: 'accelerate'
 selectedWork: true
@@ -10,31 +10,31 @@ tags:
     - devops
 ---
 
-# Introduction
+## Introduction
 
 **Accelerate**, by Nicole Forsgren, Jez Humble, and Gene Kim, distills years of DevOps research into clear, actionable insights. It makes the case that software delivery performance drives business success — and that speed and stability reinforce each other rather than compete.
 
 > "_High-performing technology organizations are not just fast — they are also stable and reliable._"
 
-# Core Idea: Speed and Stability Go Hand-in-Hand
+## Core Idea: Speed and Stability Go Hand-in-Hand
 
 A major takeaway is that there is no tradeoff between moving fast and maintaining system reliability. The same practices that increase delivery throughput also reduce failure rates and recovery times.
 
 ---
 
-# Focus on Capabilities, Not Maturity
+## Focus on Capabilities, Not Maturity
 
 **Accelerate** strongly recommends moving away from maturity models, which suggest a static “end state,” and instead investing in **capability models** that foster continuous improvement.
 
-| ✅ Capability Models | ❌ Maturity Models |
-| --- | --- |
-| Flexible and outcome-focused | Static levels imply “done” |
-| Customizable per team | One-size-fits-all tooling |
-| Tie skills and tech to real outcomes | Often disconnected from delivery results |
+| Capability Models | Maturity Models |
+| ----------------- | ---------------- |
+| ✅ Flexible and outcome-focused | ❌ Static levels imply “done” |
+| ✅ Customizable per team | ❌ One-size-fits-all tooling |
+| ✅ Ties skills and tech to outcomes | ❌ Often disconnected from real results |
 
 ---
 
-# The Four Key Metrics
+## The Four Key Metrics
 
 The authors validated four universal metrics that reliably predict software delivery and operational performance:
 
@@ -50,7 +50,7 @@ Elite teams deploy on-demand, restore failures in under an hour, and keep change
 
 ---
 
-# Technical Practices
+## Technical Practices
 
 Key engineering approaches that support high performance:
 
@@ -62,7 +62,7 @@ Key engineering approaches that support high performance:
 
 ---
 
-# Lean Management
+## Lean Management
 
 Lean principles drive better software delivery:
 
@@ -75,7 +75,7 @@ Lean principles drive better software delivery:
 
 ---
 
-# Culture: The Hidden Engine
+## Culture: The Hidden Engine
 
 The book heavily cites Westrum’s cultural model: Generative (high-trust, learning-focused) cultures outperform bureaucratic or fear-driven ones.
 
@@ -89,7 +89,7 @@ Signs of a healthy culture include:
 
 ---
 
-# Leadership
+## Leadership
 
 High-performing organizations rely on **transformational leaders** who:
 
@@ -103,7 +103,7 @@ Leaders should change **behaviors first** to shift culture — not the other way
 
 ---
 
-# Employee Wellbeing
+## Employee Wellbeing
 
 **Accelerate** addresses burnout and deployment pain:  
 High deployment pain, excessive manual steps, and rigid processes drain teams. Automate repetitive tasks, keep feedback loops tight, and make deployments boring.
@@ -112,13 +112,10 @@ Keeping core software delivery in-house rather than outsourcing protects strateg
 
 ---
 
-# Key Takeaway
+## Key Takeaway
 
 **Accelerate** proves through data that you don’t have to choose between moving fast and staying safe. With the right technical practices, lean principles, and generative culture, you can have both.
 
 > _"Software delivery performance is not a cost center — it is a key competitive advantage."_
 
 ---
-
-
-

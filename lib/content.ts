@@ -10,6 +10,7 @@ import rehypeStringify from 'rehype-stringify';
 
 import { v4 as uuid } from 'uuid'
 import { IContentData } from '../pages/books/[id]'
+import remarkGfm from 'remark-gfm'
 // import { IContentData } from '../pages/blog/[id]'
 
 const projectDirectory = path.join(process.cwd(), 'content', 'project')
@@ -107,6 +108,7 @@ export const getContentData = async (
 
   const processedContent = await unified()
     .use(remarkParse)
+    .use(remarkGfm) 
     .use(remarkRehype)
     .use(rehypePrism)
     .use(rehypeStringify)
