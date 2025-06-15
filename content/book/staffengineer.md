@@ -16,12 +16,13 @@ Software engineers usually reach the Senior level within 5-8 years in the tech i
 
 However, for those who wish to advance their careers without shifting to engineering management, many companies offer a two-track career path. The first track is engineering management, while the second is technical leadership, with roles like Staff Engineer and Principal Engineer.
 
-<figure class="image">
-  <Image src="/images/book/staffengineer/staffeng-careerladder-dualtrack.png" alt="dual career track">
-  <figcaption>Splitting technical staff-plus leadership and engineering management</figcaption>
-</figure>
+![dual career track](/images/book/staffengineer/staffeng-careerladder-dualtrack.png)
 
-<br />
+*Splitting technical staff-plus leadership and engineering management*
+
+---
+
+
 
 The book identifies four distinct staff-plus engineer archetypes across companies.=:
 
@@ -93,12 +94,13 @@ If you're a senior engineer is it even worth it to invest time to become a staff
 
 As individuals progress in their careers, the challenge becomes navigating the increasing expectations against the backdrop of a fulfilling life filled with family, hobbies, and personal growth. The essence of sustaining a long and successful career lies in pacing oneself, ensuring that as responsibilities grow, one doesn't sacrifice personal well-being for professional achievements. It's about consciously avoiding the pitfalls of busyness over productivity, vanity metrics over substance, and unattainable goals over realistic ones, focusing instead on work that truly matters both personally and to the organization.
 
-<figure class="image">
-  <Image src="/images/book/staffengineer/effortimpact.png" alt="Effort vs Impact">
-  <figcaption>Effort vs Impact</figcaption>
-</figure>
 
-<br />
+![dual career track](/images/book/staffengineer/effortimpact.png)
+
+*Splitting technical staff-plus leadership and engineering management*
+
+---
+
 
 There are also a few ways to get tripped up when looking to prioritize what to work on:
 

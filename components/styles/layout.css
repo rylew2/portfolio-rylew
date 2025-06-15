@@ -208,3 +208,8 @@ table tr:nth-child(even) {
   background: #f2f2f2;
 }
 
+
+p em {
+  display: block;
+  text-align: center;
+}
