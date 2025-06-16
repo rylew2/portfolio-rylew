@@ -22,9 +22,7 @@ _Career tracks splitting into staff-plus leadership vs engineering management_
 
 ---
 
-The book identifies four distinct staff-plus engineer archetypes across companies.=:
-
-<div class="table-container">
+The book identifies four distinct staff-plus engineer archetypes across companies:
 
 | Archetype  | Description                                                 | Primary Responsibilities                               | Operating Environment                        | Common in Company Size/Type                       | Key Skills or Traits                           |
 | ---------- | ----------------------------------------------------------- | ------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------- | ---------------------------------------------- |
@@ -32,8 +30,6 @@ The book identifies four distinct staff-plus engineer archetypes across companie
 | Architect  | Responsible for a specific technical domain.                | System design, business and user need understanding.   | Companies with complex or coupled codebases. | Large companies, those addressing technical debt. | In-depth technical knowledge, foresight.       |
 | Solver     | Tackles complex, critical problems.                         | Problem-solving, working on organizational priorities. | Individual-centric planning companies.       | Large, mature companies with technical debt.      | Problem-solving, adaptability.                 |
 | Right Hand | Operates akin to a senior leader without managerial duties. | Strategic problem resolution, delegation.              | Senior leadership environments.              | Very large organizations.                         | Strategic thinking, alignment with leadership. |
-
-</div>
 
 In order to understand which role is right for you - you have to stay engaged and know what kind of work energizes you. A tech lead or architect might work with the same people or problems for years, developing a tight sense of team and shared purpose. A solver or right hand type might bounce from fire to fire, only having transactional interactions with folks they're working with each week.
 
@@ -144,13 +140,13 @@ One of the roles of engineering leadership is to maintain appropriate technical 
 
 - **Start with the lightest weight solutions first** - only progress toward massive solutions as earlier efforts fail to scale. Quick fixes provide valuable learning experiences. Celebrate the removal of ineffective practices along the way.
 
-- **Adopt a performance engineer mindset to identify hotspots** - When facing quality issues, it's tempting to pinpoint and rectify process failures (IE... we had a deployment cause an outage because a code author didn't correctly follow a code test process, so let's require tests with every commit). It's more important to identify the actual problem and hand than to implement fixes via process-driven accountability. Teams should adopt a `performance engineer's mindset` whereby they measure the system, identifying where the bulk of issues lie so you can focus on just that area. - Sometimes it's also better to just discard an issue rather than try to fix it
+- **Adopt a performance engineer mindset to identify hotspots** - When facing quality issues, it's tempting to pinpoint and rectify process failures (i.e, we had a deployment cause an outage because a code author didn't correctly follow a code test process, so let's require tests with every commit). It's more important to identify the actual problem and hand than to implement fixes via process-driven accountability. Teams should adopt a `performance engineer's mindset` whereby they measure the system, identifying where the bulk of issues lie so you can focus on just that area. - Sometimes it's also better to just discard an issue rather than try to fix it
 
 - **Align technical decisions with shared visions** - ensure you avoid centralizing decisions with one architect, and instead, use tools, onboarding and organizationl design to foster alignment
 
 - **Gradual best practice implementation** - Successful adoption of best practices, like Scrum, requires a gradual approach, starting with small tests and evolving based on feedback. It's important to focus on one practice at a time, ensuring each is well-established before introducing new practices, and to base the adoption on solid research and readiness.
 
-- **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concenctration should be interfaces (mediators between different parts of software that hide complexity), stateful systems (an area that gets complex faster than any other area), and data models (at the intersection of stateful systems and interfaces, and should be designd to be rigid yet still flexible to changes over time)
+- **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concentration should be interfaces (mediators between different parts of software that hide complexity), stateful systems (an area that gets complex faster than any other area), and data models (at the intersection of stateful systems and interfaces, and should be designed to be rigid yet still flexible to changes over time)
 
 - **Aligning technical efforts with org vision** - all technical decisions should support a unified vision (like vectors pointing in the same direction). To prevent misalignment, the book recommends several strategies including direct feedback, training and feedback, leverage Conway's Law where orgs create systems that reflect their structure, and developing engineering strategy based on tech specs that also reflect the broader org strategy/vision.
 
@@ -174,7 +170,7 @@ Some tips for the success of quality teams:
 - trust metrics over intuition
 - adoption/usability of your tools are much more important than raw power - so do user research on your tools and listen to/learn from your users
 - do fewer things, but do them better
-- avoid having the quality team impose a globally optimal or one-size-fits-all approach for all teams (IE.. some teams have atypical workloads - think developers using a Javascript backend, which doesn't mesh well with a Machine Learning team that wants everything to be in Python). Understand each team's unique requirements and find a healthy balance between standardization and accommodating diverse needs
+- avoid having the quality team impose a globally optimal or one-size-fits-all approach for all teams (i.e, some teams have atypical workloads - think developers using a Javascript backend, which doesn't mesh well with a Machine Learning team that wants everything to be in Python). Understand each team's unique requirements and find a healthy balance between standardization and accommodating diverse needs
 
 ## Staying Aligned with Authority
 
@@ -239,7 +235,7 @@ One indication of a successful staff-plus engineer is that your organization ben
 
 - Creating space via sponsorship
   - When you get critical work, ask yourself who could grow the most by taking on this work - then have them lead that task/project
-  - As a sponsor, you can advise and provide context, but ultimately you should be able to let the person your sponsoring take an approach that you wouldn't
+  - As a sponsor, you can advise and provide context, but ultimately you should be able to let the person you're sponsoring take an approach that you wouldn't
 
 The only way to remain a long-term leader of a successful company is to continually create space for others to take recognition and reward.
 
@@ -297,7 +293,7 @@ This approach is not just about assembling a packet for promotion; it's about fo
 Most individuals who attain a staff role do so by either accumulating a solid track record over time, switching roles to attain the title, or completing a `"staff project"`. The staff project is usually complex and important enough that the person who copletes it has proven themselves a Staff engineer. Some of the characteristics of a staff project include:
 
 - **Complex/ambiguous** - In contrast to early career (well-defined) problems, the staff project is large, ambiguous, and poorly scoped. Part of the challenge is working through this ambiguity
-- **Numerous and divided stakeholders** - lack of org alignment around the problem and the solution
+- **Numerous and divided stakeholders** - a lack of organizational alignment around the problem and its solution
 - **Highly visible** - talked about at "All Hands" type meetings. As a result both failure or success will be visible.
 
 In order to obtain access to projects of this nature - the book offers a few additional tips that includes:
@@ -314,7 +310,7 @@ Gaining access to key decision-making spaces, often referred to as "the room," i
 
 - **Bring unique value** - have something useful to contribute that isn't already present
 - **Find a sponsor** - secure someone in the room who will advocate for your inclusion. Also make sure to communicate to sponsors that you actually want to be in the room
-- **Volunteer for tasks, even if they're low-status** - IE.. note-taking
+- **Volunteer for tasks, even if they're low-status** - i.e, note-taking
 - **Understand the room's purpose** - align with the room's intent and operate within its norms
 - **Be low friction** - you're more likely to be involved if you're known as someone who can navigate difficult conversations effectively
 - **Be consistent** - regular attendance and reliability are crucial

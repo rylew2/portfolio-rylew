@@ -24,11 +24,11 @@ A major takeaway is that there is no tradeoff between moving fast and maintainin
 
 ## Focus on Capabilities, Not Maturity
 
-**Accelerate** strongly recommends moving away from maturity models, which suggest a static “end state,” and instead investing in **capability models** that foster continuous improvement.
+**Accelerate** strongly recommends moving away from maturity models, which suggest a static "end state," and instead investing in **capability models** that foster continuous improvement.
 
 | Capability Models                   | Maturity Models                         |
 | ----------------------------------- | --------------------------------------- |
-| ✅ Flexible and outcome-focused     | ❌ Static levels imply “done”           |
+| ✅ Flexible and outcome-focused     | ❌ Static levels imply "done"           |
 | ✅ Customizable per team            | ❌ One-size-fits-all tooling            |
 | ✅ Ties skills and tech to outcomes | ❌ Often disconnected from real results |
 
