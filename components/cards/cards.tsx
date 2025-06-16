@@ -90,8 +90,8 @@ const Cards = ({ data }: ICard) => {
                   ? singleCard.date.toLocaleDateString()
                   : singleCard.date}
               </time>
-              <span className="type-label">
-                {singleCard.path === 'project' ? 'Project' : 'Book'}
+              <span>
+                {singleCard.path === 'books' ? 'Book Review' : null}
               </span>
             </div>
           )}

@@ -56,8 +56,8 @@ img {
   max-width: 100%;
 }
 
-a > img,
-a:hover > img {
+a>img,
+a:hover>img {
   text-decoration: none;
 }
 
@@ -215,18 +215,14 @@ p em {
 
 .meta-row {
   display: flex;
-  align-items: center;
+  justify-content: space-around;
+  padding: 0 1rem;
   margin-bottom: 0.5em;
+  /* font-size: 0.9rem;
+  color: #666; */
 }
 
-.meta-row time {
-  flex: 1;
-}
-
-.meta-row .type-label {
-  margin-left: auto;
-  transform: translateX(75%);
-  font-size: 0.9rem;
-  color: #666;
+.meta-row span {
   font-weight: 500;
+  margin-right: 5rem
 }
