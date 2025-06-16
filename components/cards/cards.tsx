@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { StyledCards } from '../styles/cards.styles';
+import { useRouter } from 'next/router';
 
 interface ICard {
   data: {
@@ -24,6 +25,9 @@ interface ICard {
  */
 
 const Cards = ({ data }: ICard) => {
+  const router = useRouter();
+  const isIndexPage = router.pathname === '/';
+
   return (
     <StyledCards>
       {data.map((singleCard) => (
@@ -91,7 +95,7 @@ const Cards = ({ data }: ICard) => {
                   : singleCard.date}
               </time>
               <span>
-                {singleCard.path === 'books' ? 'Book Review' : null}
+                {singleCard.path === 'books' && isIndexPage ? 'Book Review' : null}
               </span>
             </div>
           )}
@@ -103,8 +107,7 @@ const Cards = ({ data }: ICard) => {
           </Link>
 
           {singleCard.description && <p>{singleCard.description}</p>}
-          {/* </a>
-          </Link> */}
+
         </article>
       ))}
     </StyledCards>
