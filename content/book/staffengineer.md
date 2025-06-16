@@ -150,7 +150,7 @@ One of the roles of engineering leadership is to maintain appropriate technical 
 
 - **Gradual best practice implementation** - Successful adoption of best practices, like Scrum, requires a gradual approach, starting with small tests and evolving based on feedback. It's important to focus on one practice at a time, ensuring each is well-established before introducing new practices, and to base the adoption on solid research and readiness.
 
-- **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concenctration should be _interfaces_ (mediators between different parts of software that hide complexity), _stateful systems_ (an area that gets complex faster than any other area), and _data models_ (at the intersection of stateful systems and interfaces, and should be designd to be rigid yet still flexible to changes over time)
+- **Targeting leverage points** - identifying hotspots works well for issues you already have, but there are a small subset of areas where extra investments preserves quality over time (`"leverage points`). Areas of concenctration should be interfaces (mediators between different parts of software that hide complexity), stateful systems (an area that gets complex faster than any other area), and data models (at the intersection of stateful systems and interfaces, and should be designd to be rigid yet still flexible to changes over time)
 
 - **Aligning technical efforts with org vision** - all technical decisions should support a unified vision (like vectors pointing in the same direction). To prevent misalignment, the book recommends several strategies including direct feedback, training and feedback, leverage Conway's Law where orgs create systems that reflect their structure, and developing engineering strategy based on tech specs that also reflect the broader org strategy/vision.
 
@@ -167,7 +167,7 @@ Some technical quality definitions might include:
 
 #### Technical Quality Team
 
-Establishing a technical quality team (sometimes called _Developer Productivity, Developer Tools, or Product Infrastructure_) dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
+Establishing a technical quality team (sometimes called Developer Productivity, Developer Tools, or Product Infrastructure) dedicated to improving and preserving software quality across the company is crucial. This team should focus on measurable impacts, user-centric tool design, and prioritizing high-impact projects.
 
 Some tips for the success of quality teams:
 
