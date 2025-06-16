@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import React from 'react'
-import { Container, Layout } from '../components'
-import { StyledAbout } from '../components/styles/about.styles'
+import Image from 'next/image';
+import React from 'react';
+import { Container, Layout } from '../components';
+import { StyledAbout } from '../components/styles/about.styles';
 
 /**
  * About page `/about`
@@ -25,22 +25,25 @@ const About = () => {
                                 alt="Ryan Lewis"
                             />
                         </div>
+
                         <p>
-                            I am a developer with a passion for continuous
-                            learning, a collaborative approach, and using
-                            technology to solve real-world problems. At the
-                            moment, I build React solutions on top of content
-                            management platforms.
+                            I’m a software engineer who enjoys tackling complex technical
+                            challenges and delivering reliable, user-centered software. My
+                            experience spans designing and building modern web applications,
+                            architecting scalable back-end systems, and integrating with
+                            various content and data platforms.
                         </p>
                         <p>
-                            Outside of work, I enjoy the vast array of food
-                            choices here in the NYC, cooking, running, travelling, and getting out skiing in the winter.
+                            I care deeply about clean, maintainable code, collaborative
+                            problem-solving, and continuous learning. Outside of work, I love
+                            exploring New York’s endless food scene, experimenting in the
+                            kitchen, running, traveling, and skiing in the winter winter.
                         </p>
                     </div>
                 </Container>
             </StyledAbout>
         </Layout>
-    )
-}
+    );
+};
 
-export default About
+export default About;

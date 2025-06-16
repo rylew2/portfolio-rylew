@@ -208,8 +208,25 @@ table tr:nth-child(even) {
   background: #f2f2f2;
 }
 
-
 p em {
   display: block;
   text-align: center;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.meta-row time {
+  flex: 1;
+}
+
+.meta-row .type-label {
+  margin-left: auto;
+  transform: translateX(75%);
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
 }

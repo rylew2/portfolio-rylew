@@ -1,22 +1,22 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import path from 'path'
+import fs from 'fs';
+import matter from 'gray-matter';
+import path from 'path';
 
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
 
-import { v4 as uuid } from 'uuid'
-import { IContentData } from '../pages/books/[id]'
-import remarkGfm from 'remark-gfm'
+import { v4 as uuid } from 'uuid';
+import { IContentData } from '../pages/books/[id]';
+import remarkGfm from 'remark-gfm';
 // import { IContentData } from '../pages/blog/[id]'
 
-const projectDirectory = path.join(process.cwd(), 'content', 'project')
-const bookDirectory = path.join(process.cwd(), 'content', 'book')
+const projectDirectory = path.join(process.cwd(), 'content', 'project');
+const bookDirectory = path.join(process.cwd(), 'content', 'book');
 
-type IContentType = 'book' | 'project'
+type IContentType = 'book' | 'project';
 
 /**
  * Get IDs of all markdown post
@@ -24,43 +24,43 @@ type IContentType = 'book' | 'project'
  * Called from getStaticPaths of the [id].tsx page
  */
 export const getAllContentIds = (contentType: IContentType) => {
-    let filenames
-    let baseDir
+  let filenames;
+  let baseDir;
 
-    // determine where to look for content types
-    switch (contentType) {
-        case 'book':
-            baseDir = bookDirectory
-            filenames = fs.readdirSync(bookDirectory)
-            break
+  // determine where to look for content types
+  switch (contentType) {
+    case 'book':
+      baseDir = bookDirectory;
+      filenames = fs.readdirSync(bookDirectory);
+      break;
 
-        case 'project':
-            baseDir = projectDirectory
-            filenames = fs.readdirSync(projectDirectory)
-            break
+    case 'project':
+      baseDir = projectDirectory;
+      filenames = fs.readdirSync(projectDirectory);
+      break;
 
-        default:
-            throw new Error('You have to provide a content type')
-    }
+    default:
+      throw new Error('You have to provide a content type');
+  }
 
-    // return the slug of all the content IDs
-    return filenames.map((filename) => {
-        const filePath = path.join(baseDir, filename)
-        const fileContent = fs.readFileSync(filePath, 'utf-8')
+  // return the slug of all the content IDs
+  return filenames.map((filename) => {
+    const filePath = path.join(baseDir, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-        //convert string at the start of each .md into
-        //an object {content: .., data: title:..., slug: ..}
-        const matterResult = matter(fileContent)
+    //convert string at the start of each .md into
+    //an object {content: .., data: title:..., slug: ..}
+    const matterResult = matter(fileContent);
 
-        return {
-            params: {
-                // This is where we switch it up to use slug instead of the filename for generating pages
-                // id: filename.replace(/\.md$/, ""),
-                id: matterResult.data.slug,
-            },
-        }
-    })
-}
+    return {
+      params: {
+        // This is where we switch it up to use slug instead of the filename for generating pages
+        // id: filename.replace(/\.md$/, ""),
+        id: matterResult.data.slug,
+      },
+    };
+  });
+};
 
 /**
  * Get data for a given post id
@@ -68,10 +68,7 @@ export const getAllContentIds = (contentType: IContentType) => {
  * @param {string} contentType Type of content
  * Called from getStaticProps of the [id].tsx
  */
-export const getContentData = async (
-  id: string,
-  contentType: IContentType
-) => {
+export const getContentData = async (id: string, contentType: IContentType) => {
   let contentTypeDirectory;
   let filenames;
 
@@ -108,7 +105,7 @@ export const getContentData = async (
 
   const processedContent = await unified()
     .use(remarkParse)
-    .use(remarkGfm) 
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypePrism)
     .use(rehypeStringify)
@@ -137,41 +134,40 @@ export const getContentData = async (
  * For the landing page of each subpage - called from book/project.tsx getStaticProps
  */
 export const getContentList = (contentType: IContentType) => {
-    let contentFiles
-    let contentDir
+  let contentFiles;
+  let contentDir;
 
-    switch (contentType) {
-        case 'project':
-            contentFiles = fs.readdirSync(projectDirectory)
-            contentDir = projectDirectory
-            break
+  switch (contentType) {
+    case 'project':
+      contentFiles = fs.readdirSync(projectDirectory);
+      contentDir = projectDirectory;
+      break;
 
-        case 'book':
-            contentFiles = fs.readdirSync(bookDirectory)
-            contentDir = bookDirectory
-            break
-    }
+    case 'book':
+      contentFiles = fs.readdirSync(bookDirectory);
+      contentDir = bookDirectory;
+      break;
+  }
 
-    const content = contentFiles
-        .filter((content) => content.endsWith('.md'))
-        .map((content) => {
-            const path = `${contentDir}/${content}`
-            const rawContent = fs.readFileSync(path, {
-                encoding: 'utf-8',
-            })
-            const { data } = matter(rawContent)
+  const content = contentFiles
+    .filter((content) => content.endsWith('.md'))
+    .map((content) => {
+      const path = `${contentDir}/${content}`;
+      const rawContent = fs.readFileSync(path, {
+        encoding: 'utf-8',
+      });
+      const { data } = matter(rawContent);
 
-            return {
-                ...data,
-                previewImage:
-                    data.previewImage || '/images/image-placeholder.png',
-                id: uuid(),
-                path: contentType + 's',
-            }
-        })
+      return {
+        ...data,
+        previewImage: data.previewImage || '/images/image-placeholder.png',
+        id: uuid(),
+        path: contentType + 's',
+      };
+    });
 
-    return content.sort(sortByDate)
-}
+  return content.sort(sortByDate);
+};
 
 /**
  * Get content type with particular tag
@@ -179,95 +175,93 @@ export const getContentList = (contentType: IContentType) => {
  * called from [id].tsx getStaticPaths
  */
 export const getContentWithTag = (tag: string, contentType: IContentType) => {
-    let contentDir
-    let contentFiles
+  let contentDir;
+  let contentFiles;
 
-    switch (contentType) {
-        case 'book':
-            contentDir = bookDirectory
-            break
+  switch (contentType) {
+    case 'book':
+      contentDir = bookDirectory;
+      break;
 
-        case 'project':
-            contentDir = projectDirectory
-            break
-    }
+    case 'project':
+      contentDir = projectDirectory;
+      break;
+  }
 
-    contentFiles = fs.readdirSync(contentDir)
+  contentFiles = fs.readdirSync(contentDir);
 
-    let contentData = contentFiles
-        .filter((content) => content.endsWith('.md'))
-        .map((content) => {
-            const path = `${contentDir}/${content}`
-            const rawContent = fs.readFileSync(path, {
-                encoding: 'utf-8',
-            })
+  let contentData = contentFiles
+    .filter((content) => content.endsWith('.md'))
+    .map((content) => {
+      const path = `${contentDir}/${content}`;
+      const rawContent = fs.readFileSync(path, {
+        encoding: 'utf-8',
+      });
 
-            const { data } = matter(rawContent)
+      const { data } = matter(rawContent);
 
-            return {
-                ...data,
-                previewImage:
-                    data.previewImage || '/images/image-placeholder.png',
-                id: uuid(),
-                path: contentType + 's',
-            }
-        })
+      return {
+        ...data,
+        previewImage: data.previewImage || '/images/image-placeholder.png',
+        id: uuid(),
+        path: contentType + 's',
+      };
+    });
 
-    const filteredContent = contentData.filter((content: IContentData) => {
-        return content.tags && content.tags.includes(tag)
-    })
+  const filteredContent = contentData.filter((content: IContentData) => {
+    return content.tags && content.tags.includes(tag);
+  });
 
-    return filteredContent.sort(sortByDate)
-}
+  return filteredContent.sort(sortByDate);
+};
 
 /**
  * Get content type with particular tag
  * @param {string} tag - tag to filter by
  */
 export const getContentInCategory = (
-    category: string,
-    contentType: IContentType
+  category: string,
+  contentType: IContentType
 ) => {
-    let contentDir
-    let contentFiles
+  let contentDir;
+  let contentFiles;
 
-    switch (contentType) {
-        case 'book':
-            contentDir = bookDirectory
-            break
+  switch (contentType) {
+    case 'book':
+      contentDir = bookDirectory;
+      break;
 
-        case 'project':
-            contentDir = projectDirectory
-            break
-    }
+    case 'project':
+      contentDir = projectDirectory;
+      break;
+  }
 
-    contentFiles = fs.readdirSync(contentDir)
+  contentFiles = fs.readdirSync(contentDir);
 
-    let contentData = contentFiles
-        .filter((content) => content.endsWith('.md'))
-        .map((content) => {
-            const path = `${contentDir}/${content}`
-            const rawContent = fs.readFileSync(path, {
-                encoding: 'utf-8',
-            })
+  let contentData = contentFiles
+    .filter((content) => content.endsWith('.md'))
+    .map((content) => {
+      const path = `${contentDir}/${content}`;
+      const rawContent = fs.readFileSync(path, {
+        encoding: 'utf-8',
+      });
 
-            const { data } = matter(rawContent)
+      const { data } = matter(rawContent);
 
-            return {
-                ...data,
-                previewImage:
-                    data.previewImage || '/images/image-placeholder.png',
-                id: uuid(),
-                path: contentType + 's',
-            }
-        })
+      return {
+        ...data,
+        previewImage: data.previewImage || '/images/image-placeholder.png',
+        id: uuid(),
+        path: contentType + 's',
+      };
+    });
 
-    const filteredContent = contentData.filter((content: IContentData) => {
-        return content.category && content.category === category
-    })
+  const filteredContent = contentData.filter((content: IContentData) => {
+    return content.category && content.category === category;
+  });
 
-    return filteredContent.sort(sortByDate)
-}
+  return filteredContent.sort(sortByDate);
+};
 
 /**
  * Sorts content by their dates
@@ -275,11 +269,11 @@ export const getContentInCategory = (
  * @param b {date.toLocaleDateString()} - Date of post 2
  */
 const sortByDate = (a, b) => {
-    if (a.date > b.date) {
-        return -1
-    } else if (a.date < b.date) {
-        return 1
-    } else {
-        return 0
-    }
-}
+  if (a.date > b.date) {
+    return -1;
+  } else if (a.date < b.date) {
+    return 1;
+  } else {
+    return 0;
+  }
+};

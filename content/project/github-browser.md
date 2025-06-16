@@ -1,12 +1,12 @@
 ---
 title: GitHub Browser
-date: "2017-06"
-slug: "github-browser"
+date: '2017-06'
+slug: 'github-browser'
 selectedWork: true
-description: "Dashboard to visualize GitHub repositories, code languages used, and connections to other repos."
-previewImage: "/images/project/githubBrowser/githubBrowser.jpg"
-liveSite: "http://rylew2.github.io/"
-sourceCode: "https://github.com/rylew2/rylew2.github.io"
+description: 'Dashboard to visualize GitHub repositories, code languages used, and connections to other repos.'
+previewImage: '/images/project/githubBrowser/githubBrowser.jpg'
+liveSite: 'http://rylew2.github.io/'
+sourceCode: 'https://github.com/rylew2/rylew2.github.io'
 tags:
   - angular
   - javascript

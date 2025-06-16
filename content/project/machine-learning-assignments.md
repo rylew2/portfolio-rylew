@@ -1,10 +1,10 @@
 ---
 title: Machine Learning Assignments
-date: "2019-06"
-slug: "machine-learning-assignments"
-description: "A survey of machine learning topics including supervised, unsupervised, clustering and dimensionality reduction, and reinforcement learning"
-previewImage: "/images/project/machineLearning/brain.png"
-sourceCode: "https://github.com/rylew2/Machine-Learning-Assignments"
+date: '2019-06'
+slug: 'machine-learning-assignments'
+description: 'A survey of machine learning topics including supervised, unsupervised, clustering and dimensionality reduction, and reinforcement learning'
+previewImage: '/images/project/machineLearning/brain.png'
+sourceCode: 'https://github.com/rylew2/Machine-Learning-Assignments'
 selectedWork: true
 tags:
   - python
@@ -17,7 +17,7 @@ In the primary Machine Learning course we explored various algorithms via experi
 
 ## Choosing Datasets
 
-The popular [wine quality score dataset](https://archive.ics.uci.edu/ml/datasets/wine) I chose is based on a chemical analysis of wines grown in Italy — and the resulting user "quality" scores — scored from 0 to 10. Key attributes of the wine dataset include the amounts of:  
+The popular [wine quality score dataset](https://archive.ics.uci.edu/ml/datasets/wine) I chose is based on a chemical analysis of wines grown in Italy — and the resulting user "quality" scores — scored from 0 to 10. Key attributes of the wine dataset include the amounts of:
 
 > alcohol, malic acid, magnesium, phenols, and flavonoids
 
@@ -105,13 +105,13 @@ A key takeaway is the **no free lunch theorem**, which states that an algorithm 
 
 ## Comparison Table
 
-| | Inductive Bias | Pros | Cons | Good at |
-|---|---|---|---|---|
-| **KNN** | Classes are similar to nearest points | Intuitive; Fast runtime; Less prone to overfitting; Limited parameter tuning | Hard to model complex data; Lazy learner is slow to predict new instances; Poor on high dimensional datasets | Low-dimensional datasets |
-| **Decision Trees** | Shorter trees preferred; High information gain splits at the top | Fast runtime; Robust to noise/missing values; Visually intuitive; Fast training & prediction | Possible duplication within tree; Complex trees can overfit and be hard to interpret | Medical diagnosis; Credit risk analysis |
-| **Artificial Neural Networks** | Smooth interpolation; Bias towards minima via gradient descent | Can model complex relationships; Can separate signal from noise | Can overfit; Long training times; Black box; Many parameters | High dimensional datasets like images |
-| **Boosting (AdaBoost)** | Ensembles reduce bias of individual learners | Flexible; Proven effective; Increases margin; Reduces overfitting | Weak classifiers too complex can overfit; Vulnerable to noise; Slow training | Problems with individual model instability |
-| **Support Vector Machines** | Classes separated by wide margins | Can model complex relationships; Maximizing margins makes it robust to noise | Non-intuitive parameters; Long runtime; Not great for large or imbalanced datasets | Complex domains with clear margin or separation |
+|                                | Inductive Bias                                                   | Pros                                                                                         | Cons                                                                                                         | Good at                                         |
+| ------------------------------ | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| **KNN**                        | Classes are similar to nearest points                            | Intuitive; Fast runtime; Less prone to overfitting; Limited parameter tuning                 | Hard to model complex data; Lazy learner is slow to predict new instances; Poor on high dimensional datasets | Low-dimensional datasets                        |
+| **Decision Trees**             | Shorter trees preferred; High information gain splits at the top | Fast runtime; Robust to noise/missing values; Visually intuitive; Fast training & prediction | Possible duplication within tree; Complex trees can overfit and be hard to interpret                         | Medical diagnosis; Credit risk analysis         |
+| **Artificial Neural Networks** | Smooth interpolation; Bias towards minima via gradient descent   | Can model complex relationships; Can separate signal from noise                              | Can overfit; Long training times; Black box; Many parameters                                                 | High dimensional datasets like images           |
+| **Boosting (AdaBoost)**        | Ensembles reduce bias of individual learners                     | Flexible; Proven effective; Increases margin; Reduces overfitting                            | Weak classifiers too complex can overfit; Vulnerable to noise; Slow training                                 | Problems with individual model instability      |
+| **Support Vector Machines**    | Classes separated by wide margins                                | Can model complex relationships; Maximizing margins makes it robust to noise                 | Non-intuitive parameters; Long runtime; Not great for large or imbalanced datasets                           | Complex domains with clear margin or separation |
 
 > Future ML algorithm discussion coming...
 

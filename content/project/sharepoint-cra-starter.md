@@ -1,11 +1,11 @@
 ---
 title: Building a React SharePoint starter kit
-date: "2020-06"
-slug: "sharepoint-react"
+date: '2020-06'
+slug: 'sharepoint-react'
 selectedWork: true
-description: "Building a template to deploy React solutions built on top of SharePoint."
-previewImage: "/images/project/sharepoint-cra-starter/react.png"
-sourceCode: "https://github.com/rylew2/sharepoint-cra-starter"
+description: 'Building a template to deploy React solutions built on top of SharePoint.'
+previewImage: '/images/project/sharepoint-cra-starter/react.png'
+sourceCode: 'https://github.com/rylew2/sharepoint-cra-starter'
 tags:
   - react
   - javascript
@@ -19,7 +19,7 @@ Oftentimes we would allow users to manage their own data in one or more SharePoi
 2. Rapidly iterating on a React single-page app if SPFx wasn't available
 3. Deploying a CRA build folder to SharePoint automatically via CLI
 
-This led to creating a starter kit based on Create React App (CRA) to iterate and deploy quickly to SharePoint.  Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
+This led to creating a starter kit based on Create React App (CRA) to iterate and deploy quickly to SharePoint. Starting from the basic CRA template, I will walk through the some of the key configuration steps to achieve a more seamless SharePoint development workflow that is able to pull in data.
 
 ![High-level setup overview](/images/project/sharepoint-cra-starter/deploy.jpeg)
 
@@ -29,12 +29,10 @@ To make localhost requests to SharePoint Lists (avoiding CORS issues), proxy API
 
 The configuration here was largely based on the great work shown here - setting up a [SharePoint API proxy server using his `sp-rest-proxy` package](https://www.linkedin.com/pulse/getting-started-react-local-development-sharepoint-andrew-koltyakov/). This allows a webpack dev server and a proxy API server to run concurrently. I recommend completing that simple walkthrough first — once you have that set up, you should have the following file:
 
-
-
 Example `api-server.js`:
 
 ```js
-const RestProxy = require("sp-rest-proxy");
+const RestProxy = require('sp-rest-proxy');
 const settings = { port: 8081 };
 const restProxy = new RestProxy(settings);
 restProxy.serve();
@@ -60,13 +58,12 @@ To make an API call, we're simply using the `@pnp/sp` package (the documentation
 
 There are a couple of ways to approach the initial setup of the PnPJS package — but here I'm using the `sp.setup()` one-time call in my App `componentDidMount`; it could similarly be done in a Nav component.
 
-
 ```js
-let hostStr = "";
-if (process.env.NODE_ENV === "development") {
+let hostStr = '';
+if (process.env.NODE_ENV === 'development') {
   //for local dev
   hostStr = process.env.REACT_APP_RELATIVE_URL;
-} else if (process.env.NODE_ENV === "production") {
+} else if (process.env.NODE_ENV === 'production') {
   //for production build
   hostStr = process.env.REACT_APP_PROD;
 }
@@ -74,7 +71,7 @@ sp.setup({
   ie11: true, //required for legacy IE11 API calls
   sp: {
     headers: {
-      Accept: "appliation/json;odata=verbose",
+      Accept: 'appliation/json;odata=verbose',
     },
     baseUrl: hostStr,
   },
@@ -94,13 +91,13 @@ After the `sp.setup` call - we should be able to make List API calls anywhere in
 
 ```js
 // App.js
-let spList = "MyTestList"; //rename to your own list
+let spList = 'MyTestList'; //rename to your own list
 let items = await sp.web.lists
   .getByTitle(spList)
-  .items.select("Id", "Title", "Description")
-  .orderBy("Id")
+  .items.select('Id', 'Title', 'Description')
+  .orderBy('Id')
   .get();
-console.log(items || "none");
+console.log(items || 'none');
 ```
 
 ## Automate Deployment
@@ -124,11 +121,9 @@ You can optionally define a second upload script to point to your UAT site.
 
 One of the catches here when working specifically with SP 2013 is that it does not allow filenames with tilde `~` characters to be uploaded to the site. To address this, we could eject CRA and configure it manually, but using the [`rescripts`](https://github.com/harrysolovay/rescripts) package was a simpler alternative. The more popular [`react-app-rewired`](https://github.com/timarney/react-app-rewired#readme) or [`craco`](https://github.com/gsoft-inc/craco) packages might have done the job here, however I ended up using `rescripts`.
 
-
 When trying to upload the project, you might run into an issue like this:
 
-> The file or folder name \\\"MyProject/static/js/runtime~main.d653cc00.js\\\" contains invalid characters. Please use a different name. Common invalid characters include the following # % & * : < > ? / { | }
-
+> The file or folder name \\\"MyProject/static/js/runtime~main.d653cc00.js\\\" contains invalid characters. Please use a different name. Common invalid characters include the following # % & \* : < > ? / { | }
 
 You therefore need to add the rescripts package to `devDependencies` and create a `./rescriptsrc.json` file:
 
@@ -139,7 +134,7 @@ You therefore need to add the rescripts package to `devDependencies` and create 
 ```js
 // ./rescriptsrs.json
 module.exports = (config) => {
-  config.optimization.splitChunks.automaticNameDelimiter = "_";
+  config.optimization.splitChunks.automaticNameDelimiter = '_';
   if (config.optimization.runtimeChunk) {
     config.optimization.runtimeChunk = {
       name: (entrypoint) => `runtime_${entrypoint.name}`,
@@ -155,19 +150,18 @@ At this point, when we run `npm run upload` , we should be able to successfully 
 
 When we upload to SharePoint, the app needs to simply run for users from `./index.html` without a server. Routing simply does not work like this from the build folder out of the box. Therefore, we need to use [`HashRouter`](https://reactrouter.com/web/api/HashRouter). This will add a `#` character to all of our routes. The more traditional `BrowserRouter` uses the HTML5 History API and is the preferred route when using a server or server-side rendering.
 
-
 Assuming you have `react-router-dom` installed, the simple routing setup (which I've included in my repo) looks like the following:
 
 ```js
 //index.js
-import { HashRouter } from "react-router-dom";
+import { HashRouter } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 ```
 
@@ -192,8 +186,8 @@ To support the older IE11 browser, simply install the `react-app-polyfill` packa
 
 ```js
 //index.js
-import "react-app-polyfill/ie9";
-import "react-app-polyfill/stable";
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/stable';
 ```
 
 ## Deploying

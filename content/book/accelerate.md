@@ -1,20 +1,20 @@
 ---
-title: "Accelerate: The Science of Lean Software and DevOps Review"
+title: 'Accelerate: The Science of Lean Software and DevOps Review'
 date: '2025-06'
 slug: 'accelerate'
 selectedWork: true
 description: 'A practical, evidence-backed review of the definitive DevOps and software delivery performance book.'
 previewImage: '/images/book/accelerate/accelerate.jpg'
 tags:
-    - engineering
-    - devops
+  - engineering
+  - devops
 ---
 
 ## Introduction
 
 **Accelerate**, by Nicole Forsgren, Jez Humble, and Gene Kim, distills years of DevOps research into clear, actionable insights. It makes the case that software delivery performance drives business success — and that speed and stability reinforce each other rather than compete.
 
-> "_High-performing technology organizations are not just fast — they are also stable and reliable._"
+> "High-performing technology organizations are not just fast — they are also stable and reliable."
 
 ## Core Idea: Speed and Stability Go Hand-in-Hand
 
@@ -26,10 +26,10 @@ A major takeaway is that there is no tradeoff between moving fast and maintainin
 
 **Accelerate** strongly recommends moving away from maturity models, which suggest a static “end state,” and instead investing in **capability models** that foster continuous improvement.
 
-| Capability Models | Maturity Models |
-| ----------------- | ---------------- |
-| ✅ Flexible and outcome-focused | ❌ Static levels imply “done” |
-| ✅ Customizable per team | ❌ One-size-fits-all tooling |
+| Capability Models                   | Maturity Models                         |
+| ----------------------------------- | --------------------------------------- |
+| ✅ Flexible and outcome-focused     | ❌ Static levels imply “done”           |
+| ✅ Customizable per team            | ❌ One-size-fits-all tooling            |
 | ✅ Ties skills and tech to outcomes | ❌ Often disconnected from real results |
 
 ---
@@ -71,7 +71,7 @@ Lean principles drive better software delivery:
 - **Feedback from Production** — Use runtime data to guide daily decisions.
 - **Lightweight Change Approvals** — Automate checks and peer reviews instead of relying on Change Advisory Boards (CABs).
 
-> _"External approvals slow you down and do not improve stability."_
+> "External approvals slow you down and do not improve stability."
 
 ---
 
@@ -80,12 +80,13 @@ Lean principles drive better software delivery:
 The book heavily cites Westrum’s cultural model: Generative (high-trust, learning-focused) cultures outperform bureaucratic or fear-driven ones.
 
 Signs of a healthy culture include:
+
 - Open, timely information flow.
 - Shared risk and shared credit.
 - Blameless postmortems.
 - Messengers rewarded, not shot.
 
-> "_Where there is fear, you do not get honest figures._" — W. Edwards Deming
+> "Where there is fear, you do not get honest figures." — W. Edwards Deming
 
 ---
 
@@ -116,6 +117,6 @@ Keeping core software delivery in-house rather than outsourcing protects strateg
 
 **Accelerate** proves through data that you don’t have to choose between moving fast and staying safe. With the right technical practices, lean principles, and generative culture, you can have both.
 
-> _"Software delivery performance is not a cost center — it is a key competitive advantage."_
+> "Software delivery performance is not a cost center — it is a key competitive advantage."
 
 ---

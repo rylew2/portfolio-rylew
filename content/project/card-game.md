@@ -8,12 +8,12 @@ previewImage: '/images/project/cardgame/cardgame.png'
 liveSite: 'https://card-game-frontend.vercel.app/'
 sourceCode: 'https://github.com/rylew2/cardgame'
 tags:
-    - javascript
-    - python
-    - django
-    - fullstack
-    - graphql
-    - postgres
+  - javascript
+  - python
+  - django
+  - fullstack
+  - graphql
+  - postgres
 ---
 
 ## Intro
@@ -24,14 +24,14 @@ In this project, I was interested in working with a new stack, so I took on a pr
 
 ## Game Rules
 
--   Standard 52 card deck
--   The goal is to end up with the last hand having at least one ace
--   A dealt hand is 5 cards, and each hand is randomly dealt from the remaining cards in the deck each time the user clicks the `Deal` button.
-    -   If you successfully make it to the final hand without losing, there will be 2 cards in the hand
--   The game is "over" if all the aces in the deck have been dealt/exhausted before the last hand
--   The game is considered a "win" if the the last hand contains at least 1 ace
--   The game can be replayed as many times as needed - there's always a Reset (or `Play Again`) button present
--   The number of cards left and the number of aces left are displayed at the top
+- Standard 52 card deck
+- The goal is to end up with the last hand having at least one ace
+- A dealt hand is 5 cards, and each hand is randomly dealt from the remaining cards in the deck each time the user clicks the `Deal` button.
+  - If you successfully make it to the final hand without losing, there will be 2 cards in the hand
+- The game is "over" if all the aces in the deck have been dealt/exhausted before the last hand
+- The game is considered a "win" if the the last hand contains at least 1 ace
+- The game can be replayed as many times as needed - there's always a Reset (or `Play Again`) button present
+- The number of cards left and the number of aces left are displayed at the top
 
 ## Frontend App
 
@@ -85,38 +85,39 @@ Once the redux store `renderWitProviders` is setup, it becomes really easy to ma
 
 ```js
 test('overridden initial state', () => {
-    const preloadedState = {
-        game: {
-        deck: [],
-        hand: [],
-        cardsLeft: 30,
-        acesLeft: 1,
-        gamePhase: GamePhase.InProgress,
-        },
-    };
+  const preloadedState = {
+    game: {
+      deck: [],
+      hand: [],
+      cardsLeft: 30,
+      acesLeft: 1,
+      gamePhase: GamePhase.InProgress,
+    },
+  };
 
-    renderWithProviders(<App />, {
-        preloadedState,
-    });
+  renderWithProviders(<App />, {
+    preloadedState,
+  });
 
-    expect(screen.getByText('30')).toBeInTheDocument();
-    // additional assertions...
+  expect(screen.getByText('30')).toBeInTheDocument();
+  // additional assertions...
 });
 ```
 
 Or even a simple test that actually clicks things on the screen (I usually define button clicks and actions as their own functions to keep tests compact):
 
 ```js
-  test('reset game', async () => {
-      renderWithProviders(<App />);
+test('reset game', async () => {
+  renderWithProviders(<App />);
 
-      expect(getCardsLeftCountByText('Cards Left')).toBe(47);
-      await waitFor(() => {
-        clickDealButton();
-        expect(getCardsLeftCountByText('Cards Left')).toBe(42);
-      });
-    });
+  expect(getCardsLeftCountByText('Cards Left')).toBe(47);
+  await waitFor(() => {
+    clickDealButton();
+    expect(getCardsLeftCountByText('Cards Left')).toBe(42);
+  });
+});
 ```
+
 <br />
 <br />
 
@@ -124,25 +125,25 @@ Or even a simple test that actually clicks things on the screen (I usually defin
 
 While I wanted to touch all parts of the stack with this project and not spend a ton of time perfecting the frontend, there are a few areas I wish I had more time to explore:
 
--   Move some of the Tailwind inline classes into CSS files, maybe create app specific variables for colors and shared styles. As mentioned above, the utility classes were done hastily to reach frontend completion.
--   Animation changes:
-    -   Fix some of the animation jitter between each hand deal
-    -   There's also a known issue when going from a low viewport width to a high width - it will trigger the animation again - this could likely be stopped with a handleResize type function preventing repeat animations.
--   Didn't get into any react performance issues with the React Dev tools given this was a small app - but you could look at things like `React.memo` or preventing unnecessary re-renders
-    -   added some simple `useCallback` on the click handler functions that get passed down into other components
--   More robust component library
-    -   Creating a reusable `Button` component for example
-    -   Combining the game state components into one shared component ( combining `GameWon`, `GameInProgress`, `GameLost`)
--   Pull test helper functions out to separate file
--   Exposing `graphqlService` as a hook instead of a service
+- Move some of the Tailwind inline classes into CSS files, maybe create app specific variables for colors and shared styles. As mentioned above, the utility classes were done hastily to reach frontend completion.
+- Animation changes:
+  - Fix some of the animation jitter between each hand deal
+  - There's also a known issue when going from a low viewport width to a high width - it will trigger the animation again - this could likely be stopped with a handleResize type function preventing repeat animations.
+- Didn't get into any react performance issues with the React Dev tools given this was a small app - but you could look at things like `React.memo` or preventing unnecessary re-renders
+  - added some simple `useCallback` on the click handler functions that get passed down into other components
+- More robust component library
+  - Creating a reusable `Button` component for example
+  - Combining the game state components into one shared component ( combining `GameWon`, `GameInProgress`, `GameLost`)
+- Pull test helper functions out to separate file
+- Exposing `graphqlService` as a hook instead of a service
 -
-
 
 ## Backend
 
 ### Backend overview
+
 - `card` table - store all 52 cards for a deck.
-    - Multiple games could be played with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game id. (I chose the former but the latter is possible if you wanted to view prior game's state)
+  - Multiple games could be played with just the 52 cards by resetting status, or inserting 52 new entries tied to a new game id. (I chose the former but the latter is possible if you wanted to view prior game's state)
 - `game` table - simply stores the current status
 - Mutations => `dealCards(count)` , `resetGame`
 - Queries => returns `cardsLeftInDeck`, `acesLeftInDeck`, `gameStatus`
@@ -219,16 +220,15 @@ class DealCardsTestCase(TestCase):
         # among other assertions
 ```
 
-
 #### If more time allowed for the back end:
+
 - Defining more GraphQL return types - this was something that looked like a common GrapQL pattern, just ran out of time here
 - Further normalize the DB - maybe a lookup table for `card` `status` column
-     - Possibly setup a db repository pattern
+  - Possibly setup a db repository pattern
 - Consider adding a domain layer of pure/deterministic biz logic functions
 - Rate limit some of the API requests - IE.. I believe resetting the db too quickly can cause issues (if the user clicks reset one too many times)
 - install `ptw` to watch and rerun tests more easily
 - I believe it's more GraphQL-like to have nested fields - it might be good to revisit the data hierarchy
-
 
 ## Putting it all together
 

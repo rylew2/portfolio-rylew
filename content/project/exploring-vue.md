@@ -1,12 +1,12 @@
 ---
 title: Exploring VueJS
-date: "2021-07"
-slug: "exploring-vue"
+date: '2021-07'
+slug: 'exploring-vue'
 selectedWork: true
-description: "Trying out VueJS with the NASA API"
-previewImage: "/images/project/exploringVue/vue.png"
-liveSite: "https://romantic-yonath-ba35e7.netlify.app/"
-sourceCode: "https://github.com/rylew2/near-earth-objects-vue2"
+description: 'Trying out VueJS with the NASA API'
+previewImage: '/images/project/exploringVue/vue.png'
+liveSite: 'https://romantic-yonath-ba35e7.netlify.app/'
+sourceCode: 'https://github.com/rylew2/near-earth-objects-vue2'
 tags:
   - vue
   - javascript
@@ -81,7 +81,7 @@ Some of the design choices from React — like lifting state up and keeping cust
 });
 ```
 
-*Primarily custom components like Home are at the top of the component hierarchy.*
+_Primarily custom components like Home are at the top of the component hierarchy._
 
 ### Using Vue-specific features
 
