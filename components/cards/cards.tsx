@@ -19,15 +19,8 @@ interface ICard {
   }[];
 }
 
-/**
- * Renders a grid of cards
- * @param {Array} data Data to display in grid
- */
-
 const Cards = ({ data }: ICard) => {
-  const router = useRouter();
-  const isIndexPage = router.pathname === '/';
-
+  
   return (
     <StyledCards>
       {data.map((singleCard) => (
@@ -45,60 +38,10 @@ const Cards = ({ data }: ICard) => {
             />
           </Link>
 
-          {singleCard.liveSite || singleCard.sourceCode ? (
-            <div className="card-demo-link">
-              <time>
-                {singleCard.date instanceof Date
-                  ? singleCard.date.toLocaleDateString()
-                  : singleCard.date}
-              </time>
+          {singleCard.liveSite || singleCard.sourceCode || singleCard.presentation
+            ? getDemoLinks(singleCard)
+            : getMetaRow(singleCard)}
 
-              {singleCard.liveSite && (
-                <a
-                  href={singleCard.liveSite}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={singleCard.title}
-                  className="a-demo"
-                >
-                  <button className="demo">Demo</button>
-                </a>
-              )}
-              {singleCard.sourceCode && (
-                <a
-                  href={singleCard.sourceCode}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={singleCard.title}
-                  className="a-source"
-                >
-                  <button className="source">Source </button>
-                </a>
-              )}
-              {singleCard.presentation && (
-                <a
-                  href={singleCard.presentation}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={singleCard.title}
-                  className="a-presentation"
-                >
-                  <button className="source">Presentation </button>
-                </a>
-              )}
-            </div>
-          ) : (
-            <div className="meta-row">
-              <time>
-                {singleCard.date instanceof Date
-                  ? singleCard.date.toLocaleDateString()
-                  : singleCard.date}
-              </time>
-              <span>
-                {singleCard.path === 'books' && isIndexPage ? 'Book Review' : null}
-              </span>
-            </div>
-          )}
           <Link
             href={`/${singleCard.path}/[id]`}
             as={`/${singleCard.path}/${singleCard.slug}`}
@@ -107,7 +50,6 @@ const Cards = ({ data }: ICard) => {
           </Link>
 
           {singleCard.description && <p>{singleCard.description}</p>}
-
         </article>
       ))}
     </StyledCards>
@@ -115,3 +57,86 @@ const Cards = ({ data }: ICard) => {
 };
 
 export { Cards };
+
+
+
+// Helper functions below to keep the jsx clean and readable
+
+function getMetaRow(singleCard: ICard['data'][0]) {
+  const router = useRouter();
+  const isIndexPage = router.pathname === '/';
+  return (
+    <div className="meta-row">
+      {getDate(singleCard)}
+      {getMetaLabel(singleCard, isIndexPage)}
+    </div>
+  );
+}
+
+function getDemoLinks(singleCard: ICard['data'][0]) {
+  return (
+    <div className="card-demo-link">
+      {getDate(singleCard)}
+      {getDemoButtons(singleCard)}
+    </div>
+  );
+}
+
+function getDate(singleCard: ICard['data'][0]) {
+  return (
+    <time>
+      {singleCard.date instanceof Date
+        ? singleCard.date.toLocaleDateString()
+        : singleCard.date}
+    </time>
+  );
+}
+
+function getMetaLabel(singleCard: ICard['data'][0], isIndexPage: boolean) {
+  // Label that it's a book review on the index page to distinguish from project cards
+  return (
+    <span>
+      {singleCard.path === 'books' && isIndexPage ? 'Book Review' : null}
+    </span>
+  );
+}
+
+function getDemoButtons(singleCard: ICard['data'][0]) {
+  return (
+    <>
+      {singleCard.liveSite && (
+        <a
+          href={singleCard.liveSite}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={singleCard.title}
+          className="a-demo"
+        >
+          <button className="demo">Demo</button>
+        </a>
+      )}
+      {singleCard.sourceCode && (
+        <a
+          href={singleCard.sourceCode}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={singleCard.title}
+          className="a-source"
+        >
+          <button className="source">Source</button>
+        </a>
+      )}
+      {singleCard.presentation && (
+        <a
+          href={singleCard.presentation}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={singleCard.title}
+          className="a-presentation"
+        >
+          <button className="source">Presentation</button>
+        </a>
+      )}
+    </>
+  );
+}
