@@ -115,8 +115,3 @@ A key takeaway is the **no free lunch theorem**, which states that an algorithm 
 
 > Future ML algorithm discussion coming...
 
-## Unsupervised - Randomized Optimization
-
-## Unsupervised - Dimensionality Reduction Algorithms
-
-## Markov Decision Processes - Reinforcement Learning
