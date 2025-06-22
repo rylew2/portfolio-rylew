@@ -1,5 +1,5 @@
 ---
-title: title: "Machine Learning Part 1: Supervised Learning and Neural Networks"
+title: "Machine Learning Part 1: Supervised Learning and Neural Networks"
 date: '2019-06'
 slug: 'part-1-supervised'
 description: 'A survey of machine learning topics including supervised, unsupervised, clustering and dimensionality reduction, and reinforcement learning'
