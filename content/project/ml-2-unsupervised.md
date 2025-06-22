@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning Part 2: Unsupervised Randomized Optimization"
-date: "2020-06"
+date: "2019-06"
 slug: "randomized-optimization"
 selectedWork: true
 description: "A practical look at Random Hill Climbing, Simulated Annealing, Genetic Algorithms, and MIMIC applied to neural network weight tuning and classic optimization problems."
@@ -10,6 +10,10 @@ tags:
   - optimization
   - randomized algorithms
 ---
+
+1️⃣ [Part 1: Supervised Learning and Neural Networks](/projects/part-1-supervised)  
+3️⃣ *(Coming soon)*  
+4️⃣ *(Coming soon)*
 
 ## Introduction
 
@@ -119,7 +123,26 @@ Below is a snapshot comparing fitness, iterations, and runtime across all proble
 
 ## Conclusion
 
+
 This exploration shows that while backpropagation remains the best tool for neural network weight tuning, Randomized Optimization shines for rugged, non-differentiable problems — as long as you pick the right algorithm and tune it carefully.
+
+
+## Optimization Problems Summary
+
+| Problem | Algorithm (parameters) | Converged Fitness Score | Iterations to Convergence | Function Evaluations to Convergence | Elapsed Time at 1000 Iterations |
+|---------|------------------------|-------------------------|---------------------------|-------------------------------------|---------------------------------|
+| **Continuous Peaks N=100** | **Simulated Annealing (0.55)** | **100** | **5,500** | **5,000** | **0.002047** |
+| | Genetic Algorithm (100 30 30) | **100** | 8,500 | 500,000 | 0.187553933 |
+| | MIMIC (100 0.5) | **100** | 7,500 | 1,000,000 | 6.268513083 |
+| **Flip Flop N=1000** | **Simulated Annealing (0.55)** | **900** | **10,000** | **10,000** | **0.022018** |
+| | Genetic Algorithm (100 30 30) | 580 | 1,500 | 570 | 1.772045639 |
+| | MIMIC (100 0.5) | 800 | 8,000 | 1,000,000 | 254.5714739 |
+| **Traveling Salesman N=100** | **Simulated Annealing (0.55)** | **0.08** | **43,000** | **50,000** | **0.002047** |
+| | **Genetic Algorithm (100 30 30)** | **0.1** | **1,000** | **15,000** | **0.187553933** |
+| | MIMIC (100 50 0.5) | 0.022 | 100 | 6,500 | 254.5714739 |
+
+
+
 
 No single method dominates all tasks:  
 - **MIMIC** can capture structure but is computationally heavy.  
@@ -136,4 +159,3 @@ Future improvements could include a more exhaustive hyperparameter grid search, 
 - [Random Optimization (Wikipedia)](https://en.wikipedia.org/wiki/Random_optimization)
 - [Genetic Algorithms (Wikipedia)](https://en.wikipedia.org/wiki/Genetic_algorithm)
 - [ABAGAIL Machine Learning Library](https://github.com/pushkar/ABAGAIL)
-- [Assignment 2 Reference Repo](https://github.com/JonathanTay/CS-7641-assignment-2)

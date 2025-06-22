@@ -1,7 +1,7 @@
 ---
-title: Machine Learning Assignments
+title: title: "Machine Learning Part 1: Supervised Learning and Neural Networks"
 date: '2019-06'
-slug: 'machine-learning-assignments'
+slug: 'part-1-supervised'
 description: 'A survey of machine learning topics including supervised, unsupervised, clustering and dimensionality reduction, and reinforcement learning'
 previewImage: '/images/project/machineLearning/brain.png'
 sourceCode: 'https://github.com/rylew2/Machine-Learning-Assignments'
@@ -12,6 +12,13 @@ tags:
   - machine learning
   - omscs
 ---
+
+## 📚 Machine Learning Series
+
+2️⃣ [Part 2: Randomized Optimization for Neural Nets and Classic Problems](/projects/part-2-unsupervised)  
+3️⃣ *(Coming soon)*  
+4️⃣ *(Coming soon)*
+
 
 In the primary Machine Learning course, we explored various algorithms via experimental analysis on two datasets — `white wine` and `abalone`. Below is an overview of my analysis on supervised learning algorithms.
 
