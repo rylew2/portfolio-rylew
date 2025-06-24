@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-
+import { Analytics } from "@vercel/analytics/next"
 import '../components/styles/layout.css';
 
 /**
@@ -8,7 +8,12 @@ import '../components/styles/layout.css';
  * @param {object} pageProps All props for the page
  */
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  );
 }
 
 export default MyApp;
