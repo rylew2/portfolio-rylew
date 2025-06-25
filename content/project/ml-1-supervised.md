@@ -16,8 +16,8 @@ tags:
 ## 📚 Machine Learning Series
 
 2️⃣ [Part 2: Randomized Optimization for Neural Nets and Classic Problems](/projects/ml-part-2-unsupervised)  
-3️⃣ *(Coming soon)*  
-4️⃣ *(Coming soon)*
+3️⃣ (Coming soon)  
+4️⃣ (Coming soon)
 
 
 In the primary Machine Learning course, we explored various algorithms via experimental analysis on two datasets — `white wine` and `abalone`. Below is an overview of my analysis on supervised learning algorithms.

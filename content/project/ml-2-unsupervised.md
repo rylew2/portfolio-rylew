@@ -12,8 +12,8 @@ tags:
 ---
 
 1️⃣ [Part 1: Supervised Learning and Neural Networks](/projects/ml-part-1-supervised)  
-3️⃣ *(Coming soon)*  
-4️⃣ *(Coming soon)*
+3️⃣ (Coming soon)  
+4️⃣ (Coming soon)
 
 ## Introduction
 
