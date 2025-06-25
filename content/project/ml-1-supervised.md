@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning Part 1: Supervised Learning and Neural Networks"
 date: '2019-06'
-slug: 'part-1-supervised'
+slug: 'ml-part-1-supervised'
 description: 'A survey of machine learning topics including supervised, unsupervised, clustering and dimensionality reduction, and reinforcement learning'
 previewImage: '/images/project/machineLearning/brain.png'
 sourceCode: 'https://github.com/rylew2/Machine-Learning-Assignments'
@@ -15,7 +15,7 @@ tags:
 
 ## 📚 Machine Learning Series
 
-2️⃣ [Part 2: Randomized Optimization for Neural Nets and Classic Problems](/projects/part-2-unsupervised)  
+2️⃣ [Part 2: Randomized Optimization for Neural Nets and Classic Problems](/projects/ml-part-2-unsupervised)  
 3️⃣ *(Coming soon)*  
 4️⃣ *(Coming soon)*
 

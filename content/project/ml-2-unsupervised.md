@@ -1,17 +1,17 @@
 ---
 title: "Machine Learning Part 2: Unsupervised Randomized Optimization"
 date: "2019-06"
-slug: "randomized-optimization"
+slug: "ml-part-2-unsupervised"
 selectedWork: true
 description: "A practical look at Random Hill Climbing, Simulated Annealing, Genetic Algorithms, and MIMIC applied to neural network weight tuning and classic optimization problems."
-previewImage: "/images/blog/ro/cover.png"
+previewImage: '/images/project/machineLearning/brain.png'
 tags:
   - machine learning
   - optimization
   - randomized algorithms
 ---
 
-1️⃣ [Part 1: Supervised Learning and Neural Networks](/projects/part-1-supervised)  
+1️⃣ [Part 1: Supervised Learning and Neural Networks](/projects/ml-part-1-supervised)  
 3️⃣ *(Coming soon)*  
 4️⃣ *(Coming soon)*
 
