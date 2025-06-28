@@ -79,7 +79,7 @@ Next, I applied all four RO algorithms to three classic optimization problems: C
 
 ### Continuous Peaks
 
-**Problem:** Maximize the reward for having long contiguous sequences of 0s or 1s in a bit string, with an extra bonus if both exceed a threshold *T*.
+**Problem:** Maximize the reward for having long contiguous sequences of 0s or 1s in a bit string, with an extra bonus if both exceed a threshold.
 
 Key observations:
 - **RHC:** Multiple restarts helped cover the search space but convergence varied by trial.
@@ -111,13 +111,6 @@ Given its NP-hard nature, TSP challenged all algorithms:
 - **MIMIC:** Surprisingly underperformed, likely due to parameter settings and the complexity of modeling dependencies in valid paths.
 
 ![Traveling Salesman Results](/images/project/machineLearning/unsupervised/TSP-SA-VaryingProblemSize.png)
-
----
-
-## Results and Performance Summary
-
-Below is a snapshot comparing fitness, iterations, and runtime across all problems and algorithms.
-
 
 ---
 
