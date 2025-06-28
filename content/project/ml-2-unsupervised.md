@@ -35,7 +35,7 @@ Before tackling standalone optimization problems, I tested how well RO can tune 
 
 As a baseline, I trained a neural network with three hidden layers of 22 nodes each using backpropagation. This classic method computes the gradient of the cost function and updates weights accordingly. As expected, the training error converged quickly within 100–200 iterations, with test accuracy stabilizing around 76%.
 
-![Backpropagation Convergence](/images/blog/ro/backprop.png)
+![Backpropagation Convergence](/images/project/machineLearning/unsupervised/BackpropGDOptimalHyperparams.png)
 
 ---
 
@@ -43,7 +43,7 @@ As a baseline, I trained a neural network with three hidden layers of 22 nodes e
 
 RHC starts with a random guess for weights and iteratively tweaks them to find better configurations. To avoid getting stuck in local optima, I used random restarts. Despite this, RHC required about 1000 iterations to converge — much longer than backpropagation — highlighting the challenge of small attraction basins.
 
-![Random Hill Climbing Convergence](/images/blog/ro/rhc.png)
+![Random Hill Climbing Convergence](/images/project/machineLearning/unsupervised/RHCTrainTest.png)
 
 ---
 
@@ -51,7 +51,7 @@ RHC starts with a random guess for weights and iteratively tweaks them to find b
 
 Simulated Annealing is inspired by metallurgy: it allows occasional downhill steps to escape local optima, controlled by a temperature parameter. I tested different cooling rates and observed that higher rates (slow cooling) sometimes led the network to wander into higher-error regions. Overall, SA showed reliable convergence but required careful tuning to balance exploration and exploitation.
 
-![Simulated Annealing Cooling Rates](/images/blog/ro/sa.png)
+![Simulated Annealing Cooling Rates](/images/project/machineLearning/unsupervised/SimulatedAnnealingTemp.png)
 
 ---
 
@@ -59,7 +59,7 @@ Simulated Annealing is inspired by metallurgy: it allows occasional downhill ste
 
 The GA treats weight configurations as "individuals" in a population. It evolves them over generations using selection, crossover, and mutation. I varied population sizes and mate/mutation pairs, finding that larger populations boost diversity and performance but also increase runtime. GA often showed more volatile convergence due to its exploratory nature.
 
-![Genetic Algorithm Convergence](/images/blog/ro/ga.png)
+![Genetic Algorithm Convergence](/images/project/machineLearning/unsupervised/GeneticAlgos100Iters.png)
 
 ---
 
@@ -67,7 +67,7 @@ The GA treats weight configurations as "individuals" in a population. It evolves
 
 Overall, backpropagation remains the fastest and most reliable for weight tuning. Among the RO methods, RHC and SA converged faster than GA, but all lagged behind gradient descent in both time and final accuracy.
 
-![Part 1 Comparison](/images/blog/ro/part1-comparison.png)
+![Part 1 Comparison](/images/project/machineLearning/unsupervised/Part1Comparison.png)
 
 ---
 
@@ -87,7 +87,7 @@ Key observations:
 - **GA:** Showed oscillating fitness but steadily improved.
 - **MIMIC:** Captured problem structure well for smaller instances but required more computation for larger N.
 
-![Continuous Peaks Results](/images/blog/ro/cp.png)
+![Continuous Peaks Results](/images/project/machineLearning/unsupervised/ContinuousPeaksPerfComparison.png)
 
 ---
 
@@ -97,7 +97,7 @@ Key observations:
 
 RHC and SA reliably climbed to high fitness. GA fluctuated near convergence due to crossover mutations. MIMIC needed many evaluations and didn’t outperform SA here but showed promise with more tuning.
 
-![Flip Flop Results](/images/blog/ro/flipflop.png)
+![Flip Flop Results](/images/project/machineLearning/unsupervised/FlipFlopPerfComparison.png)
 
 ---
 
@@ -110,7 +110,7 @@ Given its NP-hard nature, TSP challenged all algorithms:
 - **GA:** Outperformed the others by maintaining a diverse population of routes.
 - **MIMIC:** Surprisingly underperformed, likely due to parameter settings and the complexity of modeling dependencies in valid paths.
 
-![Traveling Salesman Results](/images/blog/ro/tsp.png)
+![Traveling Salesman Results](/images/project/machineLearning/unsupervised/TSP-SA-VaryingProblemSize.png)
 
 ---
 
@@ -118,7 +118,6 @@ Given its NP-hard nature, TSP challenged all algorithms:
 
 Below is a snapshot comparing fitness, iterations, and runtime across all problems and algorithms.
 
-![Summary Table](/images/blog/ro/summary-table.png)
 
 ---
 
