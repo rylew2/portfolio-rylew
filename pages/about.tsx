@@ -37,7 +37,7 @@ const About = () => {
               I care deeply about clean, maintainable code, collaborative
               problem-solving, and continuous learning. Outside of work, I love
               exploring New York’s endless food scene, experimenting in the
-              kitchen, running, traveling, and skiing in the winter winter.
+              kitchen, running, traveling, and skiing in the winter.
             </p>
           </div>
         </Container>
