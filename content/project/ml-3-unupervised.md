@@ -4,7 +4,7 @@ date: "2019-06"
 slug: "ml-part-3-unsupervised"
 selectedWork: true
 description: "Exploring clustering, Gaussian mixtures, and dimensionality reduction methods (PCA, ICA, RP, RF) on the Wine and Abalone datasets."
-previewImage: "/images/project/machineLearning/ml-cover-3.png"
+previewImage: "/images/project/machineLearning/unsupervised/cover.png"
 sourceCode: "https://github.com/rylew2/Machine-Learning-Assignments"
 tags:
   - python
