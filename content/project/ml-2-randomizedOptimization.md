@@ -13,8 +13,11 @@ tags:
 ---
 
 1️⃣ [Part 1: Supervised Learning & Neural Networks](/projects/ml-part-1-supervised)
+
 2️⃣ **Part 2: Randomized Optimization**
+
 3️⃣ [Part 3: Unsupervised Learning & Dimensionality Reduction](/projects/ml-part-3-unsupervised)
+
 4️⃣ (Coming soon)
 
 ## Introduction
