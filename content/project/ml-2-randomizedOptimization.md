@@ -4,7 +4,7 @@ date: "2019-06"
 slug: "ml-part-2-randomized-optimization"
 selectedWork: true
 description: "A practical look at Random Hill Climbing, Simulated Annealing, Genetic Algorithms, and MIMIC applied to neural network weight tuning and classic optimization problems."
-previewImage: '/images/project/machineLearning/randomizedOptimization/ml-cover-2.png'
+gitpreviewImage: '/images/project/machineLearning/randomizedOptimization/ml-cover-2.png'
 sourceCode: 'https://github.com/rylew2/Machine-Learning-Assignments'
 tags:
   - machine learning
