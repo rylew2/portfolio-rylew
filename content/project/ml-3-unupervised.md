@@ -25,16 +25,35 @@ tags:
 
 ## Introduction
 
-In this part of the Machine Learning series, I explored **unsupervised learning** through clustering algorithms and dimensionality reduction techniques.
-The focus was on:
+## Introduction
 
-- **K-Means** and **Gaussian Mixture Models (GMM)**
-- **PCA**, **ICA**, **Random Projection**, and **Random Forest feature selection**
-- Evaluating model quality with:
-  - **Silhouette score**
-  - **Cluster label accuracy**
-  - **Log likelihood**
-- And finally, using **reduced-dimension features as inputs to a neural network**
+Unlike supervised learning—where models learn from labeled examples—**unsupervised learning aims to uncover patterns in data without any ground-truth labels**. The goal is to find natural groupings, meaningful structure, or lower-dimensional representations hidden inside high-dimensional datasets.
+
+In this part of the Machine Learning series, I focused on two major unsupervised learning themes:
+
+### 🧩 1. Clustering Algorithms
+Clustering groups similar data points based on their position in feature space.
+The project evaluates two core methods:
+
+- **K-Means** — partitions points into \(k\) compact clusters by minimizing distance to cluster centroids.
+- **Gaussian Mixture Models (GMM)** — a probabilistic approach that models the data as a mixture of Gaussians, allowing soft membership and more flexible cluster shapes.
+
+These methods help answer questions like:
+
+- *Do natural subgroups exist in this dataset?*
+- *How well separated—or overlapping—are the clusters?*
+
+### 🔻 2. Dimensionality Reduction
+Dimensionality reduction (DR) transforms the data into a smaller set of informative features, often revealing structure that clustering alone can’t capture.
+The techniques explored include:
+
+- **PCA** — captures directions of highest variance
+- **ICA** — separates independent latent signals
+- **Random Projection** — compresses features while preserving distances
+- **Random Forest feature selection** — keeps only the most informative features
+
+These DR methods are then combined with clustering—and later, a neural network—to evaluate how reduced representations affect performance.
+
 
 Two datasets were used:
 
