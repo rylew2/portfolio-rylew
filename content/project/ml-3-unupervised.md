@@ -25,8 +25,6 @@ tags:
 
 ## Introduction
 
-## Introduction
-
 Unlike supervised learning—where models learn from labeled examples—**unsupervised learning aims to uncover patterns in data without any ground-truth labels**. The goal is to find natural groupings, meaningful structure, or lower-dimensional representations hidden inside high-dimensional datasets.
 
 In this part of the Machine Learning series, I focused on two major unsupervised learning themes:
@@ -38,7 +36,7 @@ The project evaluates two core methods:
 - **K-Means** — partitions points into \(k\) compact clusters by minimizing distance to cluster centroids.
 - **Gaussian Mixture Models (GMM)** — a probabilistic approach that models the data as a mixture of Gaussians, allowing soft membership and more flexible cluster shapes.
 
-These methods help answer questions like:
+These methods help answer:
 
 - *Do natural subgroups exist in this dataset?*
 - *How well separated—or overlapping—are the clusters?*
@@ -54,11 +52,10 @@ The techniques explored include:
 
 These DR methods are then combined with clustering—and later, a neural network—to evaluate how reduced representations affect performance.
 
-
 Two datasets were used:
 
-- **Wine Quality** (binary classification from chemical properties)
-- **Abalone** (predicting age from physical measurements)
+- **Wine Quality** — chemical properties predicting quality
+- **Abalone** — physical measurements predicting age
 
 ---
 
@@ -80,11 +77,27 @@ As the number of clusters increases, **silhouette scores drop** — clusters nat
 Each dimensionality reduction method reshapes the feature space differently:
 
 - **PCA** rotates the data to maximize variance retention
-- **ICA** attempts to separate statistically independent signals
+- **ICA** attempts to separate independent signals
 - **Random Projection (RP)** compresses dimensionality with JL guarantees
 - **Random Forest (RF)** selects features based on importance (Gini)
 
 The goal was to see whether these transforms help clustering uncover more meaningful patterns.
+
+---
+
+## 📉 t-SNE Visualization (Exploratory)
+
+Although not used directly for clustering or neural networks, **t-SNE (t-Distributed Stochastic Neighbor Embedding)** is a powerful nonlinear technique for **visualizing high-dimensional structure in 2D**.
+It preserves *local* relationships, making it useful for checking whether datasets exhibit visually separable clusters.
+
+### Example – Abalone t-SNE 2D Plot
+
+![Abalone TSNE](/images/project/machineLearning/unsupervised/abalone-tsne.png)
+
+t-SNE reveals why Abalone is difficult to cluster:
+**the classes heavily overlap**, even under a nonlinear embedding. This visual intuition aligns with the modest improvements seen from PCA, RP, and RF later in the analysis.
+
+*(Swap in the Wine t-SNE plot here if preferred.)*
 
 ---
 
@@ -135,27 +148,27 @@ The one clear takeaway:
 
 Visible struggle from ICA compared to PCA, RP, or RF.
 
-![Abalone DR Silhouette](/images/project/machineLearning/unsupervised/abalone-dr-silhouette.png)
+![Abalone DR Silhouette](/images/project/machineLearning/unsupervised/abalone-silhouette.png)
 
 ---
 
 ## Part 6: Neural Network Performance on DR + Cluster Features
 
-Finally, I trained a small neural network using:
+I trained a small neural network using:
 
-- **Original features**
-- **PCA-reduced features**
-- **ICA-reduced features**
-- **RP-reduced features**
-- **RF-selected features**
-- **Cluster assignments as features (K-Means labels)**
+- Original features
+- PCA-reduced features
+- ICA-reduced features
+- RP-reduced features
+- RF-selected features
+- Cluster assignments as features (K-Means labels)
 
-Two key observations emerged:
+Two key observations:
 
 1. **RF-selected features almost always gave the best NN test accuracy.**
-   This aligns with the idea that removing noisy or irrelevant features is more valuable than transforming all features.
+   Removing noise > rotating or projecting all features.
 
-2. **Cluster labels as features** produce the **fastest runtime**, but **lower accuracy**, since cluster IDs alone lose too much information.
+2. **Cluster labels as features** yielded the **fastest runtime**, but weaker accuracy since too much information is lost.
 
 ### Abalone – NN Performance on DR Feature Sets
 
@@ -173,29 +186,27 @@ Across both datasets, dimensionality reduction had **mixed but insightful effect
 
 ### 🔹 Wine Dataset
 
-- **RF feature selection** provided the strongest performance for both K-Means and GMM.
+- **RF feature selection** provided the strongest results for both K-Means and GMM.
 - **Random Projection** produced the highest silhouette scores early on.
 - Dimensionality reduction clearly improved cluster stability and separability.
 
 ### 🔹 Abalone Dataset
 
 - Much **less improvement** across techniques — the dataset is noisy and nearly low-dimensional already.
-- **ICA performed the worst** in every metric.
-- RF and PCA were modestly better, but gains were small.
+- **ICA performed the worst** across all metrics.
+- RF and PCA showed small but consistent gains.
 
 ### 🔹 Neural Networks on Reduced Data
 
-- **RF-selected features consistently produced the best test accuracy.**
-- **Cluster labels as features** offered fast runtime but weaker predictive performance.
+- **RF-selected features** delivered the best test accuracy.
+- **Cluster labels** were extremely fast but cost accuracy.
 
 ### 🧠 Final Takeaway
 
 This part of the project reinforced the No Free Lunch Theorem:
- *No single dimensionality reduction technique is universally best.*
+**No single dimensionality reduction method is universally best.**
 
 Performance depends heavily on dataset structure:
 
-- Wine has correlated chemical signals → benefits from DR.
-- Abalone is noisy and low-dimensional → DR offers limited gains.
-
-Next steps could include exploring **UMAP**, **t-SNE**, or **autoencoders** to further reduce dimensionality in more expressive ways.
+- Wine’s correlated chemical signals → DR reveals clearer structure
+- Abalone’s noisy, low-dimensional features → limited benefit from DR
