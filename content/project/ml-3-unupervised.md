@@ -17,7 +17,7 @@ tags:
 
 1️⃣ [Part 1: Supervised Learning & Neural Networks](/projects/ml-part-1-supervised)
 
-2️⃣ [Part 2: Randomized Optimization](/projects/ml-part-2-unsupervised)
+2️⃣ [Part 2: Randomized Optimization](/projects/ml-part-2-randomized-optimization)
 
 3️⃣ **Part 3: Unsupervised Learning & Dimensionality Reduction**
 
@@ -64,7 +64,7 @@ Two datasets were used:
 Before applying dimensionality reduction, I evaluated how K-Means and GMM perform on the **raw datasets**.
 
 A consistent pattern emerged:
-As the number of clusters increases, **silhouette scores drop** — clusters naturally become more compressed since distances between cluster centers shrink.
+As the number of clusters increases, the **silhouette score** — which measures how well a point fits within its own cluster compared to the nearest other cluster — tends to drop, since clusters naturally become more compressed.
 
 ### Abalone – Baseline Silhouette Scores
 
@@ -97,7 +97,6 @@ It preserves local relationships, making it useful for checking whether a datase
 t-SNE reveals why Abalone is difficult to cluster:
 **the classes heavily overlap**, even under a nonlinear embedding. This visual intuition aligns with the modest improvements seen from PCA, RP, and RF later in the analysis.
 
-*(Swap in the Wine t-SNE plot here if preferred.)*
 
 ---
 

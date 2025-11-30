@@ -17,7 +17,7 @@ tags:
 
 1️⃣ **Part 1: Supervised Learning & Neural Networks**
 
-2️⃣ [Part 2: Randomized Optimization](/projects/ml-part-2-unsupervised)
+2️⃣ [Part 2: Randomized Optimization](/projects/ml-part-2-randomized-optimization)
 
 3️⃣ [Part 3: Unsupervised Learning & Dimensionality Reduction](/projects/ml-part-3-unsupervised)
 
