@@ -54,8 +54,8 @@ These DR methods are then combined with clustering—and later, a neural network
 
 Two datasets were used:
 
-- **Wine Quality** — chemical properties predicting quality
-- **Abalone** — physical measurements predicting age
+- 🍷 **Wine Quality** — chemical properties predicting quality
+- 🐚 **Abalone** — physical measurements predicting age
 
 ---
 
@@ -64,7 +64,7 @@ Two datasets were used:
 Before applying dimensionality reduction, I evaluated how K-Means and GMM perform on the **raw datasets**.
 
 A consistent pattern emerged:
-As the number of clusters increases, **silhouette scores drop** — clusters naturally become more compressed.
+As the number of clusters increases, **silhouette scores drop** — clusters naturally become more compressed since distances between cluster centers shrink.
 
 ### Abalone – Baseline Silhouette Scores
 
@@ -81,14 +81,14 @@ Each dimensionality reduction method reshapes the feature space differently:
 - **Random Projection (RP)** compresses dimensionality with JL guarantees
 - **Random Forest (RF)** selects features based on importance (Gini)
 
-The goal was to see whether these transforms help clustering uncover more meaningful patterns.
+The goal was to see whether these transforms help clustering uncover more meaningful patterns, or reduce noise that might blur cluster boundaries.
 
 ---
 
 ## 📉 t-SNE Visualization (Exploratory)
 
-Although not used directly for clustering or neural networks, **t-SNE (t-Distributed Stochastic Neighbor Embedding)** is a powerful nonlinear technique for **visualizing high-dimensional structure in 2D**.
-It preserves *local* relationships, making it useful for checking whether datasets exhibit visually separable clusters.
+Although not used directly for clustering or neural networks, **t-SNE (t-Distributed Stochastic Neighbor Embedding)** is a nonlinear technique for **visualizing high-dimensional structure in 2D**.
+It preserves local relationships, making it useful for checking whether a dataset has visually separable clusters before performing formal analysis.
 
 ### Example – Abalone t-SNE 2D Plot
 
@@ -111,7 +111,7 @@ Random Projection surprisingly produces the most distinct clusters early on, lik
 
 ### Abalone – Silhouette Score Comparison
 
-Abalone is noisier, so improvement is more modest, but ICA consistently underperforms.
+Abalone is noisier and lower-dimensional, so improvement is more modest, but ICA consistently underperforms.
 
 ![Abalone Silhouette](/images/project/machineLearning/unsupervised/abalone-silhouette.png)
 
@@ -166,9 +166,9 @@ I trained a small neural network using:
 Two key observations:
 
 1. **RF-selected features almost always gave the best NN test accuracy.**
-   Removing noise > rotating or projecting all features.
+   Removing noisy or irrelevant inputs proved more effective than transforming all features.
 
-2. **Cluster labels as features** yielded the **fastest runtime**, but weaker accuracy since too much information is lost.
+2. **Cluster labels as features** yielded the **fastest runtime** but weaker accuracy, since cluster IDs alone discard too much information.
 
 ### Abalone – NN Performance on DR Feature Sets
 
@@ -184,13 +184,13 @@ Two key observations:
 
 Across both datasets, dimensionality reduction had **mixed but insightful effects**:
 
-### 🔹 Wine Dataset
+### 🔹 Wine Dataset 🍷
 
 - **RF feature selection** provided the strongest results for both K-Means and GMM.
 - **Random Projection** produced the highest silhouette scores early on.
 - Dimensionality reduction clearly improved cluster stability and separability.
 
-### 🔹 Abalone Dataset
+### 🔹 Abalone Dataset 🐚
 
 - Much **less improvement** across techniques — the dataset is noisy and nearly low-dimensional already.
 - **ICA performed the worst** across all metrics.
@@ -208,5 +208,5 @@ This part of the project reinforced the No Free Lunch Theorem:
 
 Performance depends heavily on dataset structure:
 
-- Wine’s correlated chemical signals → DR reveals clearer structure
-- Abalone’s noisy, low-dimensional features → limited benefit from DR
+- 🍷 Wine’s correlated chemical signals → DR reveals clearer structure
+- 🐚 Abalone’s noisy, compact feature space → limited benefit from DR
