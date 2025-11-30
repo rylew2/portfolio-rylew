@@ -86,6 +86,7 @@ Next, I applied all four RO algorithms to three classic optimization problems: C
 **Problem:** Maximize the reward for having long contiguous sequences of 0s or 1s in a bit string, with an extra bonus if both exceed a threshold.
 
 Key observations:
+
 - **RHC:** Multiple restarts helped cover the search space but convergence varied by trial.
 - **SA:** Best results with moderate cooling rates; high rates wandered too much.
 - **GA:** Showed oscillating fitness but steadily improved.
@@ -110,6 +111,7 @@ RHC and SA reliably climbed to high fitness. GA fluctuated near convergence due 
 **Problem:** Find the shortest path visiting each "city" exactly once and returning to the start.
 
 Given its NP-hard nature, TSP challenged all algorithms:
+
 - **RHC & SA:** Got stuck in local optima more often due to the huge combinatorial space.
 - **GA:** Outperformed the others by maintaining a diverse population of routes.
 - **MIMIC:** Surprisingly underperformed, likely due to parameter settings and the complexity of modeling dependencies in valid paths.
@@ -120,9 +122,7 @@ Given its NP-hard nature, TSP challenged all algorithms:
 
 ## Conclusion
 
-
 This exploration shows that while backpropagation remains the best tool for neural network weight tuning, Randomized Optimization shines for rugged, non-differentiable problems — as long as you pick the right algorithm and tune it carefully.
-
 
 ## Optimization Problems Summary
 
@@ -138,10 +138,8 @@ This exploration shows that while backpropagation remains the best tool for neur
 | | **Genetic Algorithm (100 30 30)** | **0.1** | **1,000** | **15,000** | **0.187553933** |
 | | MIMIC (100 50 0.5) | 0.022 | 100 | 6,500 | 254.5714739 |
 
-
-
-
 No single method dominates all tasks:
+
 - **MIMIC** can capture structure but is computationally heavy.
 - **GA** balances exploration and diversity but can be volatile.
 - **SA** is reliable if well-tuned.
