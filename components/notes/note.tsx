@@ -4,10 +4,10 @@ import { StyledNote, StyledNoteLink } from '../styles/notes.styles';
 import Link from 'next/link';
 
 export interface INote {
-  title: string;
+  title?: string;
   id: string;
-  slug: string;
-  date: Date;
+  slug?: string;
+  date?: string | Date;
   basePath: string;
 }
 

@@ -50,7 +50,7 @@ const Nav = () => {
                       <a
                         href={item.href}
                         target="_blank"
-                        rel="noopener norefferer"
+                        rel="noopener noreferrer"
                         className="navLinkAnchor"
                       >
                         {item.title}

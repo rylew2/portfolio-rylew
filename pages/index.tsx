@@ -1,14 +1,16 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Cards, Container, Layout } from '../components';
 import { StyledIndexPage } from '../components/styles/home.styles';
-import { getContentList } from '../lib/content';
+import { getContentList, ContentListItem } from '../lib/content';
+
+interface IndexPageProps {
+  selectedWorks: ContentListItem[];
+}
 
 /**
  * Index page `/index`
  */
-
-//@ts-ignore
-const Index: FC = ({ selectedWorks }) => {
+const Index = ({ selectedWorks }: IndexPageProps) => {
   return (
     <Layout pathname={'/'} pageTitle="Ryan Lewis Portfolio">
       <StyledIndexPage>
@@ -28,7 +30,7 @@ export const getStaticProps = async () => {
   const selectedBooks = books.filter((book) => book.selectedWork);
 
   const selectedWorks = [...selectedProjects, ...selectedBooks].sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    return new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime();
   });
 
   return {
