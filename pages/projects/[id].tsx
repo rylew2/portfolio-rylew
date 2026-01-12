@@ -4,17 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../components';
 import { Chips } from '../../components/chips/chips';
 import { StyledContent } from '../../components/styles/content.styles';
 import { getAllContentIds, getContentData } from '../../lib/content';
 import { IContentData } from '../books/[id]';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+interface ProjectPageProps {
+  projectData: IContentData;
+}
+
 /**
  *  Renders work markdown posts
  */
 
-const Project = ({ projectData }) => {
+const Project = ({ projectData }: ProjectPageProps) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
   return (
@@ -111,8 +117,8 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const projectData: IContentData = await getContentData(params.id, 'project');
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  const projectData: IContentData = await getContentData(params?.id as string, 'project');
 
   return {
     props: {

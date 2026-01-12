@@ -19,7 +19,7 @@ const header = ({ pathname, title }: IHeader) => {
       return <AboutHeader />;
 
     default:
-      return <PageHeader headingTitle={title} />;
+      return <PageHeader headingTitle={title ?? ''} />;
   }
 };
 

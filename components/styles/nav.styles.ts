@@ -1,4 +1,4 @@
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
 
@@ -168,7 +168,7 @@ export const StyledHamburger = styled.button<IStyledHamburger>`
     transform: ${({ menuOpen }) => (menuOpen ? 'rotate(-40deg)' : null)};
   }
 
-  @media all and (min-width: 1024px) {
+  @media all and (min-width: 759px) {
     display: none;
   }
 `;

@@ -4,6 +4,6 @@ import { getWidth } from '../../util/getWidth';
 
 export const StyledContainer = styled.section<IContainer>`
   padding: 0 4%;
-  max-width: ${({ width }) => getWidth(width)};
+  max-width: ${({ width }) => getWidth(width ?? 'default')};
   margin: 0 auto;
 `;
