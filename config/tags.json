@@ -43,5 +43,15 @@
     "tag": "edtech",
     "title": "EdTech",
     "description": "Everything education technology related"
+  },
+  {
+    "tag": "management",
+    "title": "Management",
+    "description": "Everything management related"
+  },
+  {
+    "tag": "engineering",
+    "title": "Engineering",
+    "description": "Everything engineering related"
   }
 ]

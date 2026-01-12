@@ -1,7 +1,7 @@
-![Ryan Lewis Portfolio]
+## Ryan Lewis Portfolio
 
 ## Features
 
 - Styled with EmotionJS💅🏾
 - Written in TypeScript ⚛
-- Blog, Notes and Work content types 🖊
+- Project and Book content types 🖊

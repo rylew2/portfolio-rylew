@@ -1,15 +1,15 @@
-import { faChrome, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import React from "react";
-import { Container, Layout } from "../../components";
-import { Chips } from "../../components/chips/chips";
-import { StyledContent } from "../../components/styles/content.styles";
-import { getAllContentIds, getContentData } from "../../lib/content";
-import { IContentData } from "../blog/[id]";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faChrome, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import React from 'react';
+import { Container, Layout } from '../../components';
+import { Chips } from '../../components/chips/chips';
+import { StyledContent } from '../../components/styles/content.styles';
+import { getAllContentIds, getContentData } from '../../lib/content';
+import { IContentData } from '../books/[id]';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 /**
  *  Renders work markdown posts
  */
@@ -21,10 +21,19 @@ const Project = ({ projectData }) => {
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>{projectData.date}</time>
+          <time>
+            {projectData.date instanceof Date
+              ? projectData.date.toLocaleDateString()
+              : projectData.date}
+          </time>
           {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
-            <Image src={projectData.previewImage} height={550} width={1200} />
+            <Image
+              alt="projectimage"
+              src={projectData.previewImage}
+              height={550}
+              width={1200}
+            />
           )}
           <blockquote>
             {projectData.liveSite && (
@@ -35,10 +44,13 @@ const Project = ({ projectData }) => {
                   rel="noreferrer noopener"
                 >
                   <FontAwesomeIcon
-                    color={"#5a73bb"}
+                    color="blue"
                     icon={faChrome as IconProp}
-                    size="lg"
-                  />{" "}
+                    style={{
+                      width: '25px',
+                      verticalAlign: 'middle',
+                    }}
+                  />{' '}
                   <b>Demo:</b> {projectData.liveSite}
                 </a>
               </div>
@@ -50,8 +62,16 @@ const Project = ({ projectData }) => {
                   href={projectData.sourceCode}
                   target="_blank"
                   rel="noreferrer noopener"
+                  style={{ display: 'inline-block' }}
                 >
-                  <FontAwesomeIcon color={"#768c76"} icon={faCode as IconProp} size="lg" />{" "}
+                  <FontAwesomeIcon
+                    color="green"
+                    icon={faCode}
+                    style={{
+                      width: '25px',
+                      verticalAlign: 'middle',
+                    }}
+                  />{' '}
                   <b>Source Code:</b> {projectData.sourceCode}
                 </a>
               </div>
@@ -64,10 +84,13 @@ const Project = ({ projectData }) => {
                   rel="noreferrer noopener"
                 >
                   <FontAwesomeIcon
-                    color={"Tomato"}
+                    color={'Tomato'}
                     icon={faYoutube as IconProp}
-                    size="lg"
-                  />{" "}
+                    style={{
+                      width: '25px',
+                      verticalAlign: 'middle',
+                    }}
+                  />{' '}
                   <b>Presentation:</b> {projectData.presentation}
                 </a>
               </div>
@@ -81,7 +104,7 @@ const Project = ({ projectData }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = getAllContentIds("project");
+  const paths = getAllContentIds('project');
   return {
     paths,
     fallback: false,
@@ -89,7 +112,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const projectData: IContentData = await getContentData(params.id, "project");
+  const projectData: IContentData = await getContentData(params.id, 'project');
 
   return {
     props: {

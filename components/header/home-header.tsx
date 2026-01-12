@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Container } from "../container";
-import siteConfig from "../../config/index.json";
-import { StyledHomeHeading } from "../styles/header.styles";
+import { Container } from '../container';
+import siteConfig from '../../config/index.json';
+import { StyledHomeHeading } from '../styles/header.styles';
 
 const HomeHeader = () => (
   <StyledHomeHeading>
@@ -11,7 +11,9 @@ const HomeHeader = () => (
         <h1>{siteConfig.author.title}</h1>
         <p
           className="description"
-          dangerouslySetInnerHTML={{ __html: siteConfig.author.description }}
+          dangerouslySetInnerHTML={{
+            __html: siteConfig.author.description,
+          }}
         />
       </div>
     </Container>

@@ -1,29 +1,29 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { GitHub, Codepen, ExternalLink } from "react-feather";
+import React from 'react';
+import styled from '@emotion/styled';
+import { GitHub, Codepen, ExternalLink } from 'react-feather';
 
 import {
   StyledExperimentItemContainer,
   Tilter,
-} from "./styles/experiments.styles";
+} from './styles/experiments.styles';
 
 const ExperimentItem = ({ experiment }) => {
   let icon;
 
   switch (experiment.location) {
-    case "codepen":
+    case 'codepen':
       icon = <CodepenIcon role="img" />;
       break;
-    case "github":
+    case 'github':
       icon = <GithubIcon role="img" />;
       break;
-    case "medium":
+    case 'medium':
     default:
       icon = <ExternalLinkIcon role="img" />;
   }
 
   return (
-    <Tilter options={{ scale: 1, speed: 200 }}>
+    <Tilter scale={1} transitionSpeed={200}>
       <StyledExperimentItemContainer
         className="experiments-container"
         href={experiment.link}
@@ -31,7 +31,11 @@ const ExperimentItem = ({ experiment }) => {
         target="_blank"
       >
         <div className="experiment-meta">
-          <time className="experiment-date">{experiment.date}</time>
+          <time className="experiment-date">
+            {experiment.date instanceof Date
+              ? experiment.date.toLocaleDateString()
+              : experiment.date}
+          </time>
           <span>{icon}</span>
         </div>
         <h3 className="experiment-item-heading">{experiment.title}</h3>

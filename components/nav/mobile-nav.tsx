@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React from "react";
-import { StyledMobileNav } from "../styles/nav.styles";
-import { navLinks as mobileNavLinks } from "./nav";
+import Link from 'next/link';
+import React from 'react';
+import { StyledMobileNav } from '../styles/nav.styles';
+import { navLinks as mobileNavLinks } from './nav';
 const MobileNav = () => {
   return (
     <StyledMobileNav>

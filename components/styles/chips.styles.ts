@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { IContainer } from "../container";
+import styled from '@emotion/styled';
+import { IContainer } from '../container';
 
 export const StyledChip = styled.div<IContainer>`
   /* display: flex; */
@@ -21,7 +21,9 @@ export const StyledChip = styled.div<IContainer>`
     /* background: #202020; */
     background: #e8e8e8;
     margin-bottom: 0.5em;
-    transition: transform 0.15s, color 0.15s;
+    transition:
+      transform 0.15s,
+      color 0.15s;
 
     a {
       padding: 0.35em 0.5em;

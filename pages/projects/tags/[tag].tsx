@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
-import React from "react";
-import { Cards, Container, Layout } from "../../../components";
-import tagsJSON from "../../../config/tags.json";
-import { getContentWithTag } from "../../../lib/content";
+import { useRouter } from 'next/router';
+import React from 'react';
+import { Cards, Container, Layout } from '../../../components';
+import tagsJSON from '../../../config/tags.json';
+import { getContentWithTag } from '../../../lib/content';
 
 const tag = ({ content, title, description }) => {
   const { pathname } = useRouter();
@@ -11,7 +11,7 @@ const tag = ({ content, title, description }) => {
       <Container>
         <p className="page-intro">{description}</p>
 
-        <Cards data={content} basePath="projects" />
+        <Cards data={content} />
       </Container>
     </Layout>
   );
@@ -19,7 +19,7 @@ const tag = ({ content, title, description }) => {
 
 export const getStaticPaths = async () => {
   // Get all the tags from the already defined site tags
-  
+
   const paths = tagsJSON.map((tag) => {
     return {
       params: {
@@ -35,7 +35,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  let content = getContentWithTag(params.tag, "project");
+  let content = getContentWithTag(params.tag, 'project');
   const tagObject = tagsJSON.filter((json) => json.tag === params.tag)[0];
 
   return {

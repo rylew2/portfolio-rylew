@@ -1,11 +1,11 @@
 // import { facebook } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Container } from "../container";
-import { StyledFooterSection } from "../styles/footer.styles";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Container } from '../container';
+import { StyledFooterSection } from '../styles/footer.styles';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const Footer = () => (
   <>

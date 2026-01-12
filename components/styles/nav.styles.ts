@@ -1,6 +1,6 @@
-import { keyframes } from "@emotion/core";
-import styled from "@emotion/styled";
-import { HTMLAttributes } from "react";
+import { keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
+import { HTMLAttributes } from 'react';
 
 interface IStyledHamburger extends HTMLAttributes<HTMLButtonElement> {
   menuOpen: boolean;
@@ -19,8 +19,8 @@ const fadeDown = keyframes`
 `;
 
 export const NavSection = styled.header`
-  background: url("/cork-wallet.png") !important;
-  background-image: url("/cork-wallet.png") !important;
+  background: url('/cork-wallet.png') !important;
+  background-image: url('/cork-wallet.png') !important;
   padding-top: 1em;
   padding-bottom: 1em;
   margin-bottom: 3em;
@@ -142,7 +142,7 @@ export const StyledHamburger = styled.button<IStyledHamburger>`
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     background: #fff;
     height: 2px;
     width: 100%;
@@ -158,14 +158,14 @@ export const StyledHamburger = styled.button<IStyledHamburger>`
   }
 
   &::before {
-    top: ${({ menuOpen }) => (menuOpen ? "12px" : "8px")};
-    transform: ${({ menuOpen }) => (menuOpen ? "rotate(40deg)" : null)};
+    top: ${({ menuOpen }) => (menuOpen ? '12px' : '8px')};
+    transform: ${({ menuOpen }) => (menuOpen ? 'rotate(40deg)' : null)};
   }
 
   &::after {
-    width: ${({ menuOpen }) => (menuOpen ? "100%" : "80%")};
-    bottom: ${({ menuOpen }) => (menuOpen ? "12px" : "8px")};
-    transform: ${({ menuOpen }) => (menuOpen ? "rotate(-40deg)" : null)};
+    width: ${({ menuOpen }) => (menuOpen ? '100%' : '80%')};
+    bottom: ${({ menuOpen }) => (menuOpen ? '12px' : '8px')};
+    transform: ${({ menuOpen }) => (menuOpen ? 'rotate(-40deg)' : null)};
   }
 
   @media all and (min-width: 1024px) {

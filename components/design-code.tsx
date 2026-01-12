@@ -1,8 +1,8 @@
-import React from "react";
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
 
-import { Container } from "./container";
-import { StyledDesignPlus } from "./styles/index.styles";
+import { Container } from './container';
+import { StyledDesignPlus } from './styles/index.styles';
 
 const DesignCode = () => {
   return (
@@ -21,7 +21,13 @@ const DesignCode = () => {
           </p>
         </div>
         <div className="image">
-          <Image src="/images/article-preview.png" height={200} width={350} sizes="(min-width: 759px) 800px" alt="article preview" />
+          <Image
+            src="/images/article-preview.png"
+            height={200}
+            width={350}
+            sizes="(min-width: 759px) 800px"
+            alt="article preview"
+          />
         </div>
       </Container>
     </StyledDesignPlus>

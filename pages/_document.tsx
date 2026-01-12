@@ -1,5 +1,5 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
-import ANALYTICS_ID from "../lib/gtag";
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import ANALYTICS_ID from '../lib/gtag';
 
 export default class MyDocument extends Document {
   render() {

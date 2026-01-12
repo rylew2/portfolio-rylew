@@ -1,19 +1,18 @@
-import Link from "next/link";
-import React, { useContext } from "react";
-import { MenuContext } from "..";
-import SiteConfig from "../../config/index.json";
-import { Container } from "../container";
-import Logo from "../logo";
-import { NavSection, StyledHamburger } from "../styles/nav.styles";
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import { MenuContext } from '..';
+import SiteConfig from '../../config/index.json';
+import { Container } from '../container';
+import Logo from '../logo';
+import { NavSection, StyledHamburger } from '../styles/nav.styles';
 
 export const navLinks = [
-  { title: "Projects", link: "/projects" },
-  { title: "Blog", link: "/blog" },
-  // { title: "Notes", link: "/notes" },
-  { title: "About", link: "/about" },
+  { title: 'Projects', link: '/projects' },
+  { title: 'Books', link: '/books' },
+  { title: 'About', link: '/about' },
   {
-    title: "Source",
-    href: "https://github.com/rylew2/portfolio-rylew",
+    title: 'Source',
+    href: 'https://github.com/rylew2/portfolio-rylew',
   },
 ];
 
@@ -27,11 +26,9 @@ const Nav = () => {
       <Container>
         <nav className="navWrapper">
           <div className="navLeft">
-            <Link href="/">
-              <a className="no-underline">
-                <Logo />
-                <span className="navLeft-title">{SiteConfig.author.name}</span>
-              </a>
+            <Link href="/" className="no-underline">
+              <Logo />
+              <span className="navLeft-title">{SiteConfig.author.name}</span>
             </Link>
           </div>
 
@@ -46,8 +43,8 @@ const Nav = () => {
                 return (
                   <li key={idx} className="navLinkItem">
                     {item.link ? (
-                      <Link href={item.link}>
-                        <a className="navLinkAnchor">{item.title}</a>
+                      <Link href={item.link} className="navLinkAnchor">
+                        {item.title}
                       </Link>
                     ) : (
                       <a
