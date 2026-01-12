@@ -47,35 +47,35 @@ test("project tags link to the full tagged list", async ({ page }) => {
   }
 });
 
-test("blog tags link to the full tagged list", async ({ page }) => {
-  const posts = getContentList("blog");
-  const taggedPost = pickTaggedEntry(posts);
+test("book tags link to the full tagged list", async ({ page }) => {
+  const books = getContentList("book");
+  const taggedBook = pickTaggedEntry(books);
 
-  expect(taggedPost).toBeTruthy();
-  if (!taggedPost) {
-    throw new Error("No blog posts matched tags in config/tags.json.");
+  expect(taggedBook).toBeTruthy();
+  if (!taggedBook) {
+    throw new Error("No books matched tags in config/tags.json.");
   }
 
-  const tag = taggedPost.tags.find((value) => siteTags.has(value));
+  const tag = taggedBook.tags.find((value) => siteTags.has(value));
   if (!tag) {
-    throw new Error("No blog tags matched tags in config/tags.json.");
+    throw new Error("No book tags matched tags in config/tags.json.");
   }
 
-  await page.goto(`/blog/${taggedPost.slug}`);
+  await page.goto(`/books/${taggedBook.slug}`);
   await page.getByRole("link", { name: tag }).click();
 
   await expect(page).toHaveURL(
-    new RegExp(`/blog/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
+    new RegExp(`/books/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
     { timeout: 15000 }
   );
 
-  const taggedPosts = getContentWithTag(tag, "blog");
+  const taggedBooks = getContentWithTag(tag, "book");
   const headings = page.locator("main article h2");
 
-  await expect(headings).toHaveCount(taggedPosts.length);
-  for (const post of taggedPosts) {
+  await expect(headings).toHaveCount(taggedBooks.length);
+  for (const book of taggedBooks) {
     await expect(
-      page.locator("main").getByRole("heading", { name: post.title })
+      page.locator("main").getByRole("heading", { name: book.title })
     ).toBeVisible();
   }
 });

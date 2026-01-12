@@ -4,7 +4,7 @@ import { getContentList } from "../lib/content";
 const expectContentPage = async (
   page,
   url: string,
-  contentType: "blog" | "notes" | "project"
+  contentType: "book" | "project"
 ) => {
   const content = getContentList(contentType);
   const titles = content.map((item) => item.title);
@@ -25,18 +25,17 @@ test("projects page lists all project items", async ({ page }) => {
   await expectContentPage(page, "/projects", "project");
 });
 
-test("blog page lists all blog items", async ({ page }) => {
-  await expectContentPage(page, "/blog", "blog");
+test("books page lists all book items", async ({ page }) => {
+  await expectContentPage(page, "/books", "book");
 });
 
-test("notes page lists all note items", async ({ page }) => {
-  await expectContentPage(page, "/notes", "notes");
-});
-
-test("home page lists selected projects", async ({ page }) => {
+test("home page lists selected works", async ({ page }) => {
   const projects = getContentList("project");
+  const books = getContentList("book");
   const selectedProjects = projects.filter((project) => project.selectedWork);
-  const titles = selectedProjects.map((project) => project.title);
+  const selectedBooks = books.filter((book) => book.selectedWork);
+  const selectedWorks = [...selectedProjects, ...selectedBooks];
+  const titles = selectedWorks.map((work) => work.title);
 
   await page.goto("/");
 
