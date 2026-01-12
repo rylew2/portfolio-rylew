@@ -53,5 +53,85 @@
     "tag": "engineering",
     "title": "Engineering",
     "description": "Everything engineering related"
+  },
+  {
+    "tag": "clustering",
+    "title": "Clustering",
+    "description": "Clustering techniques and projects"
+  },
+  {
+    "tag": "d3",
+    "title": "D3",
+    "description": "Data visualization with D3"
+  },
+  {
+    "tag": "devops",
+    "title": "DevOps",
+    "description": "DevOps practices and tooling"
+  },
+  {
+    "tag": "dimensionality reduction",
+    "title": "Dimensionality Reduction",
+    "description": "Dimensionality reduction techniques"
+  },
+  {
+    "tag": "django",
+    "title": "Django",
+    "description": "Django projects and learnings"
+  },
+  {
+    "tag": "fullstack",
+    "title": "Full Stack",
+    "description": "Full stack projects and notes"
+  },
+  {
+    "tag": "graphql",
+    "title": "GraphQL",
+    "description": "GraphQL APIs and clients"
+  },
+  {
+    "tag": "mdp",
+    "title": "MDP",
+    "description": "Markov Decision Processes"
+  },
+  {
+    "tag": "optimization",
+    "title": "Optimization",
+    "description": "Optimization techniques and studies"
+  },
+  {
+    "tag": "policy iteration",
+    "title": "Policy Iteration",
+    "description": "Policy iteration methods"
+  },
+  {
+    "tag": "postgres",
+    "title": "Postgres",
+    "description": "PostgreSQL development"
+  },
+  {
+    "tag": "q-learning",
+    "title": "Q-Learning",
+    "description": "Q-learning and reinforcement learning"
+  },
+  {
+    "tag": "randomized algorithms",
+    "title": "Randomized Algorithms",
+    "description": "Randomized algorithms and experiments"
+  },
+  {
+    "tag": "reinforcement learning",
+    "title": "Reinforcement Learning",
+    "description": "Reinforcement learning topics"
+  },
+  {
+    "tag": "value iteration",
+    "title": "Value Iteration",
+    "description": "Value iteration methods"
+  },
+  {
+    "tag": "vue",
+    "title": "Vue",
+    "description": "Vue projects and notes"
   }
 ]
