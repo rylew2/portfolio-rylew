@@ -79,3 +79,17 @@ test("book tags link to the full tagged list", async ({ page }) => {
     ).toBeVisible();
   }
 });
+
+test("all content tags exist in config/tags.json", async () => {
+  const projects = getContentList("project");
+  const books = getContentList("book");
+  const contentTags = new Set(
+    [...projects, ...books].flatMap((item) =>
+      Array.isArray(item.tags) ? item.tags : []
+    )
+  );
+
+  for (const tag of contentTags) {
+    expect(siteTags.has(tag)).toBeTruthy();
+  }
+});
