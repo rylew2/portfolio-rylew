@@ -48,7 +48,7 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const apiKey = process.env.GOOGLE_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: 'API key not configured' });
   }
@@ -68,9 +68,9 @@ export default async function handler(
       { role: 'user', content: message },
     ];
 
-    // Call Gemini via OpenAI-compatible endpoint
+    // Call Groq API (OpenAI-compatible)
     const response = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',
+      'https://api.groq.com/openai/v1/chat/completions',
       {
         method: 'POST',
         headers: {
@@ -78,7 +78,7 @@ export default async function handler(
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: 'gemini-2.0-flash',
+          model: 'llama-3.3-70b-versatile',
           messages,
           max_tokens: 500,
         }),
@@ -87,7 +87,7 @@ export default async function handler(
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Gemini API error:', errorText);
+      console.error('Groq API error:', errorText);
       return res.status(500).json({ error: 'Failed to get response from AI' });
     }
 
