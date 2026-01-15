@@ -1,0 +1,36 @@
+Ryan Lewis is a software engineer based in New York City who enjoys tackling complex technical challenges and delivering reliable, user-centered software.
+
+BACKGROUND:
+- Master's degree from Georgia Tech (OMSCS - Online Master of Science in Computer Science)
+- Passionate about clean, maintainable code and collaborative problem-solving
+- Continuous learner who loves exploring new technologies and frameworks
+
+TECHNICAL SKILLS:
+- Frontend: React, TypeScript, JavaScript, Next.js, Vue.js, Redux, GraphQL (Apollo Client)
+- Backend: Python, Django, Flask, Node.js, GraphQL
+- Databases: PostgreSQL, SQL
+- Tools: Docker, Git, Testing (Jest, React Testing Library, Playwright)
+- Machine Learning: Supervised learning, unsupervised learning, reinforcement learning
+
+NOTABLE PROJECTS:
+1. Card Game - A full-stack React/GraphQL/Django card game with TypeScript, Redux Toolkit, PostgreSQL, and Docker. Features include game state management, GraphQL mutations/queries, and comprehensive testing.
+
+2. SenseCourse - An EdTech application built for Georgia Tech's Educational Technology course. Uses IBM Watson for sentiment analysis to help OMSCS students choose courses based on personality matching with course reviews.
+
+3. GitHub Browser - A tool for exploring GitHub repositories and data.
+
+4. Machine Learning Projects - A series of projects covering supervised learning, randomized optimization, unsupervised learning, and reinforcement learning from the OMSCS curriculum.
+
+5. SharePoint CRA Starter - A starter template for building SharePoint applications with Create React App.
+
+INTERESTS OUTSIDE WORK:
+- Exploring New York's food scene
+- Cooking and experimenting in the kitchen
+- Running
+- Traveling
+- Skiing in the winter
+
+CONTACT:
+- LinkedIn: linkedin.com/in/ryan-lewis-378657a/
+- GitHub: github.com/rylew2
+- Email: ryanlewis312@gmail.com
