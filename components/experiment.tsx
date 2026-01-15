@@ -7,7 +7,20 @@ import {
   Tilter,
 } from './styles/experiments.styles';
 
-const ExperimentItem = ({ experiment }) => {
+interface IExperiment {
+  title: string;
+  description: string;
+  link: string;
+  tags: string[];
+  date: string;
+  location: string;
+}
+
+interface ExperimentItemProps {
+  experiment: IExperiment;
+}
+
+const ExperimentItem = ({ experiment }: ExperimentItemProps) => {
   let icon;
 
   switch (experiment.location) {
@@ -31,11 +44,7 @@ const ExperimentItem = ({ experiment }) => {
         target="_blank"
       >
         <div className="experiment-meta">
-          <time className="experiment-date">
-            {experiment.date instanceof Date
-              ? experiment.date.toLocaleDateString()
-              : experiment.date}
-          </time>
+          <time className="experiment-date">{experiment.date}</time>
           <span>{icon}</span>
         </div>
         <h3 className="experiment-item-heading">{experiment.title}</h3>

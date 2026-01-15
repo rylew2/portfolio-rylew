@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyledNotes } from '../styles/notes.styles';
-import Note, { INote } from './note';
+import Note from './note';
+import { ContentListItem } from '../../lib/content';
 
 interface INotes {
-  notes: INote[];
+  notes: ContentListItem[];
   basePath: string;
 }
 

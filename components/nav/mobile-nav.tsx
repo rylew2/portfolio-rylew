@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { StyledMobileNav } from '../styles/nav.styles';
 import { navLinks as mobileNavLinks } from './nav';
+
 const MobileNav = () => {
   return (
     <StyledMobileNav>
@@ -11,15 +12,15 @@ const MobileNav = () => {
             return (
               <li key={idx} className="listItem">
                 {item.link ? (
-                  <Link href={item.link}>
-                    <a className="link">{item.title}</a>
+                  <Link href={item.link} className="link">
+                    {item.title}
                   </Link>
                 ) : (
                   <a
                     className="link"
                     href={item.href}
                     target="_blank"
-                    rel="noopener norefferer"
+                    rel="noopener noreferrer"
                   >
                     {item.title}
                   </a>

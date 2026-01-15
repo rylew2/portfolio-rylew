@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../components';
 import { Chips } from '../../components/chips/chips';
 import { StyledContent } from '../../components/styles/content.styles';
@@ -61,8 +62,8 @@ export interface IContentData {
   presentation?: string;
 }
 
-export const getStaticProps = async ({ params }) => {
-  const bookData: IContentData = await getContentData(params.id, 'book');
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  const bookData: IContentData = await getContentData(params?.id as string, 'book');
 
   return {
     props: {

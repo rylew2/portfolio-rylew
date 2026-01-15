@@ -1,11 +1,15 @@
 import React from 'react';
 import { Cards, Container, Layout } from '../components';
-import { getContentList } from '../lib/content';
+import { getContentList, ContentListItem } from '../lib/content';
+
+interface ProjectsPageProps {
+  projects: ContentListItem[];
+}
 
 /**
  * Work page `/work`
  */
-const Project = ({ projects }) => {
+const Project = ({ projects }: ProjectsPageProps) => {
   return (
     <Layout
       pathname={'/projects'}

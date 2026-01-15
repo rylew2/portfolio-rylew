@@ -1,11 +1,18 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../../components';
 import NotesComponent from '../../../components/notes/notes';
 import categoryJSON from '../../../config/categories.json';
-import { getContentInCategory } from '../../../lib/content';
+import { getContentInCategory, ContentListItem } from '../../../lib/content';
 
-const category = ({ content, title, description }) => {
+interface CategoryPageProps {
+  content: ContentListItem[];
+  title: string;
+  description: string;
+}
+
+const Category = ({ content, title, description }: CategoryPageProps) => {
   const { pathname } = useRouter();
   return (
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
@@ -33,10 +40,10 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  let content = getContentInCategory(params.category, 'book');
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  const content = getContentInCategory(params?.category as string, 'book');
   const categoryObject = categoryJSON.filter(
-    (category) => category.category === params.category
+    (category) => category.category === params?.category
   )[0];
 
   return {
@@ -48,4 +55,4 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export default category;
+export default Category;

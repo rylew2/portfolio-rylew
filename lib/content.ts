@@ -9,14 +9,29 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
 
 import { v4 as uuid } from 'uuid';
-import { IContentData } from '../pages/books/[id]';
 import remarkGfm from 'remark-gfm';
-// import { IContentData } from '../pages/blog/[id]'
 
 const projectDirectory = path.join(process.cwd(), 'content', 'project');
 const bookDirectory = path.join(process.cwd(), 'content', 'book');
 
 type IContentType = 'book' | 'project';
+
+// Interface for content list items (used in listings)
+export interface ContentListItem {
+  id: string;
+  path: string;
+  previewImage: string;
+  title?: string;
+  slug?: string;
+  date?: string;
+  description?: string;
+  tags?: string[];
+  category?: string;
+  selectedWork?: boolean;
+  liveSite?: string;
+  sourceCode?: string;
+  presentation?: string;
+}
 
 /**
  * Get IDs of all markdown post
@@ -133,9 +148,9 @@ export const getContentData = async (id: string, contentType: IContentType) => {
  * @param {string} contentType Type of content
  * For the landing page of each subpage - called from book/project.tsx getStaticProps
  */
-export const getContentList = (contentType: IContentType) => {
-  let contentFiles;
-  let contentDir;
+export const getContentList = (contentType: IContentType): ContentListItem[] => {
+  let contentFiles: string[];
+  let contentDir: string;
 
   switch (contentType) {
     case 'project':
@@ -149,11 +164,11 @@ export const getContentList = (contentType: IContentType) => {
       break;
   }
 
-  const content = contentFiles
+  const content: ContentListItem[] = contentFiles
     .filter((content) => content.endsWith('.md'))
     .map((content) => {
-      const path = `${contentDir}/${content}`;
-      const rawContent = fs.readFileSync(path, {
+      const filePath = `${contentDir}/${content}`;
+      const rawContent = fs.readFileSync(filePath, {
         encoding: 'utf-8',
       });
       const { data } = matter(rawContent);
@@ -163,7 +178,7 @@ export const getContentList = (contentType: IContentType) => {
         previewImage: data.previewImage || '/images/image-placeholder.png',
         id: uuid(),
         path: contentType + 's',
-      };
+      } as ContentListItem;
     });
 
   return content.sort(sortByDate);
@@ -174,9 +189,9 @@ export const getContentList = (contentType: IContentType) => {
  * @param {string} tag - tag to filter by
  * called from [id].tsx getStaticPaths
  */
-export const getContentWithTag = (tag: string, contentType: IContentType) => {
-  let contentDir;
-  let contentFiles;
+export const getContentWithTag = (tag: string, contentType: IContentType): ContentListItem[] => {
+  let contentDir: string | undefined;
+  let contentFiles: string[];
 
   switch (contentType) {
     case 'book':
@@ -188,13 +203,13 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
       break;
   }
 
-  contentFiles = fs.readdirSync(contentDir);
+  contentFiles = fs.readdirSync(contentDir!);
 
-  let contentData = contentFiles
+  const contentData: ContentListItem[] = contentFiles
     .filter((content) => content.endsWith('.md'))
     .map((content) => {
-      const path = `${contentDir}/${content}`;
-      const rawContent = fs.readFileSync(path, {
+      const filePath = `${contentDir}/${content}`;
+      const rawContent = fs.readFileSync(filePath, {
         encoding: 'utf-8',
       });
 
@@ -205,10 +220,10 @@ export const getContentWithTag = (tag: string, contentType: IContentType) => {
         previewImage: data.previewImage || '/images/image-placeholder.png',
         id: uuid(),
         path: contentType + 's',
-      };
+      } as ContentListItem;
     });
 
-  const filteredContent = contentData.filter((content: IContentData) => {
+  const filteredContent = contentData.filter((content) => {
     return content.tags && content.tags.includes(tag);
   });
 
@@ -223,8 +238,8 @@ export const getContentInCategory = (
   category: string,
   contentType: IContentType
 ) => {
-  let contentDir;
-  let contentFiles;
+  let contentDir: string | undefined;
+  let contentFiles: string[];
 
   switch (contentType) {
     case 'book':
@@ -236,13 +251,13 @@ export const getContentInCategory = (
       break;
   }
 
-  contentFiles = fs.readdirSync(contentDir);
+  contentFiles = fs.readdirSync(contentDir!);
 
-  let contentData = contentFiles
+  const contentData: ContentListItem[] = contentFiles
     .filter((content) => content.endsWith('.md'))
     .map((content) => {
-      const path = `${contentDir}/${content}`;
-      const rawContent = fs.readFileSync(path, {
+      const filePath = `${contentDir}/${content}`;
+      const rawContent = fs.readFileSync(filePath, {
         encoding: 'utf-8',
       });
 
@@ -253,10 +268,10 @@ export const getContentInCategory = (
         previewImage: data.previewImage || '/images/image-placeholder.png',
         id: uuid(),
         path: contentType + 's',
-      };
+      } as ContentListItem;
     });
 
-  const filteredContent = contentData.filter((content: IContentData) => {
+  const filteredContent = contentData.filter((content) => {
     return content.category && content.category === category;
   });
 
@@ -268,10 +283,10 @@ export const getContentInCategory = (
  * @param a {date.toLocaleDateString()} - Date of post 1
  * @param b {date.toLocaleDateString()} - Date of post 2
  */
-const sortByDate = (a, b) => {
-  if (a.date > b.date) {
+const sortByDate = (a: ContentListItem, b: ContentListItem) => {
+  if ((a.date ?? '') > (b.date ?? '')) {
     return -1;
-  } else if (a.date < b.date) {
+  } else if ((a.date ?? '') < (b.date ?? '')) {
     return 1;
   } else {
     return 0;

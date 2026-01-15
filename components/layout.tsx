@@ -15,10 +15,14 @@ interface ILayout {
   pageDescription?: string;
 }
 
-//@ts-ignore
-export const MenuContext = createContext({
-  menuOpen: null,
-  toggleMenuOpen: null,
+interface MenuContextType {
+  menuOpen: boolean;
+  toggleMenuOpen: () => void;
+}
+
+export const MenuContext = createContext<MenuContextType>({
+  menuOpen: false,
+  toggleMenuOpen: () => {},
 });
 
 const Layout = ({

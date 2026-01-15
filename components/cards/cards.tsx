@@ -3,24 +3,16 @@ import Link from 'next/link';
 import React from 'react';
 import { StyledCards } from '../styles/cards.styles';
 import { useRouter } from 'next/router';
+import { ContentListItem } from '../../lib/content';
 
-interface ICard {
-  data: {
-    title: string;
-    id: string;
-    slug: string;
-    date: Date;
-    previewImage: string;
-    description: string;
-    path: string;
-    liveSite?: string;
-    sourceCode?: string;
-    presentation?: string;
-  }[];
+interface CardsProps {
+  data: ContentListItem[];
 }
 
-const Cards = ({ data }: ICard) => {
-  
+const Cards = ({ data }: CardsProps) => {
+  const router = useRouter();
+  const isIndexPage = router.pathname === '/';
+
   return (
     <StyledCards>
       {data.map((singleCard) => (
@@ -31,7 +23,7 @@ const Cards = ({ data }: ICard) => {
           >
             <Image
               src={singleCard.previewImage}
-              alt={singleCard.title}
+              alt={singleCard.title ?? ''}
               width={450}
               height={220}
               sizes="(min-width: 640px) 700px, 400px"
@@ -40,7 +32,7 @@ const Cards = ({ data }: ICard) => {
 
           {singleCard.liveSite || singleCard.sourceCode || singleCard.presentation
             ? getDemoLinks(singleCard)
-            : getMetaRow(singleCard)}
+            : getMetaRow(singleCard, isIndexPage)}
 
           <Link
             href={`/${singleCard.path}/[id]`}
@@ -62,9 +54,7 @@ export { Cards };
 
 // Helper functions below to keep the jsx clean and readable
 
-function getMetaRow(singleCard: ICard['data'][0]) {
-  const router = useRouter();
-  const isIndexPage = router.pathname === '/';
+function getMetaRow(singleCard: ContentListItem, isIndexPage: boolean) {
   return (
     <div className="meta-row">
       {getDate(singleCard)}
@@ -73,7 +63,7 @@ function getMetaRow(singleCard: ICard['data'][0]) {
   );
 }
 
-function getDemoLinks(singleCard: ICard['data'][0]) {
+function getDemoLinks(singleCard: ContentListItem) {
   return (
     <div className="card-demo-link">
       {getDate(singleCard)}
@@ -82,17 +72,11 @@ function getDemoLinks(singleCard: ICard['data'][0]) {
   );
 }
 
-function getDate(singleCard: ICard['data'][0]) {
-  return (
-    <time>
-      {singleCard.date instanceof Date
-        ? singleCard.date.toLocaleDateString()
-        : singleCard.date}
-    </time>
-  );
+function getDate(singleCard: ContentListItem) {
+  return <time>{singleCard.date ?? ''}</time>;
 }
 
-function getMetaLabel(singleCard: ICard['data'][0], isIndexPage: boolean) {
+function getMetaLabel(singleCard: ContentListItem, isIndexPage: boolean) {
   // Label that it's a book review on the index page to distinguish from project cards
   return (
     <span>
@@ -101,7 +85,7 @@ function getMetaLabel(singleCard: ICard['data'][0], isIndexPage: boolean) {
   );
 }
 
-function getDemoButtons(singleCard: ICard['data'][0]) {
+function getDemoButtons(singleCard: ContentListItem) {
   return (
     <>
       {singleCard.liveSite && (

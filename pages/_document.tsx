@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link
-            href={`https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css`}
+            href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.css"
             rel="stylesheet"
           />
           <script
