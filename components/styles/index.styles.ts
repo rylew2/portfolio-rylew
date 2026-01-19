@@ -6,7 +6,8 @@ export const StyledIndex = styled.div`
   }
 `;
 export const StyledDesignPlus = styled.section`
-  background: #fff url('/images/background-pattern.jpg');
+  background: var(--surface) url('/images/background-pattern.jpg');
+  background-blend-mode: multiply;
   padding: 40px 0;
 
   p:nth-child(2) {
@@ -31,7 +32,7 @@ export const StyledDesignPlus = styled.section`
 
   h2 {
     font-size: 1.75em;
-    color: #000;
+    color: var(--text-color-black);
     margin-bottom: 1rem;
 
     @media (min-width: 1024px) {
@@ -40,7 +41,7 @@ export const StyledDesignPlus = styled.section`
   }
 
   p {
-    color: #000;
+    color: var(--text-color);
   }
 
   @media (min-width: 759px) {

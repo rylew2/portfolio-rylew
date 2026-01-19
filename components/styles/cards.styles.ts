@@ -6,7 +6,7 @@ export const StyledCards = styled.section`
   flex-wrap: wrap;
 
   h2 {
-    color: var(--text-color);
+    color: var(--header-title);
   }
   p {
     color: var(--text-color-dark);
@@ -21,15 +21,16 @@ export const StyledCards = styled.section`
     }
 
     button {
-      background: url('/cork-wallet.png') !important;
-      background-image: url('/cork-wallet.png') !important;
+      background: var(--button-bg) !important;
+      background-image: var(--button-bg) !important;
       border-radius: 5px;
       padding: 4px 10px;
       font-weight: bold;
+      color: var(--button-text);
       &:hover {
-        background: #0e78aa;
+        background: var(--button-bg-hover);
         cursor: pointer;
-        color: white;
+        color: var(--button-text-hover);
       }
     }
   }
@@ -40,7 +41,7 @@ export const StyledCards = styled.section`
 
     &:hover h2 {
       /* color: #fff; */
-      color: #000;
+      color: var(--text-color-black);
     }
     &:hover p {
       color: var(--text-color-bright);
@@ -80,7 +81,7 @@ export const StyledCards = styled.section`
   }
 
   time {
-    color: #808080;
+    color: var(--text-color-bright);
     font-size: 0.9em;
   }
 
@@ -93,7 +94,7 @@ export const StyledCards = styled.section`
 
     &:hover h2 {
       text-decoration: underline;
-      color: #fff;
+      color: var(--text-color-white);
     }
   }
 
