@@ -38,6 +38,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.41.2",
     "@types/node": "^25.0.6",
     "@types/react": "^19.2.8",
