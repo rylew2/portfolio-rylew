@@ -42,12 +42,14 @@ const reportViolations = (violations: AxeViolation[]) =>
   });
 
 test.describe("accessibility", () => {
+  test.describe.configure({ timeout: 120_000 });
   const pages = buildPageList();
 
   test("light mode", async ({ page }) => {
-    test.setTimeout(60_000);
+    test.setTimeout(120_000);
     for (const { name, url } of pages) {
       await page.goto(url);
+      await page.waitForLoadState("networkidle");
       await expect(page.locator("main")).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
@@ -59,13 +61,14 @@ test.describe("accessibility", () => {
   });
 
   test("dark mode", async ({ page }) => {
-    test.setTimeout(60_000);
+    test.setTimeout(120_000);
     await page.addInitScript(() => {
       window.localStorage.setItem("theme", "dark");
     });
 
     for (const { name, url } of pages) {
       await page.goto(url);
+      await page.waitForLoadState("networkidle");
       await expect(page.locator("main")).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 

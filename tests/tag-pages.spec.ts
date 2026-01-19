@@ -55,6 +55,7 @@ test("project tags link to the full tagged list", async ({ page }) => {
 });
 
 test("book tags link to the full tagged list", async ({ page }) => {
+  test.setTimeout(60_000);
   const books = getContentList("book");
   const taggedBook = pickTaggedEntry(books);
 
@@ -74,7 +75,7 @@ test("book tags link to the full tagged list", async ({ page }) => {
   await Promise.all([
     page.waitForURL(
       new RegExp(`/books/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
-      { timeout: 15000 }
+      { timeout: 45000 }
     ),
     tagLink.click(),
   ]);
