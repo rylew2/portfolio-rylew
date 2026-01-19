@@ -74,6 +74,13 @@ const Layout = ({
     }
   }, [theme]);
 
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    document.querySelectorAll('pre').forEach((node) => {
+      node.setAttribute('tabindex', '0');
+    });
+  }, [pathname]);
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <MenuContext.Provider value={{ menuOpen, toggleMenuOpen }}>

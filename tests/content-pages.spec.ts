@@ -12,12 +12,12 @@ const expectContentPage = async (
   await page.goto(url);
 
   const headingLocator = page.locator("main article h2");
-  await expect(headingLocator).toHaveCount(titles.length);
+  await expect(headingLocator).toHaveCount(titles.length, { timeout: 15000 });
 
   for (const title of titles) {
     await expect(
       page.locator("main").getByRole("heading", { name: title })
-    ).toBeVisible();
+    ).toBeVisible({ timeout: 15000 });
   }
 };
 

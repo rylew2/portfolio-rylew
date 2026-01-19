@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledHomeHeading = styled.div`
+export const StyledHomeHeading = styled.section`
   h1 {
     color: var(--header-title);
   }
@@ -20,7 +20,7 @@ export const StyledHomeHeading = styled.div`
   }
 `;
 
-export const StyledPageHeading = styled.div`
+export const StyledPageHeading = styled.section`
   text-align: center;
   h1 {
     color: var(--header-title);

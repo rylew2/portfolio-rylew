@@ -5,7 +5,7 @@ import siteConfig from '../../config/index.json';
 import { StyledHomeHeading } from '../styles/header.styles';
 
 const HomeHeader = () => (
-  <StyledHomeHeading>
+  <StyledHomeHeading aria-label="Page introduction">
     <Container>
       <div className="header-container">
         <h1>{siteConfig.author.title}</h1>
