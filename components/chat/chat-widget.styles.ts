@@ -17,7 +17,7 @@ export const ChatButton = styled.button`
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--prim-color, #154475);
+  background: var(--chat-header-bg, #154475);
   border: none;
   cursor: pointer;
   display: flex;
@@ -35,7 +35,7 @@ export const ChatButton = styled.button`
   }
 
   &:focus {
-    outline: 2px solid var(--prim-color, #154475);
+    outline: 2px solid var(--chat-header-bg, #154475);
     outline-offset: 2px;
   }
 
@@ -140,7 +140,7 @@ export const Message = styled.div<{ isUser: boolean }>`
   line-height: 1.4;
   word-wrap: break-word;
   align-self: ${(props) => (props.isUser ? 'flex-end' : 'flex-start')};
-  background: ${(props) => (props.isUser ? 'var(--prim-color, #154475)' : 'var(--surface, #ffffff)')};
+  background: ${(props) => (props.isUser ? 'var(--chat-header-bg, #154475)' : 'var(--surface, #ffffff)')};
   color: ${(props) => (props.isUser ? 'white' : 'var(--text-color, #161b2f)')};
   box-shadow: ${(props) =>
     props.isUser ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.1)'};
@@ -198,7 +198,7 @@ export const ChatInput = styled.input`
 
 export const SendButton = styled.button`
   padding: 10px 16px;
-  background: var(--prim-color, #154475);
+  background: var(--chat-header-bg, #154475);
   color: white;
   border: none;
   border-radius: 8px;

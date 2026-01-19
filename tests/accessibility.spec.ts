@@ -1,13 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import type { Result } from "axe-core";
 import { getContentList } from "../lib/content";
-
-type AxeViolation = {
-  id: string;
-  impact?: string | null;
-  help: string;
-  nodes: Array<{ target: string[] }>;
-};
 
 type PageEntry = {
   name: string;
@@ -33,10 +27,10 @@ const buildPageList = (): PageEntry[] => {
   ];
 };
 
-const reportViolations = (violations: AxeViolation[]) =>
+const reportViolations = (violations: Result[]) =>
   violations.map((violation) => {
     const targets = violation.nodes
-      .map((node) => node.target.join(", "))
+      .map((node) => node.target.map(String).join(", "))
       .join(" | ");
     return `${violation.id} (${violation.impact}) ${violation.help}\n${targets}`;
   });
