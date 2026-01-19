@@ -50,12 +50,8 @@ const Project = ({ projectData }: ProjectPageProps) => {
                   rel="noreferrer noopener"
                 >
                   <FontAwesomeIcon
-                    color="blue"
+                    className="callout-icon demo"
                     icon={faChrome as IconProp}
-                    style={{
-                      width: '25px',
-                      verticalAlign: 'middle',
-                    }}
                   />{' '}
                   <b>Demo:</b> {projectData.liveSite}
                 </a>
@@ -71,12 +67,8 @@ const Project = ({ projectData }: ProjectPageProps) => {
                   style={{ display: 'inline-block' }}
                 >
                   <FontAwesomeIcon
-                    color="green"
+                    className="callout-icon source"
                     icon={faCode}
-                    style={{
-                      width: '25px',
-                      verticalAlign: 'middle',
-                    }}
                   />{' '}
                   <b>Source Code:</b> {projectData.sourceCode}
                 </a>
@@ -90,12 +82,8 @@ const Project = ({ projectData }: ProjectPageProps) => {
                   rel="noreferrer noopener"
                 >
                   <FontAwesomeIcon
-                    color={'Tomato'}
+                    className="callout-icon presentation"
                     icon={faYoutube as IconProp}
-                    style={{
-                      width: '25px',
-                      verticalAlign: 'middle',
-                    }}
                   />{' '}
                   <b>Presentation:</b> {projectData.presentation}
                 </a>

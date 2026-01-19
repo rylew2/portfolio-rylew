@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-export const StyledHomeHeading = styled.div`
+export const StyledHomeHeading = styled.section`
   h1 {
-    color: black;
+    color: var(--header-title);
   }
   @media (min-width: 1024px) {
     .header-container {
@@ -20,14 +20,14 @@ export const StyledHomeHeading = styled.div`
   }
 `;
 
-export const StyledPageHeading = styled.div`
+export const StyledPageHeading = styled.section`
   text-align: center;
   h1 {
-    color: black;
+    color: var(--header-title);
   }
 
   h2:hover {
-    color: black;
+    color: var(--header-title);
   }
 
   &.page h1 {

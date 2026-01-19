@@ -1,9 +1,14 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyledMobileNav } from '../styles/nav.styles';
 import { navLinks as mobileNavLinks } from './nav';
+import { ThemeContext } from '..';
+import ThemeToggle from '../theme-toggle';
 
 const MobileNav = () => {
+  const themeContext = useContext(ThemeContext);
+  const { theme, toggleTheme } = themeContext;
+
   return (
     <StyledMobileNav>
       <div className="mobile-nav-container">
@@ -28,6 +33,9 @@ const MobileNav = () => {
               </li>
             );
           })}
+          <li className="listItem">
+            <ThemeToggle isDark={theme === 'dark'} onToggle={toggleTheme} />
+          </li>
         </ul>
       </div>
     </StyledMobileNav>

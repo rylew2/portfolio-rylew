@@ -3,7 +3,7 @@ import { Container } from '../container';
 import { StyledPageHeading } from '../styles/header.styles';
 
 const AboutHeader = () => (
-  <StyledPageHeading>
+  <StyledPageHeading aria-label="Page heading">
     <Container>
       <div className="header-container">
         <h1 className="about-header">About Me</h1>

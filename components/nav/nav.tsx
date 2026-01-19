@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import { MenuContext } from '..';
+import { MenuContext, ThemeContext } from '..';
 import SiteConfig from '../../config/index.json';
 import { Container } from '../container';
 import Logo from '../logo';
 import { NavSection, StyledHamburger } from '../styles/nav.styles';
+import ThemeToggle from '../theme-toggle';
 
 export const navLinks = [
   { title: 'Projects', link: '/projects' },
@@ -18,8 +19,10 @@ export const navLinks = [
 
 const Nav = () => {
   const menuContext = useContext(MenuContext);
+  const themeContext = useContext(ThemeContext);
 
   const { toggleMenuOpen, menuOpen } = menuContext;
+  const { theme, toggleTheme } = themeContext;
 
   return (
     <NavSection>
@@ -33,11 +36,6 @@ const Nav = () => {
           </div>
 
           <div className="navRight">
-            <StyledHamburger
-              menuOpen={menuOpen}
-              onClick={toggleMenuOpen}
-            ></StyledHamburger>
-
             <ul className="navLinkList">
               {navLinks.map((item, idx) => {
                 return (
@@ -60,6 +58,11 @@ const Nav = () => {
                 );
               })}
             </ul>
+            <ThemeToggle isDark={theme === 'dark'} onToggle={toggleTheme} />
+            <StyledHamburger
+              menuOpen={menuOpen}
+              onClick={toggleMenuOpen}
+            ></StyledHamburger>
           </div>
         </nav>
       </Container>
