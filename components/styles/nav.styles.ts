@@ -146,7 +146,7 @@ export const NavSection = styled.header`
   }
 
   .themeToggle-icon--sun {
-    color: #f7c948;
+    color: #d89b11;
   }
 
   .themeToggle-thumb {
@@ -267,7 +267,7 @@ export const StyledMobileNav = styled.section`
   }
 
   .themeToggle-icon--sun {
-    color: #f7c948;
+    color: #d89b11;
   }
 
   .themeToggle-thumb {
