@@ -19,8 +19,10 @@ const fadeDown = keyframes`
 `;
 
 export const NavSection = styled.header`
-  background: url('/cork-wallet.png') !important;
-  background-image: url('/cork-wallet.png') !important;
+  background: var(--nav-bg) !important;
+  background-image: var(--nav-bg) !important;
+  background-size: cover;
+  background-repeat: repeat;
   padding-top: 1em;
   padding-bottom: 1em;
   margin-bottom: 3em;
@@ -29,22 +31,25 @@ export const NavSection = styled.header`
   z-index: 10;
 
   .navLeft-title {
-    color: #154475;
+    color: var(--nav-foreground);
     &:hover {
-      color: #a1aebb;
+      color: var(--text-color-bright);
     }
   }
 
   .no-underline {
-    color: var(--text-color-dark);
+    color: var(--nav-foreground);
 
     &:hover {
-      color: black;
+      color: var(--nav-link-hover);
     }
   }
 
   .navRight {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
   }
 
   .navWrapper {
@@ -74,8 +79,11 @@ export const NavSection = styled.header`
     &:last-child {
       margin-right: 0;
     }
+    .navLinkAnchor {
+      color: var(--nav-foreground);
+    }
     .navLinkAnchor:hover {
-      color: #faf7e9;
+      color: var(--nav-link-hover);
     }
   }
 
@@ -91,6 +99,102 @@ export const NavSection = styled.header`
     align-items: center;
   }
 
+  .themeToggle {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--nav-foreground);
+
+    &:focus-visible {
+      outline: 2px solid var(--prim-color);
+      outline-offset: 2px;
+    }
+
+    svg {
+      height: 1.1rem;
+      width: 1.1rem;
+      stroke: currentColor;
+    }
+  }
+
+  .themeToggle-track {
+    height: 2.3rem;
+    width: 4.2rem;
+    border-radius: 999px;
+    background: var(--surface-muted);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.35rem;
+    position: relative;
+    gap: 0.25rem;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .themeToggle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-bright);
+  }
+
+  .themeToggle-icon--sun {
+    color: #f7c948;
+  }
+
+  .themeToggle-thumb {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform var(--transition-duration) var(--transition-timing-function),
+      background-color var(--transition-duration) var(--transition-timing-function);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .themeToggle-thumb svg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .themeToggle-thumb .themeToggle-icon--moon {
+    display: none;
+  }
+
+  html[data-theme='dark'] & .themeToggle-track {
+    background: #10141c;
+    border-color: rgba(125, 177, 255, 0.35);
+  }
+
+  html[data-theme='dark'] & .themeToggle-thumb {
+    transform: translateX(1.85rem);
+    background: #253147;
+    border-color: #2e3c57;
+  }
+
+  html[data-theme='dark'] & .themeToggle-thumb .themeToggle-icon--sun {
+    display: none;
+  }
+
+  html[data-theme='dark'] & .themeToggle-thumb .themeToggle-icon--moon {
+    display: inline-flex;
+  }
+
   @media (min-width: 759px) {
     margin-bottom: 3em;
 
@@ -101,6 +205,7 @@ export const NavSection = styled.header`
 `;
 
 export const StyledMobileNav = styled.section`
+  background: var(--page-bg);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -126,6 +231,89 @@ export const StyledMobileNav = styled.section`
   .link {
     font-size: 1.2em;
   }
+
+  .themeToggle {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    height: 2.5rem;
+    width: 4.4rem;
+    padding: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .themeToggle-track {
+    height: 2.5rem;
+    width: 4.4rem;
+    border-radius: 999px;
+    background: var(--surface-muted);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.4rem;
+    position: relative;
+  }
+
+  .themeToggle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-bright);
+  }
+
+  .themeToggle-icon--sun {
+    color: #f7c948;
+  }
+
+  .themeToggle-thumb {
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    height: 1.9rem;
+    width: 1.9rem;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform var(--transition-duration) var(--transition-timing-function),
+      background-color var(--transition-duration) var(--transition-timing-function);
+  }
+
+  .themeToggle-thumb svg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .themeToggle-thumb .themeToggle-icon--moon {
+    display: none;
+  }
+
+  html[data-theme='dark'] & .themeToggle-track {
+    background: #10141c;
+    border-color: rgba(125, 177, 255, 0.35);
+  }
+
+  html[data-theme='dark'] & .themeToggle-thumb {
+    transform: translateX(1.9rem);
+    background: #253147;
+    border-color: #2e3c57;
+  }
+
+  html[data-theme='dark'] & .themeToggle-thumb .themeToggle-icon--sun {
+    display: none;
+  }
+
+  html[data-theme='dark'] & .themeToggle-thumb .themeToggle-icon--moon {
+    display: inline-flex;
+  }
 `;
 
 export const StyledHamburger = styled.button<IStyledHamburger>`
@@ -134,7 +322,7 @@ export const StyledHamburger = styled.button<IStyledHamburger>`
   background: inherit;
   display: block;
   padding: 0.5em;
-  border: 1px solid #fff;
+  border: 1px solid var(--nav-foreground);
   position: relative;
   border: none;
   border-radius: 50%;
@@ -143,7 +331,7 @@ export const StyledHamburger = styled.button<IStyledHamburger>`
   &::before,
   &::after {
     content: '';
-    background: #fff;
+    background: var(--nav-foreground);
     height: 2px;
     width: 100%;
     position: absolute;
@@ -154,7 +342,7 @@ export const StyledHamburger = styled.button<IStyledHamburger>`
 
   &:active,
   &:focus {
-    outline-color: #fff;
+    outline-color: var(--nav-foreground);
   }
 
   &::before {

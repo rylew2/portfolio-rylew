@@ -19,13 +19,15 @@ export const StyledChip = styled.div<IContainer>`
     margin-right: 0.5em;
     font-size: 0.8em;
     /* background: #202020; */
-    background: #e8e8e8;
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
     margin-bottom: 0.5em;
     transition:
       transform 0.15s,
       color 0.15s;
 
     a {
+      color: var(--chip-text);
       padding: 0.35em 0.5em;
       display: inline-block;
     }
@@ -36,6 +38,6 @@ export const StyledChip = styled.div<IContainer>`
   }
 
   li:hover {
-    box-shadow: 0 0 3px 2px #3c1516;
+    box-shadow: 0 0 4px 2px var(--chip-shadow);
   }
 `;

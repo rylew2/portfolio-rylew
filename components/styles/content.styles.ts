@@ -10,7 +10,8 @@ export const StyledContent = styled.section`
   // backtick tagged code in project / blog posts
   p code,
   li code {
-    background: #dedede;
+    background: var(--code-bg);
+    color: var(--code-text);
     font-weight: 600;
   }
 
@@ -20,6 +21,7 @@ export const StyledContent = styled.section`
     margin-bottom: 8px;
     float: left;
     margin-left: 58px;
+    color: var(--text-color-bright);
   }
 
   img {
@@ -39,5 +41,35 @@ export const StyledContent = styled.section`
   pre code {
     overflow: hidden;
     background: none;
+  }
+
+  blockquote a {
+    color: var(--callout-link);
+  }
+
+  blockquote a:hover {
+    color: var(--text-color-white);
+  }
+
+  blockquote b {
+    color: var(--callout-label);
+  }
+
+  .callout-icon {
+    width: 25px;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+  }
+
+  .callout-icon.demo {
+    color: var(--callout-demo);
+  }
+
+  .callout-icon.source {
+    color: var(--callout-source);
+  }
+
+  .callout-icon.presentation {
+    color: var(--callout-presentation);
   }
 `;

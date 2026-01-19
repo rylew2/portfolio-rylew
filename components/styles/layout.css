@@ -16,6 +16,34 @@
   --text-color-white: #fff;
   --text-color-black: #000;
   --prim-color: #154475;
+  --page-bg: #fdfdfd;
+  --surface: #ffffff;
+  --surface-muted: #f2f2f2;
+  --border-color: #d7d7d7;
+  --link-hover: #1a272c;
+  --nav-foreground: #1b2430;
+  --nav-link-hover: #0b0f16;
+  --nav-bg: url('/cork-wallet.png');
+  --footer-bg: url('/cork-wallet.png');
+  --table-head-bg: #42485f;
+  --table-head-text: #ffffff;
+  --button-bg: url('/cork-wallet.png');
+  --button-bg-hover: #0e78aa;
+  --button-text: #0b0f16;
+  --button-text-hover: #ffffff;
+  --blockquote-bg: url('../../public/snow.png');
+  --header-title: #0b0f16;
+  --chip-bg: #e8e8e8;
+  --chip-text: #1b2430;
+  --chip-border: #d2d2d2;
+  --chip-shadow: rgba(60, 21, 22, 0.5);
+  --code-bg: #dedede;
+  --code-text: #1b2430;
+  --callout-link: #1146a8;
+  --callout-label: #0b0f16;
+  --callout-demo: #3a7bd5;
+  --callout-source: #2e9e6f;
+  --callout-presentation: #e46a3a;
 
   --transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-duration: 0.25s;
@@ -27,6 +55,46 @@
   --max-width-narrow: 50em;
 }
 
+html[data-theme='dark'] {
+  --text-color: #e6e8ef;
+  --text-color-dark: #b3b6c1;
+  --text-color-bright: #9aa2b5;
+  --text-color-white: #ffffff;
+  --text-color-black: #f7f8fc;
+  --prim-color: #7db1ff;
+  --page-bg: #0f1115;
+  --surface: #171a21;
+  --surface-muted: #1f2430;
+  --border-color: #2b313d;
+  --link-hover: #b9d2ff;
+  --nav-foreground: #f0f2f7;
+  --nav-link-hover: #ffffff;
+  --nav-bg: linear-gradient(rgba(10, 12, 16, 0.75), rgba(10, 12, 16, 0.75)),
+    url('/cork-wallet.png');
+  --footer-bg: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)),
+    url('/cork-wallet.png');
+  --table-head-bg: #2a2f3a;
+  --table-head-text: #f0f2f7;
+  --button-bg: #1f2430;
+  --button-bg-hover: #2b3342;
+  --button-text: #e6e8ef;
+  --button-text-hover: #ffffff;
+  --blockquote-bg: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)),
+    url('../../public/snow.png');
+  --header-title: #ffffff;
+  --chip-bg: #2a3240;
+  --chip-text: #f4f6fb;
+  --chip-border: #3b4558;
+  --chip-shadow: rgba(125, 177, 255, 0.35);
+  --code-bg: #222833;
+  --code-text: #e6e8ef;
+  --callout-link: #9cc2ff;
+  --callout-label: #f2f4fb;
+  --callout-demo: #7db1ff;
+  --callout-source: #65d6a0;
+  --callout-presentation: #ff9a6a;
+}
+
 /* LINKS */
 a {
   color: var(--prim-color);
@@ -35,7 +103,7 @@ a {
 
 a:hover,
 a:visited:hover {
-  color: #1a272c;
+  color: var(--link-hover);
   text-decoration: none;
 }
 
@@ -72,9 +140,21 @@ ol {
 }
 
 body {
-  background: #fdfdfd;
-  color: #999;
+  background: var(--page-bg);
+  color: var(--text-color-dark);
   transition: all var(--transition-duration) var(--transition-timing-function);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .page-intro {
@@ -99,6 +179,7 @@ h6 {
 }
 
 h1 {
+  color: var(--header-title);
   font-size: 2.5em;
   line-height: 1.25;
   font-weight: 800;
@@ -119,7 +200,11 @@ th {
 
 blockquote {
   font-style: italic;
-  background: url('../../public/snow.png');
+  background: var(--blockquote-bg);
+  background-size: cover;
+  background-repeat: repeat;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   position: relative;
   padding: 1em;
   margin-bottom: 1.5em;
@@ -143,7 +228,7 @@ blockquote:before {
 hr {
   margin-bottom: 1em;
   border: none;
-  border-bottom: 1px solid #505050;
+  border-bottom: 1px solid var(--border-color);
 }
 
 figcaption {
@@ -187,22 +272,22 @@ figcaption {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--border-color);
 }
 
 table th {
-  background: rgb(66, 72, 95);
-  color: rgb(255, 255, 255);
+  background: var(--table-head-bg);
+  color: var(--table-head-text);
 }
 
 table td,
 table th {
-  border: 1px solid rgb(156, 154, 154);
+  border: 1px solid var(--border-color);
   padding: 0.5em;
 }
 
 table tr:nth-child(even) {
-  background: #f2f2f2;
+  background: var(--surface-muted);
 }
 
 p em {
@@ -221,5 +306,6 @@ p em {
 
 .meta-row span {
   font-weight: 500;
-  margin-right: 5rem
+  margin-right: 5rem;
+  color: var(--text-color);
 }

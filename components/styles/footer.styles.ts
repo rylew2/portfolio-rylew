@@ -3,16 +3,18 @@ import styled from '@emotion/styled';
 import { Codepen, GitHub, Twitter } from 'react-feather';
 
 export const StyledFooterSection = styled.footer`
-  background: url('/cork-wallet.png') !important;
-  background-image: url('/cork-wallet.png') !important;
+  background: var(--footer-bg) !important;
+  background-image: var(--footer-bg) !important;
+  background-size: cover;
+  background-repeat: repeat;
 
   .snowFooter {
-    background: #f8f8f8;
+    background: var(--surface);
     padding-bottom: 15px;
     position: relative;
     width: 100%;
-    border-bottom: 1px solid #cccccc;
-    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
   }
   .footer-container {
     display: flex;
@@ -56,7 +58,7 @@ export const StyledFooterSection = styled.footer`
 
   /* Github */
   .github {
-    color: #000000;
+    color: var(--text-color-black);
     border-color: hsl(221, 44%, 41%);
     /* background: white; */
   }
