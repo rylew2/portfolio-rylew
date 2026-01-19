@@ -52,9 +52,10 @@ export const ChatPanel = styled.div`
   right: 0;
   width: 380px;
   height: 500px;
-  background: #ffffff;
+  background: var(--surface, #ffffff);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color, transparent);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -88,7 +89,7 @@ export const ChatHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: var(--prim-color, #154475);
+  background: var(--chat-header-bg, #154475);
   color: white;
 
   h3 {
@@ -128,7 +129,7 @@ export const ChatMessages = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: #f8f9fa;
+  background: var(--surface-muted, #f8f9fa);
 `;
 
 export const Message = styled.div<{ isUser: boolean }>`
@@ -139,7 +140,7 @@ export const Message = styled.div<{ isUser: boolean }>`
   line-height: 1.4;
   word-wrap: break-word;
   align-self: ${(props) => (props.isUser ? 'flex-end' : 'flex-start')};
-  background: ${(props) => (props.isUser ? 'var(--prim-color, #154475)' : '#ffffff')};
+  background: ${(props) => (props.isUser ? 'var(--prim-color, #154475)' : 'var(--surface, #ffffff)')};
   color: ${(props) => (props.isUser ? 'white' : 'var(--text-color, #161b2f)')};
   box-shadow: ${(props) =>
     props.isUser ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.1)'};
@@ -164,18 +165,24 @@ export const ChatInputContainer = styled.form`
   display: flex;
   gap: 8px;
   padding: 12px 16px;
-  border-top: 1px solid #e9ecef;
-  background: white;
+  border-top: 1px solid var(--border-color, #e9ecef);
+  background: var(--surface, white);
 `;
 
 export const ChatInput = styled.input`
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color, #dee2e6);
   border-radius: 8px;
   font-size: 0.9rem;
   font-family: 'DM Sans', sans-serif;
-  transition: border-color 0.2s;
+  background: var(--surface-muted, #f8f9fa);
+  color: var(--text-color, #161b2f);
+  transition: border-color 0.2s, background 0.2s;
+
+  &::placeholder {
+    color: var(--text-color-dark, #777);
+  }
 
   &:focus {
     outline: none;
@@ -183,8 +190,9 @@ export const ChatInput = styled.input`
   }
 
   &:disabled {
-    background: #f8f9fa;
+    background: var(--surface-muted, #f8f9fa);
     cursor: not-allowed;
+    opacity: 0.7;
   }
 `;
 
@@ -198,10 +206,10 @@ export const SendButton = styled.button`
   font-size: 0.9rem;
   font-weight: 600;
   font-family: 'DM Sans', sans-serif;
-  transition: background 0.2s, transform 0.1s;
+  transition: background 0.2s, transform 0.1s, filter 0.2s;
 
   &:hover:not(:disabled) {
-    background: #0d3259;
+    filter: brightness(1.15);
   }
 
   &:active:not(:disabled) {
@@ -218,7 +226,7 @@ export const LoadingDots = styled.div`
   display: flex;
   gap: 4px;
   padding: 10px 14px;
-  background: white;
+  background: var(--surface, white);
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   align-self: flex-start;
