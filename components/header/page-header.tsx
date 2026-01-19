@@ -8,7 +8,7 @@ interface IPageHeader extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const PageHeader = ({ headingTitle }: IPageHeader) => (
-  <StyledPageHeading className="page">
+  <StyledPageHeading className="page" aria-label="Page heading">
     <Container>
       <div className="header-container">
         <h1>{headingTitle}</h1>

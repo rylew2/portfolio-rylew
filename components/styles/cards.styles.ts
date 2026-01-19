@@ -9,7 +9,7 @@ export const StyledCards = styled.section`
     color: var(--header-title);
   }
   p {
-    color: var(--text-color-dark);
+    color: var(--text-color);
   }
 
   .card-demo-link {
@@ -81,7 +81,7 @@ export const StyledCards = styled.section`
   }
 
   time {
-    color: var(--text-color-bright);
+    color: var(--text-color-dark);
     font-size: 0.9em;
   }
 

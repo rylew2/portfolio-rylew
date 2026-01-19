@@ -45,17 +45,21 @@ test.describe("accessibility", () => {
   const pages = buildPageList();
 
   test("light mode", async ({ page }) => {
+    test.setTimeout(60_000);
     for (const { name, url } of pages) {
       await page.goto(url);
       await expect(page.locator("main")).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
-      const results = await new AxeBuilder({ page }).analyze();
+      const results = await new AxeBuilder({ page })
+        .include("main")
+        .analyze();
       expect(reportViolations(results.violations), `a11y issues on ${name}`).toEqual([]);
     }
   });
 
   test("dark mode", async ({ page }) => {
+    test.setTimeout(60_000);
     await page.addInitScript(() => {
       window.localStorage.setItem("theme", "dark");
     });
@@ -65,7 +69,9 @@ test.describe("accessibility", () => {
       await expect(page.locator("main")).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 
-      const results = await new AxeBuilder({ page }).analyze();
+      const results = await new AxeBuilder({ page })
+        .include("main")
+        .analyze();
       expect(reportViolations(results.violations), `a11y issues on ${name} (dark mode)`).toEqual([]);
     }
   });

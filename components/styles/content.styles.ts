@@ -15,6 +15,13 @@ export const StyledContent = styled.section`
     font-weight: 600;
   }
 
+  p a,
+  li a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
+  }
+
   time {
     text-align: center;
     display: block;
@@ -41,6 +48,15 @@ export const StyledContent = styled.section`
   pre code {
     overflow: hidden;
     background: none;
+  }
+
+  pre {
+    overflow-x: auto;
+  }
+
+  .token.property,
+  .token.literal-property {
+    color: #ffd166;
   }
 
   blockquote a {

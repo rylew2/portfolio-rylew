@@ -29,11 +29,18 @@ test("project tags link to the full tagged list", async ({ page }) => {
   }
 
   await page.goto(`/projects/${taggedProject.slug}`);
-  await page.getByRole("link", { name: tag }).click();
+  const tagLink = page.locator("main").getByRole("link", { name: tag }).first();
+  await expect(tagLink).toBeVisible();
+  await Promise.all([
+    page.waitForURL(
+      new RegExp(`/projects/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
+      { timeout: 15000 }
+    ),
+    tagLink.click(),
+  ]);
 
   await expect(page).toHaveURL(
-    new RegExp(`/projects/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
-    { timeout: 15000 }
+    new RegExp(`/projects/tags/${escapeRegExp(encodeURIComponent(tag))}$`)
   );
 
   const taggedProjects = getContentWithTag(tag, "project");
@@ -62,11 +69,18 @@ test("book tags link to the full tagged list", async ({ page }) => {
   }
 
   await page.goto(`/books/${taggedBook.slug}`);
-  await page.getByRole("link", { name: tag }).click();
+  const tagLink = page.locator("main").getByRole("link", { name: tag }).first();
+  await expect(tagLink).toBeVisible();
+  await Promise.all([
+    page.waitForURL(
+      new RegExp(`/books/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
+      { timeout: 15000 }
+    ),
+    tagLink.click(),
+  ]);
 
   await expect(page).toHaveURL(
-    new RegExp(`/books/tags/${escapeRegExp(encodeURIComponent(tag))}$`),
-    { timeout: 15000 }
+    new RegExp(`/books/tags/${escapeRegExp(encodeURIComponent(tag))}$`)
   );
 
   const taggedBooks = getContentWithTag(tag, "book");
