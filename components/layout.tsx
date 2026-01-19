@@ -7,6 +7,7 @@ import Header from './header/header';
 import Footer from './footer/footer';
 import Nav from './nav/nav';
 import MobileNav from './nav/mobile-nav';
+import { ChatWidget } from './chat';
 
 interface ILayout {
   children: ReactNode;
@@ -140,6 +141,7 @@ const Layout = ({
             <Footer />
           </>
         )}
+        <ChatWidget />
       </MenuContext.Provider>
     </ThemeContext.Provider>
   );

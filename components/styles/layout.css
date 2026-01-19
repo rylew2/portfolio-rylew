@@ -44,6 +44,7 @@
   --callout-demo: #3a7bd5;
   --callout-source: #2e9e6f;
   --callout-presentation: #e46a3a;
+  --chat-header-bg: #154475;
 
   --transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-duration: 0.25s;
@@ -93,6 +94,7 @@ html[data-theme='dark'] {
   --callout-demo: #7db1ff;
   --callout-source: #65d6a0;
   --callout-presentation: #ff9a6a;
+  --chat-header-bg: #1e3a5f;
 }
 
 /* LINKS */
