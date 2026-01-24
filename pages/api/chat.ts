@@ -55,10 +55,15 @@ function loadChatContext(): ChatContext {
 }
 
 function formatContentItem(item: ContentItem): string {
+  const maxDetailsLength = 1400;
   const tags = item.tags?.length ? item.tags.join(', ') : 'None';
   const date = item.date || 'Unknown';
   const description = item.description || 'No description provided.';
-  const details = item.content || '';
+  const detailsRaw = item.content || '';
+  const details =
+    detailsRaw.length > maxDetailsLength
+      ? `${detailsRaw.slice(0, maxDetailsLength)}…`
+      : detailsRaw;
 
   return `- Title: ${item.title}
 - Date: ${date}
@@ -67,12 +72,22 @@ function formatContentItem(item: ContentItem): string {
 - Details: ${details}`;
 }
 
+function clampSection(text: string, maxChars: number): string {
+  if (text.length <= maxChars) {
+    return text;
+  }
+
+  return `${text.slice(0, maxChars)}…`;
+}
+
 // Build system prompt
 function buildSystemPrompt(): string {
   const summary = loadSummary();
   const context = loadChatContext();
-  const projects = context.projects.map(formatContentItem).join('\n\n');
-  const books = context.books.map(formatContentItem).join('\n\n');
+  const projectsRaw = context.projects.map(formatContentItem).join('\n\n');
+  const booksRaw = context.books.map(formatContentItem).join('\n\n');
+  const projects = clampSection(projectsRaw, 12000);
+  const books = clampSection(booksRaw, 12000);
 
   return `You are acting as Ryan Lewis. You are answering questions on Ryan's portfolio website, particularly questions related to Ryan's career, background, skills and experience.
 
