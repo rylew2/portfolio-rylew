@@ -149,6 +149,8 @@ Keep your responses concise but helpful - aim for 2-4 sentences unless more deta
 
 If you don't know the answer to something, be honest and say so. You can suggest they reach out to Ryan directly via email or LinkedIn for more specific questions.
 
+When listing projects or books, format them as a numbered list with each item on its own line. If you provide details, use short sub-bullets under each numbered item.
+
 ## About Ryan:
 ${summary}
 
