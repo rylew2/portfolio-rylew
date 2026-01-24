@@ -72,22 +72,74 @@ function formatContentItem(item: ContentItem): string {
 - Details: ${details}`;
 }
 
-function clampSection(text: string, maxChars: number): string {
-  if (text.length <= maxChars) {
-    return text;
+function formatContentSummary(item: ContentItem): string {
+  const tags = item.tags?.length ? item.tags.join(', ') : 'None';
+  const date = item.date || 'Unknown';
+  const description = item.description || 'No description provided.';
+
+  return `- Title: ${item.title}
+- Date: ${date}
+- Tags: ${tags}
+- Description: ${description}`;
+}
+
+function tokenize(text: string): string[] {
+  return text
+    .toLowerCase()
+    .split(/[^a-z0-9]+/g)
+    .filter((token) => token.length > 2);
+}
+
+function scoreItem(queryTokens: Set<string>, item: ContentItem): number {
+  let score = 0;
+  const title = item.title?.toLowerCase() || '';
+  const description = item.description?.toLowerCase() || '';
+  const tags = (item.tags || []).map((tag) => tag.toLowerCase());
+  const content = item.content?.toLowerCase() || '';
+
+  for (const token of queryTokens) {
+    if (title.includes(token)) score += 5;
+    if (tags.some((tag) => tag.includes(token))) score += 3;
+    if (description.includes(token)) score += 2;
+    if (content.includes(token)) score += 1;
   }
 
-  return `${text.slice(0, maxChars)}…`;
+  return score;
+}
+
+function selectTopMatches(
+  query: string,
+  items: ContentItem[],
+  limit: number
+): ContentItem[] {
+  const tokens = new Set(tokenize(query));
+  if (tokens.size === 0) {
+    return [];
+  }
+
+  const scored = items
+    .map((item) => ({
+      item,
+      score: scoreItem(tokens, item),
+    }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, limit).map((entry) => entry.item);
 }
 
 // Build system prompt
-function buildSystemPrompt(): string {
+function buildSystemPrompt(message: string): string {
   const summary = loadSummary();
   const context = loadChatContext();
-  const projectsRaw = context.projects.map(formatContentItem).join('\n\n');
-  const booksRaw = context.books.map(formatContentItem).join('\n\n');
-  const projects = clampSection(projectsRaw, 12000);
-  const books = clampSection(booksRaw, 12000);
+  const projectSummaries = context.projects
+    .map(formatContentSummary)
+    .join('\n\n');
+  const bookSummaries = context.books.map(formatContentSummary).join('\n\n');
+  const projectMatches = selectTopMatches(message, context.projects, 3);
+  const bookMatches = selectTopMatches(message, context.books, 3);
+  const projectDetails = projectMatches.map(formatContentItem).join('\n\n');
+  const bookDetails = bookMatches.map(formatContentItem).join('\n\n');
 
   return `You are acting as Ryan Lewis. You are answering questions on Ryan's portfolio website, particularly questions related to Ryan's career, background, skills and experience.
 
@@ -101,10 +153,16 @@ If you don't know the answer to something, be honest and say so. You can suggest
 ${summary}
 
 ## Projects:
-${projects || 'No project content available.'}
+${projectSummaries || 'No project content available.'}
 
 ## Book Reviews:
-${books || 'No book content available.'}
+${bookSummaries || 'No book content available.'}
+
+## Project Details (Most Relevant):
+${projectDetails || 'No relevant project details found.'}
+
+## Book Details (Most Relevant):
+${bookDetails || 'No relevant book details found.'}
 
 With this context, please chat with the visitor, always staying in character as Ryan. Be friendly and approachable while remaining professional.`;
 }
@@ -130,7 +188,7 @@ export default async function handler(
     }
 
     // Build messages array with system prompt
-    const systemPrompt = buildSystemPrompt();
+    const systemPrompt = buildSystemPrompt(message);
     const messages: ChatMessage[] = [
       { role: 'system', content: systemPrompt },
       ...history.map((h) => ({ role: h.role, content: h.content })),
