@@ -35,6 +35,7 @@
   --header-title: #0b0f16;
   --chip-bg: #e8e8e8;
   --chip-text: #1b2430;
+  --chip-text-hover: #ffffff;
   --chip-border: #d2d2d2;
   --chip-shadow: rgba(60, 21, 22, 0.5);
   --code-bg: #dedede;
@@ -78,13 +79,14 @@ html[data-theme='dark'] {
   --table-head-text: #f0f2f7;
   --button-bg: #1f2430;
   --button-bg-hover: #2b3342;
-  --button-text: #e6e8ef;
+  --button-text: #9aa2b5;
   --button-text-hover: #ffffff;
   --blockquote-bg: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)),
     url('../../public/snow.png');
   --header-title: #ffffff;
   --chip-bg: #2a3240;
-  --chip-text: #f4f6fb;
+  --chip-text: #9aa2b5;
+  --chip-text-hover: #ffffff;
   --chip-border: #3b4558;
   --chip-shadow: rgba(125, 177, 255, 0.35);
   --code-bg: #222833;
