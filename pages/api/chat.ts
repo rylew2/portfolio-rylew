@@ -128,6 +128,24 @@ function selectTopMatches(
   return scored.slice(0, limit).map((entry) => entry.item);
 }
 
+function includesAnyPhrase(message: string, phrases: string[]): boolean {
+  const normalized = message.toLowerCase();
+  return phrases.some((phrase) => normalized.includes(phrase));
+}
+
+function matchesSpecificItems(message: string, items: ContentItem[]): ContentItem[] {
+  const normalized = message.toLowerCase();
+
+  return items.filter((item) => {
+    const title = item.title?.toLowerCase() || '';
+    const slug = item.slug?.toLowerCase() || '';
+    return (
+      (title && normalized.includes(title)) ||
+      (slug && normalized.includes(slug))
+    );
+  });
+}
+
 // Build system prompt
 function buildSystemPrompt(message: string): string {
   const summary = loadSummary();
@@ -136,8 +154,38 @@ function buildSystemPrompt(message: string): string {
     .map(formatContentSummary)
     .join('\n\n');
   const bookSummaries = context.books.map(formatContentSummary).join('\n\n');
-  const projectMatches = selectTopMatches(message, context.projects, 3);
-  const bookMatches = selectTopMatches(message, context.books, 3);
+  const wantsAllProjects = includesAnyPhrase(message, [
+    'all projects',
+    'list projects',
+    'what projects',
+    'projects have you worked on',
+    'projects you have worked on',
+    'portfolio projects',
+    'projects you worked on',
+  ]);
+  const wantsAllBooks = includesAnyPhrase(message, [
+    'all books',
+    'list books',
+    'what books',
+    'books have you read',
+    'books you have read',
+    'book reviews',
+  ]);
+  const specificProjectMatches = matchesSpecificItems(
+    message,
+    context.projects
+  );
+  const specificBookMatches = matchesSpecificItems(message, context.books);
+  const projectMatches = wantsAllProjects
+    ? context.projects
+    : specificProjectMatches.length > 0
+      ? specificProjectMatches
+      : selectTopMatches(message, context.projects, 3);
+  const bookMatches = wantsAllBooks
+    ? context.books
+    : specificBookMatches.length > 0
+      ? specificBookMatches
+      : selectTopMatches(message, context.books, 3);
   const projectDetails = projectMatches.map(formatContentItem).join('\n\n');
   const bookDetails = bookMatches.map(formatContentItem).join('\n\n');
 
