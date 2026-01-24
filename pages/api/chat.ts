@@ -12,8 +12,23 @@ interface ChatRequest {
   history: ChatMessage[];
 }
 
+interface ContentItem {
+  title: string;
+  slug: string;
+  date: string;
+  description: string;
+  tags: string[];
+  content: string;
+}
+
+interface ChatContext {
+  projects: ContentItem[];
+  books: ContentItem[];
+  generatedAt: string;
+}
+
 // Load context from summary file
-function loadContext(): string {
+function loadSummary(): string {
   try {
     const summaryPath = path.join(process.cwd(), 'me', 'summary.txt');
     return fs.readFileSync(summaryPath, 'utf-8');
@@ -22,9 +37,42 @@ function loadContext(): string {
   }
 }
 
+// Load site content context
+function loadChatContext(): ChatContext {
+  try {
+    const contextPath = path.join(process.cwd(), 'me', 'chat-context.json');
+    const raw = fs.readFileSync(contextPath, 'utf-8');
+    const parsed = JSON.parse(raw) as ChatContext;
+
+    return {
+      projects: parsed.projects || [],
+      books: parsed.books || [],
+      generatedAt: parsed.generatedAt || '',
+    };
+  } catch {
+    return { projects: [], books: [], generatedAt: '' };
+  }
+}
+
+function formatContentItem(item: ContentItem): string {
+  const tags = item.tags?.length ? item.tags.join(', ') : 'None';
+  const date = item.date || 'Unknown';
+  const description = item.description || 'No description provided.';
+  const details = item.content || '';
+
+  return `- Title: ${item.title}
+- Date: ${date}
+- Tags: ${tags}
+- Description: ${description}
+- Details: ${details}`;
+}
+
 // Build system prompt
 function buildSystemPrompt(): string {
-  const summary = loadContext();
+  const summary = loadSummary();
+  const context = loadChatContext();
+  const projects = context.projects.map(formatContentItem).join('\n\n');
+  const books = context.books.map(formatContentItem).join('\n\n');
 
   return `You are acting as Ryan Lewis. You are answering questions on Ryan's portfolio website, particularly questions related to Ryan's career, background, skills and experience.
 
@@ -36,6 +84,12 @@ If you don't know the answer to something, be honest and say so. You can suggest
 
 ## About Ryan:
 ${summary}
+
+## Projects:
+${projects || 'No project content available.'}
+
+## Book Reviews:
+${books || 'No book content available.'}
 
 With this context, please chat with the visitor, always staying in character as Ryan. Be friendly and approachable while remaining professional.`;
 }
