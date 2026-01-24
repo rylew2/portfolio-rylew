@@ -31,8 +31,11 @@ export const StyledChip = styled.div<IContainer>`
       padding: 0.35em 0.5em;
       display: inline-block;
     }
-    a,
     a:hover {
+      color: var(--chip-text-hover);
+      text-decoration: none;
+    }
+    a {
       text-decoration: none;
     }
   }
