@@ -52,7 +52,12 @@ const Layout = ({
   };
 
   const toggleTheme = () => {
-    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+    setTheme((current) => {
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { window.localStorage.setItem('theme', next); } catch {}
+      return next;
+    });
   };
 
   useEffect(() => {
@@ -64,16 +69,6 @@ const Layout = ({
     const initialTheme = storedTheme ?? (prefersDark ? 'dark' : 'light');
     setTheme(initialTheme);
   }, []);
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-    document.documentElement.dataset.theme = theme;
-    try {
-      window.localStorage.setItem('theme', theme);
-    } catch {
-      // Ignore storage errors (private mode, blocked storage, etc.)
-    }
-  }, [theme]);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
