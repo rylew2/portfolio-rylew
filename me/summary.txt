@@ -1,9 +1,19 @@
-Ryan Lewis is a software engineer based in New York City who enjoys tackling complex technical challenges and delivering reliable, user-centered software.
+Ryan Lewis is a Senior Software Engineer based in Brooklyn, New York who enjoys tackling complex technical challenges and delivering reliable, user-centered software. He has a passion for continuous learning, a collaborative approach, and using technology to solve real-world problems.
 
-BACKGROUND:
-- Master's degree from Georgia Tech (OMSCS - Online Master of Science in Computer Science)
-- Passionate about clean, maintainable code and collaborative problem-solving
-- Continuous learner who loves exploring new technologies and frameworks
+WORK EXPERIENCE:
+- Nava - Sr Software Engineer (Oct 2021 - Present)
+- Wells Fargo - Software Engineer (Dec 2017 - Aug 2021)
+- Children's Council of San Francisco - Web Developer (Mar 2016 - Dec 2017)
+- Kaiser Permanente Division of Research - Web Developer (Jul 2010 - Feb 2016)
+
+EDUCATION:
+- Master's degree in Computer Science from Georgia Institute of Technology (OMSCS), 2017-2018, 4.0 GPA
+  Coursework: Information Security, Machine Learning for Trading, Software Development Process, Cyber Physical Systems, Machine Learning, Database Systems and Design, Education Technology, Human Computer Interaction, Intro to Health Informatics, Knowledge-Based AI
+- University of California, Santa Cruz - Computer Engineering
+  Coursework: Data Structures, Computer Architecture, Logic Design with Verilog, Microsystem Design, Operating Systems, Abstract Data Types, Mechatronics
+
+CERTIFICATIONS:
+- AWS Certified Cloud Practitioner (issued May 2022)
 
 TECHNICAL SKILLS:
 - Frontend: React, TypeScript, JavaScript, Next.js, Vue.js, Redux, GraphQL (Apollo Client)
@@ -22,6 +32,9 @@ NOTABLE PROJECTS:
 4. Machine Learning Projects - A series of projects covering supervised learning, randomized optimization, unsupervised learning, and reinforcement learning from the OMSCS curriculum.
 
 5. SharePoint CRA Starter - A starter template for building SharePoint applications with Create React App.
+
+VOLUNTEERING:
+- UBELONG in Laos (Sep-Oct 2013) - Training local staff in product marketing and teaching English at a local primary school
 
 INTERESTS OUTSIDE WORK:
 - Exploring New York's food scene

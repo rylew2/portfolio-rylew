@@ -12,7 +12,9 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui --ui-host 127.0.0.1",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "generate:context": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/generate-chat-context.ts",
+    "prebuild": "npm run generate:context"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
