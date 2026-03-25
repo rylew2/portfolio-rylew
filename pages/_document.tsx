@@ -30,6 +30,21 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  document.documentElement.dataset.theme = theme;
+                } catch (e) {}
+              })();
+            `,
+            }}
+          />
           <Main />
           <NextScript />
         </body>
