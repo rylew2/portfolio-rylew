@@ -48,7 +48,7 @@
   --chat-header-bg: #154475;
 
   --transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-duration: 0.25s;
+  --transition-duration: 0.1s;
   --animation-duration: 0.25s;
 
   --background: #121212;
