@@ -40,7 +40,10 @@ export const StyledIndexPage = styled.section`
       &.active {
         background: var(--prim-color);
         border-color: var(--prim-color);
-        color: var(--text-color-white);
+        /* --page-bg flips with the theme, so this stays high-contrast on the
+           primary color in both modes (near-white on dark blue in light mode,
+           near-black on light blue in dark mode) */
+        color: var(--page-bg);
       }
 
       &:focus-visible {
