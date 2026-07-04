@@ -132,10 +132,16 @@ a:hover>img {
 
 /* TYPOGRAPHY */
 html {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   font-size: 17px;
   line-height: 1.5;
   color: var(--text-color);
+}
+
+/* The next/font variables are defined on the .app-root div in _app.tsx, so
+   they only resolve at or below that element — a font-family rule on <html>
+   can't see them and silently falls back to the browser default (serif). */
+.app-root {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
 }
 
 ul,

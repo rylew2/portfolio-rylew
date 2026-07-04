@@ -5,7 +5,7 @@ export const ChatContainer = styled.div`
   bottom: 24px;
   right: 24px;
   z-index: 1000;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
 
   @media (max-width: 560px) {
     bottom: 16px;
@@ -94,7 +94,7 @@ export const ChatHeader = styled.div`
 
   h3 {
     margin: 0;
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--font-manrope), 'Manrope', sans-serif;
     font-size: 1rem;
     font-weight: 700;
   }
@@ -175,7 +175,7 @@ export const ChatInput = styled.input`
   border: 1px solid var(--border-color, #dee2e6);
   border-radius: 8px;
   font-size: 0.9rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   background: var(--surface-muted, #f8f9fa);
   color: var(--text-color, #161b2f);
   transition: border-color 0.2s, background 0.2s;
@@ -205,7 +205,7 @@ export const SendButton = styled.button`
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   transition: background 0.2s, transform 0.1s, filter 0.2s;
 
   &:hover:not(:disabled) {

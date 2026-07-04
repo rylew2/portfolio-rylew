@@ -81,7 +81,11 @@ const Layout = ({
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <MenuContext.Provider value={{ menuOpen, toggleMenuOpen }}>
         <Head>
-          <title>{`${pageTitle} | ${SiteConfig.site.siteTitle}`}</title>
+          <title>
+            {pageTitle === SiteConfig.site.siteTitle
+              ? SiteConfig.site.siteTitle
+              : `${pageTitle} | ${SiteConfig.site.siteTitle}`}
+          </title>
           <meta
             name="keywords"
             content={SiteConfig.site.keywords}
@@ -105,9 +109,10 @@ const Layout = ({
             content={SiteConfig.site.siteUrl}
             key="ogurl"
           />
+          <meta property="og:type" content="website" key="ogtype" />
           <meta
             property="og:image"
-            content={SiteConfig.site.siteImage}
+            content={`${SiteConfig.site.siteUrl}${SiteConfig.site.siteImage}`}
             key="ogimage"
           />
           <meta

@@ -62,6 +62,8 @@ const Nav = () => {
             <StyledHamburger
               menuOpen={menuOpen}
               onClick={toggleMenuOpen}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
             ></StyledHamburger>
           </div>
         </nav>

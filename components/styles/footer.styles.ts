@@ -18,10 +18,14 @@ export const StyledFooterSection = styled.footer`
   }
   .footer-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     padding: 20px 0px;
+  }
+
+  .footer-copyright {
+    color: var(--nav-foreground);
   }
 
   .linkedin:hover,
@@ -106,9 +110,8 @@ export const StyledFooterSection = styled.footer`
 
   .footerSocialLinks {
     display: flex;
-    margin: auto;
-    margin-bottom: 1em;
-    top: 50%;
+    margin: 0;
+    list-style: none;
   }
 
   .footerSocialLink {

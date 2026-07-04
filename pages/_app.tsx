@@ -24,7 +24,7 @@ const manrope = Manrope({
  */
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${dmSans.variable} ${manrope.variable}`}>
+    <div className={`${dmSans.variable} ${manrope.variable} app-root`}>
       <Component {...pageProps} />
       <Analytics />
     </div>

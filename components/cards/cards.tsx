@@ -93,7 +93,7 @@ function getDemoButtons(singleCard: ContentListItem) {
           href={singleCard.liveSite}
           target="_blank"
           rel="noreferrer noopener"
-          aria-label={singleCard.title}
+          aria-label={`${singleCard.title} demo`}
           className="a-demo"
         >
           <button className="demo">Demo</button>
@@ -104,7 +104,7 @@ function getDemoButtons(singleCard: ContentListItem) {
           href={singleCard.sourceCode}
           target="_blank"
           rel="noreferrer noopener"
-          aria-label={singleCard.title}
+          aria-label={`${singleCard.title} source code`}
           className="a-source"
         >
           <button className="source">Source</button>
@@ -115,7 +115,7 @@ function getDemoButtons(singleCard: ContentListItem) {
           href={singleCard.presentation}
           target="_blank"
           rel="noreferrer noopener"
-          aria-label={singleCard.title}
+          aria-label={`${singleCard.title} presentation`}
           className="a-presentation"
         >
           <button className="source">Presentation</button>
