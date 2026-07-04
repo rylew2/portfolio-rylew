@@ -81,9 +81,15 @@ export const NavSection = styled.header`
     }
     .navLinkAnchor {
       color: var(--nav-foreground);
+      padding-bottom: 0.15em;
+      border-bottom: 2px solid transparent;
     }
     .navLinkAnchor:hover {
       color: var(--nav-link-hover);
+    }
+    .navLinkAnchor.active {
+      color: var(--prim-color);
+      border-bottom-color: var(--prim-color);
     }
   }
 
