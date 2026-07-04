@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { MenuContext, ThemeContext } from '..';
 import SiteConfig from '../../config/index.json';
@@ -20,9 +21,13 @@ export const navLinks = [
 const Nav = () => {
   const menuContext = useContext(MenuContext);
   const themeContext = useContext(ThemeContext);
+  const router = useRouter();
 
   const { toggleMenuOpen, menuOpen } = menuContext;
   const { theme, toggleTheme } = themeContext;
+
+  const isActive = (link: string) =>
+    router.pathname === link || router.pathname.startsWith(`${link}/`);
 
   return (
     <NavSection>
@@ -41,7 +46,13 @@ const Nav = () => {
                 return (
                   <li key={idx} className="navLinkItem">
                     {item.link ? (
-                      <Link href={item.link} className="navLinkAnchor">
+                      <Link
+                        href={item.link}
+                        className={`navLinkAnchor${
+                          isActive(item.link) ? ' active' : ''
+                        }`}
+                        aria-current={isActive(item.link) ? 'page' : undefined}
+                      >
                         {item.title}
                       </Link>
                     ) : (

@@ -20,6 +20,7 @@ const Cards = ({ data }: CardsProps) => {
           <Link
             href={`/${singleCard.path}/[id]`}
             as={`/${singleCard.path}/${singleCard.slug}`}
+            className="card-image"
           >
             <Image
               src={singleCard.previewImage}
@@ -30,18 +31,22 @@ const Cards = ({ data }: CardsProps) => {
             />
           </Link>
 
-          {singleCard.liveSite || singleCard.sourceCode || singleCard.presentation
-            ? getDemoLinks(singleCard)
-            : getMetaRow(singleCard, isIndexPage)}
+          <div className="card-body">
+            {singleCard.liveSite ||
+            singleCard.sourceCode ||
+            singleCard.presentation
+              ? getDemoLinks(singleCard)
+              : getMetaRow(singleCard, isIndexPage)}
 
-          <Link
-            href={`/${singleCard.path}/[id]`}
-            as={`/${singleCard.path}/${singleCard.slug}`}
-          >
-            <h2>{singleCard.title}</h2>
-          </Link>
+            <Link
+              href={`/${singleCard.path}/[id]`}
+              as={`/${singleCard.path}/${singleCard.slug}`}
+            >
+              <h2>{singleCard.title}</h2>
+            </Link>
 
-          {singleCard.description && <p>{singleCard.description}</p>}
+            {singleCard.description && <p>{singleCard.description}</p>}
+          </div>
         </article>
       ))}
     </StyledCards>
