@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Runs prebuild (generate:context via tsx) + `next build`, which
+      # type-checks the project. The e2e workflow only runs `next dev`, so
+      # type/build/prebuild errors (e.g. the TypeScript 6 upgrade) are invisible
+      # to it and only surface on Vercel. This job mirrors the Vercel build.
+      - name: Build
+        run: npm run build
