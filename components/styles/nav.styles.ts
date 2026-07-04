@@ -229,91 +229,16 @@ export const StyledMobileNav = styled.section`
   }
 
   .link {
-    font-size: 1.2em;
-  }
-
-  .themeToggle {
-    background: transparent;
-    border: none;
+    font-size: 1.4em;
+    font-family: var(--font-manrope), 'Manrope', sans-serif;
+    font-weight: 700;
     color: var(--text-color);
-    height: 2.5rem;
-    width: 4.4rem;
-    padding: 0;
-    border-radius: 999px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+
+    &:hover {
+      color: var(--prim-color);
+    }
   }
 
-  .themeToggle-track {
-    height: 2.5rem;
-    width: 4.4rem;
-    border-radius: 999px;
-    background: var(--surface-muted);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 0.4rem;
-    position: relative;
-  }
-
-  .themeToggle-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color-bright);
-  }
-
-  .themeToggle-icon--sun {
-    color: #d89b11;
-  }
-
-  .themeToggle-thumb {
-    position: absolute;
-    top: 0.3rem;
-    left: 0.3rem;
-    height: 1.9rem;
-    width: 1.9rem;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition:
-      transform var(--transition-duration) var(--transition-timing-function),
-      background-color var(--transition-duration) var(--transition-timing-function);
-  }
-
-  .themeToggle-thumb svg {
-    height: 1rem;
-    width: 1rem;
-  }
-
-  .themeToggle-thumb .themeToggle-icon--moon {
-    display: none;
-  }
-
-  html[data-theme='dark'] & .themeToggle-track {
-    background: #10141c;
-    border-color: rgba(125, 177, 255, 0.35);
-  }
-
-  html[data-theme='dark'] & .themeToggle-thumb {
-    transform: translateX(1.9rem);
-    background: #253147;
-    border-color: #2e3c57;
-  }
-
-  html[data-theme='dark'] & .themeToggle-thumb .themeToggle-icon--sun {
-    display: none;
-  }
-
-  html[data-theme='dark'] & .themeToggle-thumb .themeToggle-icon--moon {
-    display: inline-flex;
-  }
 `;
 
 export const StyledHamburger = styled.button<IStyledHamburger>`
