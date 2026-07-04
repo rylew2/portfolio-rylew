@@ -23,11 +23,11 @@
   --link-hover: #1a272c;
   --nav-foreground: #1b2430;
   --nav-link-hover: #0b0f16;
-  --nav-bg: url('/cork-wallet.png');
-  --footer-bg: url('/cork-wallet.png');
+  --nav-bg: #f0eee8;
+  --footer-bg: #f0eee8;
   --table-head-bg: #42485f;
   --table-head-text: #ffffff;
-  --button-bg: url('/cork-wallet.png');
+  --button-bg: #eceae3;
   --button-bg-hover: #0e78aa;
   --button-text: #0b0f16;
   --button-text-hover: #ffffff;
@@ -71,10 +71,8 @@ html[data-theme='dark'] {
   --link-hover: #b9d2ff;
   --nav-foreground: #f0f2f7;
   --nav-link-hover: #ffffff;
-  --nav-bg: linear-gradient(rgba(10, 12, 16, 0.75), rgba(10, 12, 16, 0.75)),
-    url('/cork-wallet.png');
-  --footer-bg: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)),
-    url('/cork-wallet.png');
+  --nav-bg: #141821;
+  --footer-bg: #141821;
   --table-head-bg: #2a2f3a;
   --table-head-text: #f0f2f7;
   --button-bg: #1f2430;
@@ -307,15 +305,13 @@ p em {
 
 .meta-row {
   display: flex;
-  justify-content: space-around;
-  padding: 0 1rem;
+  align-items: center;
+  gap: 0.75em;
   margin-bottom: 0.5em;
-  /* font-size: 0.9rem;
-  color: #666; */
 }
 
 .meta-row span {
   font-weight: 500;
-  margin-right: 5rem;
-  color: var(--text-color);
+  color: var(--text-color-dark);
+  font-size: 0.9em;
 }

@@ -13,16 +13,18 @@ export const StyledCards = styled.section`
   }
 
   .card-demo-link {
-    margin: 10px 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    margin-bottom: 0.5em;
 
-    a {
-      float: right;
-      margin-left: 1px;
+    time {
+      margin-right: auto;
     }
 
     button {
-      background: var(--button-bg) !important;
-      background-image: var(--button-bg) !important;
+      background: var(--button-bg);
+      border: 1px solid var(--border-color);
       border-radius: 5px;
       padding: 4px 10px;
       font-weight: bold;
