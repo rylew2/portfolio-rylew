@@ -13,7 +13,7 @@
     "test:e2e:ui": "playwright test --ui --ui-host 127.0.0.1",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "generate:context": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/generate-chat-context.ts",
+    "generate:context": "tsx scripts/generate-chat-context.ts",
     "prebuild": "npm run generate:context"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "@types/remark-prism": "^1.3.7",
     "playwright": "^1.58.2",
     "prettier": "^3.8.5",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
   }
 }
