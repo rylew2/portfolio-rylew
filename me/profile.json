@@ -1,0 +1,134 @@
+{
+  "name": "Ryan Lewis",
+  "role": "Senior Software Engineer",
+  "location": "Brooklyn, New York",
+  "bio": [
+    "I'm a senior software engineer based in Brooklyn. I work across the stack — React, TypeScript, and Next.js on the front end, Python and Node services behind them. I care deeply about clean, maintainable code, collaborative problem-solving, and continuous learning.",
+    "Most of my work has been in regulated and public-interest domains: government services at Nava, banking at Wells Fargo, and health research at Kaiser Permanente.",
+    "Outside of work I'm usually exploring New York's food scene, cooking, running, traveling, or skiing in the winter."
+  ],
+  "experience": [
+    {
+      "company": "Nava",
+      "title": "Sr Software Engineer",
+      "start": "Oct 2021",
+      "end": "Present"
+    },
+    {
+      "company": "Wells Fargo",
+      "title": "Software Engineer",
+      "start": "Dec 2017",
+      "end": "Aug 2021"
+    },
+    {
+      "company": "Children's Council of San Francisco",
+      "title": "Web Developer",
+      "start": "Mar 2016",
+      "end": "Dec 2017"
+    },
+    {
+      "company": "Kaiser Permanente Division of Research",
+      "title": "Web Developer",
+      "start": "Jul 2010",
+      "end": "Feb 2016"
+    }
+  ],
+  "education": [
+    {
+      "school": "Georgia Institute of Technology (OMSCS)",
+      "credential": "Master's degree in Computer Science",
+      "years": "2017-2018",
+      "detail": "4.0 GPA",
+      "coursework": [
+        "Information Security",
+        "Machine Learning for Trading",
+        "Software Development Process",
+        "Cyber Physical Systems",
+        "Machine Learning",
+        "Database Systems and Design",
+        "Education Technology",
+        "Human Computer Interaction",
+        "Intro to Health Informatics",
+        "Knowledge-Based AI"
+      ]
+    },
+    {
+      "school": "University of California, Santa Cruz",
+      "credential": "Computer Engineering",
+      "coursework": [
+        "Data Structures",
+        "Computer Architecture",
+        "Logic Design with Verilog",
+        "Microsystem Design",
+        "Operating Systems",
+        "Abstract Data Types",
+        "Mechatronics"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Cloud Practitioner"
+    }
+  ],
+  "skills": [
+    {
+      "group": "Frontend",
+      "items": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Next.js",
+        "Vue.js",
+        "Redux"
+      ]
+    },
+    {
+      "group": "Backend",
+      "items": ["Python", "Django", "Flask", "Node.js", "GraphQL"]
+    },
+    {
+      "group": "Databases",
+      "items": ["PostgreSQL"]
+    },
+    {
+      "group": "Tools",
+      "items": [
+        "Docker",
+        "Colima",
+        "Git",
+        "Jest",
+        "React Testing Library",
+        "Playwright"
+      ]
+    },
+    {
+      "group": "Machine Learning",
+      "items": [
+        "Supervised learning",
+        "Unsupervised learning",
+        "Reinforcement learning"
+      ]
+    }
+  ],
+  "volunteering": [
+    {
+      "organization": "UBELONG in Laos",
+      "dates": "Sep-Oct 2013",
+      "description": "Training local staff in product marketing and teaching English at a local primary school"
+    }
+  ],
+  "interests": [
+    "Exploring New York's food scene",
+    "Cooking and experimenting in the kitchen",
+    "Running",
+    "Traveling",
+    "Skiing in the winter"
+  ],
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/ryan-lewis-378657a/",
+    "github": "https://github.com/rylew2",
+    "email": "ryanlewis312@gmail.com",
+    "resume": null
+  }
+}

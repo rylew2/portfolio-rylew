@@ -14,7 +14,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "generate:context": "tsx scripts/generate-chat-context.ts",
-    "prebuild": "npm run generate:context"
+    "generate:summary": "tsx scripts/generate-summary.ts",
+    "prebuild": "npm run generate:summary && npm run generate:context"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
