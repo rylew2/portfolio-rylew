@@ -43,4 +43,57 @@ export const StyledChip = styled.div<IContainer>`
   li:hover {
     box-shadow: 0 0 4px 2px var(--chip-shadow);
   }
+
+  /* Tags are coloured by category rather than individually, so adding a tag to
+     an existing category needs no style change. The category comes from
+     config/tags.json via getTagCategory. */
+  li.language {
+    background: var(--tag-language-bg);
+    border-color: var(--tag-language-border);
+
+    a,
+    a:hover {
+      color: var(--tag-language-text);
+    }
+  }
+
+  li.framework {
+    background: var(--tag-framework-bg);
+    border-color: var(--tag-framework-border);
+
+    a,
+    a:hover {
+      color: var(--tag-framework-text);
+    }
+  }
+
+  li.ml {
+    background: var(--tag-ml-bg);
+    border-color: var(--tag-ml-border);
+
+    a,
+    a:hover {
+      color: var(--tag-ml-text);
+    }
+  }
+
+  li.practice {
+    background: var(--tag-practice-bg);
+    border-color: var(--tag-practice-border);
+
+    a,
+    a:hover {
+      color: var(--tag-practice-text);
+    }
+  }
+
+  li.domain {
+    background: var(--tag-domain-bg);
+    border-color: var(--tag-domain-border);
+
+    a,
+    a:hover {
+      color: var(--tag-domain-text);
+    }
+  }
 `;
