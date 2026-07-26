@@ -60,20 +60,15 @@ test("about page lists every skill in the profile", async ({ page }) => {
   }
 });
 
-test("about page links to contact channels", async ({ page }) => {
-  const contact = page.locator("main .contactList");
+// Contact details are the footer's job, so the page body must not repeat them.
+test("about page leaves contact details to the footer", async ({ page }) => {
+  const main = page.locator("main");
 
-  await expect(contact.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
-    "href",
-    profile.links.linkedin
-  );
-  await expect(contact.getByRole("link", { name: "GitHub" })).toHaveAttribute(
-    "href",
-    profile.links.github
-  );
+  await expect(main.getByRole("link", { name: "LinkedIn" })).toHaveCount(0);
+  await expect(main.getByRole("link", { name: "GitHub" })).toHaveCount(0);
   await expect(
-    contact.getByRole("link", { name: profile.links.email })
-  ).toHaveAttribute("href", `mailto:${profile.links.email}`);
+    main.locator(`a[href="mailto:${profile.links.email}"]`)
+  ).toHaveCount(0);
 });
 
 // Passes in both states: it asserts the résumé is absent while

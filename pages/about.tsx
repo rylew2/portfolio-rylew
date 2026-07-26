@@ -48,6 +48,20 @@ const About = () => {
               {bio.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
+              {/* Contact details live in the footer. The résumé is the one link
+                  the footer doesn't carry, so it sits here instead. */}
+              {links.resume && (
+                <p>
+                  <a
+                    className="resumeLink"
+                    href={links.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Résumé (PDF)
+                  </a>
+                </p>
+              )}
             </div>
           </div>
 
@@ -109,40 +123,6 @@ const About = () => {
                 </div>
               ))}
             </dl>
-          </section>
-
-          <section className="aboutSection">
-            <h2>Contact</h2>
-            <ul className="contactList">
-              {links.resume && (
-                <li>
-                  <a
-                    href={links.resume}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Résumé (PDF)
-                  </a>
-                </li>
-              )}
-              <li>
-                <a
-                  href={links.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href={links.github} target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${links.email}`}>{links.email}</a>
-              </li>
-            </ul>
           </section>
         </Container>
       </StyledAbout>

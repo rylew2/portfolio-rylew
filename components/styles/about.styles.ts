@@ -48,9 +48,21 @@ export const StyledAbout = styled.section`
     }
   }
 
+  .resumeLink {
+    display: inline-block;
+    padding: 0.4em 0.9em;
+    border: 1px solid var(--border-color);
+    color: var(--prim-color);
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--prim-color);
+    }
+  }
+
   .timeline,
-  .credentials,
-  .contactList {
+  .credentials {
     list-style-type: none;
     padding-left: 0;
     margin: 0;
@@ -129,12 +141,6 @@ export const StyledAbout = styled.section`
       border: 1px solid var(--chip-border);
       color: var(--chip-text);
     }
-  }
-
-  .contactList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em 1.25em;
   }
 
   @media (max-width: 759px) {
