@@ -43,7 +43,7 @@ function buildSummary(profile: Profile): string {
   const sections: string[] = [];
 
   sections.push(
-    `${profile.name} is a ${profile.role} based in ${profile.location}.`,
+    `${profile.name} is a ${profile.role} based in ${profile.location}.`
   );
   sections.push(profile.bio.join('\n\n'));
 
@@ -51,23 +51,25 @@ function buildSummary(profile: Profile): string {
     [
       'WORK EXPERIENCE:',
       ...profile.experience.map(
-        (job) => `- ${job.company} - ${job.title} (${job.start} - ${job.end})`,
+        (job) => `- ${job.company} - ${job.title} (${job.start} - ${job.end})`
       ),
-    ].join('\n'),
+    ].join('\n')
   );
 
   sections.push(
-    ['EDUCATION:', ...profile.education.map(formatEducation)].join('\n'),
+    ['EDUCATION:', ...profile.education.map(formatEducation)].join('\n')
   );
 
   if (profile.certifications.length) {
     sections.push(
       [
         'CERTIFICATIONS:',
-        ...profile.certifications.map(
-          (cert) => `- ${cert.name} (issued ${cert.issued})`,
+        ...profile.certifications.map((cert) =>
+          cert.issued
+            ? `- ${cert.name} (issued ${cert.issued})`
+            : `- ${cert.name}`
         ),
-      ].join('\n'),
+      ].join('\n')
     );
   }
 
@@ -75,9 +77,9 @@ function buildSummary(profile: Profile): string {
     [
       'TECHNICAL SKILLS:',
       ...profile.skills.map(
-        (group) => `- ${group.group}: ${group.items.join(', ')}`,
+        (group) => `- ${group.group}: ${group.items.join(', ')}`
       ),
-    ].join('\n'),
+    ].join('\n')
   );
 
   if (profile.volunteering.length) {
@@ -86,9 +88,9 @@ function buildSummary(profile: Profile): string {
         'VOLUNTEERING:',
         ...profile.volunteering.map(
           (entry) =>
-            `- ${entry.organization} (${entry.dates}) - ${entry.description}`,
+            `- ${entry.organization} (${entry.dates}) - ${entry.description}`
         ),
-      ].join('\n'),
+      ].join('\n')
     );
   }
 
@@ -96,7 +98,7 @@ function buildSummary(profile: Profile): string {
     [
       'INTERESTS OUTSIDE WORK:',
       ...profile.interests.map((interest) => `- ${interest}`),
-    ].join('\n'),
+    ].join('\n')
   );
 
   const contact = [
@@ -116,9 +118,7 @@ function buildSummary(profile: Profile): string {
 function main() {
   console.log('Generating profile summary...');
 
-  const profile = JSON.parse(
-    fs.readFileSync(profilePath, 'utf-8'),
-  ) as Profile;
+  const profile = JSON.parse(fs.readFileSync(profilePath, 'utf-8')) as Profile;
   const summary = buildSummary(profile);
 
   fs.writeFileSync(outputPath, summary);
@@ -127,7 +127,7 @@ function main() {
   console.log(`  - ${profile.experience.length} roles`);
   console.log(`  - ${profile.education.length} schools`);
   console.log(
-    `  - ${profile.skills.reduce((total, group) => total + group.items.length, 0)} skills`,
+    `  - ${profile.skills.reduce((total, group) => total + group.items.length, 0)} skills`
   );
   console.log(`  - Total size: ${(summary.length / 1024).toFixed(2)} KB`);
   console.log(`Output: ${outputPath}`);

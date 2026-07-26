@@ -19,7 +19,7 @@ EDUCATION:
   Coursework: Data Structures, Computer Architecture, Logic Design with Verilog, Microsystem Design, Operating Systems, Abstract Data Types, Mechatronics
 
 CERTIFICATIONS:
-- AWS Certified Cloud Practitioner (issued May 2022)
+- AWS Certified Cloud Practitioner
 
 TECHNICAL SKILLS:
 - Frontend: React, TypeScript, JavaScript, Next.js, Vue.js, Redux

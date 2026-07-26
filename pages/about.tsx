@@ -96,9 +96,11 @@ const About = () => {
               {certifications.map((certification) => (
                 <li key={certification.name}>
                   <span className="entryPrimary">{certification.name}</span>
-                  <span className="entrySecondary">
-                    Issued {certification.issued}
-                  </span>
+                  {certification.issued && (
+                    <span className="entrySecondary">
+                      Issued {certification.issued}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

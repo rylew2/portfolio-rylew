@@ -38,9 +38,13 @@ test("about page lists education and certifications", async ({ page }) => {
     );
   }
   for (const certification of profile.certifications) {
-    await expect(entries.filter({ hasText: certification.name })).toContainText(
-      certification.issued
-    );
+    const entry = entries.filter({ hasText: certification.name });
+    await expect(entry).toHaveCount(1);
+
+    // The issued date is optional, so only assert it when one is configured.
+    if (certification.issued) {
+      await expect(entry).toContainText(certification.issued);
+    }
   }
 });
 

@@ -17,7 +17,8 @@ export interface Education {
 
 export interface Certification {
   name: string;
-  issued: string;
+  /** Optional: not every certification is worth dating on the page. */
+  issued?: string;
 }
 
 export interface SkillGroup {
