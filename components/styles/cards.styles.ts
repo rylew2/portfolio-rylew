@@ -14,6 +14,8 @@ export const StyledCards = styled.section`
   }
 
   article.article {
+    /* Bounds the .card-link overlay to this card. */
+    position: relative;
     display: flex;
     flex-direction: column;
     background: var(--surface);
@@ -32,6 +34,27 @@ export const StyledCards = styled.section`
     &:hover .card-image img {
       transform: scale(1.04);
     }
+
+    /* The hit area is the whole card, so the focus ring belongs on the card
+       rather than around the title text. Outline follows border-radius. */
+    &:has(.card-link:focus-visible) {
+      outline: 2px solid var(--prim-color);
+      outline-offset: 2px;
+    }
+  }
+
+  /* The title link stretches to cover the entire card, making the padding,
+     date and description clickable. The demo buttons opt back out below. */
+  .card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* Paired with the card-level ring above; without it both would show. */
+  .card-link:focus-visible {
+    outline: none;
   }
 
   .card-image {
@@ -63,6 +86,10 @@ export const StyledCards = styled.section`
   }
 
   .card-demo-link {
+    /* Sits above the stretched .card-link overlay so these external links stay
+       clickable instead of being swallowed by the card-wide hit area. */
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 0.3em;

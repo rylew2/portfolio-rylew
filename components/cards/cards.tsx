@@ -17,19 +17,17 @@ const Cards = ({ data }: CardsProps) => {
     <StyledCards>
       {data.map((singleCard) => (
         <article className="article" key={singleCard.id}>
-          <Link
-            href={`/${singleCard.path}/[id]`}
-            as={`/${singleCard.path}/${singleCard.slug}`}
-            className="card-image"
-          >
+          {/* Decorative: the title link below names the destination, so alt
+              text here would just repeat it to a screen reader. */}
+          <div className="card-image">
             <Image
               src={singleCard.previewImage}
-              alt={singleCard.title ?? ''}
+              alt=""
               width={450}
               height={220}
               sizes="(min-width: 640px) 700px, 400px"
             />
-          </Link>
+          </div>
 
           <div className="card-body">
             {singleCard.liveSite ||
@@ -38,9 +36,12 @@ const Cards = ({ data }: CardsProps) => {
               ? getDemoLinks(singleCard)
               : getMetaRow(singleCard, isIndexPage)}
 
+            {/* Stretched via ::after to cover the whole card, so the padding
+                and description are clickable too. See cards.styles.ts. */}
             <Link
               href={`/${singleCard.path}/[id]`}
               as={`/${singleCard.path}/${singleCard.slug}`}
+              className="card-link"
             >
               <h2>{singleCard.title}</h2>
             </Link>
@@ -54,8 +55,6 @@ const Cards = ({ data }: CardsProps) => {
 };
 
 export { Cards };
-
-
 
 // Helper functions below to keep the jsx clean and readable
 
