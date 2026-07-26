@@ -42,3 +42,4 @@ CONTACT:
 - LinkedIn: https://www.linkedin.com/in/ryan-lewis-378657a/
 - GitHub: https://github.com/rylew2
 - Email: ryanlewis312@gmail.com
+- Resume: /Ryan-Lewis-Resume.pdf
