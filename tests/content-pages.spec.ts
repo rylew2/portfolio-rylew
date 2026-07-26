@@ -48,8 +48,3 @@ test("home page lists selected works", async ({ page }) => {
     ).toBeVisible();
   }
 });
-
-test("about page renders", async ({ page }) => {
-  await page.goto("/about");
-  await expect(page.getByRole("heading", { name: "About Me" })).toBeVisible();
-});

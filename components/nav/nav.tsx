@@ -3,15 +3,29 @@ import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { MenuContext, ThemeContext } from '..';
 import SiteConfig from '../../config/index.json';
+import { profile } from '../../lib/profile';
 import { Container } from '../container';
 import Logo from '../logo';
 import { NavSection, StyledHamburger } from '../styles/nav.styles';
 import ThemeToggle from '../theme-toggle';
 
-export const navLinks = [
+interface NavLink {
+  title: string;
+  /** Internal route, rendered with next/link and marked active on match. */
+  link?: string;
+  /** External or static-asset URL, rendered as a new-tab anchor. */
+  href?: string;
+}
+
+// The résumé entry appears only once links.resume is set in me/profile.json,
+// so the nav can never point at a PDF that hasn't been added to public/.
+export const navLinks: NavLink[] = [
   { title: 'Projects', link: '/projects' },
   { title: 'Books', link: '/books' },
   { title: 'About', link: '/about' },
+  ...(profile.links.resume
+    ? [{ title: 'Resume', href: profile.links.resume }]
+    : []),
   {
     title: 'Source',
     href: 'https://github.com/rylew2/portfolio-rylew',
