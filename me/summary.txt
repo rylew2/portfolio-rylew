@@ -22,10 +22,10 @@ CERTIFICATIONS:
 - AWS Certified Cloud Practitioner (issued May 2022)
 
 TECHNICAL SKILLS:
-- Frontend: React, TypeScript, JavaScript, Next.js, Vue.js, Redux, GraphQL (Apollo Client)
+- Frontend: React, TypeScript, JavaScript, Next.js, Vue.js, Redux
 - Backend: Python, Django, Flask, Node.js, GraphQL
-- Databases: PostgreSQL, SQL
-- Tools: Docker, Git, Jest, React Testing Library, Playwright
+- Databases: PostgreSQL
+- Tools: Docker, Colima, Git, Jest, React Testing Library, Playwright
 - Machine Learning: Supervised learning, Unsupervised learning, Reinforcement learning
 
 VOLUNTEERING:

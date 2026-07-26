@@ -81,8 +81,7 @@
         "JavaScript",
         "Next.js",
         "Vue.js",
-        "Redux",
-        "GraphQL (Apollo Client)"
+        "Redux"
       ]
     },
     {
@@ -91,12 +90,13 @@
     },
     {
       "group": "Databases",
-      "items": ["PostgreSQL", "SQL"]
+      "items": ["PostgreSQL"]
     },
     {
       "group": "Tools",
       "items": [
         "Docker",
+        "Colima",
         "Git",
         "Jest",
         "React Testing Library",

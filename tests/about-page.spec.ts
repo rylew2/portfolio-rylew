@@ -53,8 +53,8 @@ test("about page lists every skill in the profile", async ({ page }) => {
   for (const group of profile.skills) {
     await expect(skills.locator("dt", { hasText: group.group })).toBeVisible();
     for (const item of group.items) {
-      // Exact matching: "GraphQL" would otherwise also match the
-      // "GraphQL (Apollo Client)" pill and trip strict mode.
+      // Exact matching: "React" would otherwise also match the
+      // "React Testing Library" pill and trip strict mode.
       await expect(skills.getByText(item, { exact: true })).toBeVisible();
     }
   }
