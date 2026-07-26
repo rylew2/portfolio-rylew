@@ -47,6 +47,39 @@
   --callout-presentation: #e46a3a;
   --chat-header-bg: #154475;
 
+  /* Card action buttons. Each action reuses its --callout-* hue as the border,
+     so a card button and the matching callout icon on the detail page read as
+     the same signal. -text doubles as the hover fill: white on the base hue is
+     only ~3.3:1, white on the darker -text shade clears AA. */
+  --action-demo-bg: #eaf1fa;
+  --action-demo-border: #3a7bd5;
+  --action-demo-text: #20507f;
+  --action-source-bg: #e7f4ee;
+  --action-source-border: #2e9e6f;
+  --action-source-text: #1c6446;
+  --action-presentation-bg: #fbeee8;
+  --action-presentation-border: #e46a3a;
+  --action-presentation-text: #9a4321;
+  --action-text-hover: #ffffff;
+
+  /* Tag chip categories. Hues stay clear of the three action colors above so
+     the two systems never read as the same signal. */
+  --tag-language-bg: #efeafc;
+  --tag-language-border: #8b74e8;
+  --tag-language-text: #4a35a8;
+  --tag-framework-bg: #e3f4f1;
+  --tag-framework-border: #3aa596;
+  --tag-framework-text: #1f6a5f;
+  --tag-ml-bg: #fbeaf1;
+  --tag-ml-border: #d4537e;
+  --tag-ml-text: #932f52;
+  --tag-practice-bg: #fbf0dc;
+  --tag-practice-border: #c8871f;
+  --tag-practice-text: #7d5209;
+  --tag-domain-bg: #eceef2;
+  --tag-domain-border: #8b95a7;
+  --tag-domain-text: #46505f;
+
   --transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-duration: 0.1s;
   --animation-duration: 0.25s;
@@ -95,6 +128,35 @@ html[data-theme='dark'] {
   --callout-source: #65d6a0;
   --callout-presentation: #ff9a6a;
   --chat-header-bg: #1e3a5f;
+
+  /* Dark mode inverts the hover pairing: the fill is the light hue and the
+     label goes dark, so --action-text-hover flips to near-black. */
+  --action-demo-bg: #1a2433;
+  --action-demo-border: #7db1ff;
+  --action-demo-text: #9cc2ff;
+  --action-source-bg: #172a24;
+  --action-source-border: #65d6a0;
+  --action-source-text: #65d6a0;
+  --action-presentation-bg: #2b2019;
+  --action-presentation-border: #ff9a6a;
+  --action-presentation-text: #ff9a6a;
+  --action-text-hover: #0b0f16;
+
+  --tag-language-bg: #241f3d;
+  --tag-language-border: #9d8bf0;
+  --tag-language-text: #b9aaf7;
+  --tag-framework-bg: #14302c;
+  --tag-framework-border: #4cc3b0;
+  --tag-framework-text: #6fd8c6;
+  --tag-ml-bg: #33202a;
+  --tag-ml-border: #e07a9f;
+  --tag-ml-text: #f0a3bd;
+  --tag-practice-bg: #332715;
+  --tag-practice-border: #d9a04a;
+  --tag-practice-text: #edbf72;
+  --tag-domain-bg: #232833;
+  --tag-domain-border: #7d8798;
+  --tag-domain-text: #a3adbd;
 }
 
 /* LINKS */

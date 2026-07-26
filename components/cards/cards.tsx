@@ -123,7 +123,7 @@ function getDemoButtons(singleCard: ContentListItem) {
           aria-label={`${singleCard.title} presentation`}
           className="a-presentation"
         >
-          <button className="source">Presentation</button>
+          <button className="presentation">Presentation</button>
         </a>
       )}
     </>

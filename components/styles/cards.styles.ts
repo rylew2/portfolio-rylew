@@ -85,6 +85,42 @@ export const StyledCards = styled.section`
         color: var(--button-text-hover);
       }
     }
+
+    /* Each action carries its own colour so a row of cards can be scanned for
+       "has a live demo" without reading the labels. Hover fills with the
+       darker -text shade rather than the border hue, which would fail AA. */
+    button.demo {
+      background: var(--action-demo-bg);
+      border-color: var(--action-demo-border);
+      color: var(--action-demo-text);
+
+      &:hover {
+        background: var(--action-demo-text);
+        color: var(--action-text-hover);
+      }
+    }
+
+    button.source {
+      background: var(--action-source-bg);
+      border-color: var(--action-source-border);
+      color: var(--action-source-text);
+
+      &:hover {
+        background: var(--action-source-text);
+        color: var(--action-text-hover);
+      }
+    }
+
+    button.presentation {
+      background: var(--action-presentation-bg);
+      border-color: var(--action-presentation-border);
+      color: var(--action-presentation-text);
+
+      &:hover {
+        background: var(--action-presentation-text);
+        color: var(--action-text-hover);
+      }
+    }
   }
 
   h2 {

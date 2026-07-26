@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import tagsJSON from "../config/tags.json";
 import { getContentList, getContentWithTag } from "../lib/content";
+import { TAG_CATEGORIES } from "../components/chips/chips";
 
 const siteTags = new Set(tagsJSON.map((tag) => tag.tag));
 
@@ -106,5 +107,14 @@ test("all content tags exist in config/tags.json", async () => {
 
   for (const tag of contentTags) {
     expect(siteTags.has(tag)).toBeTruthy();
+  }
+});
+
+test("every tag in config/tags.json has a known category", async () => {
+  for (const entry of tagsJSON) {
+    expect(
+      TAG_CATEGORIES,
+      `tag "${entry.tag}" has category "${entry.category}"`
+    ).toContain(entry.category);
   }
 });
