@@ -66,6 +66,25 @@ test('card action buttons stay clickable above the stretched link', async ({
   await source.click({ trial: true });
 });
 
+test('SenseCourse card links to its presentation without a demo action', async ({
+  page,
+}) => {
+  await page.goto('/projects');
+
+  const card = cardFor(page, 'SenseCourse');
+  const presentation = card.getByRole('link', {
+    name: 'SenseCourse presentation',
+  });
+
+  await expect(presentation).toHaveAttribute(
+    'href',
+    'https://www.youtube.com/watch?v=LqpXGfcWBt0'
+  );
+  await expect(
+    card.getByRole('link', { name: 'SenseCourse demo' })
+  ).toHaveCount(0);
+});
+
 test('each card exposes a single link to its article', async ({ page }) => {
   await page.goto('/projects');
 
