@@ -20,13 +20,13 @@ tags:
 
 I built this card game to learn a new full-stack combination: React, Redux Toolkit, GraphQL, Django, and PostgreSQL. The game deals from a standard 52-card deck; the player wins by reaching the final hand with at least one ace and loses when all aces have been exhausted before then.
 
-The public demo is the standalone frontend. The Django, GraphQL, and PostgreSQL integration ran locally; the [source repository](https://github.com/rylew2/cardgame) contains both implementations.
+The public demo is the standalone frontend. The [source repository](https://github.com/rylew2/cardgame) contains the React frontend configured for local integration and the Django/GraphQL backend; the full path, including PostgreSQL, ran locally.
 
 ## Problem and constraints
 
 The interface needed to make the game state legible while preserving the card-game rules: it displays the current hand, cards remaining, aces remaining, and controls to deal, reset, or play again. Each deal replaces the hand with cards from the remaining deck, so the state must consistently track the deck, hand, counters, and game phase.
 
-I began with in-memory frontend state, then connected the same gameplay to a local backend. Keeping the deployed demo frontend-only was a deliberate delivery boundary: the public experience remains playable without presenting the local service integration as a hosted full-stack application.
+I began with in-memory frontend state, then connected the same gameplay to a local backend. The backend integration was not deployed: the public URL hosts only the standalone frontend, while the integrated path was exercised locally.
 
 ## Architecture and key decisions
 
@@ -47,10 +47,8 @@ That reducer update keeps the frontend's visible counters aligned with the cards
 
 The frontend test suite uses React Testing Library with a Redux-aware render helper. It covers the initial hand, distinct dealt hands, reset and play-again flows, and won and lost game states. The repository also includes Django service and GraphQL tests for dealing and resetting games.
 
-The public link in this project is the standalone React frontend. The full Django/GraphQL/PostgreSQL path was run locally, with the frontend configured to call the local GraphQL endpoint for that integration.
-
 ## Outcome and tradeoffs
 
-This project provided a concrete way to work through frontend state management, GraphQL types and operations, Django models and services, and a PostgreSQL-backed game state in one small application.
+The result was a playable public frontend, a locally exercised React/Django/GraphQL/PostgreSQL path, and automated coverage of frontend game states, backend services, and GraphQL mutations. Visitors to the public demo can play the in-memory frontend, but they cannot exercise the backend integration.
 
-The standalone frontend and the local full-stack integration intentionally remain separate delivery modes. Redux continues to represent the client-side game state even when the GraphQL-backed version is used, which kept the learning focus on both state-management approaches rather than reducing the application to only one of them.
+The integrated version keeps Redux client state alongside the persisted backend state. That duplicates some state across the client and server, while exposing both state-management approaches within the same project.
