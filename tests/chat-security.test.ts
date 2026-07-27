@@ -37,6 +37,32 @@ test('defaults omitted history to an empty array', () => {
   });
 });
 
+test('accepts a one-character message', () => {
+  assert.equal(validateChatRequest({ message: 'x' }).ok, true);
+});
+
+test('accepts a message exactly 1,000 characters long', () => {
+  assert.equal(validateChatRequest({ message: 'm'.repeat(1_000) }).ok, true);
+});
+
+test('accepts history content exactly 1,000 characters long', () => {
+  const result = validateChatRequest({
+    message: 'Hello',
+    history: [{ role: 'assistant', content: 'h'.repeat(1_000) }],
+  });
+
+  assert.equal(result.ok, true);
+});
+
+test('accepts exactly 12 history entries totaling 6,000 characters', () => {
+  const history = Array.from({ length: 12 }, (_, index) => ({
+    role: index % 2 === 0 ? 'user' : 'assistant',
+    content: 'h'.repeat(500),
+  }));
+
+  assert.equal(validateChatRequest({ message: 'Hello', history }).ok, true);
+});
+
 test('rejects whitespace-only messages', () => {
   assert.equal(validateChatRequest({ message: ' \n\t ' }).ok, false);
 });
@@ -158,6 +184,73 @@ test('keeps independent rate-limit buckets for different clients', () => {
 
   assert.equal(limiter.check('client-a').allowed, false);
   assert.deepEqual(limiter.check('client-b'), { allowed: true });
+});
+
+test('enforces the rolling window for staggered attempts', () => {
+  let now = 0;
+  const limiter = createRateLimiter(() => now);
+
+  for (let attempt = 1; attempt <= 5; attempt += 1) {
+    assert.equal(limiter.check('client-a').allowed, true);
+  }
+
+  now = 30_000;
+  for (let attempt = 1; attempt <= 5; attempt += 1) {
+    assert.equal(limiter.check('client-a').allowed, true);
+  }
+
+  now = 59_999;
+  assert.equal(limiter.check('client-a').allowed, false);
+
+  now = 60_000;
+  for (let attempt = 1; attempt <= 5; attempt += 1) {
+    assert.equal(limiter.check('client-a').allowed, true);
+  }
+  assert.equal(limiter.check('client-a').allowed, false);
+
+  now = 90_000;
+  assert.equal(limiter.check('client-a').allowed, true);
+});
+
+test('evicts the oldest bucket when the bucket cap is reached', () => {
+  const limiter = createRateLimiter({
+    now: () => 0,
+    maxBuckets: 2,
+    cleanupIntervalMs: 120_000,
+  });
+
+  for (let attempt = 1; attempt <= 10; attempt += 1) {
+    assert.equal(limiter.check('client-a').allowed, true);
+  }
+  assert.equal(limiter.check('client-a').allowed, false);
+
+  assert.equal(limiter.check('client-b').allowed, true);
+  assert.equal(limiter.check('client-c').allowed, true);
+
+  assert.equal(limiter.check('client-a').allowed, true);
+});
+
+test('global cleanup runs on cadence before applying bucket eviction', () => {
+  let now = 0;
+  const limiter = createRateLimiter({
+    now: () => now,
+    maxBuckets: 2,
+    cleanupIntervalMs: 60_000,
+  });
+
+  assert.equal(limiter.check('active-client').allowed, true);
+  now = 1_000;
+  assert.equal(limiter.check('expired-client').allowed, true);
+
+  now = 30_000;
+  for (let attempt = 1; attempt <= 9; attempt += 1) {
+    assert.equal(limiter.check('active-client').allowed, true);
+  }
+
+  now = 61_001;
+  assert.equal(limiter.check('new-client').allowed, true);
+  assert.equal(limiter.check('active-client').allowed, true);
+  assert.equal(limiter.check('active-client').allowed, false);
 });
 
 test('uses the first forwarded address as the client identifier', () => {

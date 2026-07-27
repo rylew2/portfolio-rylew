@@ -4,6 +4,7 @@ import path from 'path';
 import {
   createRateLimiter,
   getClientIdentifier,
+  type RateLimiter,
   validateChatRequest,
 } from '../../lib/chat-security';
 
@@ -27,8 +28,15 @@ interface ChatContext {
   generatedAt: string;
 }
 
-const chatRateLimiter = createRateLimiter();
 const GROQ_REQUEST_TIMEOUT_MS = 10_000;
+
+type ChatHandlerOptions = {
+  fetch?: typeof fetch;
+  rateLimiter?: RateLimiter;
+  getApiKey?: () => string | undefined;
+  requestTimeoutMs?: number;
+  logError?: (...values: unknown[]) => void;
+};
 
 // Load context from summary file
 function loadSummary(): string {
@@ -225,78 +233,118 @@ ${bookDetails || 'No relevant book details found.'}
 With this context, please chat with the visitor, always staying in character as Ryan. Be friendly and approachable while remaining professional.`;
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const clientIdentifier = getClientIdentifier(
-    req.headers['x-forwarded-for'],
-    req.socket.remoteAddress
-  );
-  const rateLimitResult = chatRateLimiter.check(clientIdentifier);
-  if (!rateLimitResult.allowed) {
-    res.setHeader('Retry-After', rateLimitResult.retryAfterSeconds.toString());
-    return res.status(429).json({ error: 'Too many requests' });
-  }
-
-  const validationResult = validateChatRequest(req.body);
-  if (!validationResult.ok) {
-    return res.status(400).json({ error: 'Invalid request' });
-  }
-
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Service unavailable' });
-  }
-
-  try {
-    const { message, history } = validationResult.value;
-
-    // Build messages array with system prompt
-    const systemPrompt = buildSystemPrompt(message);
-    const messages: ChatMessage[] = [
-      { role: 'system', content: systemPrompt },
-      ...history,
-      { role: 'user', content: message },
-    ];
-
-    // Call Groq API (OpenAI-compatible)
-    const response = await fetch(
-      'https://api.groq.com/openai/v1/chat/completions',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
-          messages,
-          max_tokens: 500,
-        }),
-        signal: AbortSignal.timeout(GROQ_REQUEST_TIMEOUT_MS),
-      }
-    );
-
-    if (!response.ok) {
-      console.error('Groq API request failed with status:', response.status);
-      return res.status(500).json({ error: 'Failed to get response from AI' });
-    }
-
-    const data = await response.json();
-    const aiResponse = data.choices?.[0]?.message?.content;
-
-    if (!aiResponse) {
-      return res.status(500).json({ error: 'No response from AI' });
-    }
-
-    return res.status(200).json({ response: aiResponse });
-  } catch {
-    console.error('Chat API request failed');
-    return res.status(500).json({ error: 'Internal server error' });
-  }
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
+
+function getAssistantResponse(data: unknown): string | undefined {
+  if (!isRecord(data) || !Array.isArray(data.choices)) {
+    return undefined;
+  }
+
+  const firstChoice = data.choices[0];
+  if (!isRecord(firstChoice) || !isRecord(firstChoice.message)) {
+    return undefined;
+  }
+
+  const content = firstChoice.message.content;
+  if (typeof content !== 'string' || content.trim().length === 0) {
+    return undefined;
+  }
+
+  return content;
+}
+
+export function createChatHandler(options: ChatHandlerOptions = {}) {
+  const fetchRequest = options.fetch ?? fetch;
+  const rateLimiter = options.rateLimiter ?? createRateLimiter();
+  const getApiKey = options.getApiKey ?? (() => process.env.GROQ_API_KEY);
+  const requestTimeoutMs = options.requestTimeoutMs ?? GROQ_REQUEST_TIMEOUT_MS;
+  const logError = options.logError ?? console.error;
+
+  return async function handler(req: NextApiRequest, res: NextApiResponse) {
+    if (req.method !== 'POST') {
+      res.setHeader('Allow', 'POST');
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    const clientIdentifier = getClientIdentifier(
+      req.headers['x-forwarded-for'],
+      req.socket.remoteAddress
+    );
+    const rateLimitResult = rateLimiter.check(clientIdentifier);
+    if (!rateLimitResult.allowed) {
+      res.setHeader(
+        'Retry-After',
+        rateLimitResult.retryAfterSeconds.toString()
+      );
+      return res.status(429).json({ error: 'Too many requests' });
+    }
+
+    const validationResult = validateChatRequest(req.body);
+    if (!validationResult.ok) {
+      return res.status(400).json({ error: 'Invalid request' });
+    }
+
+    const apiKey = getApiKey();
+    if (!apiKey) {
+      return res.status(500).json({ error: 'Service unavailable' });
+    }
+
+    try {
+      const { message, history } = validationResult.value;
+
+      // Build messages array with system prompt
+      const systemPrompt = buildSystemPrompt(message);
+      const messages: ChatMessage[] = [
+        { role: 'system', content: systemPrompt },
+        ...history,
+        { role: 'user', content: message },
+      ];
+
+      // Call Groq API (OpenAI-compatible)
+      const response = await fetchRequest(
+        'https://api.groq.com/openai/v1/chat/completions',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: 'llama-3.3-70b-versatile',
+            messages,
+            max_tokens: 500,
+          }),
+          signal: AbortSignal.timeout(requestTimeoutMs),
+        }
+      );
+
+      if (!response.ok) {
+        try {
+          await response.body?.cancel();
+        } catch {
+          // The visitor still receives the same generic upstream failure.
+        }
+        logError('Groq API request failed with status:', response.status);
+        return res
+          .status(500)
+          .json({ error: 'Failed to get response from AI' });
+      }
+
+      const data: unknown = await response.json();
+      const aiResponse = getAssistantResponse(data);
+
+      if (!aiResponse) {
+        return res.status(500).json({ error: 'No response from AI' });
+      }
+
+      return res.status(200).json({ response: aiResponse });
+    } catch {
+      logError('Chat API request failed');
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+}
+
+export default createChatHandler();
