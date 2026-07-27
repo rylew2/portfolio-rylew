@@ -5,7 +5,6 @@ slug: 'sensecourse'
 selectedWork: true
 description: 'A look at using Watson AI to select courses based on your personality'
 previewImage: '/images/project/sensecourse/demo.jpg'
-liveSite: 'https://sensecourse.onrender.com/demo'
 sourceCode: 'https://github.com/rylew2/SenseCourse'
 presentation: 'https://www.youtube.com/watch?v=LqpXGfcWBt0'
 tags:
@@ -34,7 +33,7 @@ The idea was to generate a collective sentiment analysis for each course based o
 
 ## IBM Watson
 
-IBM Watson is a natural language processing service for text analytics. A subset of the service includes Personality Insights, including what they now call Entity Emotion Scores. While the API has changed since we developed our app, key classification scores are still output today for emotions like joy, anger, fear, and sadness. You can view a short demo of the [text analysis tool here](https://www.ibm.com/demos/live/natural-language-understanding/self-service/home). In the SenseCourse live demo, the application is not hooked up to the now-modified API, but it does have a demo of what the output result looked like when it was working and turned in for the end of the course.
+IBM Watson is a natural language processing service for text analytics. A subset of the service includes Personality Insights, including what they now call Entity Emotion Scores. While the API has changed since we developed our app, key classification scores are still output today for emotions like joy, anger, fear, and sadness. You can view a short demo of the [text analysis tool here](https://www.ibm.com/demos/live/natural-language-understanding/self-service/home). The original Watson-backed experience is no longer interactive; the presentation shows the working course submission and the output that appeared when it was turned in for the course.
 
 ![Personality Insight results from the Watson API](/images/project/sensecourse/personality-insights.jpg)
 
