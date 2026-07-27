@@ -99,24 +99,40 @@ export const StyledCards = styled.section`
       margin-right: auto;
     }
 
-    button {
+    /* Anchors styled as buttons, not anchors wrapping buttons -- see the note
+       in cards.tsx. min-height keeps the hit area at the 24px target-size
+       minimum now that the anchor is the control rather than a collapsed
+       inline box around one. */
+    a.card-action {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
       background: var(--button-bg);
       border: 1px solid var(--border-color);
       border-radius: 5px;
       padding: 4px 10px;
+      font-size: 0.8em;
       font-weight: bold;
+      line-height: 1.2;
       color: var(--button-text);
+      text-decoration: none;
+
       &:hover {
         background: var(--button-bg-hover);
         cursor: pointer;
         color: var(--button-text-hover);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--prim-color);
+        outline-offset: 2px;
       }
     }
 
     /* Each action carries its own colour so a row of cards can be scanned for
        "has a live demo" without reading the labels. Hover fills with the
        darker -text shade rather than the border hue, which would fail AA. */
-    button.demo {
+    a.demo {
       background: var(--action-demo-bg);
       border-color: var(--action-demo-border);
       color: var(--action-demo-text);
@@ -127,7 +143,7 @@ export const StyledCards = styled.section`
       }
     }
 
-    button.source {
+    a.source {
       background: var(--action-source-bg);
       border-color: var(--action-source-border);
       color: var(--action-source-text);
@@ -138,7 +154,7 @@ export const StyledCards = styled.section`
       }
     }
 
-    button.presentation {
+    a.presentation {
       background: var(--action-presentation-bg);
       border-color: var(--action-presentation-border);
       color: var(--action-presentation-text);

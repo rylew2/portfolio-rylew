@@ -227,6 +227,36 @@ body {
   border: 0;
 }
 
+/* SKIP LINK
+   Off-screen until focused, then pinned above the nav (z-index 10) and the
+   chat widget (1000). The mobile menu overlay (1001) traps focus, so the skip
+   link is unreachable while that is open and does not need to clear it. */
+.skip-link {
+  position: fixed;
+  top: -4rem;
+  left: 0.5rem;
+  z-index: 1100;
+  padding: 0.6rem 1rem;
+  background: var(--surface);
+  color: var(--prim-color);
+  border: 1px solid var(--prim-color);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: none;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+  outline: 2px solid var(--prim-color);
+  outline-offset: 2px;
+}
+
+/* main carries tabindex="-1" purely as the skip link's target, so it should
+   not draw a ring around the whole page when focus lands on it. */
+main:focus {
+  outline: none;
+}
+
 .page-intro {
   text-align: center;
   max-width: 500px;

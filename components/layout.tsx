@@ -131,16 +131,20 @@ const Layout = ({
 
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <Nav />
-        {menuOpen ? (
-          <MobileNav />
-        ) : (
-          <>
-            <Header pathname={pathname} title={pageTitle} />
-            <StyledMain>{children}</StyledMain>
-            <Footer />
-          </>
-        )}
+        <Header pathname={pathname} title={pageTitle} />
+        {/* tabIndex lets the skip link actually move focus here, not just
+            scroll. main:focus drops the ring -- see layout.css. */}
+        <StyledMain id="main" tabIndex={-1}>
+          {children}
+        </StyledMain>
+        <Footer />
+        {/* Rendered last and positioned over the page rather than replacing
+            it, so the content above stays in the DOM while the menu is open. */}
+        {menuOpen && <MobileNav />}
         <ChatWidget />
       </MenuContext.Provider>
     </ThemeContext.Provider>

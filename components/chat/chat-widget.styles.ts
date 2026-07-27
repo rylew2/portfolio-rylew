@@ -97,6 +97,10 @@ export const ChatHeader = styled.div`
     font-family: var(--font-manrope), 'Manrope', sans-serif;
     font-size: 1rem;
     font-weight: 700;
+    /* The global "h1..h6 { color: var(--text-color-black) }" rule in layout.css
+       otherwise wins over the white set on this header, leaving black on the
+       dark blue at 2.11:1. Inherit so the two can never drift apart again. */
+    color: inherit;
   }
 
   button {
