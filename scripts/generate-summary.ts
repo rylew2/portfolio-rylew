@@ -50,9 +50,10 @@ function buildSummary(profile: Profile): string {
   sections.push(
     [
       'WORK EXPERIENCE:',
-      ...profile.experience.map(
-        (job) => `- ${job.company} - ${job.title} (${job.start} - ${job.end})`
-      ),
+      ...profile.experience.flatMap((job) => [
+        `- ${job.company} - ${job.title} (${job.start} - ${job.end})`,
+        ...(job.highlights ?? []).map((highlight) => `  - ${highlight}`),
+      ]),
     ].join('\n')
   );
 

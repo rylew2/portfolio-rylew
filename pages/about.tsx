@@ -75,6 +75,13 @@ const About = () => {
                   <span className="entryMeta">
                     {job.start} – {job.end}
                   </span>
+                  {job.highlights?.length && (
+                    <ul className="experienceHighlights">
+                      {job.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ol>

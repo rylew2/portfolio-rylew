@@ -5,6 +5,7 @@ export interface Experience {
   title: string;
   start: string;
   end: string;
+  highlights?: string[];
 }
 
 export interface Education {

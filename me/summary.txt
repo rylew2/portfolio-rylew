@@ -8,6 +8,9 @@ Outside of work I'm usually exploring New York's food scene, cooking, running, t
 
 WORK EXPERIENCE:
 - Nava - Senior Software Engineer (Oct 2021 - Present)
+  - Streamlined the Massachusetts Paid Family and Medical Leave application process, reducing completion time by 30% and monthly appeals by 20%.
+  - Contributed to a CMS React/Node application that shortened cloud onboarding from months to weeks.
+  - Updated AWS infrastructure to remove critical vulnerabilities and meet CMS security standards.
 - Wells Fargo - Front End Developer (Dec 2017 - Jul 2021)
 - Children's Council of San Francisco - Web Developer (Feb 2016 - Dec 2017)
 - Kaiser Permanente Division of Research - Web Developer (Jul 2010 - Feb 2016)

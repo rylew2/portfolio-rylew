@@ -12,7 +12,12 @@
       "company": "Nava",
       "title": "Senior Software Engineer",
       "start": "Oct 2021",
-      "end": "Present"
+      "end": "Present",
+      "highlights": [
+        "Streamlined the Massachusetts Paid Family and Medical Leave application process, reducing completion time by 30% and monthly appeals by 20%.",
+        "Contributed to a CMS React/Node application that shortened cloud onboarding from months to weeks.",
+        "Updated AWS infrastructure to remove critical vulnerabilities and meet CMS security standards."
+      ]
     },
     {
       "company": "Wells Fargo",

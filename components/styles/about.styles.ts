@@ -98,6 +98,16 @@ export const StyledAbout = styled.section`
     font-variant-numeric: tabular-nums;
   }
 
+  .experienceHighlights {
+    flex-basis: 100%;
+    margin: 0.15em 0 0;
+    padding-left: 1.25em;
+
+    li {
+      padding: 0.15em 0;
+    }
+  }
+
   .skillGroups {
     margin: 0;
   }
@@ -166,6 +176,10 @@ export const StyledAbout = styled.section`
 
     .entryMeta {
       margin-left: 0;
+    }
+
+    .experienceHighlights {
+      padding-left: 1.1em;
     }
 
     .skillGroup dt {
