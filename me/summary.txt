@@ -7,9 +7,9 @@ Most of my work has been in regulated and public-interest domains: government se
 Outside of work I'm usually exploring New York's food scene, cooking, running, traveling, or skiing in the winter.
 
 WORK EXPERIENCE:
-- Nava - Sr Software Engineer (Oct 2021 - Present)
-- Wells Fargo - Software Engineer (Dec 2017 - Aug 2021)
-- Children's Council of San Francisco - Web Developer (Mar 2016 - Dec 2017)
+- Nava - Senior Software Engineer (Oct 2021 - Present)
+- Wells Fargo - Front End Developer (Dec 2017 - Jul 2021)
+- Children's Council of San Francisco - Web Developer (Feb 2016 - Dec 2017)
 - Kaiser Permanente Division of Research - Web Developer (Jul 2010 - Feb 2016)
 
 EDUCATION:
