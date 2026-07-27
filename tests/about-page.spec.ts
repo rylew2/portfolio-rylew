@@ -31,18 +31,16 @@ test('about page shows published Nava work highlights', async ({ page }) => {
     .locator('main .timeline > li')
     .filter({ hasText: 'Nava' });
   const highlights = navaEntry.locator('ul');
+  const highlightItems = highlights.locator('> li');
 
   await expect(highlights).toHaveCount(1);
-  await expect(highlights.locator('> li')).toHaveCount(3);
-  await expect(highlights).toContainText(
-    'Streamlined the Massachusetts Paid Family and Medical Leave application process, reducing completion time by 30% and monthly appeals by 20%.'
-  );
-  await expect(highlights).toContainText(
-    'Contributed to a CMS React/Node application that shortened cloud onboarding from months to weeks.'
-  );
-  await expect(highlights).toContainText(
-    'Updated AWS infrastructure to remove critical vulnerabilities and meet CMS security standards.'
-  );
+  await expect(highlightItems).toHaveText([
+    'Streamlined the Massachusetts Paid Family and Medical Leave application process, reducing completion time by 30% and monthly appeals by 20%.',
+    'Contributed to a CMS React/Node application that shortened cloud onboarding from months to weeks.',
+    'Updated AWS infrastructure to remove critical vulnerabilities and meet CMS security standards.',
+  ]);
+  await expect(highlightItems.first()).toHaveCSS('display', 'list-item');
+  await expect(highlightItems.first()).toHaveCSS('border-bottom-width', '0px');
 });
 
 test('about page lists education and certifications', async ({ page }) => {

@@ -68,8 +68,8 @@ export const StyledAbout = styled.section`
     margin: 0;
   }
 
-  .timeline li,
-  .credentials li {
+  .timeline > li,
+  .credentials > li {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -78,8 +78,8 @@ export const StyledAbout = styled.section`
     border-bottom: 1px solid var(--border-color);
   }
 
-  .timeline li:last-child,
-  .credentials li:last-child {
+  .timeline > li:last-child,
+  .credentials > li:last-child {
     border-bottom: none;
   }
 
@@ -168,8 +168,8 @@ export const StyledAbout = styled.section`
 
     /* Stacked rows read better than a squeezed two-column layout, so the date
        column drops below the entry instead of being pushed to the right edge. */
-    .timeline li,
-    .credentials li {
+    .timeline > li,
+    .credentials > li {
       flex-direction: column;
       gap: 0.15em;
     }
