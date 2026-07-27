@@ -2,6 +2,7 @@
   "author": {
     "name": "Ryan Lewis",
     "title": "Ryan Lewis Portfolio",
+    "homepageDescription": "I build reliable, accessible web applications for public-interest and regulated services, working across React, TypeScript, Python, Node.js, and AWS.",
     "twitterHandle": "@rylew312",
     "description": "Hello! I’m Ryan — a software engineer who loves learning and building new things. Here you’ll find a collection of projects I’ve created for fun, for coursework, and some books I’ve read along the way."
   },

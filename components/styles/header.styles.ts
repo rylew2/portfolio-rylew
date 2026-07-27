@@ -4,6 +4,55 @@ export const StyledHomeHeading = styled.section`
   h1 {
     color: var(--header-title);
   }
+
+  .role {
+    color: var(--text-color-dark);
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-actions a {
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+  }
+
+  .hero-actions a:first-of-type {
+    background: var(--header-title);
+    border-color: var(--header-title);
+    color: var(--text-color-white);
+  }
+
+  .hero-actions a:hover {
+    color: var(--header-title);
+  }
+
+  .hero-actions a:first-of-type:hover {
+    color: var(--text-color-white);
+  }
+
+  .hero-actions a:focus-visible {
+    outline: 3px solid var(--header-title);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 559px) {
+    .hero-actions a {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+  }
+
   @media (min-width: 1024px) {
     .header-container {
       max-width: 70%;
