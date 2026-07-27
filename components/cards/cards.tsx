@@ -89,6 +89,10 @@ function getMetaLabel(singleCard: ContentListItem, isIndexPage: boolean) {
   );
 }
 
+// The actions are links, so they are anchors styled as buttons. Wrapping a
+// <button> in an <a> nests two controls: it gives every action a duplicate tab
+// stop, announces it twice, and collapses the anchor's own box to a 1px strip
+// that fails the 24x24 target-size minimum.
 function getDemoButtons(singleCard: ContentListItem) {
   return (
     <>
@@ -98,9 +102,9 @@ function getDemoButtons(singleCard: ContentListItem) {
           target="_blank"
           rel="noreferrer noopener"
           aria-label={`${singleCard.title} demo`}
-          className="a-demo"
+          className="card-action a-demo demo"
         >
-          <button className="demo">Demo</button>
+          Demo
         </a>
       )}
       {singleCard.sourceCode && (
@@ -109,9 +113,9 @@ function getDemoButtons(singleCard: ContentListItem) {
           target="_blank"
           rel="noreferrer noopener"
           aria-label={`${singleCard.title} source code`}
-          className="a-source"
+          className="card-action a-source source"
         >
-          <button className="source">Source</button>
+          Source
         </a>
       )}
       {singleCard.presentation && (
@@ -120,9 +124,9 @@ function getDemoButtons(singleCard: ContentListItem) {
           target="_blank"
           rel="noreferrer noopener"
           aria-label={`${singleCard.title} presentation`}
-          className="a-presentation"
+          className="card-action a-presentation presentation"
         >
-          <button className="presentation">Presentation</button>
+          Presentation
         </a>
       )}
     </>

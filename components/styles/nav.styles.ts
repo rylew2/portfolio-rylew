@@ -210,20 +210,29 @@ export const NavSection = styled.header`
   }
 `;
 
-export const StyledMobileNav = styled.section`
+/* Sits above the chat widget (z-index 1000) so a modal menu covers the whole
+   page, not most of it. */
+export const StyledMobileNav = styled.div`
   background: var(--page-bg);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  overflow-y: auto;
   animation: ${fadeDown} 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Lines the close button up with the hamburger it replaces: the nav bar's
+     1em padding plus the Container's 4% gutter. */
+  .mobile-nav-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em 4%;
+  }
 
   .mobile-nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
+    min-height: calc(100vh - 5em);
   }
 
   .linkList {

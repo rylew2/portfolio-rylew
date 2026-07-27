@@ -89,6 +89,7 @@ const Nav = () => {
               onClick={toggleMenuOpen}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
             ></StyledHamburger>
           </div>
         </nav>
