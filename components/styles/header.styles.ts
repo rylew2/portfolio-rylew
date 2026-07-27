@@ -30,7 +30,7 @@ export const StyledHomeHeading = styled.section`
   .hero-actions a:first-of-type {
     background: var(--header-title);
     border-color: var(--header-title);
-    color: var(--text-color-white);
+    color: var(--page-bg);
   }
 
   .hero-actions a:hover {
@@ -38,7 +38,7 @@ export const StyledHomeHeading = styled.section`
   }
 
   .hero-actions a:first-of-type:hover {
-    color: var(--text-color-white);
+    color: var(--page-bg);
   }
 
   .hero-actions a:focus-visible {
