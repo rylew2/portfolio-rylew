@@ -28,16 +28,18 @@ change.
    homepage screenshot.
 2. Explain the Pages Router architecture and the Markdown/JSON content model,
    naming the source files that drive routes and UI.
-3. Provide Node 22 setup, the exact required `GROQ_API_KEY`, the optional
-   `ANALYTICS_ID`, and the repository's declared npm scripts.
+3. Provide Node 22 setup, the exact required `GROQ_API_KEY`, the optional legacy
+   Google Analytics `ANALYTICS_ID` consumed by `pages/_document.tsx` alongside
+   Vercel Analytics, and the repository's declared npm scripts.
 4. Trace the generated profile and chat context from their editable sources
    through `prebuild` to the chat API.
 5. Describe retrieval weights and Groq request construction exactly as
    implemented, including the selected model and prompt limits.
 6. Summarize request validation, in-memory rate limiting, upstream timeout, and
    generic visitor-facing failures without overstating their guarantees.
-7. Explain content updates and deployment boundaries, explicitly noting that no
-   CI or deployment workflow is checked into this repository.
+7. Explain content updates, the checked-in GitHub Actions build, Playwright, and
+   Dependabot automation, and the boundary that no deployment automation or
+   host configuration is checked into this repository.
 8. Describe Playwright browser/accessibility coverage and the unit-test scope.
 9. Record material tradeoffs: file-system build-time content, generated files
    committed to Git, lexical retrieval, process-local rate limiting, and an

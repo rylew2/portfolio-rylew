@@ -76,11 +76,11 @@ key; chat returns a generic service-unavailable response until
 
 ### Environment variables
 
-| Variable       | Required      | Purpose                                                                                                                                        |
-| -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `GROQ_API_KEY` | For chat only | Read server-side by `/api/chat` and sent as the bearer token to Groq. It is never a `NEXT_PUBLIC_*` value.                                     |
-| `ANALYTICS_ID` | No            | Exported by the legacy `lib/gtag.ts` helper, which is not imported by the current application. Current analytics use `@vercel/analytics/next`. |
-| `CI`           | No            | Used by Playwright configuration to decide whether an existing test server may be reused.                                                      |
+| Variable       | Required      | Purpose                                                                                                                                           |
+| -------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GROQ_API_KEY` | For chat only | Read server-side by `/api/chat` and sent as the bearer token to Groq. It is never a `NEXT_PUBLIC_*` value.                                        |
+| `ANALYTICS_ID` | No            | Legacy Google Analytics ID read by `lib/gtag.ts` and injected by `pages/_document.tsx`. Vercel Analytics is also active through `pages/_app.tsx`. |
+| `CI`           | No            | Used by Playwright configuration to decide whether an existing test server may be reused.                                                         |
 
 No other application environment variables are read by the tracked source.
 `.env.local` and the standard development, test, and production variants listed
@@ -193,11 +193,20 @@ when a server instance restarts.
 5. Run `npm run test:unit`, `npm run test:e2e`, and `npm run build` before
    publishing.
 
-The application contains Vercel Analytics and the live site configuration points
-to `https://www.rylew.dev`, but this repository does not contain a checked-in CI
-or deployment workflow. A host must run the production build with
-`GROQ_API_KEY` configured if chat should be available; deployment automation and
-environment management live outside this repository.
+GitHub Actions provides repository checks and dependency-update automation:
+
+- [`build.yml`](.github/workflows/build.yml) runs `npm ci` and the production
+  build on pull requests and pushes to `master`, using Node.js 22.
+- [`playwright.yml`](.github/workflows/playwright.yml) installs the Playwright
+  browsers and runs the E2E suite on pull requests and pushes to `master`.
+- [`dependabot-auto-merge.yml`](.github/workflows/dependabot-auto-merge.yml)
+  enables squash auto-merge for Dependabot patch and minor version updates.
+
+These workflows do not deploy the application, and no host deployment
+configuration is checked in. The application contains Vercel Analytics and the
+live site configuration points to `https://www.rylew.dev`; deployment automation
+and environment management live outside this repository. The production
+environment must provide `GROQ_API_KEY` if chat should be available.
 
 ## Tradeoffs
 

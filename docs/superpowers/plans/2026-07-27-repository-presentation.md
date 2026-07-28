@@ -91,7 +91,8 @@ Router routes to Markdown, JSON, and generated sources.
 - [ ] **Step 2: Write setup, environment, and scripts sections**
 
 Require Node 22 and `npm install`; document `GROQ_API_KEY` as required for chat
-and `ANALYTICS_ID` as optional/legacy; list every script declared in
+and `ANALYTICS_ID` as the optional legacy Google Analytics ID consumed by
+`pages/_document.tsx` alongside Vercel Analytics; list every script declared in
 `package.json` with its actual command purpose.
 
 - [ ] **Step 3: Write the content and chat flows**
@@ -105,9 +106,11 @@ matching, three-item fallback limits, `llama-3.3-70b-versatile`, and the
 - [ ] **Step 4: Write hardening, workflow, coverage, and tradeoff sections**
 
 State the exact validation and rate-limit bounds from `lib/chat-security.ts`,
-the 10-second upstream timeout and generic errors from `pages/api/chat.ts`,
-the absence of a checked-in CI/deployment workflow, the content update commands,
-the unit/E2E/accessibility coverage, and the verified architectural tradeoffs.
+the 10-second upstream timeout and generic errors from `pages/api/chat.ts`, the
+checked-in GitHub Actions build, Playwright, and Dependabot automation, the
+absence of deployment automation or host configuration, the content update
+commands, the unit/E2E/accessibility coverage, and the verified architectural
+tradeoffs.
 
 - [ ] **Step 5: Add project links and review claims**
 
