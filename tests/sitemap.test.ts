@@ -7,33 +7,40 @@ import { getContentList } from '../lib/content';
 import { generateSitemapXml, getCanonicalSitemapUrls } from '../lib/sitemap';
 
 const CANONICAL_ORIGIN = 'https://www.rylew.dev';
+const SITEMAP_NAMESPACE = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
 const expectedUrls = [
-  `${CANONICAL_ORIGIN}/`,
-  `${CANONICAL_ORIGIN}/about`,
-  `${CANONICAL_ORIGIN}/books`,
-  `${CANONICAL_ORIGIN}/projects`,
-  ...getContentList('book').map(
-    ({ slug }) => `${CANONICAL_ORIGIN}/books/${encodeURIComponent(slug!)}`
-  ),
-  ...getContentList('project').map(
-    ({ slug }) => `${CANONICAL_ORIGIN}/projects/${encodeURIComponent(slug!)}`
-  ),
+  ...new Set([
+    `${CANONICAL_ORIGIN}/`,
+    `${CANONICAL_ORIGIN}/about`,
+    `${CANONICAL_ORIGIN}/books`,
+    `${CANONICAL_ORIGIN}/projects`,
+    ...getContentList('book').map(
+      ({ slug }) => `${CANONICAL_ORIGIN}/books/${encodeURIComponent(slug!)}`
+    ),
+    ...getContentList('project').map(
+      ({ slug }) => `${CANONICAL_ORIGIN}/projects/${encodeURIComponent(slug!)}`
+    ),
+  ]),
 ].sort();
 
-const parseLocations = (xml: string): string[] => {
-  const parsed = new XMLParser().parse(xml) as {
-    urlset: { url: Array<{ loc: string }> };
+const parseSitemap = (xml: string) => {
+  return new XMLParser({ ignoreAttributes: false }).parse(xml) as {
+    urlset: {
+      '@_xmlns': string;
+      url: Array<{ loc: string }>;
+    };
   };
-
-  return parsed.urlset.url.map(({ loc }) => loc);
 };
 
 test('generates valid XML with every canonical content URL', () => {
   const xml = generateSitemapXml();
+  const sitemap = parseSitemap(xml);
+  const locations = sitemap.urlset.url.map(({ loc }) => loc);
 
   assert.equal(XMLValidator.validate(xml), true);
-  assert.deepEqual(parseLocations(xml), expectedUrls);
+  assert.equal(sitemap.urlset['@_xmlns'], SITEMAP_NAMESPACE);
+  assert.deepEqual(locations, expectedUrls);
   assert.deepEqual(getCanonicalSitemapUrls(), expectedUrls);
 });
 
@@ -48,10 +55,10 @@ test('sorts and deduplicates URLs for stable sitemap output', () => {
   const second = generateSitemapXml([...urls].reverse());
 
   assert.equal(first, second);
-  assert.deepEqual(parseLocations(first), [
-    `${CANONICAL_ORIGIN}/about`,
-    `${CANONICAL_ORIGIN}/projects/z-last`,
-  ]);
+  assert.deepEqual(
+    parseSitemap(first).urlset.url.map(({ loc }) => loc),
+    [`${CANONICAL_ORIGIN}/about`, `${CANONICAL_ORIGIN}/projects/z-last`]
+  );
   assert.ok(first.endsWith('\n'));
 });
 
