@@ -3,7 +3,11 @@ import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Cards, Container, Layout } from '../../../components';
 import tagsJSON from '../../../config/tags.json';
-import { getContentWithTag, ContentListItem } from '../../../lib/content';
+import {
+  getContentTaxonomyValues,
+  getContentWithTag,
+  ContentListItem,
+} from '../../../lib/content';
 
 interface TagPageProps {
   content: ContentListItem[];
@@ -25,15 +29,17 @@ const Tag = ({ content, title, description }: TagPageProps) => {
 };
 
 export const getStaticPaths = async () => {
-  // Get all the tags from the already defined site tags
+  const projectTags = new Set(getContentTaxonomyValues('project', 'tags'));
 
-  const paths = tagsJSON.map((tag) => {
-    return {
-      params: {
-        tag: tag.tag,
-      },
-    };
-  });
+  const paths = tagsJSON
+    .filter((tag) => projectTags.has(tag.tag))
+    .map((tag) => {
+      return {
+        params: {
+          tag: tag.tag,
+        },
+      };
+    });
 
   return {
     paths,
