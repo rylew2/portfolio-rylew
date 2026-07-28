@@ -2,7 +2,6 @@ import { faChrome, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../components';
@@ -21,10 +20,14 @@ interface ProjectPageProps {
  */
 
 const Project = ({ projectData }: ProjectPageProps) => {
-  const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
   return (
-    <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
+    <Layout
+      canonicalPath={`/projects/${encodeURIComponent(projectData.id)}`}
+      pageTitle={title}
+      pageDescription={description}
+      ogType="article"
+    >
       <Container width="narrow">
         <StyledContent>
           <time>
@@ -106,7 +109,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const projectData: IContentData = await getContentData(params?.id as string, 'project');
+  const projectData: IContentData = await getContentData(
+    params?.id as string,
+    'project'
+  );
 
   return {
     props: {

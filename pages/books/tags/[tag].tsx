@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Cards, Container, Layout } from '../../../components';
@@ -9,12 +8,16 @@ interface TagPageProps {
   content: ContentListItem[];
   title: string;
   description: string;
+  tag: string;
 }
 
-const Tag = ({ content, title, description }: TagPageProps) => {
-  const { pathname } = useRouter();
+const Tag = ({ content, title, description, tag }: TagPageProps) => {
   return (
-    <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
+    <Layout
+      canonicalPath={`/books/tags/${encodeURIComponent(tag)}`}
+      pageTitle={title}
+      pageDescription={description}
+    >
       <Container>
         <p className="page-intro">{description}</p>
 
@@ -42,14 +45,16 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const content = getContentWithTag(params?.tag as string, 'book');
-  const tagObject = tagsJSON.filter((json) => json.tag === params?.tag)[0];
+  const tag = params?.tag as string;
+  const content = getContentWithTag(tag, 'book');
+  const tagObject = tagsJSON.filter((json) => json.tag === tag)[0];
 
   return {
     props: {
       content,
       title: tagObject.title,
       description: tagObject.description,
+      tag,
     },
   };
 };

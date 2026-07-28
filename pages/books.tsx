@@ -12,7 +12,7 @@ interface BooksPageProps {
 const Book = ({ books }: BooksPageProps) => {
   return (
     <Layout
-      pathname={'/books'}
+      canonicalPath="/books"
       pageTitle="Books"
       pageDescription="Books covering a variety of topics"
     >

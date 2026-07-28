@@ -12,7 +12,7 @@ interface IndexPageProps {
  */
 const Index = ({ selectedWorks }: IndexPageProps) => {
   return (
-    <Layout pathname={'/'} pageTitle="Ryan Lewis Portfolio">
+    <Layout canonicalPath="/" pageTitle="Ryan Lewis Portfolio">
       <StyledIndexPage>
         <Container>
           <Cards data={selectedWorks} />

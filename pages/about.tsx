@@ -25,7 +25,7 @@ const About = () => {
 
   return (
     <Layout
-      pathname={'/about'}
+      canonicalPath="/about"
       pageTitle="About"
       pageDescription={`${role} based in ${location}. Experience, education, and the tools I build with.`}
     >

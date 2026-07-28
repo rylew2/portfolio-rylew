@@ -45,7 +45,7 @@ const expectUniqueMeta = async (
 ) => {
   const metadata = page.locator(selector);
   await expect(metadata).toHaveCount(1);
-  await expect(metadata).toHaveAttribute("content", expectedContent);
+  await expect(metadata).toHaveAttribute('content', expectedContent);
 };
 ```
 
@@ -53,12 +53,12 @@ For every fixture assert:
 
 ```ts
 await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-  "href",
+  'href',
   expectedUrl
 );
 await expectUniqueMeta(page, 'meta[property="og:url"]', expectedUrl);
 await expectUniqueMeta(page, 'meta[property="og:type"]', expectedType);
-await expectUniqueMeta(page, 'meta[name="twitter:card"]', "summary");
+await expectUniqueMeta(page, 'meta[name="twitter:card"]', 'summary');
 await expectUniqueMeta(page, 'meta[name="twitter:title"]', expectedTitle);
 await expectUniqueMeta(
   page,
@@ -68,7 +68,7 @@ await expectUniqueMeta(
 await expectUniqueMeta(
   page,
   'meta[name="twitter:image"]',
-  "https://www.rylew.dev/Logo.png"
+  'https://www.rylew.dev/Logo.png'
 );
 ```
 
@@ -138,8 +138,8 @@ Resolve the path against the configured origin and remove query/hash data:
 
 ```ts
 const canonicalUrl = new URL(canonicalPath, SiteConfig.site.siteUrl);
-canonicalUrl.search = "";
-canonicalUrl.hash = "";
+canonicalUrl.search = '';
+canonicalUrl.hash = '';
 
 const canonicalHref = canonicalUrl.toString();
 const description = pageDescription || SiteConfig.site.siteDescription;

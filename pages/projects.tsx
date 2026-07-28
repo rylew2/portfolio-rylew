@@ -12,7 +12,7 @@ interface ProjectsPageProps {
 const Project = ({ projects }: ProjectsPageProps) => {
   return (
     <Layout
-      pathname={'/projects'}
+      canonicalPath="/projects"
       pageTitle="Projects"
       pageDescription="Projects covering front end, machine learning, school associated courses, and research topics"
     >

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../components';
@@ -12,11 +11,15 @@ import { getAllContentIds, getContentData } from '../../lib/content';
  */
 
 const Book = ({ bookData }: { bookData: IContentData }) => {
-  const { pathname } = useRouter();
   const { title, contentHtml, description } = bookData;
 
   return (
-    <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
+    <Layout
+      canonicalPath={`/books/${encodeURIComponent(bookData.id)}`}
+      pageTitle={title}
+      pageDescription={description}
+      ogType="article"
+    >
       <Container width="narrow">
         <StyledContent>
           <time>
@@ -63,7 +66,10 @@ export interface IContentData {
 }
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const bookData: IContentData = await getContentData(params?.id as string, 'book');
+  const bookData: IContentData = await getContentData(
+    params?.id as string,
+    'book'
+  );
 
   return {
     props: {

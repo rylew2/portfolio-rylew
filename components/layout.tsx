@@ -11,9 +11,10 @@ import { ChatWidget } from './chat';
 
 interface ILayout {
   children: ReactNode;
-  pathname: string;
+  canonicalPath: string;
   pageTitle: string;
   pageDescription?: string;
+  ogType?: 'website' | 'article';
 }
 
 interface MenuContextType {
@@ -40,12 +41,23 @@ export const ThemeContext = createContext<ThemeContextType>({
 
 const Layout = ({
   children,
-  pathname,
+  canonicalPath,
   pageTitle,
   pageDescription,
+  ogType = 'website',
 }: ILayout) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>('light');
+  const canonicalUrl = new URL(canonicalPath, SiteConfig.site.siteUrl);
+  canonicalUrl.search = '';
+  canonicalUrl.hash = '';
+
+  const canonicalHref = canonicalUrl.toString();
+  const description = pageDescription || SiteConfig.site.siteDescription;
+  const socialImage = new URL(
+    SiteConfig.site.siteImage,
+    SiteConfig.site.siteUrl
+  ).toString();
 
   const toggleMenuOpen = () => {
     menuOpen ? setMenuOpen(false) : setMenuOpen(true);
@@ -55,14 +67,18 @@ const Layout = ({
     setTheme((current) => {
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
-      try { window.localStorage.setItem('theme', next); } catch {}
+      try {
+        window.localStorage.setItem('theme', next);
+      } catch {}
       return next;
     });
   };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const storedTheme = window.localStorage.getItem('theme') as ThemeMode | null;
+    const storedTheme = window.localStorage.getItem(
+      'theme'
+    ) as ThemeMode | null;
     const prefersDark =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -75,7 +91,7 @@ const Layout = ({
     document.querySelectorAll('pre').forEach((node) => {
       node.setAttribute('tabindex', '0');
     });
-  }, [pathname]);
+  }, [canonicalPath]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -91,30 +107,15 @@ const Layout = ({
             content={SiteConfig.site.keywords}
             key="keywords"
           />
-          <meta
-            name="description"
-            key="description"
-            content={pageDescription || SiteConfig.site.siteDescription}
-          />
+          <meta name="description" key="description" content={description} />
+          <link rel="canonical" href={canonicalHref} key="canonical" />
 
           {/* og tags */}
           <meta property="og:title" content={pageTitle} key="ogtitle" />
-          <meta
-            property="og:description"
-            content={pageDescription || SiteConfig.site.siteDescription}
-            key="ogdesc"
-          />
-          <meta
-            property="og:url"
-            content={SiteConfig.site.siteUrl}
-            key="ogurl"
-          />
-          <meta property="og:type" content="website" key="ogtype" />
-          <meta
-            property="og:image"
-            content={`${SiteConfig.site.siteUrl}${SiteConfig.site.siteImage}`}
-            key="ogimage"
-          />
+          <meta property="og:description" content={description} key="ogdesc" />
+          <meta property="og:url" content={canonicalHref} key="ogurl" />
+          <meta property="og:type" content={ogType} key="ogtype" />
+          <meta property="og:image" content={socialImage} key="ogimage" />
           <meta
             property="og:site_name"
             content={SiteConfig.site.siteName}
@@ -128,6 +129,13 @@ const Layout = ({
             content={SiteConfig.author.twitterHandle}
             key="twhandle"
           />
+          <meta name="twitter:title" content={pageTitle} key="twtitle" />
+          <meta
+            name="twitter:description"
+            content={description}
+            key="twdescription"
+          />
+          <meta name="twitter:image" content={socialImage} key="twimage" />
 
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
@@ -135,7 +143,7 @@ const Layout = ({
           Skip to content
         </a>
         <Nav />
-        <Header pathname={pathname} title={pageTitle} />
+        <Header pathname={canonicalPath} title={pageTitle} />
         {/* tabIndex lets the skip link actually move focus here, not just
             scroll. main:focus drops the ring -- see layout.css. */}
         <StyledMain id="main" tabIndex={-1}>

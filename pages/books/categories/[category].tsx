@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../../components';
@@ -10,12 +9,21 @@ interface CategoryPageProps {
   content: ContentListItem[];
   title: string;
   description: string;
+  category: string;
 }
 
-const Category = ({ content, title, description }: CategoryPageProps) => {
-  const { pathname } = useRouter();
+const Category = ({
+  content,
+  title,
+  description,
+  category,
+}: CategoryPageProps) => {
   return (
-    <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
+    <Layout
+      canonicalPath={`/books/categories/${encodeURIComponent(category)}`}
+      pageTitle={title}
+      pageDescription={description}
+    >
       <Container width="narrow">
         <p className="page-intro">{description}</p>
         <NotesComponent notes={content} basePath="book" />
@@ -41,9 +49,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const content = getContentInCategory(params?.category as string, 'book');
+  const category = params?.category as string;
+  const content = getContentInCategory(category, 'book');
   const categoryObject = categoryJSON.filter(
-    (category) => category.category === params?.category
+    (entry) => entry.category === category
   )[0];
 
   return {
@@ -51,6 +60,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
       content,
       title: categoryObject.title,
       description: categoryObject.description,
+      category,
     },
   };
 };
