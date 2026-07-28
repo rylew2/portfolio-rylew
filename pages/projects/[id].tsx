@@ -23,6 +23,9 @@ interface ProjectPageProps {
 const Project = ({ projectData }: ProjectPageProps) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = projectData;
+  const hasPreviewImageDimensions =
+    projectData.previewImageWidth !== undefined &&
+    projectData.previewImageHeight !== undefined;
   return (
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
@@ -39,7 +42,11 @@ const Project = ({ projectData }: ProjectPageProps) => {
               src={projectData.previewImage}
               height={projectData.previewImageHeight ?? 550}
               width={projectData.previewImageWidth ?? 1200}
-              style={{ width: '100%', height: 'auto' }}
+              style={
+                hasPreviewImageDimensions
+                  ? { width: '100%', height: 'auto' }
+                  : undefined
+              }
             />
           )}
           <blockquote>

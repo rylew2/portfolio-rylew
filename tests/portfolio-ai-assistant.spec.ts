@@ -42,6 +42,28 @@ test('portfolio AI assistant detail image is descriptive, loaded, and two-to-one
   expect(displayedRatio).toBeLessThan(2.05);
 });
 
+test('legacy project detail image keeps its fallback rendering', async ({
+  page,
+}) => {
+  await page.goto('/projects/cardgame');
+
+  const image = page.getByRole('img', { name: 'projectimage' });
+  await expect(image).toBeVisible();
+  await expect(image).toHaveAttribute('width', '1200');
+  await expect(image).toHaveAttribute('height', '550');
+
+  const responsiveStyle = await image.evaluate((element: HTMLImageElement) => ({
+    width: element.style.width,
+    height: element.style.height,
+  }));
+  expect(responsiveStyle).toEqual({ width: '', height: '' });
+
+  const displayedSize = await image.boundingBox();
+  expect(displayedSize).not.toBeNull();
+  expect(displayedSize!.height).toBeGreaterThan(549);
+  expect(displayedSize!.height).toBeLessThan(551);
+});
+
 test('portfolio AI assistant card appears on projects and home pages', async ({
   page,
 }) => {
