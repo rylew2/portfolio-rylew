@@ -77,6 +77,14 @@ const dynamicPages: MetadataExpectation[] = [
     type: 'website',
   },
   {
+    name: 'project tag page with spaced taxonomy slug',
+    route: '/projects/tags/machine%20learning',
+    canonicalPath: '/projects/tags/machine%20learning',
+    title: 'Machine Learning',
+    description: 'Machine Learning and Data Science topics',
+    type: 'website',
+  },
+  {
     name: 'book tag page',
     route: '/books/tags/management',
     canonicalPath: '/books/tags/management',
