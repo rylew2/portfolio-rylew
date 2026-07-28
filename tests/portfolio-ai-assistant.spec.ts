@@ -17,6 +17,31 @@ test('portfolio AI assistant project generates a detail page', async ({
   ).toBeVisible();
 });
 
+test('portfolio AI assistant detail image is descriptive, loaded, and two-to-one', async ({
+  page,
+}) => {
+  await page.goto('/projects/portfolio-ai-assistant');
+
+  const screenshot = page.getByRole('img', {
+    name: 'Portfolio homepage with the AI assistant chat panel open',
+  });
+  await expect(screenshot).toBeVisible();
+  await expect(screenshot).toHaveJSProperty('complete', true);
+
+  const naturalSize = await screenshot.evaluate((image: HTMLImageElement) => ({
+    width: image.naturalWidth,
+    height: image.naturalHeight,
+  }));
+  expect(naturalSize.width).toBeGreaterThan(0);
+  expect(naturalSize.height).toBeGreaterThan(0);
+
+  const displayedSize = await screenshot.boundingBox();
+  expect(displayedSize).not.toBeNull();
+  const displayedRatio = displayedSize!.width / displayedSize!.height;
+  expect(displayedRatio).toBeGreaterThan(1.95);
+  expect(displayedRatio).toBeLessThan(2.05);
+});
+
 test('portfolio AI assistant card appears on projects and home pages', async ({
   page,
 }) => {

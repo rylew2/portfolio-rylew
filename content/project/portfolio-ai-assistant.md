@@ -5,6 +5,9 @@ slug: 'portfolio-ai-assistant'
 selectedWork: true
 description: 'A grounded AI assistant for exploring my portfolio, experience, and projects.'
 previewImage: '/images/project/portfolio-ai-assistant/chat-widget-open.png'
+previewImageAlt: 'Portfolio homepage with the AI assistant chat panel open'
+previewImageWidth: 1200
+previewImageHeight: 600
 sourceCode: 'https://github.com/rylew2/portfolio-rylew'
 tags:
   - react
@@ -41,10 +44,11 @@ visitor's query, then scores matches in an item's title, tags, description, and
 body. Title matches receive the greatest weight, followed by tags,
 descriptions, and body content.
 
-The three highest-scoring items are included as detailed context. A direct
-title or slug mention selects that item, while list-style requests such as
-"all projects" include the full matching collection. Every project and book
-still appears in the shorter summary section of the prompt.
+For a general query, up to three highest-scoring projects and up to three
+highest-scoring books are included as detailed context. A direct title or slug
+mention selects that item, while list-style requests such as "all projects"
+include the full matching collection. Every project and book still appears in
+the shorter summary section of the prompt.
 
 ## Groq chat completion
 

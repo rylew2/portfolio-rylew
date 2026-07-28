@@ -21,6 +21,9 @@ export interface ContentListItem {
   id: string;
   path: string;
   previewImage: string;
+  previewImageAlt?: string;
+  previewImageWidth?: number;
+  previewImageHeight?: number;
   title?: string;
   slug?: string;
   date?: string;
@@ -134,6 +137,15 @@ export const getContentData = async (id: string, contentType: IContentType) => {
     title: matterResult.data.title,
     date: matterResult.data.date,
     previewImage: matterResult.data.previewImage || '',
+    ...(matterResult.data.previewImageAlt
+      ? { previewImageAlt: matterResult.data.previewImageAlt }
+      : {}),
+    ...(matterResult.data.previewImageWidth
+      ? { previewImageWidth: matterResult.data.previewImageWidth }
+      : {}),
+    ...(matterResult.data.previewImageHeight
+      ? { previewImageHeight: matterResult.data.previewImageHeight }
+      : {}),
     description: matterResult.data.description || '',
     tags: matterResult.data.tags || [],
     category: matterResult.data.category || '',

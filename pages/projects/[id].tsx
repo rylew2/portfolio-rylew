@@ -35,10 +35,11 @@ const Project = ({ projectData }: ProjectPageProps) => {
           {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
             <Image
-              alt="projectimage"
+              alt={projectData.previewImageAlt || 'projectimage'}
               src={projectData.previewImage}
-              height={550}
-              width={1200}
+              height={projectData.previewImageHeight ?? 550}
+              width={projectData.previewImageWidth ?? 1200}
+              style={{ width: '100%', height: 'auto' }}
             />
           )}
           <blockquote>

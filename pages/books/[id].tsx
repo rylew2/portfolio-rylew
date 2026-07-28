@@ -54,6 +54,9 @@ export interface IContentData {
   title: string;
   date: Date;
   previewImage?: string;
+  previewImageAlt?: string;
+  previewImageWidth?: number;
+  previewImageHeight?: number;
   description?: string;
   tags?: string[];
   category?: string;
