@@ -187,7 +187,7 @@ Rebuild and rerun the focused production endpoint tests; expected: both pass.
 Run:
 
 ```powershell
-npx prettier --check docs/superpowers/specs/2026-07-27-robots-sitemap-design.md docs/superpowers/plans/2026-07-27-robots-sitemap.md lib/sitemap.ts pages/sitemap.xml.tsx public/robots.txt tests/sitemap.test.ts tests/crawler-files.spec.ts package.json package-lock.json
+npx prettier --check --ignore-unknown docs/superpowers/specs/2026-07-27-robots-sitemap-design.md docs/superpowers/plans/2026-07-27-robots-sitemap.md lib/sitemap.ts pages/sitemap.xml.tsx public/robots.txt tests/sitemap.test.ts tests/crawler-files.spec.ts package.json package-lock.json
 npm run test:unit
 npm run build
 npx playwright test --config playwright.production.config.ts
