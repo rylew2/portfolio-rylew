@@ -1,6 +1,18 @@
 {
   "projects": [
     {
+      "title": "Portfolio AI Assistant",
+      "slug": "portfolio-ai-assistant",
+      "date": "2026-07",
+      "description": "A grounded AI assistant for exploring my portfolio, experience, and projects.",
+      "tags": [
+        "react",
+        "javascript",
+        "fullstack"
+      ],
+      "content": "## Overview\n\nThis portfolio includes a floating chat widget that lets a visitor ask about my\nbackground, skills, projects, and book notes without leaving the page. The React\nwidget sends the current message and conversation history to the site's\n`/api/chat` route, where the server builds a prompt grounded in the same\ninformation the portfolio displays.\n\n## Generated portfolio context\n\nThe assistant's context comes from two generated sources. `me/profile.json` is\nthe source for biographical information and is converted into\n`me/summary.txt`. The Markdown files behind the project and book pages are\ncondensed into `me/chat-context.json`. Both generators run before a production\nbuild, so the assistant receives profile and content context maintained in the\nrepository instead of a separate hand-written knowledge base.\n\nThe content generator removes code blocks, image references, and HTML before it\nwrites each item's title, slug, date, description, tags, and condensed body to\nthe context file.\n\n## Keyword-scored retrieval\n\nBefore asking the model for a response, the API uses a small retrieval step to\nchoose detailed project and book context. It lowercases and tokenizes the\nvisitor's query, then scores matches in an item's title, tags, description, and\nbody. Title matches receive the greatest weight, followed by tags,\ndescriptions, and body content.\n\nThe three highest-scoring items are included as detailed context. A direct\ntitle or slug mention selects that item, while list-style requests such as\n\"all projects\" include the full matching collection. Every project and book\nstill appears in the shorter summary section of the prompt.\n\n## Groq chat completion\n\nThe server sends an OpenAI-style chat-completions request to Groq's\nOpenAI-compatible endpoint. The request includes the generated system prompt,\nsanitized conversation history, and current visitor message. The API key stays\non the server; the browser communicates only with the portfolio's internal\nroute.\n\n## API protections\n\nThe merged API hardening keeps the public endpoint intentionally narrow:\n\n- Only `POST` is accepted.\n- Messages and history are trimmed, bounded, and rejected when malformed.\n- History accepts only `user` and `assistant` roles, preventing a visitor from\n injecting a system-role message.\n- A per-client rolling rate limit allows ten attempts in sixty seconds, with\n periodic cleanup and a cap on stored client buckets.\n- Groq requests use a ten-second timeout.\n- Upstream failures and missing configuration return generic visitor-facing\n errors, and malformed or empty model responses are rejected.\n- The system prompt explicitly treats visitor messages and history as\n untrusted data that cannot override its instructions.\n\n## Test coverage\n\nThe Node test suites exercise request boundaries, role validation, aggregate\nhistory limits, rolling-window behavior, client identification, sanitized\nprompt construction, timeout handling, upstream failures, and response\nvalidation. Playwright checks the site's rendered content and accessibility,\nincluding the chat panel in both themes. Focused browser tests also verify that\nthis case-study route is generated and that its screenshot card appears on both\nthe Projects page and homepage."
+    },
+    {
       "title": "Card Game",
       "slug": "cardgame",
       "date": "2023-10",
