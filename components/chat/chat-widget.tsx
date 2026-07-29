@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { ChatButton, ChatContainer } from './chat-launcher.styles';
 import {
-  ChatContainer,
-  ChatButton,
   ChatPanel,
   ChatHeader,
   ChatMessages,
@@ -23,19 +22,29 @@ interface ChatMessage {
 }
 
 const ChatIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    aria-hidden="true"
+  >
     <path d="M18 6L6 18M6 6l12 12" />
   </svg>
 );
 
-const ChatWidget: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface ChatWidgetProps {
+  initiallyOpen?: boolean;
+}
+
+const ChatWidget: React.FC<ChatWidgetProps> = ({ initiallyOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(initiallyOpen);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);

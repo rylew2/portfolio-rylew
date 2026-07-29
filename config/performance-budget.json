@@ -1,0 +1,6 @@
+{
+  "route": "/",
+  "maxInitialJavaScriptGzipKiB": 185,
+  "maxInitialJavaScriptRequests": 9,
+  "maxInitialChunkGzipKiB": 65
+}
