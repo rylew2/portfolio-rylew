@@ -156,6 +156,55 @@ test.describe('chat widget accessibility', () => {
     }
   });
 
+  test('does not steal focus when a loading response completes', async ({
+    page,
+  }) => {
+    let releaseResponse = () => {};
+    const responseGate = new Promise<void>((resolve) => {
+      releaseResponse = resolve;
+    });
+
+    await page.route('**/api/chat', async (route) => {
+      await responseGate;
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ response: 'Response complete.' }),
+      });
+    });
+    await openChat(page);
+
+    const dialog = page.getByRole('dialog', { name: 'Chat with Ryan' });
+    const closeButton = dialog.getByRole('button', { name: 'Close chat' });
+    const input = dialog.getByRole('textbox', { name: 'Your question' });
+    await input.fill('Keep focus stable when the response arrives');
+
+    try {
+      await dialog.getByRole('button', { name: 'Send' }).click();
+      await expect(dialog.getByRole('status')).toBeVisible();
+      await expect(closeButton).toBeFocused();
+
+      releaseResponse();
+      await expect(
+        dialog.getByText('Response complete.', { exact: true })
+      ).toBeVisible();
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Shift+Tab');
+      await expect(input).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Escape');
+      await expect(dialog).toBeHidden();
+      await expect(
+        page.getByRole('button', { name: 'Open chat' })
+      ).toBeFocused();
+    } finally {
+      releaseResponse();
+    }
+  });
+
   test('reopens a loading dialog with focus trapped and Escape available', async ({
     page,
   }) => {
