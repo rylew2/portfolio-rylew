@@ -4,7 +4,11 @@ import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../../components';
 import NotesComponent from '../../../components/notes/notes';
 import categoryJSON from '../../../config/categories.json';
-import { getContentInCategory, ContentListItem } from '../../../lib/content';
+import {
+  getContentInCategory,
+  getContentTaxonomyValues,
+  ContentListItem,
+} from '../../../lib/content';
 
 interface CategoryPageProps {
   content: ContentListItem[];
@@ -25,14 +29,17 @@ const Category = ({ content, title, description }: CategoryPageProps) => {
 };
 
 export const getStaticPaths = async () => {
-  // Get all the tags from the already defined site tags
-  const paths = categoryJSON.map((category) => {
-    return {
-      params: {
-        category: category.category,
-      },
-    };
-  });
+  const bookCategories = new Set(getContentTaxonomyValues('book', 'category'));
+
+  const paths = categoryJSON
+    .filter((category) => bookCategories.has(category.category))
+    .map((category) => {
+      return {
+        params: {
+          category: category.category,
+        },
+      };
+    });
 
   return {
     paths,
