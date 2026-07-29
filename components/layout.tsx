@@ -55,18 +55,14 @@ const Layout = ({
     setTheme((current) => {
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
-      try {
-        window.localStorage.setItem('theme', next);
-      } catch {}
+      try { window.localStorage.setItem('theme', next); } catch {}
       return next;
     });
   };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const storedTheme = window.localStorage.getItem(
-      'theme'
-    ) as ThemeMode | null;
+    const storedTheme = window.localStorage.getItem('theme') as ThemeMode | null;
     const prefersDark =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
