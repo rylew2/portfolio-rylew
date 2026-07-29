@@ -100,4 +100,3 @@ Use TDD for any behavior fix, then repeat the affected checks.
 - [ ] **Step 4: Push and open the PR**
 
 Push `tier1/homepage-hero-cta` and open an unmerged PR against `master`. The PR body must state the exact hero copy, CTA destinations, and verification evidence.
-
