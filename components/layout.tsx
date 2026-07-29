@@ -46,6 +46,10 @@ const Layout = ({
 }: ILayout) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>('light');
+  const resolvedPageTitle =
+    pageTitle === SiteConfig.site.siteName
+      ? SiteConfig.site.siteTitle
+      : pageTitle;
 
   const toggleMenuOpen = () => {
     menuOpen ? setMenuOpen(false) : setMenuOpen(true);
@@ -82,9 +86,9 @@ const Layout = ({
       <MenuContext.Provider value={{ menuOpen, toggleMenuOpen }}>
         <Head>
           <title>
-            {pageTitle === SiteConfig.site.siteTitle
-              ? SiteConfig.site.siteTitle
-              : `${pageTitle} | ${SiteConfig.site.siteTitle}`}
+            {resolvedPageTitle === SiteConfig.site.siteTitle
+              ? resolvedPageTitle
+              : `${resolvedPageTitle} | ${SiteConfig.site.siteTitle}`}
           </title>
           <meta
             name="keywords"
@@ -98,7 +102,11 @@ const Layout = ({
           />
 
           {/* og tags */}
-          <meta property="og:title" content={pageTitle} key="ogtitle" />
+          <meta
+            property="og:title"
+            content={resolvedPageTitle}
+            key="ogtitle"
+          />
           <meta
             property="og:description"
             content={pageDescription || SiteConfig.site.siteDescription}
@@ -122,7 +130,16 @@ const Layout = ({
           />
 
           {/* Twitter Cards */}
-          <meta name="twitter:card" content="summary" key="twcard" />
+          <meta
+            name="twitter:card"
+            content="summary_large_image"
+            key="twcard"
+          />
+          <meta
+            name="twitter:image"
+            content={`${SiteConfig.site.siteUrl}${SiteConfig.site.siteImage}`}
+            key="twimage"
+          />
           <meta
             name="twitter:creator"
             content={SiteConfig.author.twitterHandle}
