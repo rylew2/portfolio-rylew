@@ -16,10 +16,11 @@ npm run build
 npm run performance:check
 ```
 
-The check reads Next.js's production build manifest and caps initial homepage
-JavaScript at 185 KiB gzip across at most nine requests, with no initial chunk
-larger than 65 KiB gzip. These limits protect mobile transfer and parse costs
-without using a Lighthouse score as a flaky CI gate.
+The check reads Next.js's production build manifest, including its
+low-priority build metadata scripts, and caps initial homepage JavaScript at
+185 KiB gzip across at most 13 requests, with no initial chunk larger than 65
+KiB gzip. These limits protect mobile transfer and parse costs without using a
+Lighthouse score as a flaky CI gate.
 
 The chat launcher remains in the initial page, while its interactive
 implementation downloads on first activation. Google Analytics remains loaded

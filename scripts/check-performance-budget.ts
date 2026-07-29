@@ -11,6 +11,7 @@ interface PerformanceBudget {
 
 interface BuildManifest {
   pages: Record<string, string[]>;
+  lowPriorityFiles?: string[];
   polyfillFiles?: string[];
   rootMainFiles?: string[];
 }
@@ -51,6 +52,7 @@ const initialJavaScriptFiles = [
   ...(manifest.rootMainFiles ?? []),
   ...appFiles,
   ...routeFiles,
+  ...(manifest.lowPriorityFiles ?? []),
 ].filter(
   (file, index, files) => file.endsWith('.js') && files.indexOf(file) === index
 );

@@ -34,6 +34,11 @@ const createBuildFixture = () => {
         '/_app': ['static/chunks/shared.js'],
         '/': ['static/chunks/shared.js', 'static/chunks/home.js'],
       },
+      lowPriorityFiles: [
+        'static/build-id/_buildManifest.js',
+        'static/build-id/_ssgManifest.js',
+        'static/build-id/_clientMiddlewareManifest.js',
+      ],
       polyfillFiles: [],
       rootMainFiles: [],
     })
@@ -45,6 +50,20 @@ const createBuildFixture = () => {
   writeFileSync(
     path.join(chunksDir, 'home.js'),
     'const home = "homepage-code";\n'.repeat(20)
+  );
+  const buildMetadataDir = path.join(buildDir, 'static', 'build-id');
+  mkdirSync(buildMetadataDir, { recursive: true });
+  writeFileSync(
+    path.join(buildMetadataDir, '_buildManifest.js'),
+    'self.__BUILD_MANIFEST = {};\n'
+  );
+  writeFileSync(
+    path.join(buildMetadataDir, '_ssgManifest.js'),
+    'self.__SSG_MANIFEST = new Set();\n'
+  );
+  writeFileSync(
+    path.join(buildMetadataDir, '_clientMiddlewareManifest.js'),
+    'self.__MIDDLEWARE_MANIFEST = [];\n'
   );
 
   return { fixtureRoot, buildDir };
@@ -79,13 +98,31 @@ test('passes when initial JavaScript stays within every configured budget', () =
     const result = runChecker(buildDir, {
       route: '/',
       maxInitialJavaScriptGzipKiB: 10,
-      maxInitialJavaScriptRequests: 2,
+      maxInitialJavaScriptRequests: 5,
       maxInitialChunkGzipKiB: 10,
     });
 
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /Performance budget passed for \//);
-    assert.match(result.stdout, /initial JavaScript requests: 2 \/ 2/);
+    assert.match(result.stdout, /initial JavaScript requests: 5 \/ 5/);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test('fails when low-priority initial scripts push the request count over budget', () => {
+  const { fixtureRoot, buildDir } = createBuildFixture();
+
+  try {
+    const result = runChecker(buildDir, {
+      route: '/',
+      maxInitialJavaScriptGzipKiB: 10,
+      maxInitialJavaScriptRequests: 4,
+      maxInitialChunkGzipKiB: 10,
+    });
+
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /initial JavaScript requests: 5 \/ 4/);
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
