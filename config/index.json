@@ -8,9 +8,9 @@
   "site": {
     "siteUrl": "https://www.rylew.dev",
     "siteName": "Ryan Lewis Portfolio",
-    "siteTitle": "Ryan Lewis Portfolio",
-    "siteDescription": "Ryan Lewis Portfolio",
-    "keywords": "JavaScript, NextJS, Software Engineer, React, ReactJS Engineer San Francisco, Ryan Lewis",
-    "siteImage": "/Logo.png"
+    "siteTitle": "Ryan Lewis | Senior Software Engineer",
+    "siteDescription": "Senior software engineer in Brooklyn building accessible, maintainable web applications with React, TypeScript, Python, and Node.js.",
+    "keywords": "Ryan Lewis, Senior Software Engineer, Brooklyn, New York, React, TypeScript, Python, Node.js, Accessible Web Applications, Maintainable Web Applications",
+    "siteImage": "/images/social-preview.png"
   }
 }

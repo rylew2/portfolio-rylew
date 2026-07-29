@@ -55,14 +55,18 @@ const Layout = ({
     setTheme((current) => {
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
-      try { window.localStorage.setItem('theme', next); } catch {}
+      try {
+        window.localStorage.setItem('theme', next);
+      } catch {}
       return next;
     });
   };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const storedTheme = window.localStorage.getItem('theme') as ThemeMode | null;
+    const storedTheme = window.localStorage.getItem(
+      'theme'
+    ) as ThemeMode | null;
     const prefersDark =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -82,7 +86,7 @@ const Layout = ({
       <MenuContext.Provider value={{ menuOpen, toggleMenuOpen }}>
         <Head>
           <title>
-            {pageTitle === SiteConfig.site.siteTitle
+            {pageTitle === SiteConfig.site.siteName
               ? SiteConfig.site.siteTitle
               : `${pageTitle} | ${SiteConfig.site.siteTitle}`}
           </title>
@@ -122,7 +126,16 @@ const Layout = ({
           />
 
           {/* Twitter Cards */}
-          <meta name="twitter:card" content="summary" key="twcard" />
+          <meta
+            name="twitter:card"
+            content="summary_large_image"
+            key="twcard"
+          />
+          <meta
+            name="twitter:image"
+            content={`${SiteConfig.site.siteUrl}${SiteConfig.site.siteImage}`}
+            key="twimage"
+          />
           <meta
             name="twitter:creator"
             content={SiteConfig.author.twitterHandle}
