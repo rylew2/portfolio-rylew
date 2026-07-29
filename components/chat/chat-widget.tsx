@@ -41,13 +41,18 @@ const ChatWidget: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const wasOpenRef = useRef(false);
 
   // Scroll to bottom when messages change
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)')
+      .matches
+      ? 'auto'
+      : 'smooth';
+    messagesEndRef.current?.scrollIntoView({ behavior });
   }, [messages, isLoading]);
 
   // Move focus into the dialog on open and return it to the launcher on close.
@@ -105,6 +110,7 @@ const ChatWidget: React.FC = () => {
     const userMessage: ChatMessage = { role: 'user', content: trimmedInput };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    closeButtonRef.current?.focus();
     setIsLoading(true);
 
     try {
@@ -161,6 +167,7 @@ const ChatWidget: React.FC = () => {
           <ChatHeader>
             <h3 id="chat-dialog-title">Chat with Ryan</h3>
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close chat"

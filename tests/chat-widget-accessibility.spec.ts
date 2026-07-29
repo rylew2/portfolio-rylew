@@ -112,6 +112,50 @@ test.describe('chat widget accessibility', () => {
     ).toBeVisible();
   });
 
+  test('keeps focus trapped and Escape available while loading', async ({
+    page,
+  }) => {
+    let releaseResponse = () => {};
+    const responseGate = new Promise<void>((resolve) => {
+      releaseResponse = resolve;
+    });
+
+    await page.route('**/api/chat', async (route) => {
+      await responseGate;
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ response: 'Done.' }),
+      });
+    });
+    await openChat(page);
+
+    const dialog = page.getByRole('dialog', { name: 'Chat with Ryan' });
+    const closeButton = dialog.getByRole('button', { name: 'Close chat' });
+    await dialog
+      .getByRole('textbox', { name: 'Your question' })
+      .fill('Keep keyboard focus safe');
+
+    try {
+      await dialog.getByRole('button', { name: 'Send' }).click();
+      await expect(dialog.getByRole('status')).toBeVisible();
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(closeButton).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Escape');
+      await expect(dialog).toBeHidden();
+      await expect(
+        page.getByRole('button', { name: 'Open chat' })
+      ).toBeFocused();
+    } finally {
+      releaseResponse();
+    }
+  });
+
   test('uses third-person assistant and error copy', async ({ page }) => {
     await page.route('**/api/chat', async (route) => {
       await route.fulfill({
@@ -194,6 +238,66 @@ test.describe('chat widget accessibility', () => {
     await expect(
       dialog.getByRole('status').locator('span[aria-hidden="true"]').first()
     ).toHaveCSS('animation-name', 'none');
+  });
+
+  test('uses non-smooth scrolling when reduced motion is requested', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.addInitScript(() => {
+      const testWindow = window as Window & {
+        __chatScrollBehaviors: ScrollBehavior[];
+      };
+      testWindow.__chatScrollBehaviors = [];
+      Element.prototype.scrollIntoView = function (
+        options?: boolean | ScrollIntoViewOptions
+      ) {
+        testWindow.__chatScrollBehaviors.push(
+          typeof options === 'object' && options.behavior
+            ? options.behavior
+            : 'auto'
+        );
+      };
+    });
+    await page.route('**/api/chat', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ response: 'Reduced motion respected.' }),
+      });
+    });
+    await openChat(page);
+
+    const dialog = page.getByRole('dialog', { name: 'Chat with Ryan' });
+    await dialog
+      .getByRole('textbox', { name: 'Your question' })
+      .fill('How should messages scroll?');
+    await dialog.getByRole('button', { name: 'Send' }).click();
+    await expect(
+      dialog.getByText('Reduced motion respected.', { exact: true })
+    ).toBeVisible();
+
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            (
+              window as Window & {
+                __chatScrollBehaviors: ScrollBehavior[];
+              }
+            ).__chatScrollBehaviors.length
+        )
+      )
+      .toBeGreaterThan(0);
+    const scrollBehaviors = await page.evaluate(
+      () =>
+        (
+          window as Window & {
+            __chatScrollBehaviors: ScrollBehavior[];
+          }
+        ).__chatScrollBehaviors
+    );
+    expect(scrollBehaviors.every((behavior) => behavior === 'auto')).toBe(true);
   });
 
   test('has no serious axe violations while open', async ({ page }) => {
