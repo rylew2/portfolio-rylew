@@ -20,9 +20,7 @@ const HomeHeader = () => (
           <a className="primary" href="/projects">
             View projects
           </a>
-          {profile.links.resume && (
-            <a href={profile.links.resume}>Resume</a>
-          )}
+          {profile.links.resume && <a href={profile.links.resume}>Resume</a>}
           <a href={`mailto:${profile.links.email}`}>Contact</a>
         </nav>
       </div>
