@@ -156,6 +156,62 @@ test.describe('chat widget accessibility', () => {
     }
   });
 
+  test('reopens a loading dialog with focus trapped and Escape available', async ({
+    page,
+  }) => {
+    let releaseResponse = () => {};
+    const responseGate = new Promise<void>((resolve) => {
+      releaseResponse = resolve;
+    });
+
+    await page.route('**/api/chat', async (route) => {
+      await responseGate;
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ response: 'Done.' }),
+      });
+    });
+    await openChat(page);
+
+    let dialog = page.getByRole('dialog', { name: 'Chat with Ryan' });
+    await dialog
+      .getByRole('textbox', { name: 'Your question' })
+      .fill('Keep loading while the dialog reopens');
+
+    try {
+      await dialog.getByRole('button', { name: 'Send' }).click();
+      await expect(dialog.getByRole('status')).toBeVisible();
+
+      await page.keyboard.press('Escape');
+      await expect(dialog).toBeHidden();
+      const launcher = page.getByRole('button', { name: 'Open chat' });
+      await expect(launcher).toBeFocused();
+      await launcher.click();
+
+      dialog = page.getByRole('dialog', { name: 'Chat with Ryan' });
+      const closeButton = dialog.getByRole('button', { name: 'Close chat' });
+      await expect(dialog.getByRole('status')).toBeVisible();
+      await expect(
+        dialog.getByRole('textbox', { name: 'Your question' })
+      ).toBeDisabled();
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(closeButton).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(closeButton).toBeFocused();
+
+      await page.keyboard.press('Escape');
+      await expect(dialog).toBeHidden();
+      await expect(
+        page.getByRole('button', { name: 'Open chat' })
+      ).toBeFocused();
+    } finally {
+      releaseResponse();
+    }
+  });
+
   test('uses third-person assistant and error copy', async ({ page }) => {
     await page.route('**/api/chat', async (route) => {
       await route.fulfill({

@@ -58,13 +58,16 @@ const ChatWidget: React.FC = () => {
   // Move focus into the dialog on open and return it to the launcher on close.
   useEffect(() => {
     if (isOpen) {
-      inputRef.current?.focus();
+      const input = inputRef.current;
+      const initialFocusTarget =
+        isLoading || input?.disabled ? closeButtonRef.current : input;
+      initialFocusTarget?.focus();
       wasOpenRef.current = true;
     } else if (wasOpenRef.current) {
       launcherRef.current?.focus();
       wasOpenRef.current = false;
     }
-  }, [isOpen]);
+  }, [isLoading, isOpen]);
 
   const handleDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {
