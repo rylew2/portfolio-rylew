@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Unit tests
+        run: npm run test:unit
+
       # Runs prebuild (generate:context via tsx) + `next build`, which
       # type-checks the project. The e2e workflow only runs `next dev`, so
       # type/build/prebuild errors (e.g. the TypeScript 6 upgrade) are invisible

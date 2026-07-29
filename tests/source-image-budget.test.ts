@@ -12,6 +12,8 @@ const sourceImages = [
     width: 460,
     height: 607,
     channels: 4,
+    hasAlpha: true,
+    alphaRange: { min: 255, max: 255 },
   },
   {
     path: 'public/images/book/managersPath/managerspath.png',
@@ -20,6 +22,8 @@ const sourceImages = [
     width: 668,
     height: 972,
     channels: 4,
+    hasAlpha: true,
+    alphaRange: { min: 255, max: 255 },
   },
   {
     path: 'public/images/project/sensecourse/demo.jpg',
@@ -28,15 +32,17 @@ const sourceImages = [
     width: 1893,
     height: 1013,
     channels: 3,
+    hasAlpha: false,
   },
 ] as const;
 
 test('source images stay within their byte and metadata budgets', async () => {
   for (const image of sourceImages) {
     const absolutePath = path.join(process.cwd(), image.path);
-    const [file, metadata] = await Promise.all([
+    const [file, metadata, stats] = await Promise.all([
       stat(absolutePath),
       sharp(absolutePath).metadata(),
+      sharp(absolutePath).stats(),
     ]);
 
     assert.ok(
@@ -51,5 +57,26 @@ test('source images stay within their byte and metadata budgets', async () => {
       image.channels,
       `${image.path} channel count changed`
     );
+    assert.equal(
+      metadata.hasAlpha,
+      image.hasAlpha,
+      `${image.path} alpha presence changed`
+    );
+
+    if ('alphaRange' in image) {
+      const alpha = stats.channels.at(-1);
+      assert.ok(alpha, `${image.path} alpha channel is missing`);
+      assert.equal(
+        alpha.min,
+        image.alphaRange.min,
+        `${image.path} minimum alpha changed`
+      );
+      assert.equal(
+        alpha.max,
+        image.alphaRange.max,
+        `${image.path} maximum alpha changed`
+      );
+      assert.equal(stats.isOpaque, true, `${image.path} is no longer opaque`);
+    }
   }
 });
