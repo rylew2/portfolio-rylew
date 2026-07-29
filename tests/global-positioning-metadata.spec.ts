@@ -13,6 +13,10 @@ test('homepage exposes accurate global positioning and a large social preview', 
   await page.goto('/');
 
   await expect(page).toHaveTitle(GLOBAL_TITLE);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    'content',
+    GLOBAL_TITLE
+  );
   await expect(page.locator('meta[name="description"]')).toHaveAttribute(
     'content',
     GLOBAL_DESCRIPTION
