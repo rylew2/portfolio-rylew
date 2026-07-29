@@ -73,7 +73,7 @@ test.describe('chat widget accessibility', () => {
     await expect(input).toHaveJSProperty('tagName', 'TEXTAREA');
     await expect(dialog.getByText('0 / 1000', { exact: true })).toBeVisible();
 
-    await input.fill('Twelve chars!');
+    await input.fill('Twelve chars');
 
     await expect(dialog.getByText('12 / 1000', { exact: true })).toBeVisible();
   });
@@ -191,10 +191,9 @@ test.describe('chat widget accessibility', () => {
       .fill('Motion preference');
     await dialog.getByRole('button', { name: 'Send' }).click();
 
-    await expect(dialog.getByRole('status').locator('span').first()).toHaveCSS(
-      'animation-name',
-      'none'
-    );
+    await expect(
+      dialog.getByRole('status').locator('span[aria-hidden="true"]').first()
+    ).toHaveCSS('animation-name', 'none');
   });
 
   test('has no serious axe violations while open', async ({ page }) => {

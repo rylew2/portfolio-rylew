@@ -8,9 +8,13 @@ import {
   Message,
   WelcomeMessage,
   ChatInputContainer,
+  ChatInputFields,
+  ChatInputLabel,
   ChatInput,
+  CharacterCount,
   SendButton,
   LoadingDots,
+  LoadingStatusText,
 } from './chat-widget.styles';
 
 interface ChatMessage {
@@ -38,7 +42,7 @@ const ChatWidget: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const wasOpenRef = useRef(false);
 
   // Scroll to bottom when messages change
@@ -121,7 +125,7 @@ const ChatWidget: React.FC = () => {
           {
             role: 'assistant',
             content:
-              "Sorry, I'm having trouble connecting right now. Please try again or reach out to me directly via email!",
+              "Sorry, Ryan's AI assistant is having trouble connecting right now. Please try again or contact Ryan directly via email.",
           },
         ]);
       } else {
@@ -136,7 +140,7 @@ const ChatWidget: React.FC = () => {
         {
           role: 'assistant',
           content:
-            'Sorry, something went wrong. Please try again or reach out to me directly via email!',
+            "Sorry, Ryan's AI assistant could not complete that request. Please try again or contact Ryan directly via email.",
         },
       ]);
     } finally {
@@ -165,15 +169,20 @@ const ChatWidget: React.FC = () => {
             </button>
           </ChatHeader>
 
-          <ChatMessages>
+          <ChatMessages
+            role="log"
+            aria-label="Chat messages"
+            aria-live="polite"
+            aria-relevant="additions text"
+          >
             {messages.length === 0 && (
               <WelcomeMessage>
                 <p>
-                  <strong>Hi there!</strong>
+                  <strong>Hello!</strong>
                 </p>
                 <p>
-                  I'm an AI assistant representing Ryan. Ask me about his
-                  projects, skills, experience, or anything else!
+                  This AI assistant represents Ryan and can answer questions
+                  about his projects, skills, and experience.
                 </p>
               </WelcomeMessage>
             )}
@@ -183,25 +192,38 @@ const ChatWidget: React.FC = () => {
               </Message>
             ))}
             {isLoading && (
-              <LoadingDots>
-                <span />
-                <span />
-                <span />
+              <LoadingDots role="status">
+                <LoadingStatusText>
+                  Ryan&apos;s AI assistant is responding
+                </LoadingStatusText>
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
               </LoadingDots>
             )}
             <div ref={messagesEndRef} />
           </ChatMessages>
 
           <ChatInputContainer onSubmit={handleSubmit}>
-            <ChatInput
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type a message..."
-              aria-label="Your question"
-              disabled={isLoading}
-            />
+            <ChatInputFields>
+              <ChatInputLabel htmlFor="chat-question">
+                Your question
+              </ChatInputLabel>
+              <ChatInput
+                ref={inputRef}
+                id="chat-question"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message..."
+                maxLength={1000}
+                aria-describedby="chat-question-count"
+                disabled={isLoading}
+                rows={2}
+              />
+              <CharacterCount id="chat-question-count" aria-live="off">
+                {input.length} / 1000
+              </CharacterCount>
+            </ChatInputFields>
             <SendButton type="submit" disabled={isLoading || !input.trim()}>
               Send
             </SendButton>
