@@ -117,4 +117,3 @@ Use TDD for behavior corrections and repeat affected checks.
 - [ ] **Step 4: Push and open the PR**
 
 Push `tier1/positioning-social-preview` and open an unmerged PR against `master`. The PR body must state that canonical and route-specific metadata remain intentionally out of scope and include exact verification evidence.
-
