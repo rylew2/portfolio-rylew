@@ -15,6 +15,7 @@ const projectDirectory = path.join(process.cwd(), 'content', 'project');
 const bookDirectory = path.join(process.cwd(), 'content', 'book');
 
 type IContentType = 'book' | 'project';
+type ContentTaxonomy = 'tags' | 'category';
 
 // Interface for content list items (used in listings)
 export interface ContentListItem {
@@ -148,7 +149,9 @@ export const getContentData = async (id: string, contentType: IContentType) => {
  * @param {string} contentType Type of content
  * For the landing page of each subpage - called from book/project.tsx getStaticProps
  */
-export const getContentList = (contentType: IContentType): ContentListItem[] => {
+export const getContentList = (
+  contentType: IContentType
+): ContentListItem[] => {
   let contentFiles: string[];
   let contentDir: string;
 
@@ -184,12 +187,28 @@ export const getContentList = (contentType: IContentType): ContentListItem[] => 
   return content.sort(sortByDate);
 };
 
+export const getContentTaxonomyValues = (
+  contentType: IContentType,
+  taxonomy: ContentTaxonomy
+): string[] => {
+  const content = getContentList(contentType);
+  const values =
+    taxonomy === 'tags'
+      ? content.flatMap((item) => item.tags ?? [])
+      : content.flatMap((item) => (item.category ? [item.category] : []));
+
+  return [...new Set(values)];
+};
+
 /**
  * Get content type with particular tag
  * @param {string} tag - tag to filter by
  * called from [id].tsx getStaticPaths
  */
-export const getContentWithTag = (tag: string, contentType: IContentType): ContentListItem[] => {
+export const getContentWithTag = (
+  tag: string,
+  contentType: IContentType
+): ContentListItem[] => {
   let contentDir: string | undefined;
   let contentFiles: string[];
 
