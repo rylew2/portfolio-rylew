@@ -36,19 +36,61 @@ const ChatWidget: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const wasOpenRef = useRef(false);
 
   // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Focus input when panel opens
+  // Move focus into the dialog on open and return it to the launcher on close.
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus();
+      wasOpenRef.current = true;
+    } else if (wasOpenRef.current) {
+      launcherRef.current?.focus();
+      wasOpenRef.current = false;
     }
   }, [isOpen]);
+
+  const handleDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setIsOpen(false);
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = Array.from(
+      dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button:not(:disabled), input:not(:disabled), textarea:not(:disabled), [href], [tabindex]:not([tabindex="-1"])'
+      ) ?? []
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    const activeElement = document.activeElement;
+
+    if (
+      event.shiftKey &&
+      (activeElement === firstElement ||
+        !dialogRef.current?.contains(activeElement))
+    ) {
+      event.preventDefault();
+      lastElement?.focus();
+    } else if (
+      !event.shiftKey &&
+      (activeElement === lastElement ||
+        !dialogRef.current?.contains(activeElement))
+    ) {
+      event.preventDefault();
+      firstElement?.focus();
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +136,7 @@ const ChatWidget: React.FC = () => {
         {
           role: 'assistant',
           content:
-            "Sorry, something went wrong. Please try again or reach out to me directly via email!",
+            'Sorry, something went wrong. Please try again or reach out to me directly via email!',
         },
       ]);
     } finally {
@@ -105,10 +147,20 @@ const ChatWidget: React.FC = () => {
   return (
     <ChatContainer>
       {isOpen && (
-        <ChatPanel>
+        <ChatPanel
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="chat-dialog-title"
+          onKeyDown={handleDialogKeyDown}
+        >
           <ChatHeader>
-            <h3>Chat with Ryan</h3>
-            <button onClick={() => setIsOpen(false)} aria-label="Close chat">
+            <h3 id="chat-dialog-title">Chat with Ryan</h3>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close chat"
+            >
               <CloseIcon />
             </button>
           </ChatHeader>
@@ -147,6 +199,7 @@ const ChatWidget: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a message..."
+              aria-label="Your question"
               disabled={isLoading}
             />
             <SendButton type="submit" disabled={isLoading || !input.trim()}>
@@ -156,12 +209,15 @@ const ChatWidget: React.FC = () => {
         </ChatPanel>
       )}
 
-      <ChatButton
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat'}
-      >
-        <ChatIcon />
-      </ChatButton>
+      {!isOpen && (
+        <ChatButton
+          ref={launcherRef}
+          onClick={() => setIsOpen(true)}
+          aria-label="Open chat"
+        >
+          <ChatIcon />
+        </ChatButton>
+      )}
     </ChatContainer>
   );
 };
