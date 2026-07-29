@@ -8,9 +8,13 @@ import {
   Message,
   WelcomeMessage,
   ChatInputContainer,
+  ChatInputFields,
+  ChatInputLabel,
   ChatInput,
+  CharacterCount,
   SendButton,
   LoadingDots,
+  LoadingStatusText,
 } from './chat-widget.styles';
 
 interface ChatMessage {
@@ -36,19 +40,82 @@ const ChatWidget: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const wasOpenRef = useRef(false);
 
   // Scroll to bottom when messages change
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)')
+      .matches
+      ? 'auto'
+      : 'smooth';
+    messagesEndRef.current?.scrollIntoView({ behavior });
   }, [messages, isLoading]);
 
-  // Focus input when panel opens
+  // Move focus into the dialog on open and return it to the launcher on close.
   useEffect(() => {
-    if (isOpen) {
-      inputRef.current?.focus();
+    if (isOpen && !wasOpenRef.current) {
+      const input = inputRef.current;
+      const initialFocusTarget =
+        isLoading || input?.disabled ? closeButtonRef.current : input;
+      initialFocusTarget?.focus();
+      wasOpenRef.current = true;
+    } else if (!isOpen && wasOpenRef.current) {
+      launcherRef.current?.focus();
+      wasOpenRef.current = false;
     }
-  }, [isOpen]);
+  }, [isLoading, isOpen]);
+
+  const handleDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setIsOpen(false);
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = Array.from(
+      dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button:not(:disabled), input:not(:disabled), textarea:not(:disabled), [href], [tabindex]:not([tabindex="-1"])'
+      ) ?? []
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    const activeElement = document.activeElement;
+
+    if (
+      event.shiftKey &&
+      (activeElement === firstElement ||
+        !dialogRef.current?.contains(activeElement))
+    ) {
+      event.preventDefault();
+      lastElement?.focus();
+    } else if (
+      !event.shiftKey &&
+      (activeElement === lastElement ||
+        !dialogRef.current?.contains(activeElement))
+    ) {
+      event.preventDefault();
+      firstElement?.focus();
+    }
+  };
+
+  const handleInputKeyDown = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
+    if (
+      event.key === 'Enter' &&
+      !event.shiftKey &&
+      !event.nativeEvent.isComposing
+    ) {
+      event.preventDefault();
+      event.currentTarget.form?.requestSubmit();
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,6 +126,7 @@ const ChatWidget: React.FC = () => {
     const userMessage: ChatMessage = { role: 'user', content: trimmedInput };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    closeButtonRef.current?.focus();
     setIsLoading(true);
 
     try {
@@ -79,7 +147,7 @@ const ChatWidget: React.FC = () => {
           {
             role: 'assistant',
             content:
-              "Sorry, I'm having trouble connecting right now. Please try again or reach out to me directly via email!",
+              "Sorry, Ryan's AI assistant is having trouble connecting right now. Please try again or contact Ryan directly via email.",
           },
         ]);
       } else {
@@ -94,7 +162,7 @@ const ChatWidget: React.FC = () => {
         {
           role: 'assistant',
           content:
-            "Sorry, something went wrong. Please try again or reach out to me directly via email!",
+            "Sorry, Ryan's AI assistant could not complete that request. Please try again or contact Ryan directly via email.",
         },
       ]);
     } finally {
@@ -105,23 +173,39 @@ const ChatWidget: React.FC = () => {
   return (
     <ChatContainer>
       {isOpen && (
-        <ChatPanel>
+        <ChatPanel
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="chat-dialog-title"
+          onKeyDown={handleDialogKeyDown}
+        >
           <ChatHeader>
-            <h3>Chat with Ryan</h3>
-            <button onClick={() => setIsOpen(false)} aria-label="Close chat">
+            <h3 id="chat-dialog-title">Chat with Ryan</h3>
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close chat"
+            >
               <CloseIcon />
             </button>
           </ChatHeader>
 
-          <ChatMessages>
+          <ChatMessages
+            role="log"
+            aria-label="Chat messages"
+            aria-live="polite"
+            aria-relevant="additions text"
+          >
             {messages.length === 0 && (
               <WelcomeMessage>
                 <p>
-                  <strong>Hi there!</strong>
+                  <strong>Hello!</strong>
                 </p>
                 <p>
-                  I'm an AI assistant representing Ryan. Ask me about his
-                  projects, skills, experience, or anything else!
+                  This AI assistant represents Ryan and can answer questions
+                  about his projects, skills, and experience.
                 </p>
               </WelcomeMessage>
             )}
@@ -131,24 +215,39 @@ const ChatWidget: React.FC = () => {
               </Message>
             ))}
             {isLoading && (
-              <LoadingDots>
-                <span />
-                <span />
-                <span />
+              <LoadingDots role="status">
+                <LoadingStatusText>
+                  Ryan&apos;s AI assistant is responding
+                </LoadingStatusText>
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
               </LoadingDots>
             )}
             <div ref={messagesEndRef} />
           </ChatMessages>
 
           <ChatInputContainer onSubmit={handleSubmit}>
-            <ChatInput
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type a message..."
-              disabled={isLoading}
-            />
+            <ChatInputFields>
+              <ChatInputLabel htmlFor="chat-question">
+                Your question
+              </ChatInputLabel>
+              <ChatInput
+                ref={inputRef}
+                id="chat-question"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleInputKeyDown}
+                placeholder="Type a message..."
+                maxLength={1000}
+                aria-describedby="chat-question-count"
+                disabled={isLoading}
+                rows={2}
+              />
+              <CharacterCount id="chat-question-count" aria-live="off">
+                {input.length} / 1000
+              </CharacterCount>
+            </ChatInputFields>
             <SendButton type="submit" disabled={isLoading || !input.trim()}>
               Send
             </SendButton>
@@ -156,12 +255,15 @@ const ChatWidget: React.FC = () => {
         </ChatPanel>
       )}
 
-      <ChatButton
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat'}
-      >
-        <ChatIcon />
-      </ChatButton>
+      {!isOpen && (
+        <ChatButton
+          ref={launcherRef}
+          onClick={() => setIsOpen(true)}
+          aria-label="Open chat"
+        >
+          <ChatIcon />
+        </ChatButton>
+      )}
     </ChatContainer>
   );
 };

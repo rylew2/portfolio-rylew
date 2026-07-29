@@ -24,7 +24,8 @@ export const ChatButton = styled.button`
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform var(--transition-duration, 0.25s)
+  transition:
+    transform var(--transition-duration, 0.25s)
       var(--transition-timing-function, cubic-bezier(0.16, 1, 0.3, 1)),
     box-shadow var(--transition-duration, 0.25s)
       var(--transition-timing-function, cubic-bezier(0.16, 1, 0.3, 1));
@@ -59,7 +60,8 @@ export const ChatPanel = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: slideUp 0.25s var(--transition-timing-function, cubic-bezier(0.16, 1, 0.3, 1));
+  animation: slideUp 0.25s
+    var(--transition-timing-function, cubic-bezier(0.16, 1, 0.3, 1));
 
   @keyframes slideUp {
     from {
@@ -81,6 +83,10 @@ export const ChatPanel = styled.div`
     height: 100%;
     max-height: 100vh;
     border-radius: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 `;
 
@@ -143,6 +149,7 @@ export const Message = styled.div<{ isUser: boolean }>`
   font-size: 0.9rem;
   line-height: 1.4;
   word-wrap: break-word;
+  white-space: pre-wrap;
   align-self: ${(props) => (props.isUser ? 'flex-end' : 'flex-start')};
   background: ${(props) => (props.isUser ? 'var(--chat-header-bg, #154475)' : 'var(--surface, #ffffff)')};
   color: ${(props) => (props.isUser ? 'white' : 'var(--text-color, #161b2f)')};
@@ -167,14 +174,32 @@ export const WelcomeMessage = styled.div`
 
 export const ChatInputContainer = styled.form`
   display: flex;
+  align-items: flex-end;
   gap: 8px;
   padding: 12px 16px;
   border-top: 1px solid var(--border-color, #e9ecef);
   background: var(--surface, white);
 `;
 
-export const ChatInput = styled.input`
+export const ChatInputFields = styled.div`
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const ChatInputLabel = styled.label`
+  color: var(--text-color, #161b2f);
+  font-size: 0.8rem;
+  font-weight: 600;
+`;
+
+export const ChatInput = styled.textarea`
+  width: 100%;
+  min-height: 42px;
+  max-height: 96px;
+  resize: vertical;
   padding: 10px 14px;
   border: 1px solid var(--border-color, #dee2e6);
   border-radius: 8px;
@@ -182,7 +207,9 @@ export const ChatInput = styled.input`
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   background: var(--surface-muted, #f8f9fa);
   color: var(--text-color, #161b2f);
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 
   &::placeholder {
     color: var(--text-color-dark, #777);
@@ -200,6 +227,12 @@ export const ChatInput = styled.input`
   }
 `;
 
+export const CharacterCount = styled.span`
+  align-self: flex-end;
+  color: var(--text-color-dark, #777);
+  font-size: 0.75rem;
+`;
+
 export const SendButton = styled.button`
   padding: 10px 16px;
   background: var(--chat-header-bg, #154475);
@@ -210,7 +243,10 @@ export const SendButton = styled.button`
   font-size: 0.9rem;
   font-weight: 600;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  transition: background 0.2s, transform 0.1s, filter 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.1s,
+    filter 0.2s;
 
   &:hover:not(:disabled) {
     filter: brightness(1.15);
@@ -235,7 +271,7 @@ export const LoadingDots = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   align-self: flex-start;
 
-  span {
+  span[aria-hidden='true'] {
     width: 8px;
     height: 8px;
     background: var(--prim-color, #154475);
@@ -263,4 +299,22 @@ export const LoadingDots = styled.div`
       transform: translateY(-6px);
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    span[aria-hidden='true'] {
+      animation: none;
+    }
+  }
+`;
+
+export const LoadingStatusText = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 `;
