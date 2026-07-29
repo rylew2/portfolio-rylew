@@ -26,9 +26,11 @@
 ### Task 1: Add failing interaction and semantics coverage
 
 **Files:**
+
 - Create: `tests/chat-widget-accessibility.spec.ts`
 
 **Interfaces:**
+
 - Consumes: the chat launcher and open panel on `/`
 - Produces: regression coverage for dialog semantics, keyboard behavior, composer constraints, announcements, and copy
 
@@ -49,10 +51,12 @@ Commit only the focused tests with a message describing the chat accessibility c
 ### Task 2: Implement dialog and keyboard behavior
 
 **Files:**
+
 - Modify: `components/chat/chat-widget.tsx`
 - Test: `tests/chat-widget-accessibility.spec.ts`
 
 **Interfaces:**
+
 - Consumes: the existing `isOpen` state and current launcher/input controls
 - Produces: labelled modal-dialog semantics, trapped focus, Escape dismissal, and focus restoration
 
@@ -79,11 +83,13 @@ Commit the focused dialog and keyboard implementation.
 ### Task 3: Improve the composer, announcements, copy, and motion
 
 **Files:**
+
 - Modify: `components/chat/chat-widget.tsx`
 - Modify: `components/chat/chat-widget.styles.ts`
 - Test: `tests/chat-widget-accessibility.spec.ts`
 
 **Interfaces:**
+
 - Consumes: existing message, input, loading, and error state
 - Produces: a bounded labelled composer, targeted live updates, preserved line breaks, reduced motion, and third-person copy
 
@@ -114,9 +120,11 @@ Commit the component, style, and focused test changes.
 ### Task 4: Verify and open an unmerged PR
 
 **Files:**
+
 - Modify only if verification exposes a defect in this PR's scope
 
 **Interfaces:**
+
 - Consumes: the completed chat branch
 - Produces: a pushed branch and open PR targeting `master`
 
