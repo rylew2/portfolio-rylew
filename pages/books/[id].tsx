@@ -27,7 +27,7 @@ const Book = ({ bookData }: { bookData: IContentData }) => {
           {bookData.tags && <Chips items={bookData.tags} />}
           {bookData.previewImage && (
             <Image
-              alt="bookimage"
+              alt={`${title} book cover`}
               src={bookData.previewImage}
               height={550}
               width={1200}
