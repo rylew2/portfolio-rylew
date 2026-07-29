@@ -16,6 +16,10 @@ import {
   LoadingDots,
   LoadingStatusText,
 } from './chat-widget.styles';
+import {
+  CONVERSION_EVENTS,
+  trackConversion,
+} from '../../lib/conversion-analytics';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -155,6 +159,9 @@ const ChatWidget: React.FC = () => {
           ...prev,
           { role: 'assistant', content: data.response },
         ]);
+        if (response.ok) {
+          trackConversion(CONVERSION_EVENTS.chatSubmitSuccess);
+        }
       }
     } catch {
       setMessages((prev) => [
@@ -258,7 +265,10 @@ const ChatWidget: React.FC = () => {
       {!isOpen && (
         <ChatButton
           ref={launcherRef}
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            trackConversion(CONVERSION_EVENTS.chatOpen);
+            setIsOpen(true);
+          }}
           aria-label="Open chat"
         >
           <ChatIcon />

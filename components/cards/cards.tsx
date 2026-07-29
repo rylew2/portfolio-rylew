@@ -4,6 +4,10 @@ import React from 'react';
 import { StyledCards } from '../styles/cards.styles';
 import { useRouter } from 'next/router';
 import { ContentListItem } from '../../lib/content';
+import {
+  CONVERSION_EVENTS,
+  trackConversion,
+} from '../../lib/conversion-analytics';
 
 interface CardsProps {
   data: ContentListItem[];
@@ -42,6 +46,16 @@ const Cards = ({ data }: CardsProps) => {
               href={`/${singleCard.path}/[id]`}
               as={`/${singleCard.path}/${singleCard.slug}`}
               className="card-link"
+              onClick={
+                singleCard.path === 'projects' && singleCard.slug
+                  ? () =>
+                      trackConversion(CONVERSION_EVENTS.projectVisit, {
+                        destination: 'detail',
+                        location: 'card',
+                        project_slug: singleCard.slug!,
+                      })
+                  : undefined
+              }
             >
               <h2>{singleCard.title}</h2>
             </Link>
@@ -103,6 +117,16 @@ function getDemoButtons(singleCard: ContentListItem) {
           rel="noreferrer noopener"
           aria-label={`${singleCard.title} demo`}
           className="card-action a-demo demo"
+          onClick={
+            singleCard.path === 'projects' && singleCard.slug
+              ? () =>
+                  trackConversion(CONVERSION_EVENTS.projectVisit, {
+                    destination: 'demo',
+                    location: 'card',
+                    project_slug: singleCard.slug!,
+                  })
+              : undefined
+          }
         >
           Demo
         </a>
@@ -114,6 +138,16 @@ function getDemoButtons(singleCard: ContentListItem) {
           rel="noreferrer noopener"
           aria-label={`${singleCard.title} source code`}
           className="card-action a-source source"
+          onClick={
+            singleCard.path === 'projects' && singleCard.slug
+              ? () =>
+                  trackConversion(CONVERSION_EVENTS.projectVisit, {
+                    destination: 'source',
+                    location: 'card',
+                    project_slug: singleCard.slug!,
+                  })
+              : undefined
+          }
         >
           Source
         </a>

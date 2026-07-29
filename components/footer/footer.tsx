@@ -6,6 +6,10 @@ import React from 'react';
 import { Container } from '../container';
 import { StyledFooterSection } from '../styles/footer.styles';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import {
+  CONVERSION_EVENTS,
+  trackConversion,
+} from '../../lib/conversion-analytics';
 
 const Footer = () => (
   <>
@@ -22,6 +26,12 @@ const Footer = () => (
               target="_blank"
               rel="noreferrer noopener"
               aria-label="linkedin"
+              onClick={() =>
+                trackConversion(CONVERSION_EVENTS.contactClick, {
+                  channel: 'linkedin',
+                  location: 'footer',
+                })
+              }
             >
               <div className="footerIcon linkedin">
                 <FontAwesomeIcon icon={faLinkedin as IconProp} size="lg" />
@@ -49,6 +59,12 @@ const Footer = () => (
               target="_blank"
               rel="noreferrer noopener"
               aria-label="email"
+              onClick={() =>
+                trackConversion(CONVERSION_EVENTS.contactClick, {
+                  channel: 'email',
+                  location: 'footer',
+                })
+              }
             >
               <div className="footerIcon email envelope">
                 <FontAwesomeIcon icon={faEnvelope as IconProp} size="lg" />

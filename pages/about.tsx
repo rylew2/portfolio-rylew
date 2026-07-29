@@ -2,6 +2,10 @@ import Image from 'next/image';
 import React from 'react';
 import { Container, Layout } from '../components';
 import { StyledAbout } from '../components/styles/about.styles';
+import {
+  CONVERSION_EVENTS,
+  trackConversion,
+} from '../lib/conversion-analytics';
 import { profile } from '../lib/profile';
 
 /**
@@ -57,6 +61,11 @@ const About = () => {
                     href={links.resume}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackConversion(CONVERSION_EVENTS.resumeDownload, {
+                        location: 'about',
+                      })
+                    }
                   >
                     Résumé (PDF)
                   </a>

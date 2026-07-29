@@ -9,6 +9,10 @@ import { Container, Layout } from '../../components';
 import { Chips } from '../../components/chips/chips';
 import { StyledContent } from '../../components/styles/content.styles';
 import { getAllContentIds, getContentData } from '../../lib/content';
+import {
+  CONVERSION_EVENTS,
+  trackConversion,
+} from '../../lib/conversion-analytics';
 import { IContentData } from '../books/[id]';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -48,6 +52,13 @@ const Project = ({ projectData }: ProjectPageProps) => {
                   href={projectData.liveSite}
                   target="_blank"
                   rel="noreferrer noopener"
+                  onClick={() =>
+                    trackConversion(CONVERSION_EVENTS.projectVisit, {
+                      destination: 'demo',
+                      location: 'project_detail',
+                      project_slug: projectData.id,
+                    })
+                  }
                 >
                   <FontAwesomeIcon
                     className="callout-icon demo"
@@ -65,6 +76,13 @@ const Project = ({ projectData }: ProjectPageProps) => {
                   target="_blank"
                   rel="noreferrer noopener"
                   style={{ display: 'inline-block' }}
+                  onClick={() =>
+                    trackConversion(CONVERSION_EVENTS.projectVisit, {
+                      destination: 'source',
+                      location: 'project_detail',
+                      project_slug: projectData.id,
+                    })
+                  }
                 >
                   <FontAwesomeIcon
                     className="callout-icon source"
@@ -106,7 +124,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const projectData: IContentData = await getContentData(params?.id as string, 'project');
+  const projectData: IContentData = await getContentData(
+    params?.id as string,
+    'project'
+  );
 
   return {
     props: {

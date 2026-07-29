@@ -3,6 +3,10 @@ import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { MenuContext, ThemeContext } from '..';
 import SiteConfig from '../../config/index.json';
+import {
+  CONVERSION_EVENTS,
+  trackConversion,
+} from '../../lib/conversion-analytics';
 import { profile } from '../../lib/profile';
 import { Container } from '../container';
 import Logo from '../logo';
@@ -75,6 +79,15 @@ const Nav = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="navLinkAnchor"
+                        onClick={
+                          item.title === 'Resume'
+                            ? () =>
+                                trackConversion(
+                                  CONVERSION_EVENTS.resumeDownload,
+                                  { location: 'navigation' }
+                                )
+                            : undefined
+                        }
                       >
                         {item.title}
                       </a>
