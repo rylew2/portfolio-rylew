@@ -78,6 +78,42 @@ test.describe('chat widget accessibility', () => {
     await expect(dialog.getByText('12 / 1000', { exact: true })).toBeVisible();
   });
 
+  test('submits with Enter and keeps Shift+Enter for line breaks', async ({
+    page,
+  }) => {
+    const submittedMessages: string[] = [];
+    await page.route('**/api/chat', async (route) => {
+      submittedMessages.push(
+        (await route.request().postDataJSON()).message as string
+      );
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ response: 'Sent from the keyboard.' }),
+      });
+    });
+    await openChat(page);
+
+    const dialog = page.getByRole('dialog', { name: 'Chat with Ryan' });
+    const input = dialog.getByRole('textbox', { name: 'Your question' });
+    await input.fill('First line');
+    await input.press('Shift+Enter');
+    await input.type('Second line');
+
+    await expect(input).toHaveValue('First line\nSecond line');
+    expect(submittedMessages).toEqual([]);
+
+    await input.press('Enter');
+
+    await expect
+      .poll(() => submittedMessages, { timeout: 1500 })
+      .toEqual(['First line\nSecond line']);
+    await expect(input).toHaveValue('');
+    await expect(
+      dialog.getByText('Sent from the keyboard.', { exact: true })
+    ).toBeVisible();
+  });
+
   test('exposes added messages as a polite log and loading as status text', async ({
     page,
   }) => {

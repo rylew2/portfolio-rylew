@@ -104,6 +104,19 @@ const ChatWidget: React.FC = () => {
     }
   };
 
+  const handleInputKeyDown = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
+    if (
+      event.key === 'Enter' &&
+      !event.shiftKey &&
+      !event.nativeEvent.isComposing
+    ) {
+      event.preventDefault();
+      event.currentTarget.form?.requestSubmit();
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedInput = input.trim();
@@ -224,6 +237,7 @@ const ChatWidget: React.FC = () => {
                 id="chat-question"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleInputKeyDown}
                 placeholder="Type a message..."
                 maxLength={1000}
                 aria-describedby="chat-question-count"
