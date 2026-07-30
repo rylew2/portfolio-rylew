@@ -35,7 +35,7 @@ const Project = ({ projectData }: ProjectPageProps) => {
           {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
             <Image
-              alt="projectimage"
+              alt={`${title} project preview`}
               src={projectData.previewImage}
               height={550}
               width={1200}

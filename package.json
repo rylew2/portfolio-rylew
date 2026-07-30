@@ -12,6 +12,7 @@
     "test:unit": "tsx --test tests/**/*.test.ts",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui --ui-host 127.0.0.1",
+    "performance:check": "tsx scripts/check-performance-budget.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "generate:context": "tsx scripts/generate-chat-context.ts",

@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Unit tests
+      - name: Run unit tests
         run: npm run test:unit
 
       # Runs prebuild (generate:context via tsx) + `next build`, which
@@ -33,3 +33,6 @@ jobs:
       # to it and only surface on Vercel. This job mirrors the Vercel build.
       - name: Build
         run: npm run build
+
+      - name: Check mobile performance budget
+        run: npm run performance:check
