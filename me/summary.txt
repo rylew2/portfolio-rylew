@@ -8,7 +8,7 @@ Outside of work I'm usually exploring New York's food scene, cooking, running, t
 
 WORK EXPERIENCE:
 - Nava - Senior Software Engineer (Oct 2021 - Present)
-- Wells Fargo - Front End Developer (Dec 2017 - Jul 2021)
+- Wells Fargo - Software Engineer (Dec 2017 - Jul 2021)
 - Children's Council of San Francisco - Web Developer (Feb 2016 - Dec 2017)
 - Kaiser Permanente Division of Research - Web Developer (Jul 2010 - Feb 2016)
 
@@ -26,6 +26,7 @@ TECHNICAL SKILLS:
 - Backend: Python, Django, Flask, Node.js, GraphQL
 - Databases: PostgreSQL
 - Tools: Docker, Colima, Git, Jest, React Testing Library, Playwright
+- AI: Claude Code, Codex, Copilot
 - Machine Learning: Supervised learning, Unsupervised learning, Reinforcement learning
 
 VOLUNTEERING:
