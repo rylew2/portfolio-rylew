@@ -16,7 +16,7 @@
     },
     {
       "company": "Wells Fargo",
-      "title": "Front End Developer",
+      "title": "Software Engineer",
       "start": "Dec 2017",
       "end": "Jul 2021"
     },
@@ -101,6 +101,10 @@
         "React Testing Library",
         "Playwright"
       ]
+    },
+    {
+      "group": "AI",
+      "items": ["Claude Code", "Codex", "Copilot"]
     },
     {
       "group": "Machine Learning",
