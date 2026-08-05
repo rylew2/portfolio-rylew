@@ -29,7 +29,7 @@
     "@fortawesome/react-fontawesome": "^3.5.0",
     "@vercel/analytics": "^2.0.1",
     "gray-matter": "^4.0.3",
-    "next": "^16.2.11",
+    "next": "^16.3.0",
     "prismjs": "^1.30.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
