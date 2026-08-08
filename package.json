@@ -39,8 +39,7 @@
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
-    "remark-rehype": "^11.1.2",
-    "uuid": "^14.0.1"
+    "remark-rehype": "^11.1.2"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
