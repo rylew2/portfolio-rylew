@@ -386,7 +386,7 @@ test.describe('chat widget accessibility', () => {
   }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.addInitScript(() => {
-      const testWindow = window as Window & {
+      const testWindow = window as unknown as Window & {
         __chatScrollBehaviors: ScrollBehavior[];
       };
       testWindow.__chatScrollBehaviors = [];
@@ -423,7 +423,7 @@ test.describe('chat widget accessibility', () => {
         page.evaluate(
           () =>
             (
-              window as Window & {
+              window as unknown as Window & {
                 __chatScrollBehaviors: ScrollBehavior[];
               }
             ).__chatScrollBehaviors.length
@@ -433,7 +433,7 @@ test.describe('chat widget accessibility', () => {
     const scrollBehaviors = await page.evaluate(
       () =>
         (
-          window as Window & {
+          window as unknown as Window & {
             __chatScrollBehaviors: ScrollBehavior[];
           }
         ).__chatScrollBehaviors

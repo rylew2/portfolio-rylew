@@ -5,13 +5,17 @@ import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../components';
 import { Chips } from '../../components/chips/chips';
 import { StyledContent } from '../../components/styles/content.styles';
-import { getAllContentIds, getContentData } from '../../lib/content';
+import {
+  ContentData,
+  getAllContentIds,
+  getContentData,
+} from '../../lib/content';
 
 /**
  *  Renders book markdown posts
  */
 
-const Book = ({ bookData }: { bookData: IContentData }) => {
+const Book = ({ bookData }: { bookData: ContentData }) => {
   const { pathname } = useRouter();
   const { title, contentHtml, description } = bookData;
 
@@ -19,11 +23,7 @@ const Book = ({ bookData }: { bookData: IContentData }) => {
     <Layout pathname={pathname} pageTitle={title} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>
-            {bookData.date instanceof Date
-              ? bookData.date.toLocaleDateString()
-              : bookData.date}
-          </time>
+          <time>{bookData.date}</time>
           {bookData.tags && <Chips items={bookData.tags} />}
           {bookData.previewImage && (
             <Image
@@ -48,22 +48,8 @@ export const getStaticPaths = async () => {
   };
 };
 
-export interface IContentData {
-  id: string;
-  contentHtml: string;
-  title: string;
-  date: Date;
-  previewImage?: string;
-  description?: string;
-  tags?: string[];
-  category?: string;
-  liveSite?: string;
-  sourceCode?: string;
-  presentation?: string;
-}
-
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const bookData: IContentData = await getContentData(params?.id as string, 'book');
+  const bookData = await getContentData(params?.id as string, 'book');
 
   return {
     props: {

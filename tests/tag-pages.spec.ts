@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 import tagsJSON from '../config/tags.json';
-import { getContentList, getContentWithTag } from '../lib/content';
+import {
+  ContentListItem,
+  getContentList,
+  getContentWithTag,
+} from '../lib/content';
 import { TAG_CATEGORIES } from '../components/chips/chips';
 
 const siteTags = new Set(tagsJSON.map((tag) => tag.tag));
@@ -8,11 +12,8 @@ const siteTags = new Set(tagsJSON.map((tag) => tag.tag));
 const escapeRegExp = (value: string) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const pickTaggedEntry = (content) => {
-  return content.find(
-    (item) =>
-      Array.isArray(item.tags) && item.tags.some((tag) => siteTags.has(tag))
-  );
+const pickTaggedEntry = (content: ContentListItem[]) => {
+  return content.find((item) => item.tags.some((tag) => siteTags.has(tag)));
 };
 
 test('project tags link to the full tagged list', async ({ page }) => {
@@ -100,9 +101,7 @@ test('all content tags exist in config/tags.json', async () => {
   const projects = getContentList('project');
   const books = getContentList('book');
   const contentTags = new Set(
-    [...projects, ...books].flatMap((item) =>
-      Array.isArray(item.tags) ? item.tags : []
-    )
+    [...projects, ...books].flatMap((item) => item.tags)
   );
 
   for (const tag of contentTags) {
