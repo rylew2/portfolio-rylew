@@ -8,12 +8,15 @@ import { GetStaticPropsContext } from 'next';
 import { Container, Layout } from '../../components';
 import { Chips } from '../../components/chips/chips';
 import { StyledContent } from '../../components/styles/content.styles';
-import { getAllContentIds, getContentData } from '../../lib/content';
-import { IContentData } from '../books/[id]';
+import {
+  ContentData,
+  getAllContentIds,
+  getContentData,
+} from '../../lib/content';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface ProjectPageProps {
-  projectData: IContentData;
+  projectData: ContentData;
 }
 
 /**
@@ -27,11 +30,7 @@ const Project = ({ projectData }: ProjectPageProps) => {
     <Layout pageTitle={title} pathname={pathname} pageDescription={description}>
       <Container width="narrow">
         <StyledContent>
-          <time>
-            {projectData.date instanceof Date
-              ? projectData.date.toLocaleDateString()
-              : projectData.date}
-          </time>
+          <time>{projectData.date}</time>
           {projectData.tags && <Chips items={projectData.tags} />}
           {projectData.previewImage && (
             <Image
@@ -106,7 +105,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const projectData: IContentData = await getContentData(params?.id as string, 'project');
+  const projectData = await getContentData(params?.id as string, 'project');
 
   return {
     props: {

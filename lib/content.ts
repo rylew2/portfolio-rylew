@@ -1,313 +1,64 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import path from 'path';
+import { renderMarkdown } from './content/markdown';
+import {
+  findContentDocument,
+  readContentDocuments,
+} from './content/repository';
+import type {
+  ContentData,
+  ContentListItem,
+  ContentTaxonomy,
+  ContentType,
+} from './content/types';
 
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypePrism from 'rehype-prism-plus';
-import rehypeStringify from 'rehype-stringify';
+export type {
+  ContentData,
+  ContentListItem,
+  ContentTaxonomy,
+  ContentType,
+} from './content/types';
 
-import { v4 as uuid } from 'uuid';
-import remarkGfm from 'remark-gfm';
+const sortByDate = (a: ContentListItem, b: ContentListItem): number =>
+  b.date.localeCompare(a.date);
 
-const projectDirectory = path.join(process.cwd(), 'content', 'project');
-const bookDirectory = path.join(process.cwd(), 'content', 'book');
+export const getContentList = (contentType: ContentType): ContentListItem[] =>
+  readContentDocuments(contentType)
+    .map(({ metadata }) => metadata)
+    .sort(sortByDate);
 
-type IContentType = 'book' | 'project';
-type ContentTaxonomy = 'tags' | 'category';
+export const getAllContentIds = (contentType: ContentType) =>
+  getContentList(contentType).map(({ slug }) => ({ params: { id: slug } }));
 
-// Interface for content list items (used in listings)
-export interface ContentListItem {
-  id: string;
-  path: string;
-  previewImage: string;
-  title?: string;
-  slug?: string;
-  date?: string;
-  description?: string;
-  tags?: string[];
-  category?: string;
-  selectedWork?: boolean;
-  liveSite?: string;
-  sourceCode?: string;
-  presentation?: string;
-}
-
-/**
- * Get IDs of all markdown post
- * @param {string} contentType Type of content to get ids
- * Called from getStaticPaths of the [id].tsx page
- */
-export const getAllContentIds = (contentType: IContentType) => {
-  let filenames;
-  let baseDir;
-
-  // determine where to look for content types
-  switch (contentType) {
-    case 'book':
-      baseDir = bookDirectory;
-      filenames = fs.readdirSync(bookDirectory);
-      break;
-
-    case 'project':
-      baseDir = projectDirectory;
-      filenames = fs.readdirSync(projectDirectory);
-      break;
-
-    default:
-      throw new Error('You have to provide a content type');
-  }
-
-  // return the slug of all the content IDs
-  return filenames.map((filename) => {
-    const filePath = path.join(baseDir, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-
-    //convert string at the start of each .md into
-    //an object {content: .., data: title:..., slug: ..}
-    const matterResult = matter(fileContent);
-
-    return {
-      params: {
-        // This is where we switch it up to use slug instead of the filename for generating pages
-        // id: filename.replace(/\.md$/, ""),
-        id: matterResult.data.slug,
-      },
-    };
-  });
-};
-
-/**
- * Get data for a given post id
- * @param {string} id ID of the post being passed
- * @param {string} contentType Type of content
- * Called from getStaticProps of the [id].tsx
- */
-export const getContentData = async (id: string, contentType: IContentType) => {
-  let contentTypeDirectory;
-  let filenames;
-
-  switch (contentType) {
-    case 'book':
-      filenames = fs.readdirSync(bookDirectory);
-      contentTypeDirectory = bookDirectory;
-      break;
-
-    case 'project':
-      filenames = fs.readdirSync(projectDirectory);
-      contentTypeDirectory = projectDirectory;
-      break;
-
-    default:
-      throw new Error('You have to provide a content type');
-  }
-
-  // loop through all the content types and compare the slug to get the filename
-  const match = filenames.filter((filename) => {
-    const filePath = path.join(contentTypeDirectory, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const matterResult = matter(fileContent);
-    const { slug } = matterResult.data;
-
-    return slug === id;
-  });
-
-  // use the returned path to get the fullpath and read the file content
-  const fullPath = path.join(contentTypeDirectory, match[0]);
-  const fileContents = fs.readFileSync(fullPath, 'utf-8');
-
-  const matterResult = matter(fileContents);
-
-  const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypePrism)
-    .use(rehypeStringify)
-    .process(matterResult.content);
-
-  const contentHtml = processedContent.toString();
+export const getContentData = async (
+  id: string,
+  contentType: ContentType
+): Promise<ContentData> => {
+  const { metadata, markdown } = findContentDocument(contentType, id);
 
   return {
-    id,
-    contentHtml,
-    title: matterResult.data.title,
-    date: matterResult.data.date,
-    previewImage: matterResult.data.previewImage || '',
-    description: matterResult.data.description || '',
-    tags: matterResult.data.tags || [],
-    category: matterResult.data.category || '',
-    liveSite: matterResult.data.liveSite || '',
-    sourceCode: matterResult.data.sourceCode || '',
-    presentation: matterResult.data.presentation || '',
+    ...metadata,
+    contentHtml: await renderMarkdown(markdown),
   };
 };
 
-/**
- * Get content list for a particular content type
- * @param {string} contentType Type of content
- * For the landing page of each subpage - called from book/project.tsx getStaticProps
- */
-export const getContentList = (
-  contentType: IContentType
-): ContentListItem[] => {
-  let contentFiles: string[];
-  let contentDir: string;
-
-  switch (contentType) {
-    case 'project':
-      contentFiles = fs.readdirSync(projectDirectory);
-      contentDir = projectDirectory;
-      break;
-
-    case 'book':
-      contentFiles = fs.readdirSync(bookDirectory);
-      contentDir = bookDirectory;
-      break;
-  }
-
-  const content: ContentListItem[] = contentFiles
-    .filter((content) => content.endsWith('.md'))
-    .map((content) => {
-      const filePath = `${contentDir}/${content}`;
-      const rawContent = fs.readFileSync(filePath, {
-        encoding: 'utf-8',
-      });
-      const { data } = matter(rawContent);
-
-      return {
-        ...data,
-        previewImage: data.previewImage || '/images/image-placeholder.png',
-        id: uuid(),
-        path: contentType + 's',
-      } as ContentListItem;
-    });
-
-  return content.sort(sortByDate);
-};
-
 export const getContentTaxonomyValues = (
-  contentType: IContentType,
+  contentType: ContentType,
   taxonomy: ContentTaxonomy
 ): string[] => {
-  const content = getContentList(contentType);
-  const values =
-    taxonomy === 'tags'
-      ? content.flatMap((item) => item.tags ?? [])
-      : content.flatMap((item) => (item.category ? [item.category] : []));
+  const values = getContentList(contentType).flatMap((item) =>
+    taxonomy === 'tags' ? item.tags : item.category ? [item.category] : []
+  );
 
   return [...new Set(values)];
 };
 
-/**
- * Get content type with particular tag
- * @param {string} tag - tag to filter by
- * called from [id].tsx getStaticPaths
- */
 export const getContentWithTag = (
   tag: string,
-  contentType: IContentType
-): ContentListItem[] => {
-  let contentDir: string | undefined;
-  let contentFiles: string[];
+  contentType: ContentType
+): ContentListItem[] =>
+  getContentList(contentType).filter(({ tags }) => tags.includes(tag));
 
-  switch (contentType) {
-    case 'book':
-      contentDir = bookDirectory;
-      break;
-
-    case 'project':
-      contentDir = projectDirectory;
-      break;
-  }
-
-  contentFiles = fs.readdirSync(contentDir!);
-
-  const contentData: ContentListItem[] = contentFiles
-    .filter((content) => content.endsWith('.md'))
-    .map((content) => {
-      const filePath = `${contentDir}/${content}`;
-      const rawContent = fs.readFileSync(filePath, {
-        encoding: 'utf-8',
-      });
-
-      const { data } = matter(rawContent);
-
-      return {
-        ...data,
-        previewImage: data.previewImage || '/images/image-placeholder.png',
-        id: uuid(),
-        path: contentType + 's',
-      } as ContentListItem;
-    });
-
-  const filteredContent = contentData.filter((content) => {
-    return content.tags && content.tags.includes(tag);
-  });
-
-  return filteredContent.sort(sortByDate);
-};
-
-/**
- * Get content type with particular tag
- * @param {string} tag - tag to filter by
- */
 export const getContentInCategory = (
   category: string,
-  contentType: IContentType
-) => {
-  let contentDir: string | undefined;
-  let contentFiles: string[];
-
-  switch (contentType) {
-    case 'book':
-      contentDir = bookDirectory;
-      break;
-
-    case 'project':
-      contentDir = projectDirectory;
-      break;
-  }
-
-  contentFiles = fs.readdirSync(contentDir!);
-
-  const contentData: ContentListItem[] = contentFiles
-    .filter((content) => content.endsWith('.md'))
-    .map((content) => {
-      const filePath = `${contentDir}/${content}`;
-      const rawContent = fs.readFileSync(filePath, {
-        encoding: 'utf-8',
-      });
-
-      const { data } = matter(rawContent);
-
-      return {
-        ...data,
-        previewImage: data.previewImage || '/images/image-placeholder.png',
-        id: uuid(),
-        path: contentType + 's',
-      } as ContentListItem;
-    });
-
-  const filteredContent = contentData.filter((content) => {
-    return content.category && content.category === category;
-  });
-
-  return filteredContent.sort(sortByDate);
-};
-
-/**
- * Sorts content by their dates
- * @param a {date.toLocaleDateString()} - Date of post 1
- * @param b {date.toLocaleDateString()} - Date of post 2
- */
-const sortByDate = (a: ContentListItem, b: ContentListItem) => {
-  if ((a.date ?? '') > (b.date ?? '')) {
-    return -1;
-  } else if ((a.date ?? '') < (b.date ?? '')) {
-    return 1;
-  } else {
-    return 0;
-  }
-};
+  contentType: ContentType
+): ContentListItem[] =>
+  getContentList(contentType).filter((item) => item.category === category);

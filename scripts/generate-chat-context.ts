@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+
+import { readContentDocuments } from '../lib/content/repository';
+import type { ContentType } from '../lib/content/types';
 
 interface ContentItem {
   title: string;
@@ -17,7 +19,6 @@ interface ChatContext {
   generatedAt: string;
 }
 
-const contentDir = path.join(process.cwd(), 'content');
 const outputPath = path.join(process.cwd(), 'me', 'chat-context.json');
 
 function stripCodeBlocks(text: string): string {
@@ -33,7 +34,7 @@ function stripHtmlTags(text: string): string {
 }
 
 function condenseContent(content: string): string {
-  let condensed = content;
+  let condensed = content.replace(/\r\n?/g, '\n');
   condensed = stripCodeBlocks(condensed);
   condensed = stripImageReferences(condensed);
   condensed = stripHtmlTags(condensed);
@@ -42,39 +43,22 @@ function condenseContent(content: string): string {
   return condensed.trim();
 }
 
-function readMarkdownFiles(directory: string): ContentItem[] {
-  if (!fs.existsSync(directory)) {
-    console.warn(`Directory does not exist: ${directory}`);
-    return [];
-  }
-
-  const files = fs.readdirSync(directory).filter((f) => f.endsWith('.md'));
-  const items: ContentItem[] = [];
-
-  for (const file of files) {
-    const filePath = path.join(directory, file);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-
-    items.push({
-      title: data.title || file.replace('.md', ''),
-      slug: data.slug || file.replace('.md', ''),
-      date: data.date || '',
-      description: data.description || '',
-      tags: data.tags || [],
-      content: condenseContent(content),
-    });
-  }
-
-  return items.sort((a, b) => (b.date > a.date ? 1 : -1));
+function readMarkdownFiles(contentType: ContentType): ContentItem[] {
+  return readContentDocuments(contentType)
+    .map(({ metadata, markdown }) => ({
+      title: metadata.title,
+      slug: metadata.slug,
+      date: metadata.date,
+      description: metadata.description,
+      tags: metadata.tags,
+      content: condenseContent(markdown),
+    }))
+    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 function generateContext(): ChatContext {
-  const projectDir = path.join(contentDir, 'project');
-  const bookDir = path.join(contentDir, 'book');
-
-  const projects = readMarkdownFiles(projectDir);
-  const books = readMarkdownFiles(bookDir);
+  const projects = readMarkdownFiles('project');
+  const books = readMarkdownFiles('book');
 
   return {
     projects,
