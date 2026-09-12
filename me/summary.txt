@@ -19,6 +19,7 @@ EDUCATION:
   Coursework: Data Structures, Computer Architecture, Logic Design with Verilog, Microsystem Design, Operating Systems, Abstract Data Types, Mechatronics
 
 CERTIFICATIONS:
+- Claude Certified Architect – Foundations
 - AWS Certified Cloud Practitioner
 
 TECHNICAL SKILLS:
