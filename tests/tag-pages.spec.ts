@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import tagsJSON from '../config/tags.json';
-import { getContentList, getContentWithTag } from '../lib/content';
+import { getContentList, getContentWithTag, type ContentListItem } from '../lib/content';
 import { TAG_CATEGORIES } from '../components/chips/chips';
 
 const siteTags = new Set(tagsJSON.map((tag) => tag.tag));
@@ -8,7 +8,7 @@ const siteTags = new Set(tagsJSON.map((tag) => tag.tag));
 const escapeRegExp = (value: string) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const pickTaggedEntry = (content) => {
+const pickTaggedEntry = (content: ContentListItem[]) => {
   return content.find(
     (item) =>
       Array.isArray(item.tags) && item.tags.some((tag) => siteTags.has(tag))
@@ -24,7 +24,7 @@ test('project tags link to the full tagged list', async ({ page }) => {
     throw new Error('No projects matched tags in config/tags.json.');
   }
 
-  const tag = taggedProject.tags.find((value) => siteTags.has(value));
+  const tag = taggedProject.tags?.find((value) => siteTags.has(value));
   if (!tag) {
     throw new Error('No project tags matched tags in config/tags.json.');
   }
@@ -65,7 +65,7 @@ test('book tags link to the full tagged list', async ({ page }) => {
     throw new Error('No books matched tags in config/tags.json.');
   }
 
-  const tag = taggedBook.tags.find((value) => siteTags.has(value));
+  const tag = taggedBook.tags?.find((value) => siteTags.has(value));
   if (!tag) {
     throw new Error('No book tags matched tags in config/tags.json.');
   }
