@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 import { getContentList } from "../lib/content";
 
 const expectContentPage = async (
-  page,
+  page: Page,
   url: string,
   contentType: "book" | "project"
 ) => {
