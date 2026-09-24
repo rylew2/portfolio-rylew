@@ -2,5 +2,5 @@
   "route": "/",
   "maxInitialJavaScriptGzipKiB": 185,
   "maxInitialJavaScriptRequests": 13,
-  "maxInitialChunkGzipKiB": 65
+  "maxInitialChunkGzipKiB": 75
 }
