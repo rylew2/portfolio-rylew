@@ -58,6 +58,35 @@ function successfulGroqResponse(content = 'Hello from Ryan'): Response {
   );
 }
 
+test('returns an answer after the Llama 3.3 model retirement', async () => {
+  const handler = createChatHandler({
+    fetch: async (_input, init) => {
+      const body = JSON.parse(String(init?.body));
+      if (body.model === 'llama-3.3-70b-versatile') {
+        return new Response(
+          JSON.stringify({ error: { code: 'model_not_found' } }),
+          {
+            status: 404,
+          }
+        );
+      }
+      assert.equal(body.model, 'openai/gpt-oss-120b');
+      assert.equal(body.reasoning_effort, 'low');
+      assert.equal(body.include_reasoning, false);
+      assert.equal(body.max_completion_tokens, 2048);
+      return successfulGroqResponse();
+    },
+    getApiKey: () => 'test-key',
+    logError: () => {},
+  });
+  const { response, captured } = createResponse();
+
+  await handler(createRequest(), response);
+
+  assert.equal(captured.statusCode, 200);
+  assert.deepEqual(captured.body, { response: 'Hello from Ryan' });
+});
+
 test('returns 405 with Allow POST without calling Groq', async () => {
   let fetchCalls = 0;
   const handler = createChatHandler({

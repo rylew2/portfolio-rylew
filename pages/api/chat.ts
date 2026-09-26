@@ -312,9 +312,12 @@ export function createChatHandler(options: ChatHandlerOptions = {}) {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
+            model: 'openai/gpt-oss-120b',
             messages,
-            max_tokens: 500,
+            // Allow room for reasoning as well as the concise visitor answer.
+            max_completion_tokens: 2048,
+            reasoning_effort: 'low',
+            include_reasoning: false,
           }),
           signal: AbortSignal.timeout(requestTimeoutMs),
         }
