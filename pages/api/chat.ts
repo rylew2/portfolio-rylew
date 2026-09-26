@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
+import { CHAT_MODEL_CONFIG } from '../../lib/chat-config';
 import {
   createRateLimiter,
   getClientIdentifier,
@@ -312,12 +313,8 @@ export function createChatHandler(options: ChatHandlerOptions = {}) {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: 'openai/gpt-oss-120b',
+            ...CHAT_MODEL_CONFIG,
             messages,
-            // Allow room for reasoning as well as the concise visitor answer.
-            max_completion_tokens: 2048,
-            reasoning_effort: 'low',
-            include_reasoning: false,
           }),
           signal: AbortSignal.timeout(requestTimeoutMs),
         }

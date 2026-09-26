@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { CHAT_MODEL_CONFIG } from '../lib/chat-config';
 import { createRateLimiter } from '../lib/chat-security';
 import { createChatHandler } from '../pages/api/chat';
 
@@ -58,22 +59,12 @@ function successfulGroqResponse(content = 'Hello from Ryan'): Response {
   );
 }
 
-test('returns an answer after the Llama 3.3 model retirement', async () => {
+test('uses configured model settings and returns an answer', async () => {
+  let requestSettings: unknown;
   const handler = createChatHandler({
     fetch: async (_input, init) => {
-      const body = JSON.parse(String(init?.body));
-      if (body.model === 'llama-3.3-70b-versatile') {
-        return new Response(
-          JSON.stringify({ error: { code: 'model_not_found' } }),
-          {
-            status: 404,
-          }
-        );
-      }
-      assert.equal(body.model, 'openai/gpt-oss-120b');
-      assert.equal(body.reasoning_effort, 'low');
-      assert.equal(body.include_reasoning, false);
-      assert.equal(body.max_completion_tokens, 2048);
+      const { messages, ...settings } = JSON.parse(String(init?.body));
+      requestSettings = settings;
       return successfulGroqResponse();
     },
     getApiKey: () => 'test-key',
@@ -83,6 +74,7 @@ test('returns an answer after the Llama 3.3 model retirement', async () => {
 
   await handler(createRequest(), response);
 
+  assert.deepEqual(requestSettings, CHAT_MODEL_CONFIG);
   assert.equal(captured.statusCode, 200);
   assert.deepEqual(captured.body, { response: 'Hello from Ryan' });
 });
