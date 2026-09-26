@@ -28,28 +28,42 @@ asynchronously, Vercel Analytics remains enabled, and Prism's third-party theme
 stylesheet remains in place; the budget detects future growth without removing
 site telemetry or syntax highlighting.
 
-## Production chatbot smoke check
+## Production smoke checks
 
-The `Production Chat Smoke Check` GitHub Actions workflow sends a real visitor
+The `Production Smoke Checks` GitHub Actions workflow sends a real visitor
 question to `https://www.rylew.dev/api/chat`. It requires HTTP 200, valid JSON,
 and a nonempty answer, with a 30-second timeout per attempt and one retry after
 10 seconds. It uses the deployed app's model configuration and credentials;
 no Groq API key or model name is stored in the workflow.
 
+A separate job checks HTTP 200, HTML content type, the expected heading, and
+nonempty main content on the homepage, About, Projects, and Books. It follows
+one rendered project card and one book card to check their detail pages and
+matching headings, without hardcoding content titles or slugs. About must
+include its Experience section. Each page request has a 20-second timeout.
+
+The crawler checks require robots.txt to allow public crawling and point to
+the canonical sitemap, and sitemap.xml to contain its namespace and entries
+for the core pages and sampled details. All checks report their route in the
+logs; page failures do not prevent the chatbot job from running.
+
 The workflow runs:
 
 - Daily at 9:17 a.m. Eastern (`America/New_York`, including daylight saving time).
 - After Vercel reports a successful `Production` deployment; previews are skipped.
-- On demand from Actions > Production Chat Smoke Check > Run workflow.
+- On demand from Actions > Production Smoke Checks > Run workflow.
 
 Run it locally with Node 22 or newer (no dependency installation required):
 
 ```sh
 npm run test:smoke:chat
+npm run test:smoke:site
 ```
 
 Set `CHAT_SMOKE_URL` to a full API endpoint URL to check another environment.
-The unit suite tests the command against a local HTTP server, so ordinary PR
+Set `SITE_SMOKE_ORIGIN` to an origin to check its pages; crawler files still
+must use the canonical site URL from `config/index.json`.
+The unit suite tests both commands against local HTTP servers, so ordinary PR
 unit tests do not call Groq.
 
 For email alerts, enable GitHub Actions notifications and select failures only
@@ -59,9 +73,10 @@ A failed run remains visible in the repository's Actions tab regardless of
 email settings.
 
 Standard GitHub-hosted runners are free for this public repository. Each live
-check consumes Vercel/Groq quota: about 30 requests per month for the daily
-schedule, plus deployments, manual runs, and retries. The check detects backend
-availability failures; it does not assess answer quality or browser UI behavior.
+chat check consumes Vercel/Groq quota: about 30 requests per month for the daily
+schedule, plus deployments, manual runs, and retries. The page job adds eight
+GET requests per run, without calling Groq. These checks detect backend and
+rendered-page failures; they do not assess answer quality or browser UI behavior.
 
 GitHub schedules can be delayed or dropped under load. Public-repository
 schedules are disabled after 60 days without repository activity and must be

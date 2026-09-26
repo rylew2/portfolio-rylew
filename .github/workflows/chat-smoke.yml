@@ -1,4 +1,4 @@
-name: Production Chat Smoke Check
+name: Production Smoke Checks
 
 on:
   schedule:
@@ -11,11 +11,32 @@ permissions:
   contents: read
 
 concurrency:
-  group: production-chat-smoke
+  group: production-smoke
   cancel-in-progress: false
 
 jobs:
-  smoke:
+  site:
+    name: Live pages and crawler files
+    if: >-
+      github.event_name != 'deployment_status' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout production branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check live pages and crawler files
+        run: npm run test:smoke:site
+
+  chat:
+    name: Live chatbot
     if: >-
       github.event_name != 'deployment_status' ||
       (github.event.deployment_status.state == 'success' &&
