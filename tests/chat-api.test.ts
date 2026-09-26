@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { CHAT_MODEL_CONFIG } from '../lib/chat-config';
 import { createRateLimiter } from '../lib/chat-security';
 import { createChatHandler } from '../pages/api/chat';
 
@@ -57,6 +58,26 @@ function successfulGroqResponse(content = 'Hello from Ryan'): Response {
     }
   );
 }
+
+test('uses configured model settings and returns an answer', async () => {
+  let requestSettings: unknown;
+  const handler = createChatHandler({
+    fetch: async (_input, init) => {
+      const { messages, ...settings } = JSON.parse(String(init?.body));
+      requestSettings = settings;
+      return successfulGroqResponse();
+    },
+    getApiKey: () => 'test-key',
+    logError: () => {},
+  });
+  const { response, captured } = createResponse();
+
+  await handler(createRequest(), response);
+
+  assert.deepEqual(requestSettings, CHAT_MODEL_CONFIG);
+  assert.equal(captured.statusCode, 200);
+  assert.deepEqual(captured.body, { response: 'Hello from Ryan' });
+});
 
 test('returns 405 with Allow POST without calling Groq', async () => {
   let fetchCalls = 0;

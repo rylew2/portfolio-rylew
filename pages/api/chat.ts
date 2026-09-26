@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
+import { CHAT_MODEL_CONFIG } from '../../lib/chat-config';
 import {
   createRateLimiter,
   getClientIdentifier,
@@ -312,9 +313,8 @@ export function createChatHandler(options: ChatHandlerOptions = {}) {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
+            ...CHAT_MODEL_CONFIG,
             messages,
-            max_tokens: 500,
           }),
           signal: AbortSignal.timeout(requestTimeoutMs),
         }
